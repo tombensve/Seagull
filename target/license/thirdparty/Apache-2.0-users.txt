@@ -1,0 +1,8 @@
+The following products are using the Apache version 2.0 license:
+
+groovy version 4.0.2
+https://groovy-lang.org
+
+auto-service version 1.0
+https://github.com/google/auto/tree/master/service
+
