@@ -9,3 +9,7 @@ _Seagulls are also apparenbtly quite smart, and have equality between male and f
 So, what is this about ? 
 
 It is about information flying around between different services, triggering things to be done, in simple terms. 
+
+**NOTE:** This is my reboot / rethinking of my APS project and is like APS a playground where I'm having fun, and stimulating my brain. 
+
+
