@@ -1,11 +1,12 @@
 # Seagull
 
 ![](pics/SeaGull-full.jpg)
+<br/>
 (Local individual)
 
-_I suck at comming upp with names, and a seagull just flew by my balcony ..._
+_I suck at coming upp with names, and a seagull just flew by my balcony ..._
 
-_Seagulls are also apparently quite smart, and have equality between male and female. They are also amazing flyers that can navigate airstreams without visibly moving their wings._
+_Seagulls are also apparently quite smart, and have equality between male and female. They are also amazing flyers that can navigate air streams without visibly moving their wings._
 
 -----
 
