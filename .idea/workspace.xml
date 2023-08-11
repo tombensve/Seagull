@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6272baf6-424d-45f7-b715-f6ab040c280c" name="Seagull-1 Define platform &amp; APIs." comment="Seagull-1 Define platform &amp; APIs.">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Seagull-Platform/src/main/groovy/se/natusoft/seagull/platform/SGFactory.groovy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Seagull-Platform/src/main/groovy/se/natusoft/seagull/platform/SGJson.groovy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Seagull-Platform/src/main/groovy/se/natusoft/seagull/platform/SGMessenger.groovy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Seagull-Platform/src/main/groovy/se/natusoft/seagull/platform/SGService.groovy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Seagull-Platform/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/apidocs.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/docs.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lics/Apache-2.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lics/licenses.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pics/SeaGull-small.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Seagull-APIs/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Seagull-Platform/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Seagull-APIs/src/main/groovy/se/natusoft/seagull/api/JsonConverter.groovy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Seagull-APIs/src/main/groovy/se/natusoft/seagull/api/SGHandler.groovy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Seagull-APIs/src/main/groovy/se/natusoft/seagull/api/exceptions/SGException.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/Seagull-Platform/src/main/groovy/se/natusoft/seagull/platform/exceptions/SGException.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Seagull-APIs/src/main/groovy/se/natusoft/seagull/api/internal/SGLocalServiceFinder.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/Seagull-Platform/src/main/groovy/se/natusoft/seagull/internal/SGProviderLookup.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Seagull-APIs/src/main/groovy/se/natusoft/seagull/api/localservices/SGCommunicator.groovy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Seagull-APIs/src/main/groovy/se/natusoft/seagull/api/models/SGJson.groovy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Seagull-APIs/src/main/groovy/se/natusoft/seagull/api/models/SGJsonCreator.groovy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Seagull-APIs/src/main/groovy/se/natusoft/seagull/api/models/SGMessage.groovy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Seagull-APIs/src/main/groovy/se/natusoft/seagull/api/models/SGResult.groovy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Seagull-APIs/src/main/groovy/se/natusoft/seagull/api/models/SGValue.groovy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Seagull-APIs/src/main/groovy/se/natusoft/seagull/base/SGLocalService.groovy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Seagull-APIs/src/main/groovy/se/natusoft/seagull/base/SGNetworkService.groovy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Seagull-APIs/src/main/groovy/se/natusoft/seagull/support/tuples/Tuple.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/Seagull-Platform/src/main/groovy/se/natusoft/seagull/support/tuples/Tuple.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Seagull-APIs/src/main/groovy/se/natusoft/seagull/support/tuples/Tuple2.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/Seagull-Platform/src/main/groovy/se/natusoft/seagull/support/tuples/Tuple2.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Seagull-APIs/src/main/groovy/se/natusoft/seagull/support/tuples/Tuple3.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/Seagull-Platform/src/main/groovy/se/natusoft/seagull/support/tuples/Tuple3.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Seagull-APIs/src/main/groovy/se/natusoft/seagull/support/tuples/Tuple4.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/Seagull-Platform/src/main/groovy/se/natusoft/seagull/support/tuples/Tuple4.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Seagull-APIs/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Seagull-Platform/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Seagull-APIs/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/Seagull-Platform/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Seagull-APIs/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/Seagull-Platform/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Seagull-Default-Providers/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Seagull-Default-Providers/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Seagull-Default-Providers/src/main/groovy/se/natusoft/seagull/providers/SGJsonProvider.groovy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/license/thirdparty/Apache-2.0-users.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/license/thirdparty/Apache-2.0.txt" beforeDir="false" />
+    </list>
+    <list id="a033334d-a6be-4399-bd69-d8f23938d9f5" name="Changes" comment="WIP Checkpoint.&#10;- Updated Readme (A few more oops!)" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="42ac7673-2121-4bec-8af7-4f81c115ad3d" />
+        <option name="url" value="https://github.com/tombensve/Seagull.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="enabledProfiles">
+      <list>
+        <option value="generate-docs" />
+      </list>
+    </option>
+  </component>
+  <component name="OptimizeOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2Rszd4sMj4NbnxRhLNYofjr9qfv" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+    <option name="showVisibilityIcons" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "Seagull-1",
+    "last_opened_file_path": "/Volumes/Red/Development/projects/Seagull",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.12026239",
+    "project.structure.side.proportion": "0.28606966",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "tasks.open.task.update.state.enabled": "true",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/pics" />
+      <recent name="$PROJECT_DIR$/Seagull-APIs/src/main/resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/pics" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="se.natusoft.seagull.platform.api.message.hmm" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Seagull_1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Seagull_1" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task id="Default" summary="Default task">
+      <branch name="main" repository="$PROJECT_DIR$" />
+      <changelist id="a033334d-a6be-4399-bd69-d8f23938d9f5" name="Changes" comment="" />
+      <created>1667052477073</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1689613600844</updated>
+      <workItem from="1688053661779" duration="19925000" />
+      <workItem from="1689344553976" duration="27605000" />
+    </task>
+    <task id="LOCAL−00001" summary="WIP Checkpoint.">
+      <created>1688232753353</created>
+      <option name="number" value="LOCAL−00001" />
+      <option name="presentableId" value="LOCAL−00001" />
+      <updated>1688232753353</updated>
+    </task>
+    <task id="LOCAL−00002" summary="WIP Checkpoint.&#10;- Updated Readme.">
+      <created>1688644221974</created>
+      <option name="number" value="LOCAL−00002" />
+      <option name="presentableId" value="LOCAL−00002" />
+      <updated>1688644221974</updated>
+    </task>
+    <task id="LOCAL−00003" summary="WIP Checkpoint.&#10;- Updated Readme (A few more oops!)">
+      <created>1688645393568</created>
+      <option name="number" value="LOCAL−00003" />
+      <option name="presentableId" value="LOCAL−00003" />
+      <updated>1688645393568</updated>
+    </task>
+    <task active="true" id="Seagull-1" summary="Define platform &amp; APIs.">
+      <branch name="main" repository="$PROJECT_DIR$" original="true" />
+      <branch name="Seagull-1" repository="$PROJECT_DIR$" />
+      <changelist id="6272baf6-424d-45f7-b715-f6ab040c280c" name="Seagull-1 Define platform &amp; APIs." comment="" />
+      <created>1689610591000</created>
+      <option name="issue" value="true" />
+      <url>https://github.com/tombensve/Seagull/issues/1</url>
+      <option name="number" value="1" />
+      <option name="presentableId" value="Seagull-1" />
+      <option name="project" value="Seagull" />
+      <option name="type" value="BUG" />
+      <updated>1691418819000</updated>
+      <workItem from="1689613600884" duration="3668000" />
+      <workItem from="1689620229444" duration="7900000" />
+      <workItem from="1690395978464" duration="511000" />
+      <workItem from="1690396571707" duration="872000" />
+      <workItem from="1690473965602" duration="1143000" />
+      <workItem from="1690814404904" duration="2455000" />
+      <workItem from="1690817966179" duration="8947000" />
+      <workItem from="1690998879366" duration="19525000" />
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers>
+      <GitHub url="https://github.com">
+        <option name="repoAuthor" value="tombensve" />
+        <option name="repoName" value="Seagull" />
+      </GitHub>
+    </servers>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="User">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="*" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="user">
+                    <value>
+                      <list>
+                        <option value="*" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="WIP Checkpoint." />
+    <MESSAGE value="WIP Checkpoint.&#10;- Updated Readme." />
+    <MESSAGE value="WIP Checkpoint.&#10;- Updated Readme (A few more oops!)" />
+    <option name="LAST_COMMIT_MESSAGE" value="WIP Checkpoint.&#10;- Updated Readme (A few more oops!)" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

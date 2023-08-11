@@ -3,14 +3,13 @@
 
     PROJECT
         Name
-            Application Platform Services
+            Seagull
 
         Code Version
             1.0.0
 
         Description
-            APS (Application Platform Services) - A smörgåsbord of OSGi application/platform type services intended for
-            web applications. Currently based on Vert.x for backend and React for frontend (its own web admin apps).
+
 
     COPYRIGHTS
         Copyright (C) 2012 by Natusoft AB All rights reserved.
@@ -35,8 +34,11 @@
 
 -->
 <!--suppress CheckValidXmlInScriptTagBody -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project
+        xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
+>
 
     <modelVersion>4.0.0</modelVersion>
 
@@ -45,13 +47,12 @@
     <version>1.0.0</version>
     <packaging>pom</packaging>
 
-    <name>Seagull Services</name>
+    <name>Seagull</name>
 
     <url>https://github.com/tombensve/Seagull</url>
 
     <modules>
-        <module>Seagull-APIs</module>
-        <module>Seagull-Default-Providers</module>
+        <module>Seagull-Platform</module>
     </modules>
 
     <!--
@@ -60,21 +61,16 @@
     <properties>
         <!--
             This sets up the version of Groovy and what byte code to produce.
-            This makes use ofr a mixin in NS-Toolbox.
+            This makes use of a mixin in NS-Toolbox.
         -->
+        <!-- I'm staying here for now. There are newer groovy versions available. -->
         <groovy-version>4.0.6</groovy-version>
-        <byte-code>11</byte-code><!-- I'm staying here for now. There are newer groovy versions available. -->
+        <byte-code>11</byte-code>
 
         <!--
             The version of this project. Run the set-version profile to update all poms with this version.
         -->
         <projectVersion>1.0.0</projectVersion>
-
-        <!--
-            If true then Vert.x instances started by tests will be clustered. For some tests
-            this is required and if false then those tests will not run.
-        -->
-        <aps.clustered.vertx.for.tests>true</aps.clustered.vertx.for.tests>
 
     </properties>
 
@@ -86,7 +82,7 @@
     </description>
 
     <organization>
-        <name>Tommy Svensson</name>
+        <name>Tommy Bengt Svensson</name>
         <url>https://github.com/tombensve</url>
     </organization>
 
@@ -108,12 +104,12 @@
         </developer>
     </developers>
     <scm>
-        <connection>scm:https://github.com/tombensve/APS.git</connection>
-        <url>scm:https://github.com/tombensve/APS.git</url>
+        <connection>scm:https://github.com/tombensve/Seagull.git</connection>
+        <url>scm:https://github.com/tombensve/Seagull.git</url>
     </scm>
     <issueManagement>
         <system>github</system>
-        <url>https://github.com/tombensve/APS/issues</url>
+        <url>https://github.com/tombensve/Seagull/issues</url>
     </issueManagement>
 
     <!--
@@ -161,12 +157,7 @@
             <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.apache.groovy</groupId>
-            <artifactId>groovy</artifactId>
-            <version>4.0.2</version>
-            <scope>compile</scope>
-        </dependency>
+
     </dependencies>
 
 
@@ -179,10 +170,10 @@
     </distributionManagement>
     -->
 
-    <!--
-        This makes my bintray repository available for dependencies not in jcenter.
-    -->
     <build>
+        <!--
+            This makes it possible for me to push to download.natusoft.se/maven.
+        -->
         <extensions>
             <!-- Enabling the use of FTP -->
             <extension>
@@ -198,12 +189,6 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>3.0.0-M3</version>
-                </plugin>
-                <plugin>
-                    <groupId>com.github.odavid.maven.plugins</groupId>
-                    <artifactId>mixin-maven-plugin</artifactId>
-                    <version>0.1-alpha-39</version>
-                    <extensions>true</extensions>
                 </plugin>
 
                 <plugin>
@@ -236,24 +221,6 @@
                     <version>1.0.1</version>
                 </plugin>
 
-                <!--
-                This will not work due to only Groovy code now.
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>2.10.3</version>
-                    <configuration>
-                        <doclet>ch.raffael.doclets.pegdown.PegdownDoclet</doclet>
-                        <docletArtifact>
-                            <groupId>ch.raffael.pegdown-doclet</groupId>
-                            <artifactId>pegdown-doclet</artifactId>
-                            <version>1.2</version>
-                        </docletArtifact>
-                        <useStandardDocletOptions>true</useStandardDocletOptions>
-                    </configuration>
-                </plugin>
-                -->
-
             </plugins>
 
         </pluginManagement>
@@ -261,25 +228,18 @@
         <plugins>
 
             <!--
-                Keep this for now, but I don't think this is needed.
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.10.1</version>
-                <configuration>
-                    <release>11</release>
-                </configuration>
-            </plugin>
-            -->
+                Setup Groovy - To make things simpler (for me) I decided to use a mixin using
+                mixin-maven-plugin.
 
-            <!--
-                Setup Groovy
-
-                Note that currently only 8 and 11 is available for bytecode version in NS-Toolbox. Groovy 4
-                however supports up to 17 I think. It is easy to add version in NS-Toolbox, but currently
-                I see no reason. Professionally I have so far seen no one go higher than 11. This code is
+                There are currently only 8 and 11 available for bytecode version in NS-Toolbox. Groovy 4
+                however supports much higher versions. It is easy to add version in NS-Toolbox, but currently
+                I see no reason. Professionally I have so far seen anyone go higher than 11. This code is
                 also still a playground and should not be used by anyone for anything else than playing around!
             -->
             <plugin>
+                <!--
+                    Thanks, Ohad David for this brilliant plugin!
+                -->
                 <groupId>com.github.odavid.maven.plugins</groupId>
                 <artifactId>mixin-maven-plugin</artifactId>
                 <version>0.1-alpha-39</version>
@@ -302,22 +262,9 @@
             </plugin>
 
             <!--
-                Define project assemblies.
-            <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.3.0</version>
-                <configuration>
-                    <descriptors>
-                        <descriptor>file:${basedir}/src/assembly/bin-dist.xml</descriptor>
-                    </descriptors>
-                </configuration>
-            </plugin>
-            -->
-
-            <!--
                 Force checksums when installing to repository.
 
-                I suspect that this might be unneccesarry since I think
+                I suspect that this might be unnecessary since I think
                 deploy creates checksums anyhow when deploying to external
                 repository.
             -->
@@ -357,7 +304,7 @@
 
                             <createLicensesMarkdown>true</createLicensesMarkdown>
                             <markdownTargetSubdir>lics</markdownTargetSubdir>
-                            <markdownLinkPrefix>https://github.com/tombensve/APS/blob/master/lics/</markdownLinkPrefix>
+                            <markdownLinkPrefix>https://github.com/tombensve/Seagull/blob/master/lics/</markdownLinkPrefix>
 
                         </configuration>
                     </execution>

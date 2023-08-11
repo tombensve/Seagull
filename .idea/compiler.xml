@@ -6,9 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Seagull-APIs" />
-        <module name="Seagull-Default-Providers" />
+        <module name="Seagull-Platform" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Seagull-Default-Providers" target="11" />
+      <module name="SeagullPlatform" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>
