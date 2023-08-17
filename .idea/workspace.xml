@@ -4,55 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6272baf6-424d-45f7-b715-f6ab040c280c" name="Seagull-1 Define platform &amp; APIs." comment="Seagull-1 Define platform &amp; APIs.">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Seagull-Platform/src/main/groovy/se/natusoft/seagull/platform/SGFactory.groovy" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Seagull-Platform/src/main/groovy/se/natusoft/seagull/platform/SGJson.groovy" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Seagull-Platform/src/main/groovy/se/natusoft/seagull/platform/SGMessenger.groovy" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Seagull-Platform/src/main/groovy/se/natusoft/seagull/platform/SGService.groovy" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Seagull-Platform/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/apidocs.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/docs.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lics/Apache-2.0.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lics/licenses.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pics/SeaGull-small.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Seagull-APIs/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Seagull-Platform/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Seagull-APIs/src/main/groovy/se/natusoft/seagull/api/JsonConverter.groovy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Seagull-APIs/src/main/groovy/se/natusoft/seagull/api/SGHandler.groovy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Seagull-APIs/src/main/groovy/se/natusoft/seagull/api/exceptions/SGException.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/Seagull-Platform/src/main/groovy/se/natusoft/seagull/platform/exceptions/SGException.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Seagull-APIs/src/main/groovy/se/natusoft/seagull/api/internal/SGLocalServiceFinder.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/Seagull-Platform/src/main/groovy/se/natusoft/seagull/internal/SGProviderLookup.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Seagull-APIs/src/main/groovy/se/natusoft/seagull/api/localservices/SGCommunicator.groovy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Seagull-APIs/src/main/groovy/se/natusoft/seagull/api/models/SGJson.groovy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Seagull-APIs/src/main/groovy/se/natusoft/seagull/api/models/SGJsonCreator.groovy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Seagull-APIs/src/main/groovy/se/natusoft/seagull/api/models/SGMessage.groovy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Seagull-APIs/src/main/groovy/se/natusoft/seagull/api/models/SGResult.groovy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Seagull-APIs/src/main/groovy/se/natusoft/seagull/api/models/SGValue.groovy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Seagull-APIs/src/main/groovy/se/natusoft/seagull/base/SGLocalService.groovy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Seagull-APIs/src/main/groovy/se/natusoft/seagull/base/SGNetworkService.groovy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Seagull-APIs/src/main/groovy/se/natusoft/seagull/support/tuples/Tuple.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/Seagull-Platform/src/main/groovy/se/natusoft/seagull/support/tuples/Tuple.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Seagull-APIs/src/main/groovy/se/natusoft/seagull/support/tuples/Tuple2.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/Seagull-Platform/src/main/groovy/se/natusoft/seagull/support/tuples/Tuple2.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Seagull-APIs/src/main/groovy/se/natusoft/seagull/support/tuples/Tuple3.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/Seagull-Platform/src/main/groovy/se/natusoft/seagull/support/tuples/Tuple3.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Seagull-APIs/src/main/groovy/se/natusoft/seagull/support/tuples/Tuple4.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/Seagull-Platform/src/main/groovy/se/natusoft/seagull/support/tuples/Tuple4.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Seagull-APIs/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Seagull-Platform/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Seagull-APIs/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/Seagull-Platform/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Seagull-APIs/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/Seagull-Platform/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Seagull-Default-Providers/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Seagull-Default-Providers/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Seagull-Default-Providers/src/main/groovy/se/natusoft/seagull/providers/SGJsonProvider.groovy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/license/thirdparty/Apache-2.0-users.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/license/thirdparty/Apache-2.0.txt" beforeDir="false" />
+    <list default="true" id="6272baf6-424d-45f7-b715-f6ab040c280c" name="Seagull-1 Define platform &amp; APIs." comment="Seagull-1 Define platform &amp; APIs.&#10;- WIP/BUP commit.">
+      <change afterPath="$PROJECT_DIR$/Seagull-Platform/src/main/groovy/se/natusoft/seagull/platform/SGId.groovy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Seagull-Platform/src/main/groovy/se/natusoft/seagull/platform/SGJsonFactory.groovy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Seagull-Platform/src/main/groovy/se/natusoft/seagull/platform/models/SGMessageHeader.groovy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Seagull-Platform/src/main/groovy/se/natusoft/seagull/platform/models/SGServiceId.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Seagull-Platform/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Seagull-Platform/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Seagull-Platform/src/main/groovy/se/natusoft/seagull/platform/SGFactory.groovy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Seagull-Platform/src/main/groovy/se/natusoft/seagull/platform/SGMessenger.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/Seagull-Platform/src/main/groovy/se/natusoft/seagull/platform/SGMessenger.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Seagull-Platform/src/main/groovy/se/natusoft/seagull/platform/SGService.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/Seagull-Platform/src/main/groovy/se/natusoft/seagull/platform/SGService.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Seagull-Platform/src/main/groovy/se/natusoft/seagull/support/tuples/Tuple.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/Seagull-Platform/src/main/groovy/se/natusoft/seagull/support/tuples/Tuple.groovy" afterDir="false" />
     </list>
     <list id="a033334d-a6be-4399-bd69-d8f23938d9f5" name="Changes" comment="WIP Checkpoint.&#10;- Updated Readme (A few more oops!)" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="FormatOnSaveOptions">
     <option name="myRunOnSave" value="true" />
@@ -130,6 +105,7 @@
       <recent name="$PROJECT_DIR$/pics" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="se.natusoft.seagull.platform" />
       <recent name="se.natusoft.seagull.platform.api.message.hmm" />
     </key>
   </component>
@@ -189,7 +165,7 @@
       <option name="presentableId" value="Seagull-1" />
       <option name="project" value="Seagull" />
       <option name="type" value="BUG" />
-      <updated>1691418819000</updated>
+      <updated>1691774237743</updated>
       <workItem from="1689613600884" duration="3668000" />
       <workItem from="1689620229444" duration="7900000" />
       <workItem from="1690395978464" duration="511000" />
@@ -252,7 +228,8 @@
     <MESSAGE value="WIP Checkpoint." />
     <MESSAGE value="WIP Checkpoint.&#10;- Updated Readme." />
     <MESSAGE value="WIP Checkpoint.&#10;- Updated Readme (A few more oops!)" />
-    <option name="LAST_COMMIT_MESSAGE" value="WIP Checkpoint.&#10;- Updated Readme (A few more oops!)" />
+    <MESSAGE value="Seagull-1 Define platform &amp; APIs.&#10;- WIP/BUP commit." />
+    <option name="LAST_COMMIT_MESSAGE" value="Seagull-1 Define platform &amp; APIs.&#10;- WIP/BUP commit." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

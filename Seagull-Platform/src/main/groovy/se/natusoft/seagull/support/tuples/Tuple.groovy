@@ -51,7 +51,5 @@ class Tuple<T1> {
 
     Tuple(T1 t1) {
         this.t1 = t1
-
-        ServiceLoader.load(JsonConverter.class).findFirst().get()
     }
 }

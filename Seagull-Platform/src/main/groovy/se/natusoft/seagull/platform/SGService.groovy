@@ -1,7 +1,11 @@
 package se.natusoft.seagull.platform
+
+import groovy.transform.CompileStatic
+
 /**
  * Defines the minimum required API of a Seagull service.
  */
+@CompileStatic
 interface SGService {
 
     /**
