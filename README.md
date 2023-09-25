@@ -21,6 +21,6 @@ stimulating my brain.
 A sub goal is to keep things very simple, though not by pretending something is something it really isn't!
 
 It is done to 100% in Groovy and will use Closures, which does not exist in Java (looks like lambdas, definitely
-aren't!)
+aren't! See <https://groovy-lang.org/closures.html>).
 
 
