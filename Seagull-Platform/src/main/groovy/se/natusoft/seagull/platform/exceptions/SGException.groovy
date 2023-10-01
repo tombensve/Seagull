@@ -78,7 +78,7 @@ class SGException extends RuntimeException {
      *
      * @param message The exception message.
      */
-    SGException( String message) {
+    SGException(String message) {
         this.messageBuilder << message
     }
 
@@ -88,7 +88,7 @@ class SGException extends RuntimeException {
      * @param message The exception message.
      * @param cause The cause of this exception.
      */
-    SGException( String message, Throwable cause) {
+    SGException(String message, Throwable cause) {
         this.messageBuilder << message
         this.causes << cause
     }
@@ -98,29 +98,11 @@ class SGException extends RuntimeException {
     //
 
     /**
-     * Sets the exception message.
-     *
-     * @param message The message to set.
-     */
-    void setMessage( String message ) {
-        this.messageBuilder << message
-    }
-
-    /**
-     * Adds a cause to the exception.
-     *
-     * @param cause The cause to set.
-     */
-    void addCause(Throwable cause) {
-        this.causes << cause
-    }
-
-    /**
      * Adds text the the exception message.
      *
      * @param text The text to add.
      */
-    SGException appendMessage( String text) {
+    SGException appendMessage(String text) {
         this.messageBuilder << " "
         this.messageBuilder << text
 
@@ -132,7 +114,7 @@ class SGException extends RuntimeException {
      */
     @Override
     String getMessage() {
-        return this.messageBuilder.toString();
+        return this.messageBuilder.toString()
     }
 
     /**
@@ -140,7 +122,7 @@ class SGException extends RuntimeException {
      *
      * @param cause The cause to add.
      */
-    SGException appendCause( Throwable cause) {
+    SGException appendCause(Throwable cause) {
 
         this.causes << cause
 

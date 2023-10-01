@@ -20,9 +20,6 @@ interface SGService {
      */
     void shutdownService()
 
-    /**
-     * @return Meta data about the service.
-     */
-    SGJson getServiceMetadata()
 }
 
+//

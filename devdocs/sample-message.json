@@ -1,0 +1,17 @@
+{
+  "sgMeta": {
+    "protocolVersion": 1.0,
+    "from": { <--- Might need to rething the addressing!
+      "serviceName": "name",
+      "serviceId": "uuid"
+    },
+    "to": {
+      "serviceName": "name",
+      "serviceId": "uuid",
+      "toAll": false
+    },
+    "action": "Create/Update/Delete/Get"
+  },
+  "message": {},
+  "error": ""
+}
