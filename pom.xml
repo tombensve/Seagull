@@ -5,9 +5,6 @@
         Name
             Seagull
 
-        Code Version
-            1.0.0
-
         Description
 
 
@@ -67,6 +64,7 @@
         <groovy-version>4.0.6</groovy-version>
         <byte-code>11</byte-code>
 
+
         <!--
             The version of this project. Run the set-version profile to update all poms with this version.
         -->
@@ -89,7 +87,7 @@
     <!--
         This is a playground that started out with Tomcat/JEE and Vaadin, and changed over time.
     -->
-    <inceptionYear>2022</inceptionYear>
+    <inceptionYear>2023</inceptionYear>
 
     <licenses>
         <license>
@@ -136,13 +134,13 @@
 
     <dependencies>
 
-<!--
-        <dependency>
-            <groupId>org.apache.groovy</groupId>
-            <artifactId>groovy</artifactId>
-            <version>${groovy-version}</version>
-        </dependency>
--->
+        <!--
+                <dependency>
+                    <groupId>org.apache.groovy</groupId>
+                    <artifactId>groovy</artifactId>
+                    <version>${groovy-version}</version>
+                </dependency>
+        -->
 
         <dependency>
             <groupId>se.natusoft.annotation</groupId>
@@ -304,7 +302,8 @@
 
                             <createLicensesMarkdown>true</createLicensesMarkdown>
                             <markdownTargetSubdir>lics</markdownTargetSubdir>
-                            <markdownLinkPrefix>https://github.com/tombensve/Seagull/blob/master/lics/</markdownLinkPrefix>
+                            <markdownLinkPrefix>https://github.com/tombensve/Seagull/blob/master/lics/
+                            </markdownLinkPrefix>
 
                         </configuration>
                     </execution>
@@ -388,12 +387,14 @@
                                     </generatorOptions>
 
                                     <pdfGeneratorOptions>
-                                        <resultFile>${project.basedir}/docs/${project.artifactId}.pdf</resultFile>
+                                        <resultFile>${project.basedir}/docs/${project.artifactId}.pdf
+                                        </resultFile>
                                         <title>${project.name}</title>
                                         <subject>User Guide</subject>
                                         <version>${project.version}</version>
                                         <author>Tommy Svensson</author>
-                                        <copyright>Copyright © ${project.inceptionYear} ${project.organization.name}
+                                        <copyright>Copyright © ${project.inceptionYear}
+                                            ${project.organization.name}
                                         </copyright>
                                         <generateTitlePage>true</generateTitlePage>
                                         <generateTOC>true</generateTOC>
@@ -419,7 +420,8 @@
                                     </generatorOptions>
 
                                     <htmlGeneratorOptions>
-                                        <resultFile>${project.basedir}/docs/${project.artifactId}.html</resultFile>
+                                        <resultFile>${project.basedir}/docs/${project.artifactId}.html
+                                        </resultFile>
                                         <makeFileLinksRelativeTo>${project.basedir}/docs/src+images/
                                         </makeFileLinksRelativeTo>
                                         <css>docs.css</css>
@@ -442,7 +444,8 @@
                                     </generatorOptions>
 
                                     <mdGeneratorOptions>
-                                        <resultFile>${project.basedir}/docs/${project.artifactId}.md</resultFile>
+                                        <resultFile>${project.basedir}/docs/${project.artifactId}.md
+                                        </resultFile>
                                         <makeFileLinksRelativeTo>${project.basedir}/docs/src+images/
                                         </makeFileLinksRelativeTo>
                                     </mdGeneratorOptions>
@@ -474,7 +477,8 @@
                             </dependency>
                             <dependency>
                                 <groupId>se.natusoft.tools.codelicmgr</groupId>
-                                <artifactId>CodeLicenseManager-source-updater-slashstar-comment</artifactId>
+                                <artifactId>CodeLicenseManager-source-updater-slashstar-comment
+                                </artifactId>
                                 <version>2.2.3</version>
                             </dependency>
                             <dependency>
