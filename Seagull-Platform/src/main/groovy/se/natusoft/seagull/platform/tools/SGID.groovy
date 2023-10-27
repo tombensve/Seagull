@@ -8,11 +8,11 @@ import groovy.transform.CompileStatic
  * This might be a  bit of overkill, but allows for changing the ID implementation.
  */
 @CompileStatic
-class SGIdProvider {
+class SGID {
 
     private UUID id
 
-    SGIdProvider() {
+    SGID() {
         id = UUID.randomUUID()
     }
 
@@ -30,7 +30,7 @@ class SGIdProvider {
      *
      * @return true or false.
      */
-    boolean equals(SGIdProvider toCompare) {
+    boolean equals(SGID toCompare) {
         return toCompare.id == this.id
     }
 }
