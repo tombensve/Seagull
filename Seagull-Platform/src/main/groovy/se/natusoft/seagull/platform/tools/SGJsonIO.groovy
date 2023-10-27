@@ -1,9 +1,9 @@
-package se.natusoft.seagull.platform
+package se.natusoft.seagull.platform.tools
 
 import groovy.transform.CompileStatic
 import se.natusoft.docutations.Singleton
 import se.natusoft.seagull.internal.SGProviderLookup
-import se.natusoft.seagull.platform.tools.SGJson
+import se.natusoft.seagull.platform.SGJson
 
 /**
  * Since the API is made out of mostly interfaces, this class will provide
@@ -21,7 +21,7 @@ interface SGJsonIO {
      * This instance will be provided by what ever implementation is available on
      * the classpath at runtime.
      */
-    static SGJsonIO use = SGProviderLookup.find( SGJsonIO.class )
+    static SGJsonIO use = SGProviderLookup.find(SGJsonIO.class)
 
 
     /**
@@ -31,7 +31,7 @@ interface SGJsonIO {
      *
      * @return read JSON as Map<String, Object>.
      */
-    SGJson read( InputStream stream )
+    SGJson read(InputStream stream)
 
 
     /**
@@ -40,7 +40,7 @@ interface SGJsonIO {
      * @param json The JSON content Map to write.
      * @param stream The stream to write to.
      */
-    void write( SGJson json, OutputStream stream )
+    void write(SGJson json, OutputStream stream)
 
     /**
      * Converts the SGJson object into a String of JSON.
@@ -49,5 +49,5 @@ interface SGJsonIO {
      *
      * @return String
      */
-    String toString( SGJson sgJson )
+    String toString(SGJson sgJson)
 }

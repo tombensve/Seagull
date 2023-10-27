@@ -1,4 +1,4 @@
-package se.natusoft.seagull.platform.tools
+package se.natusoft.seagull.platform
 
 import groovy.transform.CompileStatic
 

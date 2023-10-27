@@ -3,23 +3,23 @@ package se.natusoft.seagull.platform
 import groovy.transform.CompileStatic
 
 /**
- * Defines the minimum required API of a Seagull service.
+ * Each Seagull "service" will implement this interface and it should be annotated with
+ * googles @AutoService, unless you prefer doing it the hard way ...
  */
 @CompileStatic
 interface SGService {
 
     /**
-     * Initializes the service and provides objects it needs. Called on startup.
+     * Initializes the service and provides objects it needs. Called on startup and shutdown.
      *
-     * @param sender For sending messages. Should be saved locally.
+     * @param sgInteraction Used to call services and receive calls for service providers.
+     *        This should thereby be cached locally.
      */
-    void startService(SGMessenger messenger)
+    void start(SGInteraction sgInteraction)
 
     /**
-     * Stops the service. Called on shutdown.
+     * Called on shutdown. Any needed cleanup should be done here.
      */
-    void shutdownService()
+    void shutdown()
 
 }
-
-//
