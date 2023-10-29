@@ -1,4 +1,4 @@
-# Compiled class file
+e# Compiled class file
 *.class
 
 # Log file
@@ -27,3 +27,4 @@ target
 .DS_Store
 *~
 
+>>>>>>>>> Temporary merge branch 2
