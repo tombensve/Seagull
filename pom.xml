@@ -77,6 +77,13 @@
     -->
     <description>
         Seagull - Currently a playground where I'm having fun.
+
+        The idea here is to define a service platform that says
+        nothing about how services communicate with each other.
+        This defines APIs and not to many of those, that can be
+        implemented with whatever protocol. The first implementation
+        provided will be using REST. The actual services you write
+        with this will however not know nor care about that!
     </description>
 
     <organization>
