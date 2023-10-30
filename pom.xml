@@ -61,7 +61,7 @@
             This makes use of a mixin in NS-Toolbox.
         -->
         <!-- I'm staying here for now. There are newer groovy versions available. -->
-        <groovy-version>4.0.6</groovy-version>
+        <groovy-version>4.0.15</groovy-version>
         <byte-code>11</byte-code>
 
 
