@@ -2,26 +2,16 @@ package se.natusoft.seagull.platform.tools
 
 import groovy.transform.CompileStatic
 
-
-//TODO Make into interface and implementation
 /**
  * This might be a  bit of overkill, but allows for changing the ID implementation.
  */
 @CompileStatic
-class SGID {
-
-    private UUID id
-
-    SGID() {
-        id = UUID.randomUUID()
-    }
+interface SGID {
 
     /**
      * @return the ID as a string.
      */
-    String toString() {
-        id.toString()
-    }
+    String toString()
 
     /**
      * Compare for equality.
@@ -30,7 +20,5 @@ class SGID {
      *
      * @return true or false.
      */
-    boolean equals(SGID toCompare) {
-        return toCompare.id == this.id
-    }
+    boolean equals(SGID toCompare)
 }

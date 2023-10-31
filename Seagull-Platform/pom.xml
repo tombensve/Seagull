@@ -21,7 +21,7 @@
     </properties>
 
     <dependencies>
-        <!-- TODO: Update Groovy version -->
+
         <dependency>
             <groupId>org.apache.groovy</groupId>
             <artifactId>groovy-all</artifactId>
@@ -38,7 +38,7 @@
         <dependency>
             <groupId>se.natusoft.tools.toolbox</groupId>
             <artifactId>Modelish</artifactId>
-            <version>3.0.8</version>
+            <version>3.0.9</version>
         </dependency>
 
         <dependency>
