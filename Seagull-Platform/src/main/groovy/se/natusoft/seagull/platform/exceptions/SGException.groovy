@@ -39,17 +39,11 @@ package se.natusoft.seagull.platform.exceptions
 import groovy.transform.CompileStatic;
 
 /**
- * The base of all APSExceptions.
+ * The base of all Seagull exceptions. Actually Seagull only defines this!
+ * If any service implementation wants to subclass this and use,go ahead,
+ * but for the platform itself, this is it!
  *
- * This provides a non standard API in addtion to the standard API.
- *
- * From Groovy:
- *
- *   ` throw new SGException(message: "Something bad happened!", cause: badException) `
- *
- * From Java:
- *
- *   ` throw new SGException().appendMessage("Something bad happened!").addCause(badException); `
+ *   ` throw new SGException(message: "Something bad happened!", cause: somethingBadException) `
  */
 @CompileStatic
 class SGException extends RuntimeException {
@@ -102,10 +96,21 @@ class SGException extends RuntimeException {
      *
      * @param text The text to add.
      */
-    SGException appendMessage(String text) {
+    SGException append(String text) {
         this.messageBuilder << " "
         this.messageBuilder << text
 
+        this
+    }
+
+    /**
+     * Allows to use the left-shift operator (<<) to add text.
+     *
+     * @param text
+     * @return self.
+     */
+    SGException leftShift(String text) {
+        append(text)
         this
     }
 
@@ -125,7 +130,17 @@ class SGException extends RuntimeException {
     SGException appendCause(Throwable cause) {
 
         this.causes << cause
+        this
+    }
 
+    /**
+     * Allows to use the left-shift operator to add an exception.
+     *
+     * @param cause The exception to add.
+     * @return self.
+     */
+    SGException leftShift(Throwable cause) {
+        appendCause(cause)
         this
     }
 

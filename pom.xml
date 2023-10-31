@@ -9,7 +9,7 @@
 
 
     COPYRIGHTS
-        Copyright (C) 2012 by Natusoft AB All rights reserved.
+        Copyright (C) 2023 by Natusoft AB All rights reserved.
 
     LICENSE
         Apache 2.0 (Open Source)
@@ -30,6 +30,16 @@
         Tommy Svensson (tommy@natusoft.se)
 
 -->
+
+<!--
+    /===================================================================\
+    |                                                                   |
+    |    This code is a playground and should not be used by anyone     |
+    |    for anything else than playing around!                         |
+    |                                                                   |
+    \===================================================================/
+-->
+
 <!--suppress CheckValidXmlInScriptTagBody -->
 <project
         xmlns="http://maven.apache.org/POM/4.0.0"
@@ -61,7 +71,7 @@
             This makes use of a mixin in NS-Toolbox.
         -->
         <!-- I'm staying here for now. There are newer groovy versions available. -->
-        <groovy-version>4.0.6</groovy-version>
+        <groovy-version>4.0.15</groovy-version>
         <byte-code>11</byte-code>
 
 
@@ -83,7 +93,12 @@
         This defines APIs and not to many of those, that can be
         implemented with whatever protocol. The first implementation
         provided will be using REST. The actual services you write
-        with this will however not know nor care about that!
+        with this will however not know, nor care about that!
+
+        THIS IS HOWEVER NOT a hide reality, making something look
+        like something else it really isn't just to make it seem
+        simpler! Any use of this requires a full comprehension of
+        reality.
     </description>
 
     <organization>
@@ -166,14 +181,12 @@
     </dependencies>
 
 
-    <!--
     <distributionManagement>
         <repository>
             <id>maven-repository-upload</id>
             <url>ftp://${maven.repo.upload}/${maven.base.path}</url>
         </repository>
     </distributionManagement>
-    -->
 
     <build>
         <!--
@@ -264,10 +277,10 @@
                 Setup Groovy - To make things simpler (for me) I decided to use a mixin using
                 mixin-maven-plugin.
 
-                There are currently only 8 and 11 available for bytecode version in NS-Toolbox. Groovy 4
-                however supports much higher versions. It is easy to add version in NS-Toolbox, but currently
-                I see no reason. Professionally I have so far seen anyone go higher than 11. This code is
-                also still a playground and should not be used by anyone for anything else than playing around!
+                There are currently only 8 and 11 available for bytecode version in NS-Toolbox.
+                Groovy 4 however supports much higher versions. It is easy to add version in NS-Toolbox,
+                but currently I see no reason. Professionally I have so far not seen anyone go higher
+                than 11 (as a consultant in Sweden), and I completely understand why!.
             -->
             <plugin>
                 <!--
@@ -305,7 +318,6 @@
                 <artifactId>maven-install-plugin</artifactId>
                 <version>3.1.1</version>
                 <configuration>
-                    <createChecksum>true</createChecksum>
                 </configuration>
             </plugin>
 
