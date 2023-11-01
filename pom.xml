@@ -32,12 +32,12 @@
 -->
 
 <!--
-    /===================================================================\
-    |                                                                   |
-    |    This code is a playground and should not be used by anyone     |
-    |    for anything else than playing around!                         |
-    |                                                                   |
-    \===================================================================/
+        /============================= .:WIP:. =============================\
+        |                                                                   |
+        |    This code is currently a playground and should not be used by  |
+        |    anyone for anything else than playing around!                  |
+        |                                                                   |
+        \===================================================================/
 -->
 
 <!--suppress CheckValidXmlInScriptTagBody -->
@@ -95,10 +95,16 @@
         provided will be using REST. The actual services you write
         with this will however not know, nor care about that!
 
-        THIS IS HOWEVER NOT a hide reality, making something look
+        THIS IS HOWEVER NOT a "hide reality, making something look
         like something else it really isn't just to make it seem
-        simpler! Any use of this requires a full comprehension of
-        reality.
+        simpler!" Any use of this requires a reasonable comprehension
+        of reality.
+
+        It is hiding how services are communicating with each other.
+        The communication protocol is however only an API that
+        has to be implemented. Some implementations will be included
+        in this project, but any user of this is free to implement
+        communication in any way they want.
     </description>
 
     <organization>
