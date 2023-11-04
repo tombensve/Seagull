@@ -346,7 +346,6 @@
                             <!--
                                 Here we add those that are not auto resolved.
                             -->
-
                             <createLicensesMarkdown>true</createLicensesMarkdown>
                             <markdownTargetSubdir>lics</markdownTargetSubdir>
                             <markdownLinkPrefix>https://github.com/tombensve/Seagull/blob/master/lics/
