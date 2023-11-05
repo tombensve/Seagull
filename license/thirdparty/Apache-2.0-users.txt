@@ -1,0 +1,5 @@
+The following products are using the Apache version 2.0 license:
+
+Modelish version 3.0.9
+https://github.com/tombensve/NS-Toolbox
+
