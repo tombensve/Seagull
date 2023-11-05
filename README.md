@@ -1,4 +1,16 @@
-# Seagull
+
+----
+<pre>
+  >=>>=>                                             >=>  >=> 
+>=>    >=>                                           >=>  >=> 
+ >=>         >==>       >=> >=>     >=>    >=>  >=>  >=>  >=> 
+   >=>     >>   >=>   >=>   >=>   >=>  >=> >=>  >=>  >=>  >=> 
+      >=>  >>===>>=> >=>    >=>  >=>   >=> >=>  >=>  >=>  >=> 
+>=>    >=> >>         >=>   >=>   >=>  >=> >=>  >=>  >=>  >=> 
+  >=>>=>    >====>     >==>>>==>      >=>    >==>=> >==> >==> 
+                                   >=>                
+</pre>
+----
 
 ![](pics/SeaGull-small.png)
 
@@ -23,4 +35,7 @@ A sub goal is to keep things very simple, though not by pretending something is 
 It is done to 100% in Groovy and will use Closures, which does not exist in Java (looks like lambdas, definitely
 aren't! See <https://groovy-lang.org/closures.html>).
 
+----
+
+(Above art from <https://textkool.com/en/test-ascii-art-generator?text=Seagull>)
 
