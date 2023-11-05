@@ -37,5 +37,9 @@ aren't! See <https://groovy-lang.org/closures.html>).
 
 ----
 
-(Above art from <https://textkool.com/en/test-ascii-art-generator?text=Seagull>)
+_Note_ that all development tasks now are in my personal YouTrack instance since YouTrack is so much nicer. I started
+using GitHub issues for dev tasks because getting IDEA and YouTrack to talk was impossible! This has worked 
+before, but not any longer. But installing the YouTrack plugion into IDEA solved this. So when I can use
+YouTrack, it is so much nicer. 
 
+(Above art from <https://textkool.com/en/test-ascii-art-generator?text=Seagull>)
