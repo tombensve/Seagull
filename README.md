@@ -37,9 +37,16 @@ aren't! See <https://groovy-lang.org/closures.html>).
 
 ----
 
-_Note_ that all development tasks now are in my personal YouTrack instance since YouTrack is so much nicer. I started
+_Note_ that all development tasks were in my personal YouTrack instance since YouTrack is so much nicer. I started
 using GitHub issues for dev tasks because getting IDEA and YouTrack to talk was impossible! This has worked 
-before, but not any longer. But installing the YouTrack plugion into IDEA solved this. So when I can use
-YouTrack, it is so much nicer. 
+before, but not any longer. But installing the YouTrack plugin into IDEA solved that. ... Well at least for some 
+hours! The next day it was dead again, without me having done anything since it worked the previous day. 
+
+I took the fight again to make this work, but finally gave upp! So I had to copy all my YouTrack issues to 
+GitHub again, after having copied the Github ones to YouTrack, and deleted them in Github. I will now completely
+give up on having IDEA and YouTrack talking to each other. I will never ever try that again. It is a big
+waste of time. 2 products from the same company that refuses to have anything to do with each other!
+
+----
 
 (Above art from <https://textkool.com/en/test-ascii-art-generator?text=Seagull>)
