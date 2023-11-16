@@ -6,19 +6,14 @@
             Seagull
         
         Description
-            Seagull - Currently a playground where I'm having fun.
+            Seagull - Intended to be a very simple service platform.
             
             The idea here is to define a service platform that says
             nothing about how services communicate with each other.
             This defines APIs and not to many of those, that can be
-            implemented with whatever protocol. The first implementation
-            provided will be using REST. The actual services you write
-            with this will however not know, nor care about that!
-            
-            THIS IS HOWEVER NOT a hide reality, making something look
-            like something else it really isn't just to make it seem
-            simpler! Any use of this requires a full comprehension of
-            reality.
+            implemented with whatever protocol. What protocol is used
+            depends on what implementation you make available on
+            the classpath.
         
     COPYRIGHTS
         Copyright (C) 2023 by Tommy Bengt Svensson All rights reserved.
@@ -44,12 +39,12 @@
 -->
 
 <!--
-    /===================================================================\
-    |                                                                   |
-    |    This code is a playground and should not be used by anyone     |
-    |    for anything else than playing around!                         |
-    |                                                                   |
-    \===================================================================/
+    ====================================================================
+    |                                                                  |
+    /    This code is a playground and should not be used by anyone    \
+    \    for anything else than playing around!                        /
+    |                                                                  |
+    =====================================================================
 -->
 
 <!--suppress CheckValidXmlInScriptTagBody -->
@@ -72,6 +67,7 @@
 
     <modules>
         <module>Seagull-Platform</module>
+        <module>Seagull-Platform-Internal</module>
     </modules>
 
     <!--
@@ -81,11 +77,11 @@
         <!--
             This sets up the version of Groovy and what byte code to produce.
             This makes use of a mixin in NS-Toolbox.
+
+            I'm staying here for now. There are newer groovy versions available.
         -->
-        <!-- I'm staying here for now. There are newer groovy versions available. -->
         <groovy-version>4.0.15</groovy-version>
         <byte-code>11</byte-code>
-
 
         <!--
             The version of this project. Run the set-version profile to update all poms with this version.
@@ -98,19 +94,14 @@
         Project Information
     -->
     <description>
-        Seagull - Currently a playground where I'm having fun.
+        Seagull - Intended to be a very simple service platform.
 
         The idea here is to define a service platform that says
         nothing about how services communicate with each other.
         This defines APIs and not to many of those, that can be
-        implemented with whatever protocol. The first implementation
-        provided will be using REST. The actual services you write
-        with this will however not know, nor care about that!
-
-        THIS IS HOWEVER NOT a hide reality, making something look
-        like something else it really isn't just to make it seem
-        simpler! Any use of this requires a full comprehension of
-        reality.
+        implemented with whatever protocol. What protocol is used
+        depends on what implementation you make available on
+        the classpath.
     </description>
 
     <organization>
@@ -192,7 +183,6 @@
 
     </dependencies>
 
-
     <distributionManagement>
         <repository>
             <id>maven-repository-upload</id>
@@ -239,7 +229,7 @@
                 <plugin>
                     <groupId>se.natusoft.tools.codelicmgr</groupId>
                     <artifactId>CodeLicenseManager-maven-plugin</artifactId>
-                    <version>2.2.3</version>
+                    <version>2.2.4</version>
                 </plugin>
 
                 <plugin>
@@ -292,7 +282,7 @@
                 There are currently only 8 and 11 available for bytecode version in NS-Toolbox.
                 Groovy 4 however supports much higher versions. It is easy to add version in NS-Toolbox,
                 but currently I see no reason. Professionally I have so far not seen anyone go higher
-                than 11 (as a consultant in Sweden), and I completely understand why!.
+                than 11 (as a consultant in Sweden), and I completely understand why!
             -->
             <plugin>
                 <!--
@@ -328,7 +318,7 @@
             -->
             <plugin>
                 <artifactId>maven-install-plugin</artifactId>
-                <version>3.1.1</version>
+                <version>3.1.0</version>
                 <configuration>
                 </configuration>
             </plugin>
@@ -339,6 +329,7 @@
             <plugin>
                 <groupId>se.natusoft.tools.codelicmgr</groupId>
                 <artifactId>CodeLicenseManager-maven-plugin</artifactId>
+                <version>2.2.4</version>
 
                 <inherited>true</inherited> <!-- Has no effect! -->
 
@@ -405,6 +396,22 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <!--plugin>
+                <groupId>com.bluetrainsoftware.maven</groupId>
+                <artifactId>groovydoc-maven-plugin</artifactId>
+                <version>2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-docs</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>attach-docs</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin-->
+
         </plugins>
 
     </build>

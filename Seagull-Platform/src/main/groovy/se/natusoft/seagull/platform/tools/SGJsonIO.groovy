@@ -5,19 +5,14 @@
  *         Seagull-Platform
  *     
  *     Description
- *         Seagull - Currently a playground where I'm having fun.
+ *         Seagull - Intended to be a very simple service platform.
  *         
  *         The idea here is to define a service platform that says
  *         nothing about how services communicate with each other.
  *         This defines APIs and not to many of those, that can be
- *         implemented with whatever protocol. The first implementation
- *         provided will be using REST. The actual services you write
- *         with this will however not know, nor care about that!
- *         
- *         THIS IS HOWEVER NOT a hide reality, making something look
- *         like something else it really isn't just to make it seem
- *         simpler! Any use of this requires a full comprehension of
- *         reality.
+ *         implemented with whatever protocol. What protocol is used
+ *         depends on what implementation you make available on
+ *         the classpath.
  *         
  * COPYRIGHTS
  *     Copyright (C) 2023 by Tommy Bengt Svensson All rights reserved.
@@ -47,8 +42,8 @@ package se.natusoft.seagull.platform.tools
 
 import groovy.transform.CompileStatic
 import se.natusoft.docutations.Singleton
-import se.natusoft.seagull.internal.SGProviderLookup
 import se.natusoft.seagull.platform.SGJson
+import se.natusoft.seagull.platform.SGProviderLookup
 
 /**
  * Since the API is made out of mostly interfaces, this class will provide
@@ -95,4 +90,13 @@ interface SGJsonIO {
      * @return String
      */
     String toString(SGJson sgJson)
+
+    /**
+     * Takes a 'String' of JSON and produces a SGJson instance.
+     *
+     * @param json JSON data in String format.
+     *
+     * @return An SGJson object.
+     */
+    SGJson toJSON(String json)
 }

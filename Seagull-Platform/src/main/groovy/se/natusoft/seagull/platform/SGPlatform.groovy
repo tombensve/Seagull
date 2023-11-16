@@ -5,19 +5,14 @@
  *         Seagull-Platform
  *     
  *     Description
- *         Seagull - Currently a playground where I'm having fun.
+ *         Seagull - Intended to be a very simple service platform.
  *         
  *         The idea here is to define a service platform that says
  *         nothing about how services communicate with each other.
  *         This defines APIs and not to many of those, that can be
- *         implemented with whatever protocol. The first implementation
- *         provided will be using REST. The actual services you write
- *         with this will however not know, nor care about that!
- *         
- *         THIS IS HOWEVER NOT a hide reality, making something look
- *         like something else it really isn't just to make it seem
- *         simpler! Any use of this requires a full comprehension of
- *         reality.
+ *         implemented with whatever protocol. What protocol is used
+ *         depends on what implementation you make available on
+ *         the classpath.
  *         
  * COPYRIGHTS
  *     Copyright (C) 2023 by Tommy Bengt Svensson All rights reserved.
@@ -49,8 +44,6 @@ import groovy.transform.CompileStatic
 import se.natusoft.seagull.platform.models.SGServiceCall
 import se.natusoft.seagull.platform.models.SGServiceReg
 
-// ----------------------------------------------------------------------------------------------- //
-
 /**
  * <p>
  *   This is an API for each Seagull service to use for providing service and for
@@ -62,7 +55,7 @@ import se.natusoft.seagull.platform.models.SGServiceReg
  * </p>
  */
 @CompileStatic
-interface SGPlatformInteraction {
+interface SGPlatform {
 
     /**
      * This should be used to provide a service.

@@ -5,19 +5,14 @@
  *         Seagull-Platform
  *     
  *     Description
- *         Seagull - Currently a playground where I'm having fun.
+ *         Seagull - Intended to be a very simple service platform.
  *         
  *         The idea here is to define a service platform that says
  *         nothing about how services communicate with each other.
  *         This defines APIs and not to many of those, that can be
- *         implemented with whatever protocol. The first implementation
- *         provided will be using REST. The actual services you write
- *         with this will however not know, nor care about that!
- *         
- *         THIS IS HOWEVER NOT a hide reality, making something look
- *         like something else it really isn't just to make it seem
- *         simpler! Any use of this requires a full comprehension of
- *         reality.
+ *         implemented with whatever protocol. What protocol is used
+ *         depends on what implementation you make available on
+ *         the classpath.
  *         
  * COPYRIGHTS
  *     Copyright (C) 2023 by Tommy Bengt Svensson All rights reserved.
@@ -59,12 +54,14 @@ import groovy.transform.CompileStatic
 interface SGService {
 
     /**
-     * Initializes the service and provides objects it needs. Called on startup and shutdown.
+     * Initializes the service and provides an instance of SGPlatform which is used to interact
+     * with the Seagull platform. Called on startup, and the sgPlatform instance should be saved
+     * locally.
      *
-     * @param sgInteraction Used to call services and receive calls for service providers.
+     * @param sgPlatform Used to call services and receive calls for service providers.
      *        This should thereby be cached locally.
      */
-    void start(SGPlatformInteraction sgInteraction)
+    void startup(SGPlatform sgPlatform)
 
     /**
      * Called on shutdown. Any needed cleanup should be done here.

@@ -5,19 +5,14 @@
  *         Seagull-Platform
  *     
  *     Description
- *         Seagull - Currently a playground where I'm having fun.
+ *         Seagull - Intended to be a very simple service platform.
  *         
  *         The idea here is to define a service platform that says
  *         nothing about how services communicate with each other.
  *         This defines APIs and not to many of those, that can be
- *         implemented with whatever protocol. The first implementation
- *         provided will be using REST. The actual services you write
- *         with this will however not know, nor care about that!
- *         
- *         THIS IS HOWEVER NOT a hide reality, making something look
- *         like something else it really isn't just to make it seem
- *         simpler! Any use of this requires a full comprehension of
- *         reality.
+ *         implemented with whatever protocol. What protocol is used
+ *         depends on what implementation you make available on
+ *         the classpath.
  *         
  * COPYRIGHTS
  *     Copyright (C) 2023 by Tommy Bengt Svensson All rights reserved.
@@ -43,17 +38,16 @@
  *         2023-11-04: Created!
  *         
  */
-package se.natusoft.seagull.internal
+package se.natusoft.seagull.platform
 
 import groovy.transform.CompileStatic
 
 /**
- * <p>
- *     The Seagull-Platform jar mostly defines interfaces. Other jars has to be added
- *     to the classpath that implements these interfaces. This class is used for looking
- *     up an implementation of a specified interface. Javas ServiceLoader is used for this.
- *     All implementations should be annotated with Googles '@AutoService'.
- * </p>
+ * The Seagull-Platform jar mostly defines interfaces. Other jars has to be added
+ * to the classpath that implements these interfaces. This class is used for looking
+ * up an implementation of a specified interface.
+ *
+ * All implementations should be annotated with Googles '@AutoService'.
  */
 @CompileStatic
 class SGProviderLookup<T> {

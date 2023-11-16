@@ -1,8 +1,8 @@
-/*
- *
+/* 
+ * 
  * PROJECT
  *     Name
- *         Seagull-Platform
+ *         Seagull-Platform-Internal
  *     
  *     Description
  *         Seagull - Intended to be a very simple service platform.
@@ -33,27 +33,12 @@
  *     limitations under the License.
  *     
  * AUTHORS
- *     Tommy Svensson (tommy@natusoft.se)
+ *     tommy ()
  *         Changes:
- *         2014-03-08: Created!
- *
+ *         2023-11-13: Created!
+ *         
  */
-package se.natusoft.seagull.support.tuples
+package se.natusoft.seagull.internal
 
-import groovy.transform.CompileStatic
-
-/**
- * A tuple with one value.
- */
-@CompileStatic
-class Tuple<T1> {
-
-    T1 t1
-
-
-    Tuple() {}
-
-    Tuple(T1 t1) {
-        this.t1 = t1
-    }
+class SGRouter {
 }

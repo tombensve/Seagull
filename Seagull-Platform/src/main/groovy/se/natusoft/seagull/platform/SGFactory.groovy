@@ -5,19 +5,14 @@
  *         Seagull-Platform
  *     
  *     Description
- *         Seagull - Currently a playground where I'm having fun.
+ *         Seagull - Intended to be a very simple service platform.
  *         
  *         The idea here is to define a service platform that says
  *         nothing about how services communicate with each other.
  *         This defines APIs and not to many of those, that can be
- *         implemented with whatever protocol. The first implementation
- *         provided will be using REST. The actual services you write
- *         with this will however not know, nor care about that!
- *         
- *         THIS IS HOWEVER NOT a hide reality, making something look
- *         like something else it really isn't just to make it seem
- *         simpler! Any use of this requires a full comprehension of
- *         reality.
+ *         implemented with whatever protocol. What protocol is used
+ *         depends on what implementation you make available on
+ *         the classpath.
  *         
  * COPYRIGHTS
  *     Copyright (C) 2023 by Tommy Bengt Svensson All rights reserved.
@@ -43,28 +38,40 @@
  *         2023-11-04: Created!
  *         
  */
-package se.natusoft.seagull.platform.models
+package se.natusoft.seagull.platform
 
-import groovy.transform.CompileStatic
-import se.natusoft.tools.modelish.Modelish
+import se.natusoft.docutations.Singleton
+import se.natusoft.seagull.platform.tools.SGID
+import se.natusoft.seagull.platform.tools.SGJsonIO
 
 /**
- * Utility for creating argument models. Let any class using this implement this trait.
+ * Implementations of this provides own implementations of these objects.
+ * This so that different implementations can provide own way of handling these.
+ *
+ * It will find whatever implementation is available runtime.
  */
-@CompileStatic
-trait SGModelFactory {
+@Singleton
+interface SGFactory {
+
+    static final use = SGProviderLookup<SGFactory>.find(SGFactory.class)
+
+    // Tools
 
     /**
-     * Creates the model needed for registering a new Seagull service.
+     * @return a new instance of SGID.
      */
-    static SGServiceReg newSGServiceReg() {
-        Modelish.create(SGServiceReg.class)
-    }
+    SGID newSGID()
 
     /**
-     * Creates a model instance for making a service call.
+     * @return a new instance of SGJsonIO.
      */
-    static SGServiceCall newSGServiceCall() {
-        Modelish.create(SGServiceCall.class)
-    }
+    SGJsonIO newSGJsonIO()
+
+    // JSON
+
+    /**
+     * @return a  new SGJson instance.
+     * @return
+     */
+    SGJson newSGJson()
 }

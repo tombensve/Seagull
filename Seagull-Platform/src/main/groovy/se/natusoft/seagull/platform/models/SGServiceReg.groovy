@@ -5,19 +5,14 @@
  *         Seagull-Platform
  *     
  *     Description
- *         Seagull - Currently a playground where I'm having fun.
+ *         Seagull - Intended to be a very simple service platform.
  *         
  *         The idea here is to define a service platform that says
  *         nothing about how services communicate with each other.
  *         This defines APIs and not to many of those, that can be
- *         implemented with whatever protocol. The first implementation
- *         provided will be using REST. The actual services you write
- *         with this will however not know, nor care about that!
- *         
- *         THIS IS HOWEVER NOT a hide reality, making something look
- *         like something else it really isn't just to make it seem
- *         simpler! Any use of this requires a full comprehension of
- *         reality.
+ *         implemented with whatever protocol. What protocol is used
+ *         depends on what implementation you make available on
+ *         the classpath.
  *         
  * COPYRIGHTS
  *     Copyright (C) 2023 by Tommy Bengt Svensson All rights reserved.
@@ -47,14 +42,13 @@ package se.natusoft.seagull.platform.models
 
 import groovy.transform.CompileStatic
 import se.natusoft.tools.modelish.Cloneable
+import se.natusoft.tools.modelish.Modelish
 
 /**
  * Modelish model representing a specific service registration for registering
  * Seagull services.
  *
  * This is provided to each SGService implementation.
- *
- * Created like this: `SgServiceReg sgSvcReg = Modelish.create(ShServiceReg.class).serviceName("qaz")...`
  */
 @CompileStatic
 interface SGServiceReg extends Cloneable<SGServiceReg> {
@@ -75,5 +69,5 @@ interface SGServiceReg extends Cloneable<SGServiceReg> {
     SGServiceReg setBackwardsCompatible(boolean backwardsCompatible)
 
     /** Returns the backwards compatible flag of the service. */
-    boolean getBackwardsCompatible()
+    boolean isBackwardsCompatible()
 }
