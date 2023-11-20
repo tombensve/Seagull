@@ -239,7 +239,7 @@
                 <plugin>
                     <groupId>se.natusoft.tools.codelicmgr</groupId>
                     <artifactId>CodeLicenseManager-maven-plugin</artifactId>
-                    <version>2.2.3</version>
+                    <version>2.2.4</version>
                 </plugin>
 
                 <plugin>
@@ -533,18 +533,18 @@
                             <dependency>
                                 <groupId>se.natusoft.tools.codelicmgr</groupId>
                                 <artifactId>CodeLicenseManager-licenses-common-opensource</artifactId>
-                                <version>2.2.3</version>
+                                <version>2.2.4</version>
                             </dependency>
                             <dependency>
                                 <groupId>se.natusoft.tools.codelicmgr</groupId>
                                 <artifactId>CodeLicenseManager-source-updater-slashstar-comment
                                 </artifactId>
-                                <version>2.2.3</version>
+                                <version>2.2.4</version>
                             </dependency>
                             <dependency>
                                 <groupId>se.natusoft.tools.codelicmgr</groupId>
                                 <artifactId>CodeLicenseManager-source-updater-html-xml</artifactId>
-                                <version>2.2.3</version>
+                                <version>2.2.4</version>
                             </dependency>
                         </dependencies>
 
