@@ -1,5 +1,5 @@
-/*
- *
+/* 
+ * 
  * PROJECT
  *     Name
  *         Seagull-Platform
@@ -33,29 +33,52 @@
  *     limitations under the License.
  *     
  * AUTHORS
- *     Tommy Svensson (tommy@natusoft.se)
+ *     tommy ()
  *         Changes:
- *         2014-03-08: Created!
- *
+ *         2023-11-04: Created!
+ *         
  */
-package se.natusoft.seagull.support.tuples
+package se.natusoft.seagull.platform
 
-import groovy.transform.CompileStatic;
+import groovy.transform.CompileStatic
+import se.natusoft.docutations.Singleton
+import se.natusoft.seagull.platform.models.SGServiceCall
+import se.natusoft.seagull.platform.tools.SGID
+import se.natusoft.seagull.platform.tools.SGJsonIO
 
 /**
- * A tuple with four values.
+ * Implementations of this provides own implementations of these objects.
+ * This so that different implementations can provide own way of handling these.
+ *
+ * It will find whatever implementation is available runtime.
  */
 @CompileStatic
-class Tuple4<T1, T2, T3, T4> extends Tuple3<T1, T2, T3> {
+@Singleton
+interface SGFactory {
 
-    T4 t4
+    // Static singleton "use" is used for all singleton objects. All other uses
+    // SGFactory.
+    static final use = SGProviderLookup<SGFactory>.find(SGFactory.class)
 
-    Tuple4() {}
+    /**
+     * @return SGJsonIO.
+     */
+    SGJsonIO sgJsonIO = SGJsonIO.use
 
-    Tuple4(T1 t1, T2 t2, T3 t3, T4 t4) {
-        this.t1 = t1
-        this.t2 = t2
-        this.t3 = t3
-        this.t4 = t4
-    }
+    /**
+     * @return a new SGCall.
+     */
+    SGServiceCall newSGCall()
+
+    /**
+     * @return a new SGID.
+     */
+    SGID newSGID()
+
+    // JSON
+
+    /**
+     * @return a  new SGJson instance.
+     */
+    SGJson newSGJson()
 }
