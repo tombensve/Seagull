@@ -2,7 +2,7 @@
  * 
  * PROJECT
  *     Name
- *         Seagull-Platform
+ *         Seagull-Service-APIs
  *     
  *     Description
  *         Seagull - Intended to be a very simple service platform.
@@ -38,65 +38,33 @@
  *         2023-11-04: Created!
  *         
  */
-package se.natusoft.seagull.platform.tools
+package se.natusoft.seagull.platform.factories
 
 import groovy.transform.CompileStatic
+import se.natusoft.docutations.Note
 import se.natusoft.docutations.Singleton
-import se.natusoft.seagull.platform.SGJson
 import se.natusoft.seagull.platform.SGProviderLookup
+import se.natusoft.seagull.platform.models.SGRequest
 
 /**
- * Since the API is made out of mostly interfaces, this class will provide
- * factory methods providing implementing instances of the interfaces. So whatever
- * factory implementation is available on the classpath will determine what
- * instances are returned. In any and all cases they will be implementations
- * of the declared API, and as user of them you should not care about the
- * implementations.
+ * Provides a factory for creating SGRequest instances.
  */
 @CompileStatic
 @Singleton
-interface SGJsonIO {
+@Note([
+        "All models are interfaces based on my 'Modelish' project which uses interfaces and store data ",
+        "internally as a JSON like Map structure which can be fetched and set on models without any copying.",
+        "I'm however providing factory classes to create these to add more flexibility for implementations."
+])
+interface SGRequestFactory {
+
+    static final SGRequestFactory use = SGProviderLookup.find(SGRequestFactory.class) as SGRequestFactory
 
     /**
-     * This instance will be provided by what ever implementation is available on
-     * the classpath at runtime.
+     * To create an instance do: `SGRequestFactory.use.newSGRequest()`
+     *
+     * @return a new SGCall.
      */
-    static SGJsonIO use = SGProviderLookup.find(SGJsonIO.class)
+    SGRequest newSGRequest()
 
-
-    /**
-     * Read JSON.
-     *
-     * @param stream The stream to read from.
-     *
-     * @return read JSON as Map<String, Object>.
-     */
-    SGJson read(InputStream stream)
-
-
-    /**
-     * Write JSON from a Map representation.
-     *
-     * @param json The JSON content Map to write.
-     * @param stream The stream to write to.
-     */
-    void write(SGJson json, OutputStream stream)
-
-    /**
-     * Converts the SGJson object into a String of JSON.
-     *
-     * @param SGJson sgJson
-     *
-     * @return String
-     */
-    String toString(SGJson sgJson)
-
-    /**
-     * Takes a 'String' of JSON and produces a SGJson instance.
-     *
-     * @param json JSON data in String format.
-     *
-     * @return An SGJson object.
-     */
-    SGJson toJSON(String json)
 }

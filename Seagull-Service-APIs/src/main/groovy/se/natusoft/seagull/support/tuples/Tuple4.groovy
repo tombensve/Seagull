@@ -1,8 +1,8 @@
-/* 
- * 
+/*
+ *
  * PROJECT
  *     Name
- *         Seagull-Platform
+ *         Seagull-Service-APIs
  *     
  *     Description
  *         Seagull - Intended to be a very simple service platform.
@@ -33,33 +33,29 @@
  *     limitations under the License.
  *     
  * AUTHORS
- *     tommy ()
+ *     Tommy Svensson (tommy@natusoft.se)
  *         Changes:
- *         2023-11-04: Created!
- *         
+ *         2014-03-08: Created!
+ *
  */
-package se.natusoft.seagull.platform.tools
+package se.natusoft.seagull.support.tuples
 
 import groovy.transform.CompileStatic
 
 /**
- * This might be a  bit of overkill ... but lets you implement it any way you want,
- * and I'm trying to keep some consistency in these APIs.
+ * A tuple with four values.
  */
 @CompileStatic
-interface SGID {
+class Tuple4<T1, T2, T3, T4> extends Tuple3<T1, T2, T3> {
 
-    /**
-     * @return the ID as a string.
-     */
-    String toString()
+    T4 t4
 
-    /**
-     * Compare for equality.
-     *
-     * @param toCompare The object to compare with.
-     *
-     * @return true or false.
-     */
-    boolean equals(SGID toCompare)
+    Tuple4() {}
+
+    Tuple4(T1 t1, T2 t2, T3 t3, T4 t4) {
+        super.t1 = t1
+        super.t2 = t2
+        super.t3 = t3
+        this.t4 = t4
+    }
 }

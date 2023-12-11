@@ -1,8 +1,8 @@
-/*
- *
+/* 
+ * 
  * PROJECT
  *     Name
- *         Seagull-Service-APIs
+ *         Seagull-Platform-APIs
  *     
  *     Description
  *         Seagull - Intended to be a very simple service platform.
@@ -35,25 +35,14 @@
  * AUTHORS
  *     tommy ()
  *         Changes:
- *         2023-11-19: Created!
+ *         2023-12-05: Created!
  *         
  */
-package se.natusoft.seagull.support.tuples
+package se.natusoft.seagull.components
 
-import groovy.transform.CompileStatic
+interface SGServiceLocator {
 
-/**
- * A tuple with one value.
- */
-@CompileStatic
-class Tuple<T1> {
+    void updateServiceRecord(ServiceRecord serviceRecord)
 
-    T1 t1
-
-
-    Tuple() {}
-
-    Tuple(T1 t1) {
-        this.t1 = t1
-    }
+    ServiceRecord lookupServiceRecord()
 }

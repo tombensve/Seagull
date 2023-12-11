@@ -2,7 +2,7 @@
  * 
  * PROJECT
  *     Name
- *         Seagull-Platform
+ *         Seagull-Platform-APIs
  *     
  *     Description
  *         Seagull - Intended to be a very simple service platform.
@@ -45,8 +45,8 @@ import se.natusoft.docutations.Note
 import se.natusoft.docutations.Singleton
 import se.natusoft.seagull.exceptions.SGNotFoundException
 import se.natusoft.seagull.platform.SGProviderLookup
-import se.natusoft.seagull.platform.models.SGServiceCall
-import se.natusoft.seagull.platform.models.SGServiceId
+import se.natusoft.seagull.platform.models.SGRequest
+import se.natusoft.seagull.platform.models.SGMessageId
 
 /**
  * This is the one that knows about local and remote services! It can take a call and
@@ -66,12 +66,12 @@ interface SGRouter {
      * @return All services available locally in same jar. These can be called without going out
      *         on the network.
      */
-    List<SGServiceId> localServices()
+    List<SGMessageId> localServices()
 
     /**
      * @return All Seagull services found on the network.
      */
-    List<SGServiceId> externalServices()
+    List<SGMessageId> externalServices()
 
     /**
      * Passes a call on to a service independent of where the service exists. If an implementation of
@@ -86,6 +86,6 @@ interface SGRouter {
      * @param serviceCall An SGServiceCall instance containing all information needed to do the call
      *        independent of actual protocol used over the network.
      */
-    void routeCall(@Note("Modelish model!") SGServiceCall serviceCall) throws SGNotFoundException
+    void routeCall(@Note("Modelish model!") SGRequest serviceCall) throws SGNotFoundException
 
 }

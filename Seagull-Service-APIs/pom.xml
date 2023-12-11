@@ -3,7 +3,7 @@
     
     PROJECT
         Name
-            Seagull-Platform
+            Seagull-Service-APIs
         
         Description
             Seagull - Intended to be a very simple service platform.
@@ -72,12 +72,6 @@
             <groupId>se.natusoft.tools.toolbox</groupId>
             <artifactId>Modelish</artifactId>
             <version>3.0.9</version>
-        </dependency>
-
-        <dependency>
-            <groupId>se.natusoft.tools.toolbox</groupId>
-            <artifactId>AnnotatedAPI2MD</artifactId>
-            <version>1.0.0</version>
         </dependency>
 
     </dependencies>

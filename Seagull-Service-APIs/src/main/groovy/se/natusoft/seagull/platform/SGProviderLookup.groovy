@@ -2,7 +2,7 @@
  * 
  * PROJECT
  *     Name
- *         Seagull-Platform
+ *         Seagull-Service-APIs
  *     
  *     Description
  *         Seagull - Intended to be a very simple service platform.
@@ -48,6 +48,8 @@ import groovy.transform.CompileStatic
  * up an implementation of a specified interface.
  *
  * All implementations should be annotated with Googles '@AutoService'.
+ *
+ * Wrapping ServiceLoader like this is probably a bit of "overkill" ...
  */
 @CompileStatic
 class SGProviderLookup<T> {

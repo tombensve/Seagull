@@ -2,7 +2,7 @@
  * 
  * PROJECT
  *     Name
- *         Seagull-Platform
+ *         Seagull-Service-APIs
  *     
  *     Description
  *         Seagull - Intended to be a very simple service platform.
@@ -38,37 +38,58 @@
  *         2023-11-04: Created!
  *         
  */
-package se.natusoft.seagull.platform.models
+package se.natusoft.seagull.platform
 
 import groovy.transform.CompileStatic
-import se.natusoft.docutations.Note
-import se.natusoft.tools.modelish.Cloneable
+import se.natusoft.docutations.Singleton
 
 /**
- * Modelish model representing a specific service registration for registering
- * Seagull services.
- *
- * This is provided to each SGService implementation.
+ * This reads and writes JSON, and converts between Strings containing JSON and SGJson.
  */
 @CompileStatic
-@Note("Modelish model!")
-interface SGServiceId extends Cloneable<SGServiceId> {
+@Singleton
+interface SGJsonIO {
 
-    /** Sets name of the service */
-    SGServiceId setServiceName(String name)
+    /**
+     * This instance will be provided by what ever implementation is available on
+     * the classpath at runtime.
+     */
+    static SGJsonIO use = SGProviderLookup.find(SGJsonIO.class)
 
-    /** Gets the name of the service. */
-    String getServiceName()
 
-    /** sets the version of the service. */
-    SGServiceId setServiceVersion(int serviceVersion)
+    /**
+     * Read JSON.
+     *
+     * @param stream The stream to read from.
+     *
+     * @return read JSON as Map<String, Object>.
+     */
+    SGJson read(InputStream stream)
 
-    /** Gets the name of the service. */
-    int getServiceVersion()
 
-    /** Sets the backwards compatible flag of the service. */
-    SGServiceId setBackwardsCompatible(boolean backwardsCompatible)
+    /**
+     * Write JSON from a Map representation.
+     *
+     * @param json The JSON content Map to write.
+     * @param stream The stream to write to.
+     */
+    void write(SGJson json, OutputStream stream)
 
-    /** Returns the backwards compatible flag of the service. */
-    boolean isBackwardsCompatible()
+    /**
+     * Converts the SGJson object into a String of JSON.
+     *
+     * @param SGJson sgJson
+     *
+     * @return String
+     */
+    String toString(SGJson sgJson)
+
+    /**
+     * Takes a 'String' of JSON and produces a SGJson instance.
+     *
+     * @param json JSON data in String format.
+     *
+     * @return An SGJson object.
+     */
+    SGJson toJSON(String json)
 }

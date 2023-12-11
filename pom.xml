@@ -39,12 +39,12 @@
 -->
 
 <!--
-    ====================================================================
-    |                                                                  |
-    /    This code is a playground and should not be used by anyone    \
-    \    for anything else than playing around!                        /
-    |                                                                  |
-    ====================================================================
+    ===============================================================
+    |                                                              |
+    /    This code is currently a playground and should not be     \
+    \    used by anyone for anything else than playing around!     /
+    |                                                              |
+    ===============================================================
 -->
 
 <!--suppress CheckValidXmlInScriptTagBody -->
@@ -85,7 +85,7 @@
             This sets up the version of Groovy and what byte code to produce.
             This is used by the mixin-maven-plugin below.
         -->
-        <groovy-version>4.0.15</groovy-version>
+        <groovy-version>4.0.16</groovy-version>
         <byte-code>11</byte-code>
 
         <!--
@@ -115,7 +115,8 @@
         This defines APIs and not to many of those, that can be
         implemented with whatever protocol. What protocol is used
         depends on what implementation you make available on
-        the classpath.
+        the classpath. Implementations are fetched using
+        SGProviderLookup (currently ServiceLoader is used).
     </description>
 
     <organization>
@@ -187,7 +188,7 @@
         <dependency>
             <groupId>se.natusoft.annotation</groupId>
             <artifactId>docutations</artifactId>
-            <version>2.13</version>
+            <version>3.0.0</version>
             <scope>compile</scope>
         </dependency>
 

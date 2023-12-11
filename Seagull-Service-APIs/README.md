@@ -18,12 +18,12 @@ Seagull aims at being very simple!
 There is one way, and only one way to communicate with other code: send and
 receive messages.
 
-Note a Seagull service jar file can
-always be run with java -jar, and can contain one single service or many of
-them. The service implementations should not care how they are deployed!
+Note that a Seagull service jar file can always be run with java -jar, and can 
+contain one single service or many of them. The service implementations should 
+not care how they are deployed!
 
 The biggest goal of all in Seagull is to make implementations as simple
-as physically possible! The KISS rule should rule here!
+as physically possible! The KISS rule rules here!
 
 ----
 

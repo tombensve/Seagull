@@ -2,7 +2,7 @@
  * 
  * PROJECT
  *     Name
- *         Seagull-Platform
+ *         Seagull-Service-APIs
  *     
  *     Description
  *         Seagull - Intended to be a very simple service platform.
@@ -41,8 +41,10 @@
 package se.natusoft.seagull.platform
 
 import groovy.transform.CompileStatic
-import se.natusoft.seagull.platform.models.SGServiceCall
-import se.natusoft.seagull.platform.models.SGServiceId
+import se.natusoft.docutations.Note
+import se.natusoft.seagull.platform.models.SGRequest
+import se.natusoft.seagull.platform.models.SGResponse
+import se.natusoft.seagull.platform.models.SGMessageId
 
 /**
  * <p>
@@ -68,8 +70,8 @@ interface SGPlatform {
      * @param handler
      */
     void registerService(
-            SGServiceId sgServiceReg,
-            Closure<SGServiceId> handler
+            SGMessageId sgServiceId,
+            Closure<SGMessageId> serviceHandler
     )
 
     /**
@@ -78,13 +80,15 @@ interface SGPlatform {
      * @param serviceReg The same SGServiceReg passed to registerService(...).
      */
     void unregisterService(
-            SGServiceId serviceReg
+            SGMessageId serviceReg
     )
 
     /**
      * Calls a service
      *
-     * @param sgServiceCall Data for the service call.
+     * @param sgRequest Data for the service call.
      */
-    void callService(SGServiceCall sgServiceCall)
+    @Note("I really tried to avoid the terms 'request' and 'response', but I failed!!")
+    SGResponse callService(SGRequest sgRequest)
+
 }
