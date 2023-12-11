@@ -1,5 +1,5 @@
-/*
- *
+/* 
+ * 
  * PROJECT
  *     Name
  *         Seagull-Service-APIs
@@ -35,25 +35,62 @@
  * AUTHORS
  *     tommy ()
  *         Changes:
- *         2023-11-19: Created!
+ *         2023-11-04: Created!
  *         
  */
-package se.natusoft.seagull.support.tuples
+package se.natusoft.seagull.platform.models
 
 import groovy.transform.CompileStatic
+import se.natusoft.docutations.Note
+import se.natusoft.seagull.platform.SGAction
+import se.natusoft.seagull.platform.SGJson
+import se.natusoft.tools.modelish.Cloneable
 
 /**
- * A tuple with one value.
+ * Modelish model representing data needed to call a service.
  */
+@Note([
+        "JavaBean variant of 'property' values are used due to Groovys property access of those.",
+        "I.e it allows for sgCall.to='...'. That said the model is a builder, so when creating ",
+        "you probably want to use the builder, but to access values property variant can be used."
+])
 @CompileStatic
-class Tuple<T1> {
+interface SGRequest extends Cloneable<SGRequest> {
 
-    T1 t1
+    /**
+     * @param messageId Provides message type and version of the request.
+     *
+     * @return self.
+     */
+    SGRequest messageId(SGMessageId messageId)
 
+    /**
+     * @return The name of the service to call.
+     */
+    SGMessageId getMessageId()
 
-    Tuple() {}
+    /**
+     * @param crud The CRUD operation to perform.
+     * @return self.
+     */
+    SGRequest action(SGAction action)
 
-    Tuple(T1 t1) {
-        this.t1 = t1
-    }
+    /**
+     * @return The CRUD operation to perform.
+     */
+    SGAction getAction()
+
+    // CallData //
+
+    /**
+     * @param callData Data to pass tp the service.
+     * @return self.
+     */
+    SGRequest callData(SGJson callData)
+
+    /**
+     * @return JSON data for the service to act on.
+     */
+    SGJson getCallData()
+
 }

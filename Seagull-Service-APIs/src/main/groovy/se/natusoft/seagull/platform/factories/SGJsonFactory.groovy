@@ -2,7 +2,7 @@
  * 
  * PROJECT
  *     Name
- *         Seagull-Platform
+ *         Seagull-Service-APIs
  *     
  *     Description
  *         Seagull - Intended to be a very simple service platform.
@@ -38,47 +38,33 @@
  *         2023-11-04: Created!
  *         
  */
-package se.natusoft.seagull.platform
+package se.natusoft.seagull.platform.factories
 
 import groovy.transform.CompileStatic
+import se.natusoft.docutations.Note
 import se.natusoft.docutations.Singleton
-import se.natusoft.seagull.platform.models.SGServiceCall
-import se.natusoft.seagull.platform.tools.SGID
-import se.natusoft.seagull.platform.tools.SGJsonIO
+import se.natusoft.seagull.platform.SGJson
+import se.natusoft.seagull.platform.SGProviderLookup
 
 /**
- * Implementations of this provides own implementations of these objects.
- * This so that different implementations can provide own way of handling these.
- *
- * It will find whatever implementation is available runtime.
+ * Provides a factory for creating SGJson instances.
  */
 @CompileStatic
 @Singleton
-interface SGFactory {
+@Note([
+        "All models are interfaces based on my 'Modelish' project which uses interfaces and store data ",
+        "internally as a JSON like Map structure which can be fetched and set on models without any copying.",
+        "I'm however providing factory classes to create these to add more flexibility for implementations."
+])
+interface SGJsonFactory {
 
-    // Static singleton "use" is used for all singleton objects. All other uses
-    // SGFactory.
-    static final use = SGProviderLookup<SGFactory>.find(SGFactory.class)
-
-    /**
-     * @return SGJsonIO.
-     */
-    SGJsonIO sgJsonIO = SGJsonIO.use
+    static final SGJsonFactory use = SGProviderLookup.find(SGJsonFactory.class) as SGJsonFactory
 
     /**
-     * @return a new SGCall.
-     */
-    SGServiceCall newSGCall()
-
-    /**
-     * @return a new SGID.
-     */
-    SGID newSGID()
-
-    // JSON
-
-    /**
-     * @return a  new SGJson instance.
+     * To create an instance do: `SGJsonFactory.use.newSGJson()`
+     *
+     * @return a new SGJson instance..
      */
     SGJson newSGJson()
+
 }

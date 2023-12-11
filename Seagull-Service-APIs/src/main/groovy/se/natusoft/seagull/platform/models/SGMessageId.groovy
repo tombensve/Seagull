@@ -2,7 +2,7 @@
  * 
  * PROJECT
  *     Name
- *         Seagull-Platform
+ *         Seagull-Service-APIs
  *     
  *     Description
  *         Seagull - Intended to be a very simple service platform.
@@ -42,71 +42,38 @@ package se.natusoft.seagull.platform.models
 
 import groovy.transform.CompileStatic
 import se.natusoft.docutations.Note
-import se.natusoft.seagull.platform.SGCRUD
-import se.natusoft.seagull.platform.SGJson
 import se.natusoft.tools.modelish.Cloneable
 
 /**
- * Modelish model representing data needed to call a service.
+ * Modelish model representing a specific service registration for registering
+ * Seagull services.
  *
- * DO NOTE that this IS NOT a synchronous call with reply! If there is a reply as a response to
- * a call, then whatever service was called will use the sender info and make a call to it with
- * information it will have to react to.
+ * This is provided to each SGService implementation.
  */
-@Note("JavaBean variant of 'property' values are used due to Groovys property access of those.")
 @CompileStatic
-interface SGServiceCall extends Cloneable<SGServiceCall> {
+@Note("Modelish model!")
+interface SGMessageId extends Cloneable<SGMessageId> {
 
-    // To //
+    // Name
+    /** Sets name of the service */
+    SGMessageId messageType(String messageType)
 
-    /**
-     * @param name The name of the service to call.
-     * @return self.
-     */
-    SGServiceCall setTo(SGServiceId callee)
+    /** Gets the name of the service. */
+    String getMessageType()
 
-    /**
-     * @return The name of the service to call.
-     */
-    SGServiceId getTo()
+    // ServiceVersion
+    /** sets the version of the service. */
+    SGMessageId messageVersion(int messageVersion)
 
-    // From //
+    /** Gets the name of the service. */
+    int getMessageVersion()
 
-    /**
-     * @param caller The service making the call.
-     * @return self.
-     */
-    SGServiceCall setFrom(SGServiceId caller)
 
-    /**
-     * @return The service making the call.
-     */
-    SGServiceId getFrom()
 
-    // CRUD //
+    // backwardsCompatible
+    /** Sets the backwards compatible flag of the service. */
+    SGMessageId backwardsCompatible(boolean backwardsCompatible)
 
-    /**
-     * @param crud The CRUD operation to perform.
-     * @return self.
-     */
-    SGServiceCall setCRUD(SGCRUD crud)
-
-    /**
-     * @return The CRUD operation to perform.
-     */
-    SGCRUD getCRUD()
-
-    // CallData //
-
-    /**
-     * @param callData Data to pass tp the service.
-     * @return self.
-     */
-    SGServiceCall setCallData(SGJson callData)
-
-    /**
-     * @return JSON data for the service to act on.
-     */
-    SGJson getCallData()
-
+    /** Returns the backwards compatible flag of the service. */
+    boolean isBackwardsCompatible()
 }

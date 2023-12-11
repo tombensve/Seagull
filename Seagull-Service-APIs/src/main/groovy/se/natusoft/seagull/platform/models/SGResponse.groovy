@@ -2,7 +2,7 @@
  * 
  * PROJECT
  *     Name
- *         Seagull-Platform
+ *         Seagull-Service-APIs
  *     
  *     Description
  *         Seagull - Intended to be a very simple service platform.
@@ -35,14 +35,39 @@
  * AUTHORS
  *     tommy ()
  *         Changes:
- *         2023-11-20: Created!
+ *         2023-12-05: Created!
  *         
  */
-package se.natusoft.seagull.platform
+package se.natusoft.seagull.platform.models
 
-import groovy.transform.CompileStatic
+import se.natusoft.seagull.platform.SGJson
 
-@CompileStatic
-enum SGCRUD {
-    Create, Read, Update, Delete
+/**
+ * A response to a Seagull request.
+ */
+interface SGResponse {
+
+    /**
+     * @param messageId Provides message type and version of the response.
+     *
+     * @return self.
+     */
+    SGRequest messageId(SGMessageId messageId)
+
+    /**
+     * @return The id and version of the response message.
+     */
+    SGMessageId getMessageId()
+
+    /**
+     * @param Response data to pass tp the calling service.
+     * @return self.
+     */
+    SGResponse response(SGJson response)
+
+    /**
+     * @return JSON data for the service to act on.
+     */
+    SGJson getResponse()
+
 }

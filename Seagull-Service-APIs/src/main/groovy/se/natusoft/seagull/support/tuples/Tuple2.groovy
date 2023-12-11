@@ -2,7 +2,7 @@
  *
  * PROJECT
  *     Name
- *         Seagull-Platform
+ *         Seagull-Service-APIs
  *     
  *     Description
  *         Seagull - Intended to be a very simple service platform.
@@ -53,7 +53,7 @@ class Tuple2<T1, T2> extends Tuple<T1> {
     Tuple2() {}
 
     Tuple2(T1 t1, T2 t2) {
-        this.t1 = t1
+        super.t1 = t1
         this.t2 = t2
     }
 }

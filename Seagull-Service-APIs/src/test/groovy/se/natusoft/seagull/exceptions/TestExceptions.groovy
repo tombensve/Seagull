@@ -18,6 +18,6 @@ class TestExceptions {
 
         SGException se2 = new SGException("test-3")
 
-        assert se2.cause.toString() == "java.lang.RuntimeException: [No cause]"
+        assert se2.cause.toString() == "java.lang.RuntimeException: [Unknown cause!]"
     }
 }
