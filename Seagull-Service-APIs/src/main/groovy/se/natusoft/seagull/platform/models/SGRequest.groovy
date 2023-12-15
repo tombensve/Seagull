@@ -5,14 +5,15 @@
  *         Seagull-Service-APIs
  *     
  *     Description
- *         Seagull - Intended to be a very simple service platform.
+ *         Seagull - Intended to be a very simplistic service platform.
  *         
  *         The idea here is to define a service platform that says
  *         nothing about how services communicate with each other.
  *         This defines APIs and not to many of those, that can be
  *         implemented with whatever protocol. What protocol is used
  *         depends on what implementation you make available on
- *         the classpath.
+ *         the classpath. Implementations are fetched using
+ *         SGProviderLookup (currently ServiceLoader is used).
  *         
  * COPYRIGHTS
  *     Copyright (C) 2023 by Tommy Bengt Svensson All rights reserved.
@@ -51,7 +52,7 @@ import se.natusoft.tools.modelish.Cloneable
  */
 @Note([
         "JavaBean variant of 'property' values are used due to Groovys property access of those.",
-        "I.e it allows for sgCall.to='...'. That said the model is a builder, so when creating ",
+        "I.e it allows for 'sgCall.to=\"...\"'. That said the model is a builder, so when creating ",
         "you probably want to use the builder, but to access values property variant can be used."
 ])
 @CompileStatic

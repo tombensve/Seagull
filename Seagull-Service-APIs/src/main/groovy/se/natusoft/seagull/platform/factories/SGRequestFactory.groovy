@@ -5,14 +5,15 @@
  *         Seagull-Service-APIs
  *     
  *     Description
- *         Seagull - Intended to be a very simple service platform.
+ *         Seagull - Intended to be a very simplistic service platform.
  *         
  *         The idea here is to define a service platform that says
  *         nothing about how services communicate with each other.
  *         This defines APIs and not to many of those, that can be
  *         implemented with whatever protocol. What protocol is used
  *         depends on what implementation you make available on
- *         the classpath.
+ *         the classpath. Implementations are fetched using
+ *         SGProviderLookup (currently ServiceLoader is used).
  *         
  * COPYRIGHTS
  *     Copyright (C) 2023 by Tommy Bengt Svensson All rights reserved.
