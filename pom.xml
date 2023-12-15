@@ -66,6 +66,11 @@
 
     <url>https://github.com/tombensve/Seagull</url>
 
+    <organization>
+        <name>Tommy Bengt Svensson</name>
+        <url>https://github.com/tombensve/</url>
+    </organization>
+
     <modules>
         <module>Seagull-Service-APIs</module>
         <module>Seagull-Platform-APIs</module>
@@ -117,11 +122,6 @@
         the classpath. Implementations are fetched using
         SGProviderLookup (currently ServiceLoader is used).
     </description>
-
-    <organization>
-        <name>Tommy Bengt Svensson</name>
-        <url>https://github.com/tombensve</url>
-    </organization>
 
     <!--
         This is a playground that started out with Tomcat/JEE and Vaadin, and changed over time.
@@ -175,7 +175,6 @@
     </pluginRepositories>
 
     <dependencies>
-
         <!--
                 <dependency>
                     <groupId>org.apache.groovy</groupId>
@@ -191,18 +190,33 @@
             <scope>compile</scope>
         </dependency>
 
+
+        <!-- For testing -->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.2</version>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.10.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.10.1</version>
             <scope>test</scope>
         </dependency>
 
     </dependencies>
 
+    <!--
+        The variables used here are in my personal setting.xml! I make binaries
+        available from my web server after bintray shut down.
+
+        See: https://github.com/tombensve/About
+    -->
     <distributionManagement>
         <repository>
-            <id>maven-repository-upload</id>
+            <id>download.natusoft.se</id>
+            <name>DownloadNatusoftSe-Seagull</name>
             <url>ftp://${maven.repo.upload}/${maven.base.path}</url>
         </repository>
     </distributionManagement>
@@ -244,12 +258,6 @@
                 </plugin>
 
                 <plugin>
-                    <groupId>se.natusoft.tools.codelicmgr</groupId>
-                    <artifactId>CodeLicenseManager-maven-plugin</artifactId>
-                    <version>2.2.6</version>
-                </plugin>
-
-                <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>build-helper-maven-plugin</artifactId>
                     <version>3.5.0</version>
@@ -275,15 +283,15 @@
                 </plugin>
 
                 <plugin>
-                    <groupId>se.natusoft.tools.doc.markdowndoc</groupId>
-                    <artifactId>markdowndoc-maven-plugin</artifactId>
-                    <version>3.1.0</version>
+                    <groupId>se.natusoft.tools.codelicmgr</groupId>
+                    <artifactId>CodeLicenseManager-maven-plugin</artifactId>
+                    <version>2.2.6</version>
                 </plugin>
 
                 <plugin>
-                    <groupId>se.natusoft.maven.plugin</groupId>
-                    <artifactId>ftp-maven-plugin</artifactId>
-                    <version>1.0.1</version>
+                    <groupId>se.natusoft.tools.doc.markdowndoc</groupId>
+                    <artifactId>markdowndoc-maven-plugin</artifactId>
+                    <version>3.1.0</version>
                 </plugin>
 
             </plugins>
@@ -322,7 +330,6 @@
                     </mixins>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -341,6 +348,27 @@
                 <version>3.1.0</version>
                 <configuration>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.1</version>
+            </plugin>
+
+            <!--
+                Package sources.
+            -->
+            <plugin>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
 
             <!--

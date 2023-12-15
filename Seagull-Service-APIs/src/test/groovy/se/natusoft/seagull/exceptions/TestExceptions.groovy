@@ -1,9 +1,10 @@
 package se.natusoft.seagull.exceptions
 
 import groovy.transform.CompileStatic
-import org.junit.Test
+import org.junit.jupiter.api.Test
 
 @CompileStatic
+
 class TestExceptions {
 
     /**
