@@ -186,8 +186,20 @@
         <dependency>
             <groupId>se.natusoft.annotation</groupId>
             <artifactId>docutations</artifactId>
-            <version>3.0.1</version>
+            <version>3.0.4</version>
             <scope>compile</scope>
+        </dependency>
+
+        <!--
+            I want to use my Modelish models. I'm going to use the JavaBean syntax due
+            to Groovy niceness in handling JavaBeans.
+
+            I'm trying to make this optional, but I'm not sure that will be possible.
+        -->
+        <dependency>
+            <groupId>se.natusoft.tools.toolbox</groupId>
+            <artifactId>Modelish</artifactId>
+            <version>3.0.10</version>
         </dependency>
 
 

@@ -43,55 +43,40 @@ package se.natusoft.seagull.platform.models
 
 import groovy.transform.CompileStatic
 import se.natusoft.docutations.Note
-import se.natusoft.seagull.platform.SGAction
-import se.natusoft.seagull.platform.SGJson
 import se.natusoft.tools.modelish.Cloneable
+import se.natusoft.tools.modelish.ModelishModel
 
 /**
- * Modelish model representing data needed to call a service.
+ * Modelish model representing a specific service registration for registering
+ * Seagull services. This is provided to each SGService implementation.
  */
-@Note([
-        "JavaBean variant of 'property' values are used due to Groovys property access of those.",
-        "I.e it allows for 'sgCall.to=\"...\"'. That said the model is a builder, so when creating ",
-        "you probably want to use the builder, but to access values property variant can be used."
-])
 @CompileStatic
-interface SGRequest extends Cloneable<SGRequest> {
 
+@ModelishModel
+interface SGServiceId extends Cloneable<SGServiceId> {
+
+    // Name
     /**
-     * @param messageId Provides message type and version of the request.
+     * Sets name of the service
      *
-     * @return self.
+     * @param messageType Sets the type of the message.
      */
-    SGRequest messageId(SGMessageId messageId)
+    SGServiceId messageType(String messageType)
 
-    /**
-     * @return The name of the service to call.
-     */
-    SGMessageId getMessageId()
+    /** Gets the name of the service. */
+    String getMessageType()
 
-    /**
-     * @param crud The CRUD operation to perform.
-     * @return self.
-     */
-    SGRequest action(SGAction action)
+    // ServiceVersion
+    /** sets the version of the service. */
+    SGServiceId messageVersion(int messageVersion)
 
-    /**
-     * @return The CRUD operation to perform.
-     */
-    SGAction getAction()
+    /** Gets the name of the service. */
+    int getMessageVersion()
 
-    // CallData //
+    // backwardsCompatible
+    /** Sets the backwards compatible flag of the service. */
+    SGServiceId backwardsCompatible(boolean backwardsCompatible)
 
-    /**
-     * @param callData Data to pass tp the service.
-     * @return self.
-     */
-    SGRequest callData(SGJson callData)
-
-    /**
-     * @return JSON data for the service to act on.
-     */
-    SGJson getCallData()
-
+    /** Returns the backwards compatible flag of the service. */
+    boolean isBackwardsCompatible()
 }

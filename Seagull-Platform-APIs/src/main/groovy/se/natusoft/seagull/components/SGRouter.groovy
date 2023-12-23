@@ -46,8 +46,9 @@ import se.natusoft.docutations.Note
 import se.natusoft.docutations.Singleton
 import se.natusoft.seagull.exceptions.SGNotFoundException
 import se.natusoft.seagull.platform.SGProviderLookup
-import se.natusoft.seagull.platform.models.SGRequest
-import se.natusoft.seagull.platform.models.SGMessageId
+import se.natusoft.seagull.platform.models.SGCall
+import se.natusoft.seagull.platform.models.SGServiceId
+import se.natusoft.tools.modelish.ModelishModel
 
 /**
  * This is the one that knows about local and remote services! It can take a call and
@@ -67,12 +68,12 @@ interface SGRouter {
      * @return All services available locally in same jar. These can be called without going out
      *         on the network.
      */
-    List<SGMessageId> localServices()
+    List<SGServiceId> localServices()
 
     /**
      * @return All Seagull services found on the network.
      */
-    List<SGMessageId> externalServices()
+    List<SGServiceId> externalServices()
 
     /**
      * Passes a call on to a service independent of where the service exists. If an implementation of
@@ -87,6 +88,6 @@ interface SGRouter {
      * @param serviceCall An SGServiceCall instance containing all information needed to do the call
      *        independent of actual protocol used over the network.
      */
-    void routeCall(@Note("Modelish model!") SGRequest serviceCall) throws SGNotFoundException
+    void routeCall(@ModelishModel SGCall serviceCall) throws SGNotFoundException
 
 }

@@ -36,39 +36,58 @@
  * AUTHORS
  *     tommy ()
  *         Changes:
- *         2023-12-05: Created!
+ *         2023-11-04: Created!
  *         
  */
 package se.natusoft.seagull.platform.models
 
+import groovy.transform.CompileStatic
+import se.natusoft.seagull.platform.SGCRUD
 import se.natusoft.seagull.platform.SGJson
+import se.natusoft.tools.modelish.Cloneable
+import se.natusoft.tools.modelish.ModelishModel
+
+@CompileStatic
 
 /**
- * A response to a Seagull request.
+ * Modelish model representing data needed to call a service.
  */
-interface SGResponse {
+@ModelishModel
+interface SGCall extends Cloneable<SGCall> {
+
+    // MessageId //
 
     /**
-     * @param messageId Provides message type and version of the response.
+     * Provides message type and version of the request.
+     */
+    SGCall messageId(SGServiceId messageId)
+
+    /**
+     * @return the message ID.
+     */
+    SGServiceId getMessageId()
+
+    // Action //
+
+    /**
+     * @param action The CRUD action to perform.
+     */
+    SGCall action(SGCRUD action)
+
+    /**
+     * @return The CRUD action to perform.
+     */
+    SGCRUD getAction()
+
+    // CallData //
+
+    /**
      *
-     * @return self.
+     * @param callData
+     * @return
      */
-    SGRequest messageId(SGMessageId messageId)
+    SGCall callData(SGJson callData)
 
-    /**
-     * @return The id and version of the response message.
-     */
-    SGMessageId getMessageId()
-
-    /**
-     * @param Response data to pass tp the calling service.
-     * @return self.
-     */
-    SGResponse response(SGJson response)
-
-    /**
-     * @return JSON data for the service to act on.
-     */
-    SGJson getResponse()
+    SGJson getCallData()
 
 }

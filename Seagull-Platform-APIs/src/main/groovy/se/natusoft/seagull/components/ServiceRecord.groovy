@@ -2,7 +2,7 @@
  * 
  * PROJECT
  *     Name
- *         Seagull-Service-APIs
+ *         Seagull-Platform-APIs
  *     
  *     Description
  *         Seagull - Intended to be a very simplistic service platform.
@@ -36,45 +36,58 @@
  * AUTHORS
  *     tommy ()
  *         Changes:
- *         2023-11-04: Created!
+ *         2023-12-05: Created!
  *         
  */
-package se.natusoft.seagull.platform.models
+package se.natusoft.seagull.components
 
 import groovy.transform.CompileStatic
-import se.natusoft.docutations.Note
 import se.natusoft.tools.modelish.Cloneable
 
 /**
- * Modelish model representing a specific service registration for registering
- * Seagull services.
- *
- * This is provided to each SGService implementation.
+ * Model for a specific service record.
  */
 @CompileStatic
-@Note("Modelish model!")
-interface SGMessageId extends Cloneable<SGMessageId> {
+interface ServiceRecord extends Cloneable<ServiceRecord> {
 
-    // Name
-    /** Sets name of the service */
-    SGMessageId messageType(String messageType)
+    /**
+     * Provides a name of the service.
+     * @param name The name to set.
+     * @return self.
+     */
+    ServiceRecord serviceName(String name)
 
-    /** Gets the name of the service. */
-    String getMessageType()
+    /**
+     * @return Service name.
+     */
+    String getServiceName()
 
-    // ServiceVersion
-    /** sets the version of the service. */
-    SGMessageId messageVersion(int messageVersion)
+    /**
+     * Sets the version of the service.
+     *
+     * @param version The version to set.
+     * @return self.
+     */
+    ServiceRecord serviceVersion(float version)
 
-    /** Gets the name of the service. */
-    int getMessageVersion()
+    /**
+     * @return The service version.
+     */
+    float getServiceVersion()
 
+    /**
+     * Provides a set of locations where service is running.
+     *
+     * Do note here that depending on implementations an URL might not be usable. But it sits on information
+     * that can be extracted and used to a TCP connection.
+     *
+     * @param serviceLocations Provides a set of service locations, or an empty list.
+     * @return self.
+     */
+    ServiceRecord serviceLocations(List<URL> serviceLocations)
 
-
-    // backwardsCompatible
-    /** Sets the backwards compatible flag of the service. */
-    SGMessageId backwardsCompatible(boolean backwardsCompatible)
-
-    /** Returns the backwards compatible flag of the service. */
-    boolean isBackwardsCompatible()
+    /**
+     * @return List of URLs to where service is available.
+     */
+    List<URL> getServiceLocations()
 }

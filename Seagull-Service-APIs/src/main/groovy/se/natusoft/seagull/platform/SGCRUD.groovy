@@ -43,8 +43,11 @@ package se.natusoft.seagull.platform
 
 import groovy.transform.CompileStatic
 
+/**
+ * Provides the CRUD operation to perform.
+ */
 @CompileStatic
-enum SGAction {
+enum SGCRUD {
     Create,
     Read,
     Update,

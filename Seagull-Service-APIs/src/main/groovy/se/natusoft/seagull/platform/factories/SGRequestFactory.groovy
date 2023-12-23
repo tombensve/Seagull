@@ -45,7 +45,7 @@ import groovy.transform.CompileStatic
 import se.natusoft.docutations.Note
 import se.natusoft.docutations.Singleton
 import se.natusoft.seagull.platform.SGProviderLookup
-import se.natusoft.seagull.platform.models.SGRequest
+import se.natusoft.seagull.platform.models.SGCall
 
 /**
  * Provides a factory for creating SGRequest instances.
@@ -66,6 +66,6 @@ interface SGRequestFactory {
      *
      * @return a new SGCall.
      */
-    SGRequest newSGRequest()
+    SGCall newSGRequest()
 
 }

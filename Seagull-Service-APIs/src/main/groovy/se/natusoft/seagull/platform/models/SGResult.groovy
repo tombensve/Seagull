@@ -36,59 +36,41 @@
  * AUTHORS
  *     tommy ()
  *         Changes:
- *         2023-11-04: Created!
+ *         2023-12-05: Created!
  *         
  */
-package se.natusoft.seagull.platform
+package se.natusoft.seagull.platform.models
 
 import groovy.transform.CompileStatic
-import se.natusoft.docutations.Note
-import se.natusoft.seagull.platform.models.SGCall
-import se.natusoft.seagull.platform.models.SGResult
-import se.natusoft.seagull.platform.models.SGServiceId
+import se.natusoft.seagull.platform.SGJson
 
 /**
- * <p>
- *   This is an API for each Seagull service to use for providing service and for
- *   calling other services. Its intent is to be as easy/trivial as possible!
- *   That is, there is not a ton of options!
- * </p>
- * <p>
- *   An instance of an implementation of this will be provided to each SGService implementation.
- * </p>
+ * A response to a Seagull request.
  */
 @CompileStatic
-interface SGPlatform {
+interface SGResult {
 
     /**
-     * This should be used to provide a service.
+     * @param messageId Provides message type and version of the response.
      *
-     * @param serviceName Name of service to register.
-     * @param version The version of the service. Different versions can co-exist.
-     * @param backwardsCompatible true if current version is backwards compatible.
-     *        You should always strive for being backwards compatible. This is for
-     *        cases where that is not possible.
-     * @param handler
+     * @return self.
      */
-    void registerService(
-            SGServiceId sgServiceId,
-            Closure<SGServiceId> serviceHandler
-    )
+    SGCall messageId(SGServiceId messageId)
 
     /**
-     * Unregisters a service from being available.
-     *
-     * @param serviceReg The same SGServiceReg passed to registerService(...).
+     * @return The id and version of the response message.
      */
-    void unregisterService(
-            SGServiceId serviceId
-    )
+    SGServiceId getMessageId()
 
     /**
-     * Calls a service
-     *
-     * @param sgCall Data for the service call.
+     * @param Response data to pass tp the calling service.
+     * @return self.
      */
-    SGResult callService(SGCall sgCall)
+    SGResult response(SGJson response)
+
+    /**
+     * @return JSON data for the service to act on.
+     */
+    SGJson getResponse()
 
 }
