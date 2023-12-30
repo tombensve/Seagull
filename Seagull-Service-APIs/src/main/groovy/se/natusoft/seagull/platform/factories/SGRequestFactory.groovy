@@ -42,8 +42,8 @@
 package se.natusoft.seagull.platform.factories
 
 import groovy.transform.CompileStatic
-import se.natusoft.docutations.Note
-import se.natusoft.docutations.Singleton
+import se.natusoft.docutations.DT_Note
+import se.natusoft.docutations.DT_Singleton
 import se.natusoft.seagull.platform.SGProviderLookup
 import se.natusoft.seagull.platform.models.SGCall
 
@@ -51,8 +51,8 @@ import se.natusoft.seagull.platform.models.SGCall
  * Provides a factory for creating SGRequest instances.
  */
 @CompileStatic
-@Singleton
-@Note([
+@DT_Singleton
+@DT_Note([
         "All models are interfaces based on my 'Modelish' project which uses interfaces and store data ",
         "internally as a JSON like Map structure which can be fetched and set on models without any copying.",
         "I'm however providing factory classes to create these to add more flexibility for implementations."

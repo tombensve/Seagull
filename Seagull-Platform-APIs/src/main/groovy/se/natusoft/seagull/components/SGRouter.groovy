@@ -42,8 +42,7 @@
 package se.natusoft.seagull.components
 
 import groovy.transform.CompileStatic
-import se.natusoft.docutations.Note
-import se.natusoft.docutations.Singleton
+import se.natusoft.docutations.DT_Singleton
 import se.natusoft.seagull.exceptions.SGNotFoundException
 import se.natusoft.seagull.platform.SGProviderLookup
 import se.natusoft.seagull.platform.models.SGCall
@@ -58,7 +57,7 @@ import se.natusoft.tools.modelish.ModelishModel
  *   - Keeps track of remote services.
  */
 @CompileStatic
-@Singleton
+@DT_Singleton
 interface SGRouter {
 
     /** Singleton instance of implementation. */

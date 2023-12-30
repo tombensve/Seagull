@@ -42,7 +42,6 @@
 package se.natusoft.seagull.platform
 
 import groovy.transform.CompileStatic
-import se.natusoft.docutations.Note
 import se.natusoft.seagull.platform.models.SGCall
 import se.natusoft.seagull.platform.models.SGResult
 import se.natusoft.seagull.platform.models.SGServiceId

@@ -42,13 +42,13 @@
 package se.natusoft.seagull.platform
 
 import groovy.transform.CompileStatic
-import se.natusoft.docutations.Singleton
+import se.natusoft.docutations.DT_Singleton
 
 /**
  * This reads and writes JSON, and converts between Strings containing JSON and SGJson.
  */
 @CompileStatic
-@Singleton
+@DT_Singleton
 interface SGJsonIO {
 
     /**

@@ -42,12 +42,14 @@
 package se.natusoft.seagull.components
 
 import groovy.transform.CompileStatic
+import se.natusoft.docutations.DT_InternalAPI
 import se.natusoft.tools.modelish.Cloneable
 
 /**
  * Model for a specific service record.
  */
 @CompileStatic
+@DT_InternalAPI
 interface ServiceRecord extends Cloneable<ServiceRecord> {
 
     /**

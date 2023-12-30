@@ -42,7 +42,6 @@
 package se.natusoft.seagull.platform.models
 
 import groovy.transform.CompileStatic
-import se.natusoft.docutations.Note
 import se.natusoft.tools.modelish.Cloneable
 import se.natusoft.tools.modelish.ModelishModel
 
@@ -55,7 +54,7 @@ import se.natusoft.tools.modelish.ModelishModel
 @ModelishModel
 interface SGServiceId extends Cloneable<SGServiceId> {
 
-    // Name
+    // ==== messageType ==== //
     /**
      * Sets name of the service
      *
@@ -63,17 +62,20 @@ interface SGServiceId extends Cloneable<SGServiceId> {
      */
     SGServiceId messageType(String messageType)
 
+
     /** Gets the name of the service. */
     String getMessageType()
 
-    // ServiceVersion
+    // ==== ServiceVersion ==== //
     /** sets the version of the service. */
     SGServiceId messageVersion(int messageVersion)
+
 
     /** Gets the name of the service. */
     int getMessageVersion()
 
-    // backwardsCompatible
+
+    // ==== backwardsCompatible ==== //
     /** Sets the backwards compatible flag of the service. */
     SGServiceId backwardsCompatible(boolean backwardsCompatible)
 
