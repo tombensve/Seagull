@@ -47,7 +47,6 @@ import se.natusoft.seagull.exceptions.SGNotFoundException
 import se.natusoft.seagull.platform.SGProviderLookup
 import se.natusoft.seagull.platform.models.SGCall
 import se.natusoft.seagull.platform.models.SGServiceId
-import se.natusoft.tools.modelish.ModelishModel
 
 /**
  * This is the one that knows about local and remote services! It can take a call and
@@ -87,6 +86,6 @@ interface SGRouter {
      * @param serviceCall An SGServiceCall instance containing all information needed to do the call
      *        independent of actual protocol used over the network.
      */
-    void routeCall(@ModelishModel SGCall serviceCall) throws SGNotFoundException
+    void routeCall(SGCall serviceCall) throws SGNotFoundException
 
 }

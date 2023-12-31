@@ -54,7 +54,9 @@ interface ServiceRecord extends Cloneable<ServiceRecord> {
 
     /**
      * Provides a name of the service.
+     *
      * @param name The name to set.
+     *
      * @return self.
      */
     ServiceRecord serviceName(String name)
@@ -68,6 +70,7 @@ interface ServiceRecord extends Cloneable<ServiceRecord> {
      * Sets the version of the service.
      *
      * @param version The version to set.
+     *
      * @return self.
      */
     ServiceRecord serviceVersion(float version)
@@ -84,6 +87,7 @@ interface ServiceRecord extends Cloneable<ServiceRecord> {
      * that can be extracted and used to a TCP connection.
      *
      * @param serviceLocations Provides a set of service locations, or an empty list.
+     *
      * @return self.
      */
     ServiceRecord serviceLocations(List<URL> serviceLocations)

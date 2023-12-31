@@ -48,7 +48,7 @@ import groovy.transform.CompileStatic
  * If any service implementation wants to subclass this and use,go ahead,
  * but for the platform itself, this is it!
  *
- *   ` throw new SGException(message: "Something bad happened!", cause: somethingBadException) `
+ *     throw new SGException(message: "Something bad happened!", cause: somethingBadException)
  */
 @CompileStatic
 class SGException extends RuntimeException {
