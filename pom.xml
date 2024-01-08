@@ -186,7 +186,7 @@
         <dependency>
             <groupId>se.natusoft.annotation</groupId>
             <artifactId>docutations</artifactId>
-            <version>3.0.1</version>
+            <version>5.0.0</version>
             <scope>compile</scope>
         </dependency>
 
