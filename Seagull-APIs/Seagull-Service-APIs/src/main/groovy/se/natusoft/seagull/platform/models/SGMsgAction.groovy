@@ -1,5 +1,5 @@
-/*
- *
+/* 
+ * 
  * PROJECT
  *     Name
  *         Seagull-Service-APIs
@@ -36,25 +36,21 @@
  * AUTHORS
  *     tommy ()
  *         Changes:
- *         2023-11-19: Created!
+ *         2023-11-20: Created!
  *         
  */
-package se.natusoft.seagull.support.tuples
+package se.natusoft.seagull.platform.models
 
 import groovy.transform.CompileStatic
 
 /**
- * A tuple with one value.
+ * Indicates the action to perform.
  */
 @CompileStatic
-class Tuple<T1> {
-
-    T1 t1
-
-
-    Tuple() {}
-
-    Tuple(T1 t1) {
-        this.t1 = t1
-    }
+enum SGMsgAction {
+    Create,
+    Read,
+    Update,
+    Delete,
+    Response
 }

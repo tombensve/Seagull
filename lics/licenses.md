@@ -9,6 +9,6 @@ __[Apache Software License version 2.0](http://www.apache.org/licenses/LICENSE-2
 
 The following third party products are using this license:
 
-* [Modelish-3.0.10](https://github.com/tombensve/NS-Toolbox)
+* [Modelish-3.0.11](https://github.com/tombensve/NS-Toolbox)
 
 <!-- CLM -->

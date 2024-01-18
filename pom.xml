@@ -74,28 +74,23 @@
     <modules>
         <module>Seagull-APIs</module>
         <module>Seagull-Implementations</module>
+        <!--module>Seagull-test-and-sample-services</module-->
     </modules>
 
     <!--
         Common properties
     -->
     <properties>
-        <!--
-            This info is not picked up from the standard pom tags for this by CLM.
-            I don't remember why, it was 10 years aga I did CLM!
-        -->
-        <!--developer1Name>Tommy Bengt Svensson</developer1Name-->
-        <!-- <developer1Email>tommy@natusoft.se</developer1Email>-->
 
         <!--
             This sets up the version of Groovy and what byte code to produce.
             This is used by the mixin-maven-plugin below.
         -->
-        <groovy-version>4.0.16</groovy-version>
+        <groovy-version>4.0.17</groovy-version>
         <byte-code>11</byte-code>
 
         <!--
-            These are used in sub poms.
+            These are used in sub poms. (Note: I'm not sure the Groovy compiler listen to this!)
         -->
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
@@ -105,6 +100,11 @@
             The version of this project. Run the set-version profile to update all poms with this version.
         -->
         <projectVersion>1.0.0</projectVersion>
+
+        <!--
+            Dependency versions
+        -->
+        <codeLicenceManagerVersion>2.2.6</codeLicenceManagerVersion>
 
     </properties>
 
@@ -156,14 +156,22 @@
         Make sure we have access to ns repo.
     -->
     <repositories>
+
         <repository>
             <id>ns-repo</id>
             <name>ns-artifact-repository</name>
             <url>https://download.natusoft.se/maven</url>
         </repository>
+        <repository>
+            <id>repsy</id>
+            <name>My Private Maven Repository on Repsy</name>
+            <url>https://repo.repsy.io/mvn/tombensve/natusoft-os</url>
+        </repository>
+
     </repositories>
 
     <pluginRepositories>
+
         <pluginRepository>
             <id>ns-plugin-repo</id>
             <name>na-plugin-repository</name>
@@ -172,21 +180,24 @@
                 <enabled>true</enabled>
             </releases>
         </pluginRepository>
+
+        <pluginRepository>
+            <id>repsy</id>
+            <name>repsy</name>
+            <url>https://repo.repsy.io/mvn/tombensve/natusoft-os</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </pluginRepository>
+
     </pluginRepositories>
 
     <dependencies>
-        <!--
-                <dependency>
-                    <groupId>org.apache.groovy</groupId>
-                    <artifactId>groovy</artifactId>
-                    <version>${groovy-version}</version>
-                </dependency>
-        -->
 
         <dependency>
             <groupId>se.natusoft.annotation</groupId>
             <artifactId>docutations</artifactId>
-            <version>4.0.0</version>
+            <version>5.0.0</version>
             <scope>compile</scope>
         </dependency>
 
@@ -199,7 +210,7 @@
         <dependency>
             <groupId>se.natusoft.tools.toolbox</groupId>
             <artifactId>Modelish</artifactId>
-            <version>3.0.10</version>
+            <version>3.0.11</version>
         </dependency>
 
 
@@ -227,10 +238,18 @@
     -->
     <distributionManagement>
         <repository>
+            <id>repsy</id>
+            <name>repsy</name>
+            <url>https://repo.repsy.io/mvn/tombensve/natusoft-os</url>
+        </repository>
+
+<!--
+        <repository>
             <id>download.natusoft.se</id>
             <name>DownloadNatusoftSe-Seagull</name>
             <url>ftp://${maven.repo.upload}/${maven.base.path}</url>
         </repository>
+-->
     </distributionManagement>
 
     <build>
@@ -297,7 +316,7 @@
                 <plugin>
                     <groupId>se.natusoft.tools.codelicmgr</groupId>
                     <artifactId>CodeLicenseManager-maven-plugin</artifactId>
-                    <version>2.2.6</version>
+                    <version>${codeLicenceManagerVersion}</version>
                 </plugin>
 
                 <plugin>
@@ -326,6 +345,9 @@
                 Groovy 4 however supports much higher versions. It is easy to add version in NS-Toolbox,
                 but currently I see no reason. Professionally I have so far not seen anyone go higher
                 than 11 (as a consultant in Sweden), and I completely understand why!
+
+                Also note that this only needs to be here in the "top" pom! Any submodules will
+                not need this plugin specified, they will inherit this.
             -->
             <plugin>
                 <groupId>com.github.odavid.maven.plugins</groupId>
@@ -337,6 +359,7 @@
                         <mixin>
                             <groupId>se.natusoft.tools.toolbox</groupId>
                             <artifactId>groovy-build-mixin</artifactId>
+                            <!-- 'groovy-version' and 'byte-code' is defined higher up in this pom. -->
                             <version>1.0.0_G${groovy-version}-BC${byte-code}</version>
                         </mixin>
                     </mixins>
@@ -391,7 +414,7 @@
             <plugin>
                 <groupId>se.natusoft.tools.codelicmgr</groupId>
                 <artifactId>CodeLicenseManager-maven-plugin</artifactId>
-                <version>2.2.6</version>
+                <version>${codeLicenceManagerVersion}</version>
 
                 <inherited>true</inherited> <!-- Has no effect! -->
 
@@ -415,8 +438,7 @@
                             -->
                             <createLicensesMarkdown>true</createLicensesMarkdown>
                             <markdownTargetSubdir>lics</markdownTargetSubdir>
-                            <markdownLinkPrefix>https://github.com/tombensve/Seagull/blob/master/lics/
-                            </markdownLinkPrefix>
+                            <markdownLinkPrefix>https://github.com/tombensve/Seagull/blob/master/lics/</markdownLinkPrefix>
 
                         </configuration>
                     </execution>
@@ -460,8 +482,6 @@
             </plugin>
 
         </plugins>
-
-
 
     </build>
 
@@ -589,18 +609,18 @@
                             <dependency>
                                 <groupId>se.natusoft.tools.codelicmgr</groupId>
                                 <artifactId>CodeLicenseManager-licenses-common-opensource</artifactId>
-                                <version>2.2.4</version>
+                                <version>${codeLicenceManagerVersion}</version>
                             </dependency>
                             <dependency>
                                 <groupId>se.natusoft.tools.codelicmgr</groupId>
                                 <artifactId>CodeLicenseManager-source-updater-slashstar-comment
                                 </artifactId>
-                                <version>2.2.4</version>
+                                <version>${codeLicenceManagerVersion}</version>
                             </dependency>
                             <dependency>
                                 <groupId>se.natusoft.tools.codelicmgr</groupId>
                                 <artifactId>CodeLicenseManager-source-updater-html-xml</artifactId>
-                                <version>2.2.4</version>
+                                <version>${codeLicenceManagerVersion}</version>
                             </dependency>
                         </dependencies>
 

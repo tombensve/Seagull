@@ -42,13 +42,14 @@
 package se.natusoft.seagull.platform
 
 import groovy.transform.CompileStatic
-import se.natusoft.docutations.DT_Singleton
+import se.natusoft.docutations.DOC_Singleton
+
+@CompileStatic
 
 /**
  * This reads and writes JSON, and converts between Strings containing JSON and SGJson.
  */
-@CompileStatic
-@DT_Singleton
+@DOC_Singleton
 interface SGJsonIO {
 
     /**
@@ -57,7 +58,6 @@ interface SGJsonIO {
      */
     static SGJsonIO use = SGProviderLookup.find(SGJsonIO.class)
 
-
     /**
      * Read JSON.
      *
@@ -65,32 +65,31 @@ interface SGJsonIO {
      *
      * @return read JSON as Map<String, Object>.
      */
-    SGJson read(InputStream stream)
-
+    Map<String, Object> readJSONAsMap(InputStream stream)
 
     /**
-     * Write JSON from a Map representation.
+     * Write JSON..
      *
      * @param json The JSON content Map to write.
      * @param stream The stream to write to.
      */
-    void write(SGJson json, OutputStream stream)
+    void writeJSONMap(Map<String, Object> json, OutputStream stream)
 
     /**
-     * Converts the SGJson object into a String of JSON.
+     * Converts a Map<String, Object> object into a String of JSON.
      *
-     * @param SGJson sgJson
+     * @param Map<String, Object> json
      *
      * @return String
      */
-    String toString(SGJson sgJson)
+    String mapToJSONString(Map<String, Object> json)
 
     /**
      * Takes a 'String' of JSON and produces a SGJson instance.
      *
      * @param json JSON data in String format.
      *
-     * @return An SGJson object.
+     * @return A Map<String, Object> representation of the JSON.
      */
-    SGJson toJSON(String json)
+    Map<String, Object> jsonStringToMap(String json)
 }

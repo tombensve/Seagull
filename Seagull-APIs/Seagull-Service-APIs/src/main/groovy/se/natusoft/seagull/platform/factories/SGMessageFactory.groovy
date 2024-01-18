@@ -39,15 +39,33 @@
  *         2023-11-04: Created!
  *         
  */
-package se.natusoft.seagull.platform
+package se.natusoft.seagull.platform.factories
 
 import groovy.transform.CompileStatic
+import se.natusoft.docutations.DOC_Note
+import se.natusoft.docutations.DOC_Singleton
+import se.natusoft.seagull.platform.SGProviderLookup
+import se.natusoft.seagull.platform.models.SGMessage
 
 /**
- * This is a simple container for Seagull JSON data to simplify APIs a bit.
- *
- * Having an instance of this holding the JSON tree of Map<String, Object> makes it cleaner
- * in general to deal with this type, and in future easier to change how this type is handled.
+ * Provides a factory for creating SGRequest instances.
  */
 @CompileStatic
-interface SGJson extends Map<String, Object> {}
+@DOC_Singleton
+/**
+ * I decided to let SGMessage be an interface with a factory to create it for more options in how
+ * to provide it. That said, it does extends Cloneable from Modelish that provides `a _clone()` method.
+ *
+ */
+interface SGMessageFactory {
+
+    static final SGMessageFactory use = SGProviderLookup.find(SGMessageFactory.class) as SGMessageFactory
+
+    /**
+     * To create an instance do: `SGRequestFactory.use.newSGRequest()`
+     *
+     * @return a new SGMessage.
+     */
+    SGMessage newSGMessage()
+
+}

@@ -43,6 +43,8 @@ package se.natusoft.seagull.platform
 
 import groovy.transform.CompileStatic
 
+@CompileStatic
+
 /**
  * The Seagull-Platform jar mostly defines interfaces. Other jars has to be added
  * to the classpath that implements these interfaces. This class is used for looking
@@ -52,7 +54,6 @@ import groovy.transform.CompileStatic
  *
  * Wrapping ServiceLoader like this is probably a bit of "overkill" ...
  */
-@CompileStatic
 class SGProviderLookup<T> {
 
     /**

@@ -42,9 +42,11 @@
 package se.natusoft.seagull.platform
 
 import groovy.transform.CompileStatic
-import se.natusoft.seagull.platform.models.SGCall
-import se.natusoft.seagull.platform.models.SGResult
-import se.natusoft.seagull.platform.models.SGServiceId
+import se.natusoft.seagull.exceptions.SGException
+import se.natusoft.seagull.platform.models.SGMessage
+import se.natusoft.seagull.platform.models.SGMessageType
+
+@CompileStatic
 
 /**
  * <p>
@@ -56,22 +58,22 @@ import se.natusoft.seagull.platform.models.SGServiceId
  *   An instance of an implementation of this will be provided to each SGService implementation.
  * </p>
  */
-@CompileStatic
 interface SGPlatform {
 
     /**
      * This should be used to provide a service.
      *
-     * @param serviceName Name of service to register.
-     * @param version The version of the service. Different versions can co-exist.
-     * @param backwardsCompatible true if current version is backwards compatible.
-     *        You should always strive for being backwards compatible. This is for
-     *        cases where that is not possible.
-     * @param handler
+     * @param messageType The type of the message that this service handles (by name, version).
+     * @param serviceProvider The handler of the service, which will produce a return message,
+     *        which will be passed back to the caller.
      */
-    void registerService(
-            SGServiceId sgServiceId,
-            Closure<SGServiceId> serviceHandler
+    SGPlatform registerService(
+            SGMessageType messageType,
+            SGServiceProvider serviceImpl // Only way to declare both argument and return value!!!
+            // Cast a groovy closure that takes and returns an SGMessage.
+            // That said, this also allows Java code to call this!
+
+            //Closure<SGMessage> serviceProvider // (SGMessage message)
     )
 
     /**
@@ -79,15 +81,15 @@ interface SGPlatform {
      *
      * @param serviceReg The same SGServiceReg passed to registerService(...).
      */
-    void unregisterService(
-            SGServiceId serviceId
+    SGPlatform unregisterService(
+            SGMessageType messageType
     )
 
     /**
      * Calls a service
      *
-     * @param sgCall Data for the service call.
+     * @param message Data for the service call.
      */
-    SGResult callService(SGCall sgCall)
+    SGPlatform sendMessage(SGMessage message, Closure<SGMessage> responseHandler) throws SGException
 
 }

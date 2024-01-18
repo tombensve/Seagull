@@ -54,13 +54,6 @@
     <artifactId>Seagull-Service-APIs</artifactId>
     <version>1.0.0</version>
 
-    <developers>
-        <developer>
-            <name>Tommy Bengt Svensson</name>
-            <email>tommy@natusoft.se</email>
-        </developer>
-    </developers>
-
     <dependencies>
     </dependencies>
 

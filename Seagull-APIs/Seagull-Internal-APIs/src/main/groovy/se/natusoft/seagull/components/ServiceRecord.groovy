@@ -42,58 +42,31 @@
 package se.natusoft.seagull.components
 
 import groovy.transform.CompileStatic
-import se.natusoft.docutations.DT_InternalAPI
 import se.natusoft.tools.modelish.Cloneable
+import se.natusoft.tools.modelish.ModelishModel
+import se.natusoft.tools.modelish.ModelishProperty
+
+@CompileStatic
 
 /**
- * Model for a specific service record.
+ * Represents information about a specific service.
+ *
+ * This model is a way to represent a service from implementation perspective.
+ * It is completely internal and does not need to be used at all in an implementation,
+ * but this data needs to be managed somehow.
  */
-@CompileStatic
-@DT_InternalAPI
+@ModelishModel
 interface ServiceRecord extends Cloneable<ServiceRecord> {
 
-    /**
-     * Provides a name of the service.
-     *
-     * @param name The name to set.
-     *
-     * @return self.
-     */
+    @ModelishProperty(name="serviceName")
     ServiceRecord serviceName(String name)
-
-    /**
-     * @return Service name.
-     */
     String getServiceName()
 
-    /**
-     * Sets the version of the service.
-     *
-     * @param version The version to set.
-     *
-     * @return self.
-     */
+    @ModelishProperty(name = "serviceVersion")
     ServiceRecord serviceVersion(float version)
-
-    /**
-     * @return The service version.
-     */
     float getServiceVersion()
 
-    /**
-     * Provides a set of locations where service is running.
-     *
-     * Do note here that depending on implementations an URL might not be usable. But it sits on information
-     * that can be extracted and used to a TCP connection.
-     *
-     * @param serviceLocations Provides a set of service locations, or an empty list.
-     *
-     * @return self.
-     */
+    @ModelishProperty(name = "serviceLocations")
     ServiceRecord serviceLocations(List<URL> serviceLocations)
-
-    /**
-     * @return List of URLs to where service is available.
-     */
     List<URL> getServiceLocations()
 }

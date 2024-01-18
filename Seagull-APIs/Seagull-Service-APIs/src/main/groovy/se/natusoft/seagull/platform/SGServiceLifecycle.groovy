@@ -52,7 +52,7 @@ import groovy.transform.CompileStatic
  * services.
  */
 @CompileStatic
-interface SGService {
+interface SGServiceLifecycle {
 
     /**
      * Initializes the service and provides an instance of SGPlatform which is used to interact

@@ -28,7 +28,12 @@ It is about information flying around between different services, triggering thi
 **NOTE:** This is my reboot / rethinking of my APS project and is like APS a playground where I'm having fun, and
 stimulating my brain.
 
-A sub goal is to keep things very simple, though not by pretending something is something it really isn't!
+My goal here is to
+
+- Follow sound principles.
+- Keep things as tiny as possible. Will be picky about what dependencies I pull in. This is a hard one!
+- Keep things as simple as possible (but not by pretending things are something it really isn't).
+- Make it easy to use.
 
 # Decisions
 

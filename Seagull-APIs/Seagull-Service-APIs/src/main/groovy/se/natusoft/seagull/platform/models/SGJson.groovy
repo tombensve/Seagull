@@ -1,5 +1,5 @@
-/*
- *
+/* 
+ * 
  * PROJECT
  *     Name
  *         Seagull-Service-APIs
@@ -34,28 +34,14 @@
  *     limitations under the License.
  *     
  * AUTHORS
- *     Tommy Svensson (tommy@natusoft.se)
+ *     tommy ()
  *         Changes:
- *         2014-03-08: Created!
- *
+ *         2023-11-04: Created!
+ *         
  */
-package se.natusoft.seagull.support.tuples
+package se.natusoft.seagull.platform.models
 
 import groovy.transform.CompileStatic
 
-/**
- * A tuple with three values.
- */
 @CompileStatic
-class Tuple3<T1, T2, T3> extends Tuple2<T1, T2> {
-
-    T3 t3
-
-    Tuple3() {}
-
-    Tuple3(T1 t1, T2 t2, T3 t3) {
-        super.t1 = t1
-        super.t2 = t2
-        this.t3 = t3
-    }
-}
+class SGJson extends LinkedHashMap<String, Object> {}

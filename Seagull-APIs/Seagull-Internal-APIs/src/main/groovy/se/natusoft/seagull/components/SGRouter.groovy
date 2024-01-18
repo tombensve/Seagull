@@ -42,50 +42,40 @@
 package se.natusoft.seagull.components
 
 import groovy.transform.CompileStatic
-import se.natusoft.docutations.DT_Singleton
 import se.natusoft.seagull.exceptions.SGNotFoundException
 import se.natusoft.seagull.platform.SGProviderLookup
-import se.natusoft.seagull.platform.models.SGCall
-import se.natusoft.seagull.platform.models.SGServiceId
+import se.natusoft.seagull.platform.models.SGMessage
+
+@CompileStatic
 
 /**
  * This is the one that knows about local and remote services! It can take a call and
  * pass it on to the best destination.
  *
- *   - Keeps track of local services.
- *   - Keeps track of remote services.
+ * This is internal API, users if Seagull will never see this! Thereby this not an absolute
+ * requirement to use. This just reflects my thinking in how to implement this.
+ *
+ * - Keeps track of local services.
+ * - Keeps track of remote services.
+ * - Keeps track of master router, which can be self!
  */
-@CompileStatic
-@DT_Singleton
 interface SGRouter {
-
-    /** Singleton instance of implementation. */
     SGRouter use = SGProviderLookup.find(SGRouter.class)
 
     /**
-     * @return All services available locally in same jar. These can be called without going out
-     *         on the network.
+     * Routes a call to a place where the service is available. This should
+     * first look locally in same JVM instance for the service, and if not
+     * found there call another instance on the network.
+     *
+     * @param serviceCall A SGServiceCall instance containing all information needed to do the call
+     *                    independent of actual protocol used over the network.
      */
-    List<SGServiceId> localServices()
+    SGMessage routeCall(SGMessage serviceCall) throws SGNotFoundException
 
     /**
-     * @return All Seagull services found on the network.
+     * @return true if this specific router instance is the master router. This status should be supplied
+     * by configuration. There should be only one master!!
      */
-    List<SGServiceId> externalServices()
-
-    /**
-     * Passes a call on to a service independent of where the service exists. If an implementation of
-     * the service is found locally in same jar file, then that is called. Otherwise a remote call
-     * over the network will be done.
-     *
-     * Again, note that Seagull does not return any data at all! The service handling the call will
-     * receive information about the caller, and if there are any information to supply the caller
-     * with, the receiver will make a call back to the calling service with that data when available.
-     * So there is no make call, wait for response.
-     *
-     * @param serviceCall An SGServiceCall instance containing all information needed to do the call
-     *        independent of actual protocol used over the network.
-     */
-    void routeCall(SGCall serviceCall) throws SGNotFoundException
+    boolean isMaster()
 
 }

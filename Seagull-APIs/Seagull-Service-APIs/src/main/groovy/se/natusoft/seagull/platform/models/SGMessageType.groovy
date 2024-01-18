@@ -45,40 +45,31 @@ import groovy.transform.CompileStatic
 import se.natusoft.tools.modelish.Cloneable
 import se.natusoft.tools.modelish.ModelishModel
 
-/**
- * Modelish model representing a specific service registration for registering
- * Seagull services. This is provided to each SGService implementation.
- */
 @CompileStatic
 
+/**
+ * Modelish model representing a specific message. Note that this does not in any way
+ * define the structure of the message! It only provides a unique type name, and version of it
+ * since it might change over time.
+ */
 @ModelishModel
-interface SGServiceId extends Cloneable<SGServiceId> {
+interface SGMessageType extends Cloneable<SGMessageType> {
 
-    // ==== messageType ==== //
     /**
-     * Sets name of the service
-     *
-     * @param messageType Sets the type of the message.
+     * @param typeId A unique "name" of a message type this represents.
      */
-    SGServiceId messageType(String messageType)
+    SGMessageType typeId(String typeId)
+    String getTypeId()
 
+    /**
+     * @param version The version of this message type.
+     */
+    SGMessageType version(float version)
+    float getVersion()
 
-    /** Gets the name of the service. */
-    String getMessageType()
-
-    // ==== ServiceVersion ==== //
-    /** sets the version of the service. */
-    SGServiceId messageVersion(int messageVersion)
-
-
-    /** Gets the name of the service. */
-    int getMessageVersion()
-
-
-    // ==== backwardsCompatible ==== //
-    /** Sets the backwards compatible flag of the service. */
-    SGServiceId backwardsCompatible(boolean backwardsCompatible)
-
-    /** Returns the backwards compatible flag of the service. */
-    boolean isBackwardsCompatible()
+    /**
+     * @param backwardsCompatible A float indicating version it is backwards compatible to.
+     */
+    SGMessageType backwardsCompatible(float to)
+    float isBackwardsCompatible()
 }
