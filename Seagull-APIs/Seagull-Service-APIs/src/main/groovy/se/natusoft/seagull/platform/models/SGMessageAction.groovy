@@ -2,7 +2,7 @@
  * 
  * PROJECT
  *     Name
- *         Seagull-Internal-APIs
+ *         Seagull-Service-APIs
  *     
  *     Description
  *         Seagull - Intended to be a very simplistic service platform.
@@ -36,37 +36,26 @@
  * AUTHORS
  *     tommy ()
  *         Changes:
- *         2023-12-05: Created!
+ *         2023-11-20: Created!
  *         
  */
-package se.natusoft.seagull.components
+package se.natusoft.seagull.platform.models
 
 import groovy.transform.CompileStatic
-import se.natusoft.tools.modelish.Cloneable
-import se.natusoft.tools.modelish.ModelishModel
-import se.natusoft.tools.modelish.ModelishProperty
 
 @CompileStatic
 
 /**
- * Represents information about a specific service.
- *
- * This model is a way to represent a service from implementation perspective.
- * It is completely internal and does not need to be used at all in an implementation,
- * but this data needs to be managed somehow.
+ * Indicates the action to perform.
  */
-@ModelishModel
-interface ServiceRecord extends Cloneable<ServiceRecord> {
+enum SGMessageAction {
 
-    @ModelishProperty(name="serviceName")
-    ServiceRecord serviceName(String name)
-    String getServiceName()
+    // Out
+    Create,
+    Read,
+    Update,
+    Delete,
 
-    @ModelishProperty(name = "serviceVersion")
-    ServiceRecord serviceVersion(float version)
-    float getServiceVersion()
-
-    @ModelishProperty(name = "serviceLocations")
-    ServiceRecord serviceLocations(List<URL> serviceLocations)
-    List<URL> getServiceLocations()
+    // Return
+    Response
 }

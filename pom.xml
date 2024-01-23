@@ -73,7 +73,7 @@
 
     <modules>
         <module>Seagull-APIs</module>
-        <module>Seagull-Implementations</module>
+        <module>Seagull-Providers</module>
         <!--module>Seagull-test-and-sample-services</module-->
     </modules>
 
@@ -197,7 +197,7 @@
         <dependency>
             <groupId>se.natusoft.annotation</groupId>
             <artifactId>docutations</artifactId>
-            <version>5.0.0</version>
+            <version>5.0.1</version>
             <scope>compile</scope>
         </dependency>
 

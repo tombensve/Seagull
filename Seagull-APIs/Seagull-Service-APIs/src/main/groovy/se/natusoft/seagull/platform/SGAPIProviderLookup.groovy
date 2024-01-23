@@ -36,21 +36,49 @@
  * AUTHORS
  *     tommy ()
  *         Changes:
- *         2023-11-20: Created!
+ *         2023-11-04: Created!
  *         
  */
-package se.natusoft.seagull.platform.models
+package se.natusoft.seagull.platform
 
 import groovy.transform.CompileStatic
 
-/**
- * Indicates the action to perform.
- */
 @CompileStatic
-enum SGMsgAction {
-    Create,
-    Read,
-    Update,
-    Delete,
-    Response
+
+/**
+ * The Seagull-Platform jar mostly defines interfaces. Other jars has to be added
+ * to the classpath that implements these interfaces. This class is used for looking
+ * up an implementation of a specified interface.
+ *
+ * All implementations should be annotated with Googles '@AutoService'.
+ *
+ * Wrapping ServiceLoader like this is probably a bit of "overkill" ...
+ */
+class SGAPIProviderLookup<T> {
+
+    /**
+     * Provides static method for loading a service specified by its interface class.
+     * This currently (and most probably always) returns an instance provided by the
+     * Java ServiceLoader class.
+     *
+     * @param api The interface class to get implementation for.
+     *
+     * @return An implementation of the API.
+     */
+    static <T> T find( Class<T> api ) {
+
+        (T) ServiceLoader.load( api ).findFirst().get()
+    }
+
+    /**
+     * Provides a static method fore finding all instances of providing implementations of the api.
+     *
+     * @param api The interface class to get the implementation for.
+     *
+     * @return All implementations of the API.
+     */
+    static <T> List<T> findAll( Class<T> api ) {
+
+        (List<T>) ServiceLoader.load( api ).asList()
+    }
 }

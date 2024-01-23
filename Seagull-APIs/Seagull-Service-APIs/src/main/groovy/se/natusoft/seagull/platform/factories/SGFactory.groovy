@@ -42,30 +42,37 @@
 package se.natusoft.seagull.platform.factories
 
 import groovy.transform.CompileStatic
-import se.natusoft.docutations.DOC_Note
 import se.natusoft.docutations.DOC_Singleton
-import se.natusoft.seagull.platform.SGProviderLookup
+import se.natusoft.seagull.platform.SGAPIProviderLookup
 import se.natusoft.seagull.platform.models.SGMessage
+import se.natusoft.seagull.platform.models.SGMessageType
+
+@CompileStatic
 
 /**
  * Provides a factory for creating SGRequest instances.
  */
-@CompileStatic
 @DOC_Singleton
 /**
  * I decided to let SGMessage be an interface with a factory to create it for more options in how
- * to provide it. That said, it does extends Cloneable from Modelish that provides `a _clone()` method.
+ * to provide it. That said, it does extends Cloneable from Modelish that provides a `_clone()` method.
  *
+ * __Example__
+ *
+ *      SGFactory.use.newSGMessage()
  */
-interface SGMessageFactory {
+interface SGFactory {
 
-    static final SGMessageFactory use = SGProviderLookup.find(SGMessageFactory.class) as SGMessageFactory
+    static final SGFactory use = SGAPIProviderLookup.find(SGFactory.class) as SGFactory
 
     /**
-     * To create an instance do: `SGRequestFactory.use.newSGRequest()`
-     *
      * @return a new SGMessage.
      */
     SGMessage newSGMessage()
+
+    /**
+     * @return a new SGMessageType.
+     */
+    SGMessageType newSGMessageType()
 
 }

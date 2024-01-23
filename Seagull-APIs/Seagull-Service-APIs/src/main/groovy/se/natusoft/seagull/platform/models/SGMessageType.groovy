@@ -42,6 +42,8 @@
 package se.natusoft.seagull.platform.models
 
 import groovy.transform.CompileStatic
+import se.natusoft.docutations.DOC_NotUnique
+import se.natusoft.seagull.platform.factories.SGFactory
 import se.natusoft.tools.modelish.Cloneable
 import se.natusoft.tools.modelish.ModelishModel
 
@@ -53,13 +55,31 @@ import se.natusoft.tools.modelish.ModelishModel
  * since it might change over time.
  */
 @ModelishModel
+@DOC_NotUnique
 interface SGMessageType extends Cloneable<SGMessageType> {
 
+    default final SGMessageType create() { SGFactory.use.newSGMessageType() }
+
     /**
+     * Try to make these quite unique! For example: "se.natusoft:MyService:User", that is include domain, or
+     * something other that will decrease chance of overlap. A String UUID will work, though it is
+     * good to have a name that makes sense.
+     *
+     * This is just an identification of what sent/received data looks like, but without having it
+     * defined in code. Such has to be documented somewhere and code that reads the _typeId_ need to
+     * know the contents structure implicitly from the name. A version is also supplied below to
+     * support multiple versions of the message.
+     *
+     *
+     *
+     * Also note that Seagull says nothing about protocol, how messages are transferred over the
+     * network! That is up to an implementation to decide. All services thereby need to use same
+     * implementation to talk to each other!
+     *
      * @param typeId A unique "name" of a message type this represents.
      */
-    SGMessageType typeId(String typeId)
-    String getTypeId()
+    SGMessageType id(String id)
+    String getId()
 
     /**
      * @param version The version of this message type.
@@ -70,6 +90,6 @@ interface SGMessageType extends Cloneable<SGMessageType> {
     /**
      * @param backwardsCompatible A float indicating version it is backwards compatible to.
      */
-    SGMessageType backwardsCompatible(float to)
-    float isBackwardsCompatible()
+    SGMessageType backwardsCompatible(boolean backwardsCompatible)
+    boolean isBackwardsCompatible()
 }

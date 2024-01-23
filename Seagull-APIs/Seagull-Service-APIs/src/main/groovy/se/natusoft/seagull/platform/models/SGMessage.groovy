@@ -42,6 +42,7 @@
 package se.natusoft.seagull.platform.models
 
 import groovy.transform.CompileStatic
+import se.natusoft.seagull.platform.factories.SGFactory
 import se.natusoft.tools.modelish.Cloneable
 import se.natusoft.tools.modelish.ModelishModel
 
@@ -68,12 +69,7 @@ import se.natusoft.tools.modelish.ModelishModel
 @ModelishModel
 interface SGMessage extends Cloneable<SGMessage> {
 
-    /**
-     * @param id This should be set when sending a request message. The reply to
-     *           that message should have the same id. Other than that they are unique.
-     */
-    SGMessage id(String id)
-    String getId()
+    default final SGMessage create() { SGFactory.use.newSGMessage() }
 
     /**
      *
@@ -81,6 +77,13 @@ interface SGMessage extends Cloneable<SGMessage> {
      */
     SGMessage type(SGMessageType messageType)
     SGMessageType getType()
+
+    /**
+     * @param id This should be set when sending a request message. The reply to
+     *           that message should have the same id. Other than that they are unique.
+     */
+    SGMessage id(UUID id)
+    UUID getId()
 
     /**
      * @param broadcast If true then message will be sent to all services found listening to the message type.
@@ -92,12 +95,12 @@ interface SGMessage extends Cloneable<SGMessage> {
     /**
      * The action to for the call to perform.
      */
-    SGMessage action(SGMsgAction action)
-    SGMsgAction getAction()
+    SGMessage action(SGMessageAction action)
+    SGMessageAction getAction()
 
     /**
      * The actual message content.
      */
-    SGMessage content(Map<String, Object> content)
-    Map<String, Object> getContent()
+    SGMessage content(SGJson content)
+    SGJson getContent()
 }

@@ -42,6 +42,7 @@
 package se.natusoft.seagull.platform
 
 import groovy.transform.CompileStatic
+import se.natusoft.docutations.DOC_Unique
 import se.natusoft.seagull.exceptions.SGException
 import se.natusoft.seagull.platform.models.SGMessage
 import se.natusoft.seagull.platform.models.SGMessageType
@@ -49,31 +50,33 @@ import se.natusoft.seagull.platform.models.SGMessageType
 @CompileStatic
 
 /**
- * <p>
  *   This is an API for each Seagull service to use for providing service and for
  *   calling other services. Its intent is to be as easy/trivial as possible!
  *   That is, there is not a ton of options!
- * </p>
- * <p>
+ *
  *   An instance of an implementation of this will be provided to each SGService implementation.
- * </p>
+ *
  */
 interface SGPlatform {
 
     /**
      * This should be used to provide a service.
      *
+     * @param serviceName The name of the service.
      * @param messageType The type of the message that this service handles (by name, version).
      * @param serviceProvider The handler of the service, which will produce a return message,
      *        which will be passed back to the caller.
      */
     SGPlatform registerService(
+            @DOC_Unique
+            String serviceName,
+
             SGMessageType messageType,
-            SGServiceProvider serviceImpl // Only way to declare both argument and return value!!!
+
+            // Only way to declare both argument and return value!!!
             // Cast a groovy closure that takes and returns an SGMessage.
             // That said, this also allows Java code to call this!
-
-            //Closure<SGMessage> serviceProvider // (SGMessage message)
+            SGServiceProvider serviceImpl
     )
 
     /**
@@ -92,4 +95,13 @@ interface SGPlatform {
      */
     SGPlatform sendMessage(SGMessage message, Closure<SGMessage> responseHandler) throws SGException
 
+    /**
+     * Calls a service
+     *
+     * @param message Data for the service call.
+     * @param respTimeoutMilli Response timeout.
+     * @param responseHandler The handler to call with response.
+     */
+    SGPlatform sendMessage(SGMessage message, int respTimeoutMilli, Closure<SGMessage> responseHandler)
+            throws SGException
 }

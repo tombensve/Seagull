@@ -44,4 +44,36 @@ package se.natusoft.seagull.platform.models
 import groovy.transform.CompileStatic
 
 @CompileStatic
-class SGJson extends LinkedHashMap<String, Object> {}
+
+/**
+ * I like to have a JSON object that represents a JSON structure. That said, this is
+ * just a `Map<String, Object>` and can be treated as such. The actual implementation
+ * is handled by LinkedHashMap.
+ *
+ * In other words, this is just cosmetics :-). But I do think that "SGJson" looks much
+ * better as a type than "Map<String, Object>" does!
+ */
+class SGJson extends LinkedHashMap<String, Object> implements Map<String, Object> {
+
+    /**
+     * 'Creates a new, empty SGJson instance.
+     */
+    SGJson() {}
+
+    /**
+     * Creates a new SGJson with provided data.
+     *
+     * @param data to include from start.
+     */
+    SGJson(Map<String, Object> data) {
+        this.putAll(data)
+    }
+
+    String toString() {
+        // TODO: convert JSON structure to actual JSON as a String.
+    }
+
+    static SGJson fromString(String json) {
+        // TODO: Convert JSON string into map.
+    }
+}

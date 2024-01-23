@@ -43,7 +43,7 @@ package se.natusoft.seagull.components
 
 import groovy.transform.CompileStatic
 import se.natusoft.seagull.exceptions.SGNotFoundException
-import se.natusoft.seagull.platform.SGProviderLookup
+import se.natusoft.seagull.platform.SGAPIProviderLookup
 import se.natusoft.seagull.platform.models.SGMessage
 
 @CompileStatic
@@ -60,7 +60,7 @@ import se.natusoft.seagull.platform.models.SGMessage
  * - Keeps track of master router, which can be self!
  */
 interface SGRouter {
-    SGRouter use = SGProviderLookup.find(SGRouter.class)
+    SGRouter use = SGAPIProviderLookup.find(SGRouter.class)
 
     /**
      * Routes a call to a place where the service is available. This should
