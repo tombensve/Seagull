@@ -42,8 +42,6 @@
 package se.natusoft.seagull.platform.models
 
 import groovy.transform.CompileStatic
-import se.natusoft.docutations.DOC_NotUnique
-import se.natusoft.seagull.platform.factories.SGFactory
 import se.natusoft.tools.modelish.Cloneable
 import se.natusoft.tools.modelish.ModelishModel
 
@@ -55,7 +53,6 @@ import se.natusoft.tools.modelish.ModelishModel
  * since it might change over time.
  */
 @ModelishModel
-@DOC_NotUnique
 interface SGMessageType extends Cloneable<SGMessageType> {
 
     default final SGMessageType create() { SGFactory.use.newSGMessageType() }
@@ -70,26 +67,32 @@ interface SGMessageType extends Cloneable<SGMessageType> {
      * know the contents structure implicitly from the name. A version is also supplied below to
      * support multiple versions of the message.
      *
+     * It is of course possible to define interface models like this one for each message type!
+     * I'm just not making it an absolute requirement. That would be rather messy. That said I would
+     * personally create models for my clients and services to use for cleaner and more readable
+     * code.
      *
+     * In Groovy this information could also be provided as:
+     * ["id": "SampleType", "version":1.2f, "backwardsCompatible":true]
      *
      * Also note that Seagull says nothing about protocol, how messages are transferred over the
      * network! That is up to an implementation to decide. All services thereby need to use same
      * implementation to talk to each other!
      *
-     * @param typeId A unique "name" of a message type this represents.
+     * @param id A unique "name" of a message type this represents.
      */
-    SGMessageType id(String id)
+    SGMessageType setId(String id)
     String getId()
 
     /**
      * @param version The version of this message type.
      */
-    SGMessageType version(float version)
+    SGMessageType setVersion(float version)
     float getVersion()
 
     /**
      * @param backwardsCompatible A float indicating version it is backwards compatible to.
      */
-    SGMessageType backwardsCompatible(boolean backwardsCompatible)
+    SGMessageType setBackwardsCompatible(boolean backwardsCompatible)
     boolean isBackwardsCompatible()
 }

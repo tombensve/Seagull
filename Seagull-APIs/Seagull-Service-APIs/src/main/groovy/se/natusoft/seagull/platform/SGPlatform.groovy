@@ -76,7 +76,7 @@ interface SGPlatform {
             // Only way to declare both argument and return value!!!
             // Cast a groovy closure that takes and returns an SGMessage.
             // That said, this also allows Java code to call this!
-            SGServiceProvider serviceImpl
+            SGServiceProvider serviceProvider
     )
 
     /**
@@ -91,9 +91,12 @@ interface SGPlatform {
     /**
      * Calls a service
      *
-     * @param message Data for the service call.
+     * @param name The name of the service to call.
+     * @param message Data to pass to the called service.
+     *
+     * @return The response message.
      */
-    SGPlatform sendMessage(SGMessage message, Closure<SGMessage> responseHandler) throws SGException
+    SGMessage callService(String serviceName, SGMessage message) throws SGException
 
     /**
      * Calls a service
@@ -102,6 +105,5 @@ interface SGPlatform {
      * @param respTimeoutMilli Response timeout.
      * @param responseHandler The handler to call with response.
      */
-    SGPlatform sendMessage(SGMessage message, int respTimeoutMilli, Closure<SGMessage> responseHandler)
-            throws SGException
+     SGMessage callService(String serviceName, SGMessage message, int respTimeoutMilli) throws SGException
 }

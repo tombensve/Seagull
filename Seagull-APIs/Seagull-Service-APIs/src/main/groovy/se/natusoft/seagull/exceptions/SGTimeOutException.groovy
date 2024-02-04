@@ -36,43 +36,20 @@
  * AUTHORS
  *     tommy ()
  *         Changes:
- *         2023-11-04: Created!
+ *         2023-11-28: Created!
  *         
  */
-package se.natusoft.seagull.platform.factories
+package se.natusoft.seagull.exceptions
 
 import groovy.transform.CompileStatic
-import se.natusoft.docutations.DOC_Singleton
-import se.natusoft.seagull.platform.SGAPIProviderLookup
-import se.natusoft.seagull.platform.models.SGMessage
-import se.natusoft.seagull.platform.models.SGMessageType
 
+/**
+ * A General Not found exception.
+ */
 @CompileStatic
+class SGTimeOutException extends SGException {
 
-/**
- * Provides a factory for creating SGRequest instances.
- */
-@DOC_Singleton
-/**
- * I decided to let SGMessage be an interface with a factory to create it for more options in how
- * to provide it. That said, it does extends Cloneable from Modelish that provides a `_clone()` method.
- *
- * __Example__
- *
- *      SGFactory.use.newSGMessage()
- */
-interface SGFactory {
-
-    static final SGFactory use = SGAPIProviderLookup.find(SGFactory.class) as SGFactory
-
-    /**
-     * @return a new SGMessage.
-     */
-    SGMessage newSGMessage()
-
-    /**
-     * @return a new SGMessageType.
-     */
-    SGMessageType newSGMessageType()
-
+    SGTimeOutException(String message = "[No message!]", Throwable cause = new RuntimeException("[Unknown cause!]")) {
+        super(message, cause)
+    }
 }
