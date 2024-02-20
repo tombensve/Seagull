@@ -39,33 +39,45 @@
  *         2023-11-04: Created!
  *         
  */
-package se.natusoft.seagull.platform.factories
+package se.natusoft.seagull.platform
 
 import groovy.transform.CompileStatic
-import se.natusoft.docutations.DOC_Note
-import se.natusoft.docutations.DOC_Singleton
-import se.natusoft.seagull.platform.SGProviderLookup
-import se.natusoft.seagull.platform.models.SGMessage
 
 /**
- * Provides a factory for creating SGRequest instances.
+ * The Seagull-Platform jar mostly defines interfaces. Other jars has to be added
+ * to the classpath that implements these interfaces. This class is used for looking
+ * up an implementation of a specified interface.
+ *
+ * All implementations should be annotated with Googles '@AutoService'.
+ *
+ * Wrapping ServiceLoader like this is probably a bit of "overkill" ...
  */
 @CompileStatic
-@DOC_Singleton
-/**
- * I decided to let SGMessage be an interface with a factory to create it for more options in how
- * to provide it. That said, it does extends Cloneable from Modelish that provides `a _clone()` method.
- *
- */
-interface SGMessageFactory {
-
-    static final SGMessageFactory use = SGProviderLookup.find(SGMessageFactory.class) as SGMessageFactory
+class SGAPIProviderLookup<T> {
 
     /**
-     * To create an instance do: `SGRequestFactory.use.newSGRequest()`
+     * Provides static method for loading a service specified by its interface class.
+     * This currently (and most probably always) returns an instance provided by the
+     * Java ServiceLoader class.
      *
-     * @return a new SGMessage.
+     * @param api The interface class to get implementation for.
+     *
+     * @return An implementation of the API.
      */
-    SGMessage newSGMessage()
+    static <T> T find( Class<T> api ) {
 
+        (T) ServiceLoader.load( api ).findFirst().get()
+    }
+
+    /**
+     * Provides a static method fore finding all instances of providing implementations of the api.
+     *
+     * @param api The interface class to get the implementation for.
+     *
+     * @return All implementations of the API.
+     */
+    static <T> List<T> findAll( Class<T> api ) {
+
+        (List<T>) ServiceLoader.load( api ).asList()
+    }
 }

@@ -73,7 +73,7 @@
 
     <modules>
         <module>Seagull-APIs</module>
-        <module>Seagull-Implementations</module>
+        <module>Seagull-Providers</module>
         <!--module>Seagull-test-and-sample-services</module-->
     </modules>
 
@@ -86,7 +86,7 @@
             This sets up the version of Groovy and what byte code to produce.
             This is used by the mixin-maven-plugin below.
         -->
-        <groovy-version>4.0.17</groovy-version>
+        <groovy-version>4.0.18</groovy-version>
         <byte-code>11</byte-code>
 
         <!--
@@ -197,7 +197,7 @@
         <dependency>
             <groupId>se.natusoft.annotation</groupId>
             <artifactId>docutations</artifactId>
-            <version>5.0.0</version>
+            <version>5.0.1</version>
             <scope>compile</scope>
         </dependency>
 
@@ -210,7 +210,7 @@
         <dependency>
             <groupId>se.natusoft.tools.toolbox</groupId>
             <artifactId>Modelish</artifactId>
-            <version>3.0.11</version>
+            <version>3.0.12</version>
         </dependency>
 
 
@@ -366,6 +366,47 @@
                 </configuration>
             </plugin>
 
+            <!--
+                Copy relevant license files to target on install.
+            -->
+            <plugin>
+                <groupId>se.natusoft.tools.codelicmgr</groupId>
+                <artifactId>CodeLicenseManager-maven-plugin</artifactId>
+                <version>${codeLicenceManagerVersion}</version>
+
+                <inherited>true</inherited> <!-- Has no effect! -->
+
+                <executions>
+                    <execution>
+                        <id>install-licence-info</id>
+                        <goals>
+                            <goal>install</goal>
+                        </goals>
+                        <phase>install</phase>
+                        <configuration>
+
+                            <installOptions>
+                                <verbose>true</verbose>
+                                <licenseDir>target/license</licenseDir>
+                                <thirdpartyLicenseDir>target/license/thirdparty</thirdpartyLicenseDir>
+                            </installOptions>
+
+                            <!--
+                                Here we add those that are not auto resolved.
+                            -->
+                            <createLicensesMarkdown>true</createLicensesMarkdown>
+                            <markdownTargetSubdir>lics</markdownTargetSubdir>
+                            <markdownLinkPrefix>https://github.com/tombensve/Seagull/blob/master/lics/</markdownLinkPrefix>
+
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!--
+              Standard maven plugins
+            -->
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -404,43 +445,6 @@
                         <goals>
                             <goal>jar-no-fork</goal>
                         </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <!--
-                Copy relevant license files to target on install.
-            -->
-            <plugin>
-                <groupId>se.natusoft.tools.codelicmgr</groupId>
-                <artifactId>CodeLicenseManager-maven-plugin</artifactId>
-                <version>${codeLicenceManagerVersion}</version>
-
-                <inherited>true</inherited> <!-- Has no effect! -->
-
-                <executions>
-                    <execution>
-                        <id>install-licence-info</id>
-                        <goals>
-                            <goal>install</goal>
-                        </goals>
-                        <phase>install</phase>
-                        <configuration>
-
-                            <installOptions>
-                                <verbose>true</verbose>
-                                <licenseDir>target/license</licenseDir>
-                                <thirdpartyLicenseDir>target/license/thirdparty</thirdpartyLicenseDir>
-                            </installOptions>
-
-                            <!--
-                                Here we add those that are not auto resolved.
-                            -->
-                            <createLicensesMarkdown>true</createLicensesMarkdown>
-                            <markdownTargetSubdir>lics</markdownTargetSubdir>
-                            <markdownLinkPrefix>https://github.com/tombensve/Seagull/blob/master/lics/</markdownLinkPrefix>
-
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>

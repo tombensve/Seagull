@@ -56,7 +56,7 @@ interface SGJsonIO {
      * This instance will be provided by what ever implementation is available on
      * the classpath at runtime.
      */
-    static SGJsonIO use = SGProviderLookup.find(SGJsonIO.class)
+    static SGJsonIO use = SGAPIProviderLookup.find(SGJsonIO.class)
 
     /**
      * Read JSON.
@@ -65,7 +65,7 @@ interface SGJsonIO {
      *
      * @return read JSON as Map<String, Object>.
      */
-    Map<String, Object> readJSONAsMap(InputStream stream)
+    SGJson readJSon(InputStream stream)
 
     /**
      * Write JSON..
@@ -73,23 +73,6 @@ interface SGJsonIO {
      * @param json The JSON content Map to write.
      * @param stream The stream to write to.
      */
-    void writeJSONMap(Map<String, Object> json, OutputStream stream)
+    void writeJSONMap(SGJson json, OutputStream stream)
 
-    /**
-     * Converts a Map<String, Object> object into a String of JSON.
-     *
-     * @param Map<String, Object> json
-     *
-     * @return String
-     */
-    String mapToJSONString(Map<String, Object> json)
-
-    /**
-     * Takes a 'String' of JSON and produces a SGJson instance.
-     *
-     * @param json JSON data in String format.
-     *
-     * @return A Map<String, Object> representation of the JSON.
-     */
-    Map<String, Object> jsonStringToMap(String json)
 }

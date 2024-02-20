@@ -36,40 +36,20 @@
  * AUTHORS
  *     tommy ()
  *         Changes:
- *         2023-11-04: Created!
+ *         2023-11-28: Created!
  *         
  */
-package se.natusoft.seagull.platform.models
+package se.natusoft.seagull.exceptions
 
 import groovy.transform.CompileStatic
-import se.natusoft.tools.modelish.Cloneable
-import se.natusoft.tools.modelish.ModelishModel
-
-@CompileStatic
 
 /**
- * Modelish model representing a specific message. Note that this does not in any way
- * define the structure of the message! It only provides a unique type name, and version of it
- * since it might change over time.
+ * A General Not found exception.
  */
-@ModelishModel
-interface SGMessageType extends Cloneable<SGMessageType> {
+@CompileStatic
+class SGTimeOutException extends SGException {
 
-    /**
-     * @param typeId A unique "name" of a message type this represents.
-     */
-    SGMessageType typeId(String typeId)
-    String getTypeId()
-
-    /**
-     * @param version The version of this message type.
-     */
-    SGMessageType version(float version)
-    float getVersion()
-
-    /**
-     * @param backwardsCompatible A float indicating version it is backwards compatible to.
-     */
-    SGMessageType backwardsCompatible(float to)
-    float isBackwardsCompatible()
+    SGTimeOutException(String message = "[No message!]", Throwable cause = new RuntimeException("[Unknown cause!]")) {
+        super(message, cause)
+    }
 }

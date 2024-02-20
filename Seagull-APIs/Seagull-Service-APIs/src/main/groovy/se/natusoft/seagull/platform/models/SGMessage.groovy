@@ -42,8 +42,10 @@
 package se.natusoft.seagull.platform.models
 
 import groovy.transform.CompileStatic
-import se.natusoft.tools.modelish.Cloneable
+
+import se.natusoft.tools.modelish.Modelish
 import se.natusoft.tools.modelish.ModelishModel
+import se.natusoft.tools.modelish.ModelishProperty
 
 @CompileStatic
 
@@ -62,42 +64,55 @@ import se.natusoft.tools.modelish.ModelishModel
  * can relatively easy be converted to JSON. So it is possible to make a Modelish
  * model of the JSON content also. This API will however deliver it as a
  * ` Map<String,Object>`, but this can be set on a Modelish model reflecting
- * the same structure. Seagull leaves this upp to the service implementer how
- * to handle this.
+ * the same structure. Seagull leaves this upp to implementations to handle.
  */
 @ModelishModel
-interface SGMessage extends Cloneable<SGMessage> {
+interface SGMessage extends SGModel<SGMessage> {
 
     /**
-     * @param id This should be set when sending a request message. The reply to
-     *           that message should have the same id. Other than that they are unique.
-     */
-    SGMessage id(String id)
-    String getId()
-
-    /**
+     * Convenience! Use: SGMessage.FACTORY._create().setId("...") ...
      *
-     * @param messageType  A unique type name identifying the message content, how to interpret it.
+     * This will also default broadcast to false.
      */
-    SGMessage type(SGMessageType messageType)
-    SGMessageType getType()
+    static final SGMessage FACTORY = Modelish.create(SGMessage.class)
 
-    /**
-     * @param broadcast If true then message will be sent to all services found listening to the message type.
-     */
-    SGMessage broadcast(boolean broadcast)
-    boolean isBroadcast()
+    // ======== Common for all messages ======== //
 
-    // I don't like this name, but have not been able to come up with something better!
-    /**
-     * The action to for the call to perform.
-     */
-    SGMessage action(SGMsgAction action)
-    SGMsgAction getAction()
+    @ModelishProperty(name = "messageId", desc = [
+            "This should be set when sending a request message. The reply to",
+            "that message should have the same id. Other than that they are unique.",
+            "Consider using an UUID in string format."
+    ])
+    SGMessage setMessageId(String id)
 
-    /**
-     * The actual message content.
-     */
-    SGMessage content(Map<String, Object> content)
+    String getMessageId()
+
+    @ModelishProperty(name = "responseToId", desc = [
+            "If this is a response message this will contain the id of the sent message ",
+            "this is a response to. This will be  null if not a response!"
+    ])
+    void setResponseToId(String id)
+
+    String getResponseToId()
+
+    @ModelishProperty(name = "operation", desc = "Create / Read / ...")
+    SGMessage setOperation(SGOperation operation)
+
+    SGOperation getOperation()
+
+    // ======== Specific message content ======== //
+
+    @ModelishProperty(
+            name = "content",
+            desc = [
+                    "The service functional message content. Do note that it is possible to do",
+                    "'._toMap() on a Modelish model.",
+                    "",
+                    "You can also create a model from a Map:",
+                    "Modelish.createFromMap( User.class as Class<Model>, userMap )"
+            ]
+    )
+    SGMessage setContent(Map<String, Object> content)
+
     Map<String, Object> getContent()
 }
