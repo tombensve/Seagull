@@ -45,7 +45,7 @@ import groovy.transform.CompileStatic
 
 /**
  * The base of all Seagull exceptions. Actually Seagull only defines this!
- * If any service implementation wants to subclass this and use,go ahead,
+ * If any service implementation wants to subclass this and use, go ahead,
  * but for the platform itself, this is it!
  *
  *     throw new SGException(message: "Something bad happened!", cause: somethingBadException)
@@ -73,7 +73,7 @@ class SGException extends RuntimeException {
     SGException() {}
 
     /**
-     * Creates a new _APSException_ instance.
+     * Creates a new SGException.
      *
      * @param message The exception message.
      */
@@ -82,7 +82,7 @@ class SGException extends RuntimeException {
     }
 
     /**
-     * Creates a new _APSException_ instance.
+     * Creates a new SGException.
      *
      * @param message The exception message.
      * @param cause The cause of this exception.
@@ -154,7 +154,7 @@ class SGException extends RuntimeException {
      */
     @Override
     synchronized Throwable getCause() {
-        hasCauses() ? this.causes.get(0) : new RuntimeException(("[Unknown cause!]"))
+        hasCauses() ? this.causes.last() : new RuntimeException(("[Unknown cause!]"))
     }
 
     /**

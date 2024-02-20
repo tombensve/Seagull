@@ -43,7 +43,6 @@ package se.natusoft.seagull.platform
 
 import groovy.transform.CompileStatic
 import se.natusoft.docutations.DOC_Singleton
-import se.natusoft.seagull.platform.models.SGJson
 
 @CompileStatic
 

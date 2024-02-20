@@ -2,7 +2,7 @@
  * 
  * PROJECT
  *     Name
- *         Seagull-Service-APIs
+ *         Seagull-Internal-APIs
  *     
  *     Description
  *         Seagull - Intended to be a very simplistic service platform.
@@ -34,39 +34,40 @@
  *     limitations under the License.
  *     
  * AUTHORS
- *     tommy
+ *     tommy ()
  *         Changes:
- *         2023-11-04: Created!
+ *         2023-12-05: Created!
  *         
  */
-package se.natusoft.seagull.platform
+package se.natusoft.seagull.models
 
 import groovy.transform.CompileStatic
+import se.natusoft.seagull.platform.models.SGModel
+import se.natusoft.tools.modelish.ModelishModel
+import se.natusoft.tools.modelish.ModelishProperty
+
+// >>>>> TODO: This is not generic! This is specific to an implementation!!!
 
 /**
- * Each Seagull "service" will implement this interface and it should be annotated with
- * googles @AutoService, unless you prefer doing it the hard way ...
+ * Represents information about a specific service.
  *
- * To be very clear, each Seagull service provider will implement this interface
- * and receive the SGServiceInteraction which it will use to register and unregister
- * services.
+ * This model is a way to represent a service from implementation perspective.
+ * It is completely internal and does not need to be used at all in an implementation,
+ * but this data needs to be managed somehow.
  */
+@ModelishModel
 @CompileStatic
-interface SGServiceLifecycle {
+interface ServiceRecord extends SGModel<ServiceRecord> {
 
-    /**
-     * Initializes the service and provides an instance of SGPlatform which is used to interact
-     * with the Seagull platform. Called on startup, and the sgPlatform instance should be saved
-     * locally.
-     *
-     * @param sgPlatform Used to call services and receive calls for service providers.
-     *        This should thereby be cached locally.
-     */
-    void startup(SGPlatform sgPlatform)
+    @ModelishProperty(name="serviceName")
+    ServiceRecord setServiceName(String name)
+    String getServiceName()
 
-    /**
-     * Called on shutdown. Any needed cleanup should be done here.
-     */
-    void shutdown()
+    @ModelishProperty(name = "serviceVersion")
+    ServiceRecord setServiceVersion(float version)
+    float getServiceVersion()
 
+    @ModelishProperty(name = "serviceLocations")
+    ServiceRecord setServiceLocations(List<URL> serviceLocations)
+    List<URL> getServiceLocations()
 }

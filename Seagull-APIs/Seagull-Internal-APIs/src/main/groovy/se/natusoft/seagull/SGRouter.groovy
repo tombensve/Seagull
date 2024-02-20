@@ -39,11 +39,12 @@
  *         2023-11-13: Created!
  *         
  */
-package se.natusoft.seagull.components
+package se.natusoft.seagull
 
 import groovy.transform.CompileStatic
+import se.natusoft.seagull.exceptions.SGException
 import se.natusoft.seagull.exceptions.SGNotFoundException
-import se.natusoft.seagull.platform.SGAPIProviderLookup
+import se.natusoft.seagull.platform.SGHandler
 import se.natusoft.seagull.platform.models.SGMessage
 
 @CompileStatic
@@ -60,17 +61,53 @@ import se.natusoft.seagull.platform.models.SGMessage
  * - Keeps track of master router, which can be self!
  */
 interface SGRouter {
-    SGRouter use = SGAPIProviderLookup.find(SGRouter.class)
 
     /**
      * Routes a call to a place where the service is available. This should
      * first look locally in same JVM instance for the service, and if not
      * found there call another instance on the network.
      *
-     * @param serviceCall A SGServiceCall instance containing all information needed to do the call
-     *                    independent of actual protocol used over the network.
+     * @param target The name of the service to receive message.
+     * @paraqm source The name of the sender.
+     * @param message The actual message to send.
+     * @param responseHandler This will be called with a reply if not null.
+     * @throws SGNotFoundException if service cannot be found.
      */
-    SGMessage routeCall(SGMessage serviceCall) throws SGNotFoundException
+    void send(SGMessage message, SGHandler<SGMessage> responseHandler)
+            throws SGNotFoundException
+
+    /**
+     * Just sends a message without expecting a result.
+     *
+     * @param targetName The name of the service to receive message.
+     * @param message The actual message to send.
+     *
+     * @throws SGNotFoundException if service cannot be found.
+     */
+    void send(String targetName, SGMessage message) throws SGException
+
+    /**
+     *
+     * @param message
+     *
+     * @throws SGException
+     */
+    void broadcast(SGMessage message) throws SGException
+
+    /**
+     * Registers a listener of messages using a unique name.
+     *
+     * @param targetName The name to use to send a message to this listener.
+     * @param messageListener The handler to service sent messages.
+     */
+    void registerListener(String targetName, SGHandler<SGMessage> messageListener)
+
+    /**
+     * Stop listening on messages for targetName.
+     *
+     * @param targetName Stop listening to messages from this target.
+     */
+    void unregisterListener(String targetName)
 
     /**
      * @return true if this specific router instance is the master router. This status should be supplied

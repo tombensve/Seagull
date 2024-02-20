@@ -43,8 +43,9 @@ package se.natusoft.seagull.platform.models
 
 import groovy.transform.CompileStatic
 
-import se.natusoft.tools.modelish.Cloneable
+import se.natusoft.tools.modelish.Modelish
 import se.natusoft.tools.modelish.ModelishModel
+import se.natusoft.tools.modelish.ModelishProperty
 
 @CompileStatic
 
@@ -66,49 +67,52 @@ import se.natusoft.tools.modelish.ModelishModel
  * the same structure. Seagull leaves this upp to implementations to handle.
  */
 @ModelishModel
-interface SGMessage extends Cloneable<SGMessage> {
-
-    default final SGMessage create() { SGFactory.use.newSGMessage() }
+interface SGMessage extends SGModel<SGMessage> {
 
     /**
+     * Convenience! Use: SGMessage.FACTORY._create().setId("...") ...
      *
-     * @param messageType  A unique type name identifying the message content, how to interpret it.
+     * This will also default broadcast to false.
      */
-    SGMessage setType(SGMessageType messageType)
-    SGMessageType getType()
+    static final SGMessage FACTORY = Modelish.create(SGMessage.class)
 
-    /**
-     * @param id This should be set when sending a request message. The reply to
-     *           that message should have the same id. Other than that they are unique.
-     *           Consider using an UUID in string format.
-     */
-    SGMessage setId(String id)
-    String getId()
+    // ======== Common for all messages ======== //
 
-    /**
-     * When broadcast is true then a call will be made to every known instance of that service, and
-     * every called service will possibly have a response. Each response will then be returned as a
-     * List of responses.
-     *
-     * Actually all responses should be a List, and in most cases there will only be one
-     * entry in it. So if broadcast is true there might be more than one response.
-     * Implementations must be able handle this. The KISS rule applies!!
-     *
-     * @param broadcast If true then message will be sent to all services found listening to the message type.
-     */
-    SGMessage setBroadcast(boolean broadcast)
-    boolean isBroadcast()
+    @ModelishProperty(name = "messageId", desc = [
+            "This should be set when sending a request message. The reply to",
+            "that message should have the same id. Other than that they are unique.",
+            "Consider using an UUID in string format."
+    ])
+    SGMessage setMessageId(String id)
 
-    // I don't like this name, but have not been able to come up with something better!
-    /**
-     * The action to for the call to perform.
-     */
-    SGMessage setAction(SGMessageAction action)
-    SGMessageAction getAction()
+    String getMessageId()
 
-    /**
-     * The actual message content.
-     */
-    SGMessage setContent(SGJson content)
-    SGJson getContent()
+    @ModelishProperty(name = "responseToId", desc = [
+            "If this is a response message this will contain the id of the sent message ",
+            "this is a response to. This will be  null if not a response!"
+    ])
+    void setResponseToId(String id)
+
+    String getResponseToId()
+
+    @ModelishProperty(name = "operation", desc = "Create / Read / ...")
+    SGMessage setOperation(SGOperation operation)
+
+    SGOperation getOperation()
+
+    // ======== Specific message content ======== //
+
+    @ModelishProperty(
+            name = "content",
+            desc = [
+                    "The service functional message content. Do note that it is possible to do",
+                    "'._toMap() on a Modelish model.",
+                    "",
+                    "You can also create a model from a Map:",
+                    "Modelish.createFromMap( User.class as Class<Model>, userMap )"
+            ]
+    )
+    SGMessage setContent(Map<String, Object> content)
+
+    Map<String, Object> getContent()
 }
