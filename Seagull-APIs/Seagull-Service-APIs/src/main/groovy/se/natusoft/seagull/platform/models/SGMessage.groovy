@@ -42,12 +42,11 @@
 package se.natusoft.seagull.platform.models
 
 import groovy.transform.CompileStatic
-
+import se.natusoft.docutations.DOC_NotNull
+import se.natusoft.docutations.DOC_Nullable
 import se.natusoft.tools.modelish.Modelish
 import se.natusoft.tools.modelish.ModelishModel
 import se.natusoft.tools.modelish.ModelishProperty
-
-@CompileStatic
 
 /**
  * Represents data needed to call a service.
@@ -67,17 +66,30 @@ import se.natusoft.tools.modelish.ModelishProperty
  * the same structure. Seagull leaves this upp to implementations to handle.
  */
 @ModelishModel
+@CompileStatic
 interface SGMessage extends SGModel<SGMessage> {
 
+    // No empty messages!
+    static final Map<String, Object> DEF_CONTENT = ["Oops!": "No content provided!"] as Map<String, Object>
+
     /**
-     * Convenience! Use: SGMessage.FACTORY._create().setId("...") ...
-     *
-     * This will also default broadcast to false.
+     * Convenience! Use: SGMessage msg = SGMessage.FACTORY.setMessageType("MorseCode")....
      */
     static final SGMessage FACTORY = Modelish.create(SGMessage.class)
+            .setMessageId(UUID.randomUUID().toString())
+            .setContent(DEF_CONTENT)
 
-    // ======== Common for all messages ======== //
+    //                               PROPERTIES                                             //
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
+    @ModelishProperty(name = "messageType", desc = "Identifies the content.")
+    setMessageType(String type)
+
+    getMessageType()
+
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+
+    @DOC_NotNull
     @ModelishProperty(name = "messageId", desc = [
             "This should be set when sending a request message. The reply to",
             "that message should have the same id. Other than that they are unique.",
@@ -87,6 +99,9 @@ interface SGMessage extends SGModel<SGMessage> {
 
     String getMessageId()
 
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+
+    @DOC_Nullable("If you don't expect a response!")
     @ModelishProperty(name = "responseToId", desc = [
             "If this is a response message this will contain the id of the sent message ",
             "this is a response to. This will be  null if not a response!"
@@ -95,13 +110,17 @@ interface SGMessage extends SGModel<SGMessage> {
 
     String getResponseToId()
 
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+
+    @DOC_NotNull
     @ModelishProperty(name = "operation", desc = "Create / Read / ...")
     SGMessage setOperation(SGOperation operation)
 
     SGOperation getOperation()
 
-    // ======== Specific message content ======== //
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
+    @DOC_NotNull
     @ModelishProperty(
             name = "content",
             desc = [

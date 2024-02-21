@@ -43,6 +43,7 @@ package se.natusoft.seagull.platform
 
 import groovy.transform.CompileStatic
 import se.natusoft.docutations.DOC_Singleton
+import se.natusoft.seagull.platform.models.SGModel
 
 @CompileStatic
 
@@ -59,6 +60,11 @@ interface SGJsonIO {
     static SGJsonIO use = SGAPIProviderLookup.find(SGJsonIO.class)
 
     /**
+     * @return a new SGJson instance.
+     */
+    SGJson newSGJson()
+
+    /**
      * Read JSON.
      *
      * @param stream The stream to read from.
@@ -68,11 +74,27 @@ interface SGJsonIO {
     SGJson readJSon(InputStream stream)
 
     /**
+     * Read JSON data into an SGModel.
+     *
+     * @param stream
+     * @return
+     */
+    SGModel readJSONAsSGModel(Class<SGModel>modelClass, InputStream stream)
+
+    /**
      * Write JSON..
      *
      * @param json The JSON content Map to write.
      * @param stream The stream to write to.
      */
-    void writeJSONMap(SGJson json, OutputStream stream)
+    void writeJSON(SGJson json, OutputStream stream)
+
+    /**
+     * Write an SGModel as JSON.
+     *
+     * @param sgModel The model to write.
+     * @param stream The stream to write to.
+     */
+    void writeJSONFromModel(SGModel sgModel, OutputStream stream)
 
 }

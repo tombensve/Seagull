@@ -73,21 +73,20 @@ interface SGRouter {
      * @param responseHandler This will be called with a reply if not null.
      * @throws SGNotFoundException if service cannot be found.
      */
-    void send(SGMessage message, SGHandler<SGMessage> responseHandler)
-            throws SGNotFoundException
+    void send(String target, SGMessage message, SGHandler<SGMessage> responseHandler) throws SGNotFoundException
 
     /**
      * Just sends a message without expecting a result.
      *
-     * @param targetName The name of the service to receive message.
+     * @param target The name of the service to receive message.
      * @param message The actual message to send.
      *
      * @throws SGNotFoundException if service cannot be found.
      */
-    void send(String targetName, SGMessage message) throws SGException
+    void send(String target, SGMessage message) throws SGException
 
     /**
-     *
+     * Broadcasts a message on the network
      * @param message
      *
      * @throws SGException
