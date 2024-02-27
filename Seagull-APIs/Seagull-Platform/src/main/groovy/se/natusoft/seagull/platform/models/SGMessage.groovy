@@ -2,7 +2,7 @@
  * 
  * PROJECT
  *     Name
- *         Seagull-Service-APIs
+ *         Seagull-SPlatform
  *     
  *     Description
  *         Seagull - Intended to be a very simplistic service platform.

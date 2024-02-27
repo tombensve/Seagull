@@ -2,7 +2,7 @@
  * 
  * PROJECT
  *     Name
- *         Seagull-Internal-APIs
+ *         Seagull-Platform
  *     
  *     Description
  *         Seagull - Intended to be a very simplistic service platform.
@@ -36,38 +36,20 @@
  * AUTHORS
  *     tommy ()
  *         Changes:
- *         2023-12-05: Created!
+ *         2023-11-28: Created!
  *         
  */
-package se.natusoft.seagull.models
+package se.natusoft.seagull.exceptions
 
 import groovy.transform.CompileStatic
-import se.natusoft.seagull.platform.models.SGModel
-import se.natusoft.tools.modelish.ModelishModel
-import se.natusoft.tools.modelish.ModelishProperty
-
-// >>>>> TODO: This is not generic! This is specific to an implementation!!!
 
 /**
- * Represents information about a specific service.
- *
- * This model is a way to represent a service from implementation perspective.
- * It is completely internal and does not need to be used at all in an implementation,
- * but this data needs to be managed somehow.
+ * A General Not found exception.
  */
-@ModelishModel
 @CompileStatic
-interface ServiceRecord extends SGModel<ServiceRecord> {
+class SGTimeOutException extends SGException {
 
-    @ModelishProperty(name="serviceName")
-    ServiceRecord setServiceName(String name)
-    String getServiceName()
-
-    @ModelishProperty(name = "serviceVersion")
-    ServiceRecord setServiceVersion(float version)
-    float getServiceVersion()
-
-    @ModelishProperty(name = "serviceLocations")
-    ServiceRecord setServiceLocations(List<URL> serviceLocations)
-    List<URL> getServiceLocations()
+    SGTimeOutException(String message = "[No message!]", Throwable cause = new RuntimeException("[Unknown cause!]")) {
+        super(message, cause)
+    }
 }

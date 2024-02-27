@@ -39,7 +39,7 @@
  *         2023-11-13: Created!
  *         
  */
-package se.natusoft.seagull
+package se.natusoft.seagull.platform
 
 import groovy.transform.CompileStatic
 import se.natusoft.seagull.exceptions.SGException
@@ -63,6 +63,18 @@ import se.natusoft.seagull.platform.models.SGMessage
 interface SGRouter {
 
     /**
+     * Run when router starts.
+     *
+     * @throws SGException on any failure.
+     */
+    void startup() throws SGException
+
+    /**
+     * Called on shutdown.
+     */
+    void shutdown()
+
+    /**
      * Routes a call to a place where the service is available. This should
      * first look locally in same JVM instance for the service, and if not
      * found there call another instance on the network.
@@ -78,12 +90,12 @@ interface SGRouter {
     /**
      * Just sends a message without expecting a result.
      *
-     * @param target The name of the service to receive message.
+     * @param serviceName The name of the service to receive message.
      * @param message The actual message to send.
      *
      * @throws SGNotFoundException if service cannot be found.
      */
-    void send(String target, SGMessage message) throws SGException
+    void send(String serviceName, SGMessage message) throws SGException
 
     /**
      * Broadcasts a message on the network
@@ -96,17 +108,17 @@ interface SGRouter {
     /**
      * Registers a listener of messages using a unique name.
      *
-     * @param targetName The name to use to send a message to this listener.
+     * @param serviceName The name to use to send a message to this listener.
      * @param messageListener The handler to service sent messages.
      */
-    void registerListener(String targetName, SGHandler<SGMessage> messageListener)
+    void registerService(String serviceName, SGHandler<SGMessage> messageListener)
 
     /**
      * Stop listening on messages for targetName.
      *
      * @param targetName Stop listening to messages from this target.
      */
-    void unregisterListener(String targetName)
+    void unregisterService(String targetName)
 
     /**
      * @return true if this specific router instance is the master router. This status should be supplied

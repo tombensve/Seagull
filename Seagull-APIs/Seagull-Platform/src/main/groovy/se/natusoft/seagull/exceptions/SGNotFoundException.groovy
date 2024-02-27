@@ -2,7 +2,7 @@
  * 
  * PROJECT
  *     Name
- *         Seagull-Service-APIs
+ *         Seagull-Platform
  *     
  *     Description
  *         Seagull - Intended to be a very simplistic service platform.
@@ -36,48 +36,20 @@
  * AUTHORS
  *     tommy ()
  *         Changes:
- *         2023-11-04: Created!
+ *         2023-11-28: Created!
  *         
  */
-package se.natusoft.seagull.platform
+package se.natusoft.seagull.exceptions
 
 import groovy.transform.CompileStatic
 
 /**
- * The Seagull-Platform jar mostly defines interfaces. Other jars has to be added
- * to the classpath that implements these interfaces. This class is used for looking
- * up an implementation of a specified interface.
- *
- * All implementations should be annotated with Googles '@AutoService'.
- *
- * Wrapping ServiceLoader like this is probably a bit of "overkill" ...
+ * A General Not found exception.
  */
 @CompileStatic
-class SGAPIProviderLookup<T> {
+class SGNotFoundException extends SGException {
 
-    /**
-     * Provides static method for loading a service specified by its interface class.
-     * This currently (and most probably always) returns an instance provided by the
-     * Java ServiceLoader class.
-     *
-     * @param api The interface class to get implementation for.
-     *
-     * @return An implementation of the API.
-     */
-    static <T> T find( Class<T> api ) {
-
-        (T) ServiceLoader.load( api ).findFirst().get()
-    }
-
-    /**
-     * Provides a static method fore finding all instances of providing implementations of the api.
-     *
-     * @param api The interface class to get the implementation for.
-     *
-     * @return All implementations of the API.
-     */
-    static <T> List<T> findAll( Class<T> api ) {
-
-        (List<T>) ServiceLoader.load( api ).asList()
+    SGNotFoundException(String message = "Lazy Developer!", Throwable cause = new RuntimeException("Unknown cause!")) {
+        super(message, cause)
     }
 }

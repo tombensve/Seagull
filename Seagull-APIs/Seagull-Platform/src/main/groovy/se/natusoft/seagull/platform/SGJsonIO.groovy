@@ -2,7 +2,7 @@
  * 
  * PROJECT
  *     Name
- *         Seagull-Service-APIs
+ *         Seagull-Platform
  *     
  *     Description
  *         Seagull - Intended to be a very simplistic service platform.
@@ -43,6 +43,7 @@ package se.natusoft.seagull.platform
 
 import groovy.transform.CompileStatic
 import se.natusoft.docutations.DOC_Singleton
+import se.natusoft.seagull.platform.loaders.SGAPILoader
 import se.natusoft.seagull.platform.models.SGModel
 
 @CompileStatic
@@ -57,7 +58,7 @@ interface SGJsonIO {
      * This instance will be provided by what ever implementation is available on
      * the classpath at runtime.
      */
-    static SGJsonIO use = SGAPIProviderLookup.find(SGJsonIO.class)
+    static SGJsonIO use = SGAPILoader.find(SGJsonIO.class)
 
     /**
      * @return a new SGJson instance.
@@ -79,7 +80,7 @@ interface SGJsonIO {
      * @param stream
      * @return
      */
-    SGModel readJSONAsSGModel(Class<SGModel>modelClass, InputStream stream)
+    <T> SGModel<T> readJSONAsSGModel(SGModel<T>model, InputStream stream)
 
     /**
      * Write JSON..
@@ -95,6 +96,6 @@ interface SGJsonIO {
      * @param sgModel The model to write.
      * @param stream The stream to write to.
      */
-    void writeJSONFromModel(SGModel sgModel, OutputStream stream)
+    void writeSGModelAdJSONl(SGModel sgModel, OutputStream stream)
 
 }

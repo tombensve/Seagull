@@ -2,7 +2,7 @@
  * 
  * PROJECT
  *     Name
- *         Seagull-Service-APIs
+ *         Seagull-Platform
  *     
  *     Description
  *         Seagull - Intended to be a very simplistic service platform.
@@ -44,12 +44,12 @@ package se.natusoft.seagull.exceptions
 import groovy.transform.CompileStatic
 
 /**
- * A General Not found exception.
+ * This is thrown when no route to asked for services can be found!
  */
 @CompileStatic
-class SGNotFoundException extends SGException {
+class SGRouteNotFountException extends SGNotFoundException {
 
-    SGNotFoundException(String message = "[No message!]", Throwable cause = new RuntimeException("[Unknown cause!]")) {
+    SGRouteNotFountException(String message, Throwable cause = null) {
         super(message, cause)
     }
 }

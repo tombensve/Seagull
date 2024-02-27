@@ -63,8 +63,7 @@
     </build>
 
     <modules>
-        <module>Seagull-Internal-APIs</module>
-        <module>Seagull-Service-APIs</module>
+        <module>Seagull-Platform</module>
     </modules>
 
 </project>

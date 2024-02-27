@@ -3,7 +3,7 @@
     
     PROJECT
         Name
-            Seagull-Internal-APIs
+            Seagull-Platform
         
         Description
             Seagull - Intended to be a very simplistic service platform.
@@ -37,8 +37,8 @@
     AUTHORS
         tommy ()
             Changes:
-            2023-11-12: Created!
-            
+            2023-11-04: Created!
+
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -51,23 +51,20 @@
         <version>1.0.0</version>
     </parent>
 
-    <artifactId>Seagull-Internal-APIs</artifactId>
+    <artifactId>Seagull-Platform</artifactId>
     <version>1.0.0</version>
 
     <dependencies>
-        <!--
-            This is the minimum dependency that most Seagull jars will need.
-        -->
         <dependency>
-            <groupId>se.natusoft.seagull</groupId>
-            <artifactId>Seagull-Service-APIs</artifactId>
-            <version>1.0.0</version>
+            <groupId>se.natusoft.annotation</groupId>
+            <artifactId>docutations</artifactId>
+            <version>5.0.1</version>
         </dependency>
-
     </dependencies>
 
-
     <build>
+        <plugins>
+        </plugins>
     </build>
 
 </project>
