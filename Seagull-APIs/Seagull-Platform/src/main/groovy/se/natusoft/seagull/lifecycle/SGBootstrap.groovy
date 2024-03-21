@@ -1,9 +1,8 @@
 package se.natusoft.seagull.lifecycle
 
-
-import se.natusoft.seagull.platform.loaders.SGAPILoader
 import se.natusoft.seagull.platform.SGRouter
 import se.natusoft.seagull.platform.SGService
+import se.natusoft.seagull.platform.loaders.SGAPILoader
 
 /**
  * This boots up an instance of Seagull!
@@ -17,9 +16,9 @@ import se.natusoft.seagull.platform.SGService
 class SGBootstrap {
 
     // There should only be one SGRouter available per jar file!!
-    private static SGRouter router = SGAPILoader.find(SGRouter)
+    private static SGRouter router = SGAPILoader.find( SGRouter )
 
-    static void main(String[] args) {
+    static void main( String[] args ) {
         startup()
     }
 
@@ -38,8 +37,8 @@ class SGBootstrap {
 
         router.startup()
 
-        SGAPILoader.findAll(SGService.class).each { SGService service ->
-            service.startup(router)
+        SGAPILoader.findAll( SGService.class ).each { SGService service ->
+            service.startup( router )
         }
     }
 
@@ -50,8 +49,8 @@ class SGBootstrap {
      */
     static void shutdown() {
 
-        SGAPILoader.findAll(SGService.class).each { SGService service ->
-            service.shutdown(router)
+        SGAPILoader.findAll( SGService.class ).each { SGService service ->
+            service.shutdown( router )
         }
 
         router.shutdown()

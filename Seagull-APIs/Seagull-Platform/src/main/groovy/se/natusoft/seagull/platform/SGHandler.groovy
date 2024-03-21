@@ -8,7 +8,7 @@ import groovyjarjarantlr4.v4.runtime.misc.Nullable
  * In Groovy this can be implemented using a closure!! I'm defining it as an interface
  * like this to make it compatible with Java.
  *
- * @param <T> The type of the value.
+ * @param <T>     The type of the value.
  */
 interface SGHandler<T> {
     /**

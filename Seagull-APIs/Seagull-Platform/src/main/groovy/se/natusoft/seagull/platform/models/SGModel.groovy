@@ -21,6 +21,6 @@ import se.natusoft.tools.modelish.Factory
  * passed if wanted. Any model not part of the API can be whatever you want,
  * but that said I personally would not mix, but that is purely personal.
  *
- * @param <T> The model type.
+ * @param <T>     The model type.
  */
 interface SGModel<T> extends Factory<T> {}

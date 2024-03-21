@@ -40,12 +40,12 @@
 -->
 
 <!--
-    ===============================================================
-    |                                                              |
-    /    This code is currently a playground and should not be     \
-    \    used by anyone for anything else than playing around!     /
-    |                                                              |
-    ===============================================================
+    ===========================================================
+    |                                                          |
+    /    This code is currently a playground!                  \
+    \    There is nothing usable at all here yet!              /
+    |                                                          |
+    ===========================================================
 -->
 
 <!--suppress CheckValidXmlInScriptTagBody -->
@@ -157,11 +157,6 @@
     <repositories>
 
         <repository>
-            <id>ns-repo</id>
-            <name>ns-artifact-repository</name>
-            <url>https://download.natusoft.se/maven</url>
-        </repository>
-        <repository>
             <id>repsy</id>
             <name>My Private Maven Repository on Repsy</name>
             <url>https://repo.repsy.io/mvn/tombensve/natusoft-os</url>
@@ -170,15 +165,6 @@
     </repositories>
 
     <pluginRepositories>
-
-        <pluginRepository>
-            <id>ns-plugin-repo</id>
-            <name>na-plugin-repository</name>
-            <url>https://download.natusoft.se/maven</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-        </pluginRepository>
 
         <pluginRepository>
             <id>repsy</id>
@@ -201,15 +187,12 @@
         </dependency>
 
         <!--
-            I want to use my Modelish models. I'm going to use the JavaBean syntax due
-            to Groovy niceness in handling JavaBeans.
-
-            I'm trying to make this optional, but I'm not sure that will be possible.
+            I'm using my Modelish (NS-Toolbox/Modelish repo) for models.
         -->
         <dependency>
             <groupId>se.natusoft.tools.toolbox</groupId>
             <artifactId>Modelish</artifactId>
-            <version>3.0.12</version>
+            <version>3.2.2</version>
         </dependency>
 
 
@@ -229,12 +212,6 @@
 
     </dependencies>
 
-    <!--
-        The variables used here are in my personal setting.xml! I make binaries
-        available from my web server after bintray shut down.
-
-        See: https://github.com/tombensve/About
-    -->
     <distributionManagement>
         <repository>
             <id>repsy</id>
@@ -242,13 +219,6 @@
             <url>https://repo.repsy.io/mvn/tombensve/natusoft-os</url>
         </repository>
 
-<!--
-        <repository>
-            <id>download.natusoft.se</id>
-            <name>DownloadNatusoftSe-Seagull</name>
-            <url>ftp://${maven.repo.upload}/${maven.base.path}</url>
-        </repository>
--->
     </distributionManagement>
 
     <build>
@@ -287,12 +257,13 @@
                     <version>3.6.0</version>
                 </plugin>
 
+                <!--
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>build-helper-maven-plugin</artifactId>
                     <version>3.5.0</version>
                 </plugin>
-
+                -->
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -315,7 +286,7 @@
                 <plugin>
                     <groupId>se.natusoft.tools.codelicmgr</groupId>
                     <artifactId>CodeLicenseManager-maven-plugin</artifactId>
-                    <version>${codeLicenceManagerVersion}</version>
+                    <version>3.1.0</version>
                 </plugin>
 
                 <plugin>
@@ -340,7 +311,7 @@
 
                 ______________________________________________________________________________
 
-                There are currently only 8 and 11 available for bytecode version in NS-Toolbox.
+                There are currently only 8 11 available for bytecode version in NS-Toolbox.
                 Groovy 4 however supports much higher versions. It is easy to add version in NS-Toolbox,
                 but currently I see no reason. Professionally I have so far not seen anyone go higher
                 than 11 (as a consultant in Sweden), and I completely understand why!
@@ -371,7 +342,7 @@
             <plugin>
                 <groupId>se.natusoft.tools.codelicmgr</groupId>
                 <artifactId>CodeLicenseManager-maven-plugin</artifactId>
-                <version>${codeLicenceManagerVersion}</version>
+                <version>2.2.6</version>
 
                 <inherited>true</inherited> <!-- Has no effect! -->
 
@@ -395,7 +366,8 @@
                             -->
                             <createLicensesMarkdown>true</createLicensesMarkdown>
                             <markdownTargetSubdir>lics</markdownTargetSubdir>
-                            <markdownLinkPrefix>https://github.com/tombensve/Seagull/blob/master/lics/</markdownLinkPrefix>
+                            <markdownLinkPrefix>https://github.com/tombensve/Seagull/blob/master/lics/
+                            </markdownLinkPrefix>
 
                         </configuration>
                     </execution>
@@ -509,6 +481,7 @@
                     <plugin>
                         <groupId>se.natusoft.tools.doc.markdowndoc</groupId>
                         <artifactId>markdowndoc-maven-plugin</artifactId>
+                        <version>3.1.0</version>
 
                         <executions>
                             <execution>
@@ -539,7 +512,7 @@
                                         <generateTOC>true</generateTOC>
                                         <!-- The main.basedir is set above in directory-maven-plugin -->
                                         <!--suppress MavenModelInspection -->
-                                        <mss>${main.basedir}/APS-UserGuide/docs/docs-A4.mss</mss>
+                                        <mss>${main.basedir}/docs/Seagull-A4.mss</mss>
                                     </pdfGeneratorOptions>
 
                                 </configuration>

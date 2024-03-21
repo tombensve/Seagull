@@ -44,7 +44,6 @@ package se.natusoft.seagull.platform
 import groovy.transform.CompileStatic
 import se.natusoft.seagull.exceptions.SGException
 import se.natusoft.seagull.exceptions.SGNotFoundException
-import se.natusoft.seagull.platform.SGHandler
 import se.natusoft.seagull.platform.models.SGMessage
 
 @CompileStatic
@@ -53,12 +52,16 @@ import se.natusoft.seagull.platform.models.SGMessage
  * This is the one that knows about local and remote services! It can take a call and
  * pass it on to the best destination.
  *
- * This is internal API, users if Seagull will never see this! Thereby this not an absolute
- * requirement to use. This just reflects my thinking in how to implement this.
+ * This:
  *
- * - Keeps track of local services.
- * - Keeps track of remote services.
- * - Keeps track of master router, which can be self!
+ *     - Keeps track of local services.
+ *     - Keeps track of remote services.
+ *     - Keeps track of master router, which can be self!
+ *
+ * Should start with:
+ *
+ *    - Looking for a master router on the network, and if no such found then make itself master and
+ *      announce that. The how of this is upp to the implementation!
  */
 interface SGRouter {
 
@@ -85,7 +88,7 @@ interface SGRouter {
      * @param responseHandler This will be called with a reply if not null.
      * @throws SGNotFoundException if service cannot be found.
      */
-    void send(String target, SGMessage message, SGHandler<SGMessage> responseHandler) throws SGNotFoundException
+    void send( String target, SGMessage message, SGHandler<SGMessage> responseHandler ) throws SGNotFoundException
 
     /**
      * Just sends a message without expecting a result.
@@ -95,7 +98,7 @@ interface SGRouter {
      *
      * @throws SGNotFoundException if service cannot be found.
      */
-    void send(String serviceName, SGMessage message) throws SGException
+    void send( String serviceName, SGMessage message ) throws SGException
 
     /**
      * Broadcasts a message on the network
@@ -103,7 +106,7 @@ interface SGRouter {
      *
      * @throws SGException
      */
-    void broadcast(SGMessage message) throws SGException
+    void broadcast( SGMessage message ) throws SGException
 
     /**
      * Registers a listener of messages using a unique name.
@@ -111,18 +114,18 @@ interface SGRouter {
      * @param serviceName The name to use to send a message to this listener.
      * @param messageListener The handler to service sent messages.
      */
-    void registerService(String serviceName, SGHandler<SGMessage> messageListener)
+    void registerService( String serviceName, SGHandler<SGMessage> messageListener )
 
     /**
      * Stop listening on messages for targetName.
      *
      * @param targetName Stop listening to messages from this target.
      */
-    void unregisterService(String targetName)
+    void unregisterService( String targetName )
 
     /**
      * @return true if this specific router instance is the master router. This status should be supplied
-     * by configuration. There should be only one master!!
+     * by configuration if not resolved otherwise. There should be only one master!!
      */
     boolean isMaster()
 

@@ -58,7 +58,7 @@ interface SGJsonIO {
      * This instance will be provided by what ever implementation is available on
      * the classpath at runtime.
      */
-    static SGJsonIO use = SGAPILoader.find(SGJsonIO.class)
+    static SGJsonIO use = SGAPILoader.find( SGJsonIO.class )
 
     /**
      * @return a new SGJson instance.
@@ -72,7 +72,7 @@ interface SGJsonIO {
      *
      * @return read JSON as Map<String, Object>.
      */
-    SGJson readJSon(InputStream stream)
+    SGJson readJSon( InputStream stream )
 
     /**
      * Read JSON data into an SGModel.
@@ -80,7 +80,7 @@ interface SGJsonIO {
      * @param stream
      * @return
      */
-    <T> SGModel<T> readJSONAsSGModel(SGModel<T>model, InputStream stream)
+    <T> SGModel<T> readJSONAsSGModel( SGModel<T> model, InputStream stream )
 
     /**
      * Write JSON..
@@ -88,7 +88,7 @@ interface SGJsonIO {
      * @param json The JSON content Map to write.
      * @param stream The stream to write to.
      */
-    void writeJSON(SGJson json, OutputStream stream)
+    void writeJSON( SGJson json, OutputStream stream )
 
     /**
      * Write an SGModel as JSON.
@@ -96,6 +96,6 @@ interface SGJsonIO {
      * @param sgModel The model to write.
      * @param stream The stream to write to.
      */
-    void writeSGModelAdJSONl(SGModel sgModel, OutputStream stream)
+    void writeSGModelAsJSONl( SGModel sgModel, OutputStream stream )
 
 }

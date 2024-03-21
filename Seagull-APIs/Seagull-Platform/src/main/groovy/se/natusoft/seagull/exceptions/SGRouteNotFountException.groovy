@@ -49,7 +49,7 @@ import groovy.transform.CompileStatic
 @CompileStatic
 class SGRouteNotFountException extends SGNotFoundException {
 
-    SGRouteNotFountException(String message, Throwable cause = null) {
-        super(message, cause)
+    SGRouteNotFountException( String message, Throwable cause = null ) {
+        super( message, cause )
     }
 }

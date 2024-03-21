@@ -59,29 +59,29 @@ interface ServiceRecord extends SGModel<ServiceRecord> {
 
     // ≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈ //
 
-    @ModelishProperty(name = "serviceName")
-    ServiceRecord setServiceName(String name)
+    @ModelishProperty( name = "serviceName" )
+    ServiceRecord setServiceName( String name )
 
     String getServiceName()
 
     // ≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈ //
 
-    @ModelishProperty(name = "serviceVersion")
-    ServiceRecord setServiceVersion(float version)
+    @ModelishProperty( name = "serviceVersion" )
+    ServiceRecord setServiceVersion( float version )
 
     float getServiceVersion()
 
     // ≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈ //
 
-    @ModelishProperty(name = "serviceLocations",
+    @ModelishProperty( name = "serviceLocations",
             desc = [
                     "The URL type is just used to hold information. If the service uses an URL",
                     "then its an URL! If not both host and port and protocol can be specified,",
                     "no matter how connections actually are made. A URL can actually be used",
                     "to connect to any host/port no matter what data is transmitted over the",
                     "connection! So don't read to much into this URL!"
-            ])
-    ServiceRecord setServiceLocations(List<URL> serviceLocations)
+            ] )
+    ServiceRecord setServiceLocations( List<URL> serviceLocations )
 
     List<URL> getServiceLocations()
 
