@@ -100,6 +100,11 @@
         -->
         <projectVersion>1.0.0</projectVersion>
 
+        <!--
+            Dependency versions
+        -->
+        <codeLicenceManagerVersion>2.2.6</codeLicenceManagerVersion>
+
     </properties>
 
     <!--
@@ -381,7 +386,7 @@
 
                 ______________________________________________________________________________
 
-                There are currently only 8 11 available for bytecode version in NS-Toolbox.
+                There are currently only 8 and 11 available for bytecode version in NS-Toolbox.
                 Groovy 4 however supports much higher versions. It is easy to add version in NS-Toolbox,
                 but currently I see no reason. Professionally I have so far not seen anyone go higher
                 than 11 (as a consultant in Sweden), and I completely understand why!
