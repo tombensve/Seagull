@@ -77,7 +77,7 @@ class SGException extends RuntimeException {
      *
      * @param message The exception message.
      */
-    SGException(String message) {
+    SGException( String message ) {
         this.messageBuilder << message
     }
 
@@ -87,7 +87,7 @@ class SGException extends RuntimeException {
      * @param message The exception message.
      * @param cause The cause of this exception.
      */
-    SGException(String message, Throwable cause) {
+    SGException( String message, Throwable cause ) {
         this.messageBuilder << message
         this.causes << cause
     }
@@ -101,7 +101,7 @@ class SGException extends RuntimeException {
      *
      * @param text The text to add.
      */
-    SGException append(String text) {
+    SGException append( String text ) {
         this.messageBuilder << " "
         this.messageBuilder << text
 
@@ -114,8 +114,8 @@ class SGException extends RuntimeException {
      * @param text
      * @return self.
      */
-    SGException leftShift(String text) {
-        append(text)
+    SGException leftShift( String text ) {
+        append( text )
         this
     }
 
@@ -132,7 +132,7 @@ class SGException extends RuntimeException {
      *
      * @param cause The cause to add.
      */
-    SGException appendCause(Throwable cause) {
+    SGException appendCause( Throwable cause ) {
 
         this.causes << cause
         this
@@ -144,8 +144,8 @@ class SGException extends RuntimeException {
      * @param cause The exception to add.
      * @return self.
      */
-    SGException leftShift(Throwable cause) {
-        appendCause(cause)
+    SGException leftShift( Throwable cause ) {
+        appendCause( cause )
         this
     }
 
@@ -154,7 +154,7 @@ class SGException extends RuntimeException {
      */
     @Override
     synchronized Throwable getCause() {
-        hasCauses() ? this.causes.last() : new RuntimeException(("[Unknown cause!]"))
+        hasCauses() ? this.causes.last() : new RuntimeException( ( "[Unknown cause!]" ) )
     }
 
     /**

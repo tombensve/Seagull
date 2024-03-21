@@ -42,11 +42,11 @@
 package se.natusoft.seagull.platform.models
 
 import groovy.transform.CompileStatic
-import se.natusoft.docutations.DOC_NotNull
 import se.natusoft.docutations.DOC_Nullable
 import se.natusoft.tools.modelish.Modelish
 import se.natusoft.tools.modelish.ModelishModel
 import se.natusoft.tools.modelish.ModelishProperty
+import se.natusoft.tools.modelish.annotations.validations.NoNull
 
 /**
  * Represents data needed to call a service.
@@ -65,62 +65,63 @@ import se.natusoft.tools.modelish.ModelishProperty
  * ` Map<String,Object>`, but this can be set on a Modelish model reflecting
  * the same structure. Seagull leaves this upp to implementations to handle.
  */
-@ModelishModel
 @CompileStatic
+@ModelishModel
 interface SGMessage extends SGModel<SGMessage> {
-
-    // No empty messages!
-    static final Map<String, Object> DEF_CONTENT = ["Oops!": "No content provided!"] as Map<String, Object>
 
     /**
      * Convenience! Use: SGMessage msg = SGMessage.FACTORY.setMessageType("MorseCode")....
      */
-    static final SGMessage FACTORY = Modelish.create(SGMessage.class)
-            .setMessageId(UUID.randomUUID().toString())
-            .setContent(DEF_CONTENT)
+    static final SGMessage FACTORY = Modelish.create( SGMessage.class )
+            .setMessageId( UUID.randomUUID().toString() )
+            .setContent( [ "Oops!": "No content provided!" ] as Map<String, Object> )
 
     //                               PROPERTIES                                             //
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
-    @ModelishProperty(name = "messageType", desc = "Identifies the content.")
-    setMessageType(String type)
+    @ModelishProperty( name = "messageType", desc = "Identifies the content." )
+    @NoNull
+    setMessageType( String type )
 
     getMessageType()
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
-    @DOC_NotNull
-    @ModelishProperty(name = "messageId", desc = [
+    @ModelishProperty( name = "messageId", desc = [
             "This should be set when sending a request message. The reply to",
             "that message should have the same id. Other than that they are unique.",
-            "Consider using an UUID in string format."
-    ])
-    SGMessage setMessageId(String id)
+            "Consider using an UUID in string format.",
+            "",
+            "DO NOTE THAT THIS DO GET A DEFAULT RANDOM UUID BY DEFAULT! ONLY SET THIS",
+            "IF YOU INSIST ON PROVIDING OWN!"
+    ] )
+    @NoNull
+    SGMessage setMessageId( String id )
 
     String getMessageId()
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
-    @DOC_Nullable("If you don't expect a response!")
-    @ModelishProperty(name = "responseToId", desc = [
+    @DOC_Nullable( "If you don't expect a response!" )
+    @ModelishProperty( name = "responseToId", desc = [
             "If this is a response message this will contain the id of the sent message ",
             "this is a response to. This will be  null if not a response!"
-    ])
-    void setResponseToId(String id)
+    ] )
+    void setResponseToId( String id )
 
     String getResponseToId()
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
-    @DOC_NotNull
-    @ModelishProperty(name = "operation", desc = "Create / Read / ...")
-    SGMessage setOperation(SGOperation operation)
+    @ModelishProperty( name = "operation", desc = "Create / Read / ..." )
+    @NoNull
+    // Will be enforced by Modelish!
+    SGMessage setOperation( SGOperation operation )
 
     SGOperation getOperation()
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
-    @DOC_NotNull
     @ModelishProperty(
             name = "content",
             desc = [
@@ -131,7 +132,9 @@ interface SGMessage extends SGModel<SGMessage> {
                     "Modelish.createFromMap( User.class as Class<Model>, userMap )"
             ]
     )
-    SGMessage setContent(Map<String, Object> content)
+    @NoNull
+    // Will be enforced by Modelish!
+    SGMessage setContent( Map<String, Object> content )
 
     Map<String, Object> getContent()
 }

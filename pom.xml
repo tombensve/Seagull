@@ -40,12 +40,12 @@
 -->
 
 <!--
-    ===============================================================
-    |                                                              |
-    /    This code is currently a playground and should not be     \
-    \    used by anyone for anything else than playing around!     /
-    |                                                              |
-    ===============================================================
+    ===========================================================
+    |                                                          |
+    /    This code is currently a playground!                  \
+    \    There is nothing usable at all here yet!              /
+    |                                                          |
+    ===========================================================
 -->
 
 <!--suppress CheckValidXmlInScriptTagBody -->
@@ -100,11 +100,6 @@
         -->
         <projectVersion>1.0.0</projectVersion>
 
-        <!--
-            Dependency versions
-        -->
-        <codeLicenceManagerVersion>2.2.6</codeLicenceManagerVersion>
-
     </properties>
 
     <!--
@@ -157,11 +152,6 @@
     <repositories>
 
         <repository>
-            <id>ns-repo</id>
-            <name>ns-artifact-repository</name>
-            <url>https://download.natusoft.se/maven</url>
-        </repository>
-        <repository>
             <id>repsy</id>
             <name>My Private Maven Repository on Repsy</name>
             <url>https://repo.repsy.io/mvn/tombensve/natusoft-os</url>
@@ -170,15 +160,6 @@
     </repositories>
 
     <pluginRepositories>
-
-        <pluginRepository>
-            <id>ns-plugin-repo</id>
-            <name>na-plugin-repository</name>
-            <url>https://download.natusoft.se/maven</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-        </pluginRepository>
 
         <pluginRepository>
             <id>repsy</id>
@@ -191,25 +172,77 @@
 
     </pluginRepositories>
 
+    <dependencyManagement>
+        <dependencies>
+
+            <dependency>
+                <groupId>se.natusoft.tools.codelicmgr</groupId>
+                <artifactId>CodeLicenseManager-licenses-common-opensource</artifactId>
+                <version>2.2.6</version>
+            </dependency>
+
+            <dependency>
+                <groupId>se.natusoft.tools.codelicmgr</groupId>
+                <artifactId>CodeLicenseManager-source-updater-slashstar-comment</artifactId>
+                <version>2.2.6</version>
+            </dependency>
+
+            <dependency>
+                <groupId>se.natusoft.tools.codelicmgr</groupId>
+                <artifactId>CodeLicenseManager-source-updater-html-xml</artifactId>
+                <version>2.2.6</version>
+            </dependency>
+
+            <dependency>
+                <groupId>se.natusoft.annotation</groupId>
+                <artifactId>docutations</artifactId>
+                <version>5.0.1</version>
+            </dependency>
+
+            <!--
+                I'm using my Modelish (NS-Toolbox/Modelish repo) for models.
+            -->
+            <dependency>
+                <groupId>se.natusoft.tools.toolbox</groupId>
+                <artifactId>Modelish</artifactId>
+                <version>3.2.2</version>
+            </dependency>
+
+
+            <!--
+                For testing
+            -->
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-api</artifactId>
+                <version>5.10.1</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-engine</artifactId>
+                <version>5.10.1</version>
+                <scope>test</scope>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
 
         <dependency>
             <groupId>se.natusoft.annotation</groupId>
             <artifactId>docutations</artifactId>
-            <version>5.0.1</version>
             <scope>compile</scope>
         </dependency>
 
         <!--
-            I want to use my Modelish models. I'm going to use the JavaBean syntax due
-            to Groovy niceness in handling JavaBeans.
-
-            I'm trying to make this optional, but I'm not sure that will be possible.
+            I'm using my Modelish (NS-Toolbox/Modelish repo) for models.
         -->
         <dependency>
             <groupId>se.natusoft.tools.toolbox</groupId>
             <artifactId>Modelish</artifactId>
-            <version>3.0.12</version>
         </dependency>
 
 
@@ -217,24 +250,16 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>5.10.1</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.10.1</version>
             <scope>test</scope>
         </dependency>
 
     </dependencies>
 
-    <!--
-        The variables used here are in my personal setting.xml! I make binaries
-        available from my web server after bintray shut down.
-
-        See: https://github.com/tombensve/About
-    -->
     <distributionManagement>
         <repository>
             <id>repsy</id>
@@ -242,13 +267,6 @@
             <url>https://repo.repsy.io/mvn/tombensve/natusoft-os</url>
         </repository>
 
-<!--
-        <repository>
-            <id>download.natusoft.se</id>
-            <name>DownloadNatusoftSe-Seagull</name>
-            <url>ftp://${maven.repo.upload}/${maven.base.path}</url>
-        </repository>
--->
     </distributionManagement>
 
     <build>
@@ -267,6 +285,9 @@
         <pluginManagement>
 
             <plugins>
+
+                <!-- General plugins -->
+
                 <plugin>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.12.1</version>
@@ -293,7 +314,6 @@
                     <version>3.5.0</version>
                 </plugin>
 
-
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
@@ -312,10 +332,24 @@
                     <version>3.3.2</version>
                 </plugin>
 
+                <!-- Specific plugins -->
+
+                <plugin>
+                    <groupId>org.commonjava.maven.plugins</groupId>
+                    <artifactId>directory-maven-plugin</artifactId>
+                    <version>1.0</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.commonjava.maven.plugins</groupId>
+                    <artifactId>directory-maven-plugin</artifactId>
+                    <version>1.0</version>
+                </plugin>
+
                 <plugin>
                     <groupId>se.natusoft.tools.codelicmgr</groupId>
                     <artifactId>CodeLicenseManager-maven-plugin</artifactId>
-                    <version>${codeLicenceManagerVersion}</version>
+                    <version>2.2.6</version>
                 </plugin>
 
                 <plugin>
@@ -323,6 +357,13 @@
                     <artifactId>markdowndoc-maven-plugin</artifactId>
                     <version>3.1.0</version>
                 </plugin>
+
+                <plugin>
+                    <groupId>com.github.odavid.maven.plugins</groupId>
+                    <artifactId>mixin-maven-plugin</artifactId>
+                    <version>0.1-alpha-40</version>
+                </plugin>
+
 
             </plugins>
 
@@ -340,7 +381,7 @@
 
                 ______________________________________________________________________________
 
-                There are currently only 8 and 11 available for bytecode version in NS-Toolbox.
+                There are currently only 8 11 available for bytecode version in NS-Toolbox.
                 Groovy 4 however supports much higher versions. It is easy to add version in NS-Toolbox,
                 but currently I see no reason. Professionally I have so far not seen anyone go higher
                 than 11 (as a consultant in Sweden), and I completely understand why!
@@ -351,7 +392,6 @@
             <plugin>
                 <groupId>com.github.odavid.maven.plugins</groupId>
                 <artifactId>mixin-maven-plugin</artifactId>
-                <version>0.1-alpha-40</version>
                 <extensions>true</extensions>
                 <configuration>
                     <mixins>
@@ -371,8 +411,6 @@
             <plugin>
                 <groupId>se.natusoft.tools.codelicmgr</groupId>
                 <artifactId>CodeLicenseManager-maven-plugin</artifactId>
-                <version>${codeLicenceManagerVersion}</version>
-
                 <inherited>true</inherited> <!-- Has no effect! -->
 
                 <executions>
@@ -395,7 +433,8 @@
                             -->
                             <createLicensesMarkdown>true</createLicensesMarkdown>
                             <markdownTargetSubdir>lics</markdownTargetSubdir>
-                            <markdownLinkPrefix>https://github.com/tombensve/Seagull/blob/master/lics/</markdownLinkPrefix>
+                            <markdownLinkPrefix>https://github.com/tombensve/Seagull/blob/master/lics/
+                            </markdownLinkPrefix>
 
                         </configuration>
                     </execution>
@@ -409,7 +448,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.2.3</version>
             </plugin>
 
             <!--
@@ -421,22 +459,22 @@
             -->
             <plugin>
                 <artifactId>maven-install-plugin</artifactId>
-                <version>3.1.1</version>
                 <configuration>
                 </configuration>
             </plugin>
 
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.6.0</version>
             </plugin>
 
             <!--
                 Package sources.
             -->
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>3.3.0</version>
+
                 <executions>
                     <execution>
                         <id>attach-sources</id>
@@ -469,7 +507,6 @@
             <plugin>
                 <groupId>org.commonjava.maven.plugins</groupId>
                 <artifactId>directory-maven-plugin</artifactId>
-                <version>1.0</version>
                 <executions>
                     <execution>
                         <id>directories</id>
@@ -539,7 +576,7 @@
                                         <generateTOC>true</generateTOC>
                                         <!-- The main.basedir is set above in directory-maven-plugin -->
                                         <!--suppress MavenModelInspection -->
-                                        <mss>${main.basedir}/APS-UserGuide/docs/docs-A4.mss</mss>
+                                        <mss>${main.basedir}/docs/Seagull-A4.mss</mss>
                                     </pdfGeneratorOptions>
 
                                 </configuration>

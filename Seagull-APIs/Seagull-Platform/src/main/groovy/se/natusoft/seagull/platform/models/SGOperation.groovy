@@ -43,24 +43,24 @@ package se.natusoft.seagull.platform.models
 
 import groovy.transform.CompileStatic
 
- /**
-  * This is an enumish that can dynamically be added to at any time. If more constant:ish are added
-  * consider doing it in an own extension of this class! It is of course possible to use lookup("name") to
-  * get an instance, but it is more readable with a static constant.
-  *
-  * (American disclaimer: There were no sexual intent what so ever here!)
-  */
+/**
+ * This is an enumish that can dynamically be added to at any time. If more constant:ish are added
+ * consider doing it in an own extension of this class! It is of course possible to use lookup("name") to
+ * get an instance, but it is more readable with a static constant.
+ *
+ * (American disclaimer: There were no sexual intent what so ever here!)
+ */
 @CompileStatic
 class SGOperation {
 
     // These are static definitions of default operations. That said, you can create
     // more elsewhere, but you need to save them as constant instances elsewhere.
-    static final SGOperation Create = create("Create")
-    static final SGOperation Read = create("Read")
-    static final SGOperation Update = create("Update")
-    static final SGOperation Delete = create("Delete")
-    static final SGOperation Sync = create("Sync")
-    static final SGOperation Shutdown = create("Shutdown")
+    static final SGOperation Create = create( "Create" )
+    static final SGOperation Read = create( "Read" )
+    static final SGOperation Update = create( "Update" )
+    static final SGOperation Delete = create( "Delete" )
+    static final SGOperation Sync = create( "Sync" )
+    static final SGOperation Shutdown = create( "Shutdown" )
 
     // ================================================================================== //
 
@@ -71,8 +71,8 @@ class SGOperation {
      *
      * @param op The operation name.
      */
-    protected SGOperation(String op) {
-        OPS.put(op, this)
+    protected SGOperation( String op ) {
+        OPS.put( op, this )
     }
 
     /**
@@ -82,8 +82,8 @@ class SGOperation {
      *
      * @return created operation.
      */
-    static SGOperation create(String name) {
-        new SGOperation(name)
+    static SGOperation create( String name ) {
+        new SGOperation( name )
     }
 
     /**
@@ -92,8 +92,8 @@ class SGOperation {
      * @param name The name of the operation to lookup.
      * @return found operation or null if name does not match anything.
      */
-    static SGOperation lookup(String name) {
-        OPS.get(name)
+    static SGOperation lookup( String name ) {
+        OPS.get( name )
     }
 
     /**
@@ -104,7 +104,7 @@ class SGOperation {
      * @param o2 second operation to compare for equality
      * @return true or false.
      */
-    static boolean compare(SGOperation o1, SGOperation o2) {
+    static boolean compare( SGOperation o1, SGOperation o2 ) {
         o1 == o2
     }
 }
