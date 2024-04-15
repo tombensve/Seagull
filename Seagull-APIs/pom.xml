@@ -45,6 +45,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>se.natusoft.seagull</groupId>
     <artifactId>Seagull-APIs</artifactId>
     <version>1.0.0</version>
 
@@ -55,12 +56,6 @@
         <artifactId>Seagull</artifactId>
         <version>1.0.0</version>
     </parent>
-
-    <dependencies>
-    </dependencies>
-
-    <build>
-    </build>
 
     <modules>
         <module>Seagull-Internal-APIs</module>
