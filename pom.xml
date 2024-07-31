@@ -58,7 +58,7 @@
 
     <groupId>se.natusoft.seagull</groupId>
     <artifactId>Seagull</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.0-BC-11</version>
 
     <packaging>pom</packaging>
 
@@ -95,7 +95,7 @@
 
     <issueManagement>
         <system>github</system>
-        <url>https://github.com/tombensve/</url>
+        <url>https://github.com/tombensve/Seagull</url>
     </issueManagement>
 
     <licenses>
@@ -139,9 +139,9 @@
         <!-- Tools -->
 
         <dependency>
-            <groupId>se.natusoft.tools</groupId>
+            <groupId>se.natusoft</groupId>
             <artifactId>Modelish</artifactId>
-            <version>3.3.11</version>
+            <version>4.2.0-BC-11</version>
         </dependency>
 
         <!-- Test -->
