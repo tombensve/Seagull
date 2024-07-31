@@ -10,7 +10,7 @@
     <parent>
         <groupId>se.natusoft.seagull</groupId>
         <artifactId>Seagull-Implementations</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.0-BC-11</version>
     </parent>
 
 
