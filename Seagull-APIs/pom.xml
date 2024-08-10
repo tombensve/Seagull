@@ -55,10 +55,5 @@
         <artifactId>Seagull</artifactId>
         <version>1.0.0-BC-11</version>
     </parent>
-
-    <modules>
-        <module>Seagull-Internal-APIs</module>
-        <module>Seagull-Service-APIs</module>
-    </modules>
-
+    
 </project>

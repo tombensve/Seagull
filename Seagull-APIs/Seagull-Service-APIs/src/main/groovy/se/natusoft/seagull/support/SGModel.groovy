@@ -1,9 +1,9 @@
-package se.natusoft.seagull.platform.models
+package se.natusoft.seagull.support
 
 import se.natusoft.tools.modelish.Factory
 
 /**
- * Seagull is using a tool from my NS-Toolbox called Modelish which creates
+ * Seagull is using a tool from me called Modelish which creates
  * models with generic functionality using interfaces for defining setters and
  * getters. So basically your create an interface extending this interface
  * replacing the <T> with the name of the model interface.
@@ -20,6 +20,9 @@ import se.natusoft.tools.modelish.Factory
  * know anything about can use the shorter "fluent" syntax for the data
  * passed if wanted. Any model not part of the API can be whatever you want,
  * but that said I personally would not mix, but that is purely personal.
+ *
+ * Also note that when this is created the first time it can set default
+ * values, which can be changed in the clone of this.
  *
  * @param <T> The model type.
  */

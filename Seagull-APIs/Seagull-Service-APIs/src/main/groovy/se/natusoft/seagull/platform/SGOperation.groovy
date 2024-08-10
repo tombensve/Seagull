@@ -36,43 +36,21 @@
  * AUTHORS
  *     tommy ()
  *         Changes:
- *         2023-11-04: Created!
+ *         2023-11-20: Created!
  *         
  */
 package se.natusoft.seagull.platform
 
 import groovy.transform.CompileStatic
-import se.natusoft.docutations.DOC_Singleton
 
+ /**
+  * Enum of valid operations. Basic CRUD!
+  */
 @CompileStatic
-
-/**
- * This reads and writes JSON, and converts between Strings containing JSON and SGJson.
- */
-@DOC_Singleton
-interface SGJsonIO {
-
-    /**
-     * This instance will be provided by what ever implementation is available on
-     * the classpath at runtime.
-     */
-    static SGJsonIO use = SGAPIProviderLookup.find(SGJsonIO.class)
-
-    /**
-     * Read JSON.
-     *
-     * @param stream The stream to read from.
-     *
-     * @return read JSON as Map<String, Object>.
-     */
-    SGJson readJSon(InputStream stream)
-
-    /**
-     * Write JSON..
-     *
-     * @param json The JSON content Map to write.
-     * @param stream The stream to write to.
-     */
-    void writeJSONMap(SGJson json, OutputStream stream)
-
+enum  SGOperation {
+    CREATE,
+    READ,
+    UPDATE,
+    DELETE,
+    ANNOUNCEMENT
 }

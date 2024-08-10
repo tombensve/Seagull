@@ -2,7 +2,7 @@
  * 
  * PROJECT
  *     Name
- *         Seagull-Internal-APIs
+ *         Seagull-Service-APIs
  *     
  *     Description
  *         Seagull - Intended to be a very simplistic service platform.
@@ -36,38 +36,42 @@
  * AUTHORS
  *     tommy ()
  *         Changes:
- *         2023-12-05: Created!
+ *         2023-11-04: Created!
  *         
  */
-package se.natusoft.seagull.models
+package se.natusoft.seagull.tools
 
 import groovy.transform.CompileStatic
-import se.natusoft.seagull.platform.models.SGModel
-import se.natusoft.tools.modelish.ModelishModel
-import se.natusoft.tools.modelish.ModelishProperty
+import se.natusoft.seagull.platform.SGJson
 
-// >>>>> TODO: This is not generic! This is specific to an implementation!!!
+@CompileStatic
 
 /**
- * Represents information about a specific service.
- *
- * This model is a way to represent a service from implementation perspective.
- * It is completely internal and does not need to be used at all in an implementation,
- * but this data needs to be managed somehow.
+ * This reads and writes JSON, and converts between Strings containing JSON and SGJson.
  */
-@ModelishModel
-@CompileStatic
-interface ServiceRecord extends SGModel<ServiceRecord> {
+interface SGJsonIO {
 
-    @ModelishProperty(name="serviceName")
-    ServiceRecord setServiceName(String name)
-    String getServiceName()
+    /**
+     * This instance will be provided by what ever implementation is available on
+     * the classpath at runtime.
+     */
+    static SGJsonIO use = SGAPIProviderLookup.find(SGJsonIO.class)
 
-    @ModelishProperty(name = "serviceVersion")
-    ServiceRecord setServiceVersion(float version)
-    float getServiceVersion()
+    /**
+     * Read JSON.
+     *
+     * @param stream The stream to read from.
+     *
+     * @return read JSON as Map<String, Object>.
+     */
+    SGJson readJSon(InputStream stream)
 
-    @ModelishProperty(name = "serviceLocations")
-    ServiceRecord setServiceLocations(List<URL> serviceLocations)
-    List<URL> getServiceLocations()
+    /**
+     * Write JSON..
+     *
+     * @param json The JSON content Map to write.
+     * @param stream The stream to write to.
+     */
+    void writeJSON(SGJson json, OutputStream stream)
+
 }
