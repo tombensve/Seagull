@@ -42,7 +42,8 @@
 package se.natusoft.seagull.tools
 
 import groovy.transform.CompileStatic
-import se.natusoft.seagull.platform.SGJson
+import se.natusoft.seagull.api.SGJson
+//import se.natusoft.seagull.tools.SGJsonIO
 
 @CompileStatic
 
@@ -64,7 +65,7 @@ interface SGJsonIO {
      *
      * @return read JSON as Map<String, Object>.
      */
-    SGJson readJSon(InputStream stream)
+    SGJson readJSon( InputStream stream)
 
     /**
      * Write JSON..

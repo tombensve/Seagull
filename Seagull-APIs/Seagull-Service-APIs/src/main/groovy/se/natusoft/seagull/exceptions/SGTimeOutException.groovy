@@ -49,7 +49,7 @@ import groovy.transform.CompileStatic
 @CompileStatic
 class SGTimeOutException extends SGException {
 
-    SGTimeOutException(String message = "[No message!]", Throwable cause = new RuntimeException("[Unknown cause!]")) {
+    SGTimeOutException(String message = "No message!", Throwable cause = new RuntimeException("Unknown cause!")) {
         super(message, cause)
     }
 }

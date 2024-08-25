@@ -49,7 +49,7 @@ import groovy.transform.CompileStatic
 @CompileStatic
 class SGNotFoundException extends SGException {
 
-    SGNotFoundException(String message = "[No message!]", Throwable cause = new RuntimeException("[Unknown cause!]")) {
+    SGNotFoundException(String message = "(No message!)", Throwable cause = new RuntimeException("(Unknown cause!)")) {
         super(message, cause)
     }
 }

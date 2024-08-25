@@ -39,12 +39,15 @@
  *         2023-11-20: Created!
  *         
  */
-package se.natusoft.seagull.platform
+package se.natusoft.seagull.platform.api
 
 import groovy.transform.CompileStatic
 
  /**
   * Enum of valid operations. Basic CRUD!
+  *
+  * Even though communication protocol is resolved elsewhere I decided to
+  * use this from REST/HTTP since it makes a lot of sense.
   */
 @CompileStatic
 enum  SGOperation {
@@ -52,5 +55,6 @@ enum  SGOperation {
     READ,
     UPDATE,
     DELETE,
-    ANNOUNCEMENT
+
+    OTHER // Unspecific.
 }
