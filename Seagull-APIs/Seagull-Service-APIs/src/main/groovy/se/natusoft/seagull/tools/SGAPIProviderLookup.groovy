@@ -39,7 +39,7 @@
  *         2023-11-04: Created!
  *         
  */
-package se.natusoft.seagull.platform
+package se.natusoft.seagull.tools
 
 import groovy.transform.CompileStatic
 
@@ -53,7 +53,7 @@ import groovy.transform.CompileStatic
  * Wrapping ServiceLoader like this is probably a bit of "overkill" ...
  */
 @CompileStatic
-class SGAPIProviderLookup<T> {
+class SGAPIProviderLookup {
 
     /**
      * Provides static method for loading a service specified by its interface class.

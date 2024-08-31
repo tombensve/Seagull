@@ -56,19 +56,23 @@
 
     <modelVersion>4.0.0</modelVersion>
 
+    <!--
+        My personal version standard uses only 2 digits, and the third
+        digit is the byte code version!
+    -->
     <groupId>se.natusoft.seagull</groupId>
     <artifactId>Seagull</artifactId>
-    <version>1.0.0-BC-11</version>
+    <version>1.0.11</version>
 
     <packaging>pom</packaging>
 
     <!--
         General project information.
     -->
-    <url>https://github/tombensve/</url>
+    <url>https://github/tombensve/seagull</url>
 
     <description>
-        Seagull - Intended to be a very simplistic service platform.
+        Seagull - Is intended to be a very simplistic service platform.
 
         The idea here is to define a service platform that says
         nothing about how services communicate with each other.
@@ -81,15 +85,24 @@
 
     <inceptionYear>2023</inceptionYear>
 
+    <!--
+        I have shut down Natusoft as a company! I however still own the
+        domain, and keep using it for my open source code.
+    -->
+
     <organization>
-        <name>Tommy Bengt Svensson</name>
+        <name>(Bengt) Tommy Svensson</name>
         <url>https://github.com/tombensve/</url>
     </organization>
 
     <developers>
         <developer>
-            <name>Tommy Svensson</name>
+            <name>Bengt Tommy Svensson</name>
             <email>tommy@natusoft.se</email>
+            <!--
+                I'm not using the musky X nor anything similar!
+                The only way to reach med is my email!
+            -->
         </developer>
     </developers>
 
@@ -107,6 +120,7 @@
 
     <modules>
         <module>Seagull-APIs</module>
+        <module>Seagull-test-and-sample-services</module>
         <module>Seagull-Providers</module>
     </modules>
 
@@ -141,7 +155,7 @@
         <dependency>
             <groupId>se.natusoft</groupId>
             <artifactId>Modelish</artifactId>
-            <version>4.2.0-BC-11</version>
+            <version>4.2.11</version>
         </dependency>
 
         <!-- Test -->
@@ -164,12 +178,6 @@
         <url>scm:https://github.com/tombensve/NS-Toolbox.git</url>
     </scm>
 
-    <!--
-        The variables used here are in my personal setting.xml! I make binaries
-        available from my web server after bintray shut down.
-
-        See: https://github.com/tombensve/About
-    -->
     <distributionManagement>
         <repository>
             <id>repsy</id>
@@ -177,7 +185,6 @@
             <url>https://repo.repsy.io/mvn/tombensve/natusoft-os</url>
         </repository>
     </distributionManagement>
-
 
     <repositories>
         <repository>
@@ -311,7 +318,7 @@
             </plugin>
 
             <!--
-                Copy relevant license files to target on install.
+                Copy relevant license files to target on installation.
             -->
             <plugin>
                 <groupId>se.natusoft.tools.codelicmgr</groupId>
@@ -431,7 +438,7 @@
                             </dependency>
                             <dependency>
                                 <groupId>se.natusoft.tools.codelicmgr</groupId>
-                                <artifactId>CodeLicenseManager-source-updater-slashstar-comment</artifactId>
+                                <artifactId>CodeLicenseManager-manager</artifactId>
                                 <version>2.2.6</version>
                             </dependency>
                             <dependency>

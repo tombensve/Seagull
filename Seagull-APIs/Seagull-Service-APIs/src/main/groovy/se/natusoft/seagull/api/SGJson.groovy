@@ -1,4 +1,4 @@
-package se.natusoft.seagull.platform
+package se.natusoft.seagull.api
 
 /**
  * A simple alias for JSON data structure.

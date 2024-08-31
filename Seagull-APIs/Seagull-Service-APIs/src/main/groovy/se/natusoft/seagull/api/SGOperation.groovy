@@ -2,7 +2,7 @@
  * 
  * PROJECT
  *     Name
- *         Seagull-Internal-APIs
+ *         Seagull-Service-APIs
  *     
  *     Description
  *         Seagull - Intended to be a very simplistic service platform.
@@ -36,38 +36,25 @@
  * AUTHORS
  *     tommy ()
  *         Changes:
- *         2023-12-05: Created!
+ *         2023-11-20: Created!
  *         
  */
-package se.natusoft.seagull.models
+package se.natusoft.seagull.api
 
 import groovy.transform.CompileStatic
-import se.natusoft.seagull.platform.models.SGModel
-import se.natusoft.tools.modelish.ModelishModel
-import se.natusoft.tools.modelish.ModelishProperty
 
-// >>>>> TODO: This is not generic! This is specific to an implementation!!!
-
-/**
- * Represents information about a specific service.
- *
- * This model is a way to represent a service from implementation perspective.
- * It is completely internal and does not need to be used at all in an implementation,
- * but this data needs to be managed somehow.
- */
-@ModelishModel
+ /**
+  * Enum of valid operations. Basic CRUD!
+  *
+  * Even though communication protocol is resolved elsewhere I decided to
+  * use this from REST/HTTP since it makes a lot of sense.
+  */
 @CompileStatic
-interface ServiceRecord extends SGModel<ServiceRecord> {
+enum  SGOperation {
+    CREATE,
+    READ,
+    UPDATE,
+    DELETE,
 
-    @ModelishProperty(name="serviceName")
-    ServiceRecord setServiceName(String name)
-    String getServiceName()
-
-    @ModelishProperty(name = "serviceVersion")
-    ServiceRecord setServiceVersion(float version)
-    float getServiceVersion()
-
-    @ModelishProperty(name = "serviceLocations")
-    ServiceRecord setServiceLocations(List<URL> serviceLocations)
-    List<URL> getServiceLocations()
+    OTHER // Unspecific.
 }

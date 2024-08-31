@@ -39,17 +39,15 @@
  *         2023-11-04: Created!
  *         
  */
-package se.natusoft.seagull.platform
+package se.natusoft.seagull.tools
 
 import groovy.transform.CompileStatic
-import se.natusoft.docutations.DOC_Singleton
-
-@CompileStatic
+import se.natusoft.seagull.api.SGJson
 
 /**
  * This reads and writes JSON, and converts between Strings containing JSON and SGJson.
  */
-@DOC_Singleton
+@CompileStatic
 interface SGJsonIO {
 
     /**
@@ -65,7 +63,7 @@ interface SGJsonIO {
      *
      * @return read JSON as Map<String, Object>.
      */
-    SGJson readJSon(InputStream stream)
+    SGJson readJSon( InputStream stream)
 
     /**
      * Write JSON..
@@ -73,6 +71,6 @@ interface SGJsonIO {
      * @param json The JSON content Map to write.
      * @param stream The stream to write to.
      */
-    void writeJSONMap(SGJson json, OutputStream stream)
+    void writeJSON(SGJson json, OutputStream stream)
 
 }
