@@ -39,7 +39,7 @@
  *         2023-11-20: Created!
  *         
  */
-package se.natusoft.seagull.platform.api
+package se.natusoft.seagull.api
 
 import groovy.transform.CompileStatic
 

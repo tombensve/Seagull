@@ -43,13 +43,11 @@ package se.natusoft.seagull.tools
 
 import groovy.transform.CompileStatic
 import se.natusoft.seagull.api.SGJson
-//import se.natusoft.seagull.tools.SGJsonIO
-
-@CompileStatic
 
 /**
  * This reads and writes JSON, and converts between Strings containing JSON and SGJson.
  */
+@CompileStatic
 interface SGJsonIO {
 
     /**
