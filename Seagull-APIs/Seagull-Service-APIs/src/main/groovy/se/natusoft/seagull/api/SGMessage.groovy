@@ -1,6 +1,5 @@
 package se.natusoft.seagull.api
 
-import se.natusoft.seagull.support.SGModel
 
 /**
  * This defines the structure sent and received.
@@ -11,7 +10,7 @@ import se.natusoft.seagull.support.SGModel
  * This can be updated without affecting actual messages being sent and
  * received between services.
  */
-interface SGMessage extends SGModel<SGMessage>{
+interface SGMessage extends SGModel<SGMessage> {
 
     /**
      * @param from who is sending.

@@ -1,15 +1,13 @@
-package se.natusoft.seagull.platform
-
-import se.natusoft.seagull.api.SGJson
+package se.natusoft.seagull.api
 
 /**
  * This is given to all services for communication.
  *
  * Note that Seagull only says that data sent or received should use JSON.
  * Different messages are only named as a String! Both sides need to know
- * what that is by the name. There is no structure validation what so ever!
+ * what that is by the name.
  */
-interface SGCommunicator {
+interface SGMessenger {
 
     /**
      * Sends a message.
@@ -22,18 +20,20 @@ interface SGCommunicator {
      */
     void send( String to, String from, String messageType, SGJson message )
 
+    /* _______________________________________________________________________________*/
+
     /**
      * Register to receive messages of a named type.
      *
      * @param messageType The type name of the message to receive.
      * @param receiver A Closure to receive the message.
      */
-    void registerListener( String messageType, Closure<SGJson> receiver )
+    void registerReceiver( String messageType, Closure<SGJson> receiver )
 
     /**
      * Unregisters the receive of a message type.
      *
      * @param messageType The message type to no longer receive messages about.
      */
-    void unregisterListener( String messageType )
+    void unregisterReceiver( String messageType )
 }

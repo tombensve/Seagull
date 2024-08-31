@@ -46,14 +46,18 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>Seagull-APIs</artifactId>
-    <version>1.0.0-BC-11</version>
+    <version>1.0.11</version>
 
     <packaging>pom</packaging>
 
     <parent>
         <groupId>se.natusoft.seagull</groupId>
         <artifactId>Seagull</artifactId>
-        <version>1.0.0-BC-11</version>
+        <version>1.0.11</version>
     </parent>
+
+    <modules>
+        <module>Seagull-Service-APIs</module>
+    </modules>
     
 </project>

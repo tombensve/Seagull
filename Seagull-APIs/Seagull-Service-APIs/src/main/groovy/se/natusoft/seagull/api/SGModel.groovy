@@ -1,4 +1,4 @@
-package se.natusoft.seagull.support
+package se.natusoft.seagull.api
 
 import se.natusoft.tools.modelish.Factory
 
