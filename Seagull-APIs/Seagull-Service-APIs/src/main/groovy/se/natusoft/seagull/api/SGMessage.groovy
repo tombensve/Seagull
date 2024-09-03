@@ -16,15 +16,15 @@ interface SGMessage extends SGModel<SGMessage> {
      * @param from who is sending.
      * @return self.
      */
-    SGMessage setFrom(String from)
-    String getFrom()
+    SGMessage from(String from)
+    String from()
 
     /**
      * @param to Who to send to.
      * @return self.
      */
-    SGMessage setTo(String to)
-    String getTo()
+    SGMessage to(String to)
+    String to()
 
     /**
      * Sets the message content.
@@ -32,6 +32,6 @@ interface SGMessage extends SGModel<SGMessage> {
      * @param message The content to set.
      * @return self.
      */
-    SGMessage setContent(SGModel message)
-    SGModel getContent()
+    SGMessage content(SGModel content)
+    SGModel content()
 }
