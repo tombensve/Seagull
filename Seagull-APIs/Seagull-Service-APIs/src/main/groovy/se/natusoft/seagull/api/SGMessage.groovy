@@ -1,6 +1,5 @@
 package se.natusoft.seagull.api
 
-
 /**
  * This defines the structure sent and received.
  *
@@ -13,23 +12,30 @@ package se.natusoft.seagull.api
 interface SGMessage extends SGModel<SGMessage> {
 
     /**
-     * @param from who is sending.
+     * @param from  Who is sending. Name of service!
+     *
      * @return self.
      */
     SGMessage from(String from)
     String from()
 
+    /* _______________________________________________________________________________ */
+
     /**
-     * @param to Who to send to.
+     * @param to  Who should receive this.
+     *
      * @return self.
      */
     SGMessage to(String to)
     String to()
 
+    /* _______________________________________________________________________________ */
+
     /**
      * Sets the message content.
      *
-     * @param message The content to set.
+     * @param message  The content to set.
+     *
      * @return self.
      */
     SGMessage content(SGModel content)

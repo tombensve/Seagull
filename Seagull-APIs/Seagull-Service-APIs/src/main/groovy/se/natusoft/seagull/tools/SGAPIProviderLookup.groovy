@@ -69,6 +69,8 @@ class SGAPIProviderLookup {
         (T) ServiceLoader.load( api ).findFirst().get()
     }
 
+    /* _______________________________________________________________________________ */
+
     /**
      * Provides a static method fore finding all instances of providing implementations of the api.
      *

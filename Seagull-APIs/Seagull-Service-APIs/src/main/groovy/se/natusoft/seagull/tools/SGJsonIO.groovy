@@ -65,6 +65,8 @@ interface SGJsonIO {
      */
     SGJson readJSon( InputStream stream)
 
+    /* _______________________________________________________________________________ */
+
     /**
      * Write JSON..
      *
