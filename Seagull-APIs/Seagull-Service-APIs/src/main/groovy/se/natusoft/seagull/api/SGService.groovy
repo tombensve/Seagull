@@ -1,5 +1,7 @@
 package se.natusoft.seagull.api
 
+import groovy.transform.CompileStatic
+
 
 /**
  * This represents a service. It is  fully possible to provide multiple services in same here!
@@ -7,6 +9,7 @@ package se.natusoft.seagull.api
  *
  * Do note however that it might be more flexible to only have one per SGService.
  */
+@CompileStatic
 interface SGService {
 
     /**
@@ -14,7 +17,9 @@ interface SGService {
      *
      * @param messenger Use this to interact with the service framework. i.e save it!!
      */
-    void startup( SGMessenger messenger )
+    void startup( SGComm messenger )
+
+    /* _______________________________________________________________________________ */
 
     /**
      * This is basically an order to shutdown services and do any other potential cleanup!
@@ -23,5 +28,5 @@ interface SGService {
      *
      * @param messenger Most likely the same as passed to startup(...), but can be a different one.
      */
-    boolean shutdown( SGMessenger messenger )
+    boolean shutdown( SGComm messenger )
 }

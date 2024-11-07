@@ -41,6 +41,7 @@
  */
 package se.natusoft.seagull.api
 
+// TODO: Possibly remove!
 import groovy.transform.CompileStatic
 
  /**

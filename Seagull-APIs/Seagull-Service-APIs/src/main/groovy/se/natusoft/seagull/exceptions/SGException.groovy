@@ -72,6 +72,8 @@ class SGException extends RuntimeException {
      */
     SGException() {}
 
+    /* _______________________________________________________________________________ */
+
     /**
      * Creates a new SGException.
      *
@@ -80,6 +82,8 @@ class SGException extends RuntimeException {
     SGException(String message) {
         this.messageBuilder << message
     }
+
+    /* _______________________________________________________________________________ */
 
     /**
      * Creates a new SGException.
@@ -91,6 +95,8 @@ class SGException extends RuntimeException {
         this.messageBuilder << message
         this.causes << cause
     }
+
+    /* _______________________________________________________________________________ */
 
     //
     // Methods
@@ -108,6 +114,8 @@ class SGException extends RuntimeException {
         this
     }
 
+    /* _______________________________________________________________________________ */
+
     /**
      * Allows to use the left-shift operator (<<) to add text.
      *
@@ -119,6 +127,8 @@ class SGException extends RuntimeException {
         this
     }
 
+    /* _______________________________________________________________________________ */
+
     /**
      * Returns the exception message.
      */
@@ -126,6 +136,8 @@ class SGException extends RuntimeException {
     String getMessage() {
         this.messageBuilder.toString()
     }
+
+    /* _______________________________________________________________________________ */
 
     /**
      * Adds a cause to this exception.
@@ -138,6 +150,8 @@ class SGException extends RuntimeException {
         this
     }
 
+    /* _______________________________________________________________________________ */
+
     /**
      * Allows to use the left-shift operator to add an exception.
      *
@@ -149,6 +163,8 @@ class SGException extends RuntimeException {
         this
     }
 
+    /* _______________________________________________________________________________ */
+
     /**
      * Override to return the first cause in the list if any. If no causes then null is returned.
      */
@@ -157,6 +173,8 @@ class SGException extends RuntimeException {
         hasCauses() ? this.causes.last() : new RuntimeException(("[Unknown cause!]"))
     }
 
+    /* _______________________________________________________________________________ */
+
     /**
      * Returns a list of causes for this exception.
      */
@@ -164,12 +182,16 @@ class SGException extends RuntimeException {
         this.causes
     }
 
+    /* _______________________________________________________________________________ */
+
     /**
      * Returns true if there is at least one cause exception added to this exception.
      */
     boolean hasCauses() {
         !this.causes.isEmpty()
     }
+
+    /* _______________________________________________________________________________ */
 
     /**
      * This is an alternative to getMessage().
