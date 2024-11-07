@@ -1,4 +1,4 @@
 #!/bin/sh
 
-./mvnw clean install
+./mvnw install
 
