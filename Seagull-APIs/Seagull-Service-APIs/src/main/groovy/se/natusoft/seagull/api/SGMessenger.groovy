@@ -1,6 +1,7 @@
 package se.natusoft.seagull.api
 
 import groovy.transform.CompileStatic
+import se.natusoft.lic.annotation.Apache_Software_License_2_0
 
 /**
  * This is given to all services for communication.
@@ -15,8 +16,11 @@ import groovy.transform.CompileStatic
  * care about the network protocols! There must however be at least one
  * network protocol provider available!
  */
+
 @CompileStatic
-interface SGComm {
+
+@Apache_Software_License_2_0
+interface SGMessenger {
 
     static String BROADCAST = "*"
 
@@ -25,9 +29,10 @@ interface SGComm {
      *
      * @param to The receiver of the message.
      * @param from Name of who is calling. Needed for eventual replies!
+     * @param messageTypeName Identify content. This will have to be known by all parts.
      * @param message The message to send.
      */
-    void send( String to, String from, String messageType, SGJson message )
+    void send( String to, String from, String messageTypeName, SGJson message )
 
     /* _______________________________________________________________________________ */
 

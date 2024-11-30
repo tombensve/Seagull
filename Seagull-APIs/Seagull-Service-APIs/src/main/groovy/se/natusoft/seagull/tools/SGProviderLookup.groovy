@@ -42,6 +42,7 @@
 package se.natusoft.seagull.tools
 
 import groovy.transform.CompileStatic
+import se.natusoft.lic.annotation.Apache_Software_License_2_0
 
 /**
  * The Seagull-Platform jar mostly defines interfaces. Other jars has to be added
@@ -53,7 +54,8 @@ import groovy.transform.CompileStatic
  * Wrapping ServiceLoader like this is probably a bit of "overkill" ...
  */
 @CompileStatic
-class SGAPIProviderLookup {
+@Apache_Software_License_2_0
+class SGProviderLookup {
 
     /**
      * Provides static method for loading a service specified by its interface class.

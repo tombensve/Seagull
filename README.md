@@ -36,6 +36,9 @@ This is intended to be a very simple to use service platform.
 - A service deployable should be runnable with java -jar MyService.jar
 - (Auto discovery.)
 
+For greater flexibility IMHO, messages will not contain any specific CRUD information. I leave it up to 
+service implementations to handle such if needed. 
+
 # Groovy
 
 It is done to 100% in Groovy (JVM) and will use Closures, which does not exist in Java (looks like lambdas, definitely aren't!) See <https://groovy-lang.org/closures.html>). That said, I have decided to define these as a single method interface and when used a closure will be coerced onto this interface. This will clearly define both in type and out type. This also makes it possible to use from Java.

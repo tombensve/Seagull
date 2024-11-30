@@ -2,9 +2,11 @@ package se.natusoft.seagull.exceptions
 
 import groovy.transform.CompileStatic
 import org.junit.jupiter.api.Test
+import se.natusoft.lic.annotation.Apache_Software_License_2_0
 
 @CompileStatic
 
+@Apache_Software_License_2_0
 class TestExceptions {
 
     /**

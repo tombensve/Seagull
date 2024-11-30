@@ -58,6 +58,7 @@
 
     <modules>
         <module>Seagull-Service-APIs</module>
+        <module>Seagull-Internal-APIs</module>
     </modules>
     
 </project>

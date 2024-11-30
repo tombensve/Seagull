@@ -1,5 +1,6 @@
 package se.natusoft.seagull.api
 
+import se.natusoft.lic.annotation.Apache_Software_License_2_0
 import se.natusoft.tools.modelish.Factory
 
 /**
@@ -26,4 +27,5 @@ import se.natusoft.tools.modelish.Factory
  *
  * @param <T> The model type.
  */
+@Apache_Software_License_2_0
 interface SGModel<T> extends Factory<T> {}

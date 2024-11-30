@@ -42,19 +42,21 @@
 package se.natusoft.seagull.tools
 
 import groovy.transform.CompileStatic
+import se.natusoft.lic.annotation.Apache_Software_License_2_0
 import se.natusoft.seagull.api.SGJson
 
 /**
  * This reads and writes JSON, and converts between Strings containing JSON and SGJson.
  */
 @CompileStatic
+@Apache_Software_License_2_0
 interface SGJsonIO {
 
     /**
      * This instance will be provided by what ever implementation is available on
      * the classpath at runtime.
      */
-    static SGJsonIO use = SGAPIProviderLookup.find(SGJsonIO.class)
+    static SGJsonIO use = SGProviderLookup.find(SGJsonIO.class)
 
     /**
      * Read JSON.

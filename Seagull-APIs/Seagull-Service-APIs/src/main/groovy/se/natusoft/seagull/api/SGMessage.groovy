@@ -1,5 +1,8 @@
 package se.natusoft.seagull.api
 
+import se.natusoft.lic.annotation.Apache_Software_License_2_0
+
+
 /**
  * This defines the structure sent and received.
  *
@@ -9,6 +12,7 @@ package se.natusoft.seagull.api
  * This can be updated without affecting actual messages being sent and
  * received between services.
  */
+@Apache_Software_License_2_0
 interface SGMessage extends SGModel<SGMessage> {
 
     /**
@@ -19,8 +23,6 @@ interface SGMessage extends SGModel<SGMessage> {
     SGMessage from(String from)
     String from()
 
-    /* _______________________________________________________________________________ */
-
     /**
      * @param to  Who should receive this.
      *
@@ -28,8 +30,6 @@ interface SGMessage extends SGModel<SGMessage> {
      */
     SGMessage to(String to)
     String to()
-
-    /* _______________________________________________________________________________ */
 
     /**
      * Sets the message content.
