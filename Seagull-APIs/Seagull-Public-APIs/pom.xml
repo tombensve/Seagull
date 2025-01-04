@@ -51,7 +51,7 @@
         <version>1.0.0-BC11</version>
     </parent>
 
-    <artifactId>Seagull-Service-APIs</artifactId>
+    <artifactId>Seagull-Public-APIs</artifactId>
     <version>1.0.0-BC11</version>
 
     <dependencies>

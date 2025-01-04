@@ -57,8 +57,7 @@
     </parent>
 
     <modules>
-        <module>Seagull-Service-APIs</module>
-        <module>Seagull-Internal-APIs</module>
+        <module>Seagull-Public-APIs</module>
     </modules>
     
 </project>
