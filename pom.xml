@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
+          >=>>=>                                             >=>  >=>
+        >=>    >=>                                           >=>  >=>
+         >=>         >==>       >=> >=>     >=>    >=>  >=>  >=>  >=>
+           >=>     >>   >=>   >=>   >=>   >=>  >=> >=>  >=>  >=>  >=>
+              >=>  >>===>>=> >=>    >=>  >=>   >=> >=>  >=>  >=>  >=>
+        >=>    >=> >>         >=>   >=>   >=>  >=> >=>  >=>  >=>  >=>
+          >=>>=>    >====>     >==>>>==>      >=>    >==>=> >==> >==>
+                               >=>
 
-    PROJECT
-        Name
-            Seagull
-        
         Description
             Seagull - Intended to be a very simplistic service platform.
-            
+
             The idea here is to define a service platform that says
             nothing about how services communicate with each other.
             This defines APIs and not to many of those, that can be
@@ -15,40 +19,37 @@
             depends on what implementation you make available on
             the classpath. Implementations are fetched using
             SGProviderLookup (currently ServiceLoader is used).
-        
+
     COPYRIGHTS
         Copyright (C) 2023 by Tommy Bengt Svensson All rights reserved.
-        
+
     LICENSE
         Apache 2.0 (Open Source)
-        
+
         Licensed under the Apache License, Version 2.0 (the "License");
         you may not use this file except in compliance with the License.
         You may obtain a copy of the License at
-        
+
           http://www.apache.org/licenses/LICENSE-2.0
-        
+
         Unless required by applicable law or agreed to in writing, software
         distributed under the License is distributed on an "AS IS" BASIS,
         WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
         See the License for the specific language governing permissions and
         limitations under the License.
-        
-    AUTHORS
-        Tommy Svensson (tommy@natusoft.se)
+
+
+    =============================/\================================
+    |                                                              |
+    \    This code is currently a playground / work in progress!  /
+    /    Not ready for any form of usage!                         \
+    |                                                              |
+    =============================\/================================
+
+    NOTE TO SELF: DO NOT TRY TO UPGRADE TO MAVEN 4!! IT DOES NOT SEEM TO BE BACKWARDS
+    COMPATIBLE!!!
 
 -->
-
-<!--
-    ===============================================================
-    |                                                              |
-    /    This code is currently a playground and should not be     \
-    \    used by anyone for anything else than playing around!     /
-    |                                                              |
-    ===============================================================
--->
-
-<!--suppress CheckValidXmlInScriptTagBody -->
 
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -61,7 +62,7 @@
 
         DO NOTE THAT THIS PARENT DOES NOT POINT OUT THIS PROJECT AS A CHILD!
 
-        The dependency is one way, we pull in this, to build groovy
+        The dependency is one way, I pull in this, to build groovy
         code using a common setup for this, which is intended to be reused
         by all my Groovy projects!
 
@@ -70,13 +71,17 @@
         seems to work!
     -->
     <parent>
-        <groupId>com.github.tombensve</groupId>
+        <groupId>se.natusoft</groupId>
         <artifactId>groovy-build</artifactId>
-        <version>1.0.11</version>
+        <!-- Provides Groovy 4.0.23 -->
+        <version>1.1.0-G23</version>
     </parent>
+
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
     <groupId>se.natusoft.seagull</groupId>
     <artifactId>Seagull</artifactId>
+
     <!--
         The parent POM referenced above uses my old 'major.minor.bytecode' format,
         but I've realized that there is a point for the third digit, so my new
@@ -105,15 +110,10 @@
         SGProviderLookup (currently ServiceLoader is used).
     </description>
 
-    <inceptionYear>2023</inceptionYear>
-
-    <!--
-        I have shut down Natusoft as a company! I however still own the
-        domain, and keep using it for my open source code.
-    -->
+    <inceptionYear>2024</inceptionYear>
 
     <organization>
-        <name>(Bengt) Tommy Svensson</name>
+        <name>Tommy Svensson</name>
         <url>https://github.com/tombensve/</url>
     </organization>
 
@@ -152,11 +152,6 @@
     <properties>
 
         <!--
-            Version of Groovy to use.
-        -->
-        <groovy.version>4.0.21</groovy.version>
-
-        <!--
             Version of byte-code to produce.
         -->
         <bytecode.version>11</bytecode.version>
@@ -170,9 +165,56 @@
         <!-- Tools -->
 
         <dependency>
-            <groupId>se.natusoft</groupId>
+            <groupId>se.natusoft.tools</groupId>
+            <artifactId>LicAnnotations</artifactId>
+            <version>1.1.0-BC11</version>
+        </dependency>
+
+        <dependency>
+            <groupId>se.natusoft.tools</groupId>
             <artifactId>Modelish</artifactId>
-            <version>4.3.11</version>
+            <version>4.0.0-BC11</version>
+        </dependency>
+
+        <dependency>
+            <groupId>se.natusoft.annotation</groupId>
+            <artifactId>docutations</artifactId>
+            <version>8.2.1-BC11</version>
+        </dependency>
+
+        <!--
+            Thank you, Google, for this brilliant little thing!
+
+            When I first needed this I was about to make my own, but
+            discovered that it had already been done! It is a simple thing,
+            but makes things so much nicer.
+
+            This whole ServiceLoader functionality by Sun was made once upon a
+            time, when 1 + 1 still was 2 and not the square root of seventy-eleven
+            and a half, divided by 2 as today! A time when brains actually were used
+            and things actually made sense, like not breaking backwards compatibility!
+
+            And YES, this code is compiled with JDK 11! That said this is Groovy
+            code and Groovy can produce byte code for more recent JDK versions, but
+            when standard library stuff goes away or become un-compatible, that
+            will not help! But I will try to do things the Groovy way as much as
+            possible.
+
+            And while I'm ranting I'll also point out that as a Java Developer
+            and consultant in Sweden I have never ever been at a customer that
+            has gone higher than JDK 11! The cost of validating that all code
+            still works and fix that which doesn't in later versions, and doing
+            that over and over with each new non backwards compatible JDK is
+            quite expensive and time-consuming! Java is now managed by amateurs!
+
+            That is however not why I'm using Groovy now! I found the eminent
+            Groovy language a long time ago. Most of my Open Source  code is
+            in Groovy. It is a joy to use.
+        -->
+        <dependency>
+            <groupId>com.google.auto.service</groupId>
+            <artifactId>auto-service</artifactId>
+            <version>1.1.1</version>
         </dependency>
 
         <!-- Testing -->
@@ -183,6 +225,7 @@
             <version>5.10.1</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
@@ -211,8 +254,8 @@
             <name>My Private Maven Repository on Repsy</name>
             <url>https://repo.repsy.io/mvn/tombensve/natusoft-os</url>
         </repository>
-
     </repositories>
+
     <pluginRepositories>
 
         <pluginRepository>
@@ -230,20 +273,13 @@
         <sourceDirectory>src/main/groovy</sourceDirectory>
         <testSourceDirectory>src/test/groovy</testSourceDirectory>
 
-        <extensions>
-            <!-- Enabling the use of FTP -->
-            <extension>
-                <groupId>org.apache.maven.wagon</groupId>
-                <artifactId>wagon-ftp</artifactId>
-                <version>3.5.3</version>
-            </extension>
-        </extensions>
-
+        <!--
         <pluginManagement>
             <plugins>
 
             </plugins>
         </pluginManagement>
+        -->
 
         <plugins>
 
@@ -255,16 +291,10 @@
                 <version>3.7.0</version>
             </plugin>
 
-            <!--
-                Force checksums when installing to repository.
-                I suspect that this might be unnecessary since I think
-                deploy creates checksums anyhow when deploying to external
-                repository.
-            -->
             <plugin>
                 <artifactId>maven-install-plugin</artifactId>
                 <version>3.1.2</version>
-                <configuration></configuration>
+                <!--configuration></configuration-->
             </plugin>
 
             <!--
