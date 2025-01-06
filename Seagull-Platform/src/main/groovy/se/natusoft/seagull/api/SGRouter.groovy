@@ -5,7 +5,7 @@ import se.natusoft.docutations.Single
 import se.natusoft.lic.annotation.Apache_Software_License_2_0
 import se.natusoft.seagull.api.model.SGMessage
 import se.natusoft.seagull.tools.SGAPIProvider
-import se.natusoft.seagull.type.SGId
+import se.natusoft.seagull.SGId
 
 /**
  * This keeps track of all services and where they are available. In same jar, or on the network,

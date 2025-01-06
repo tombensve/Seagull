@@ -1,4 +1,4 @@
-package se.natusoft.seagull.type
+package se.natusoft.seagull
 
 import groovy.transform.CompileStatic
 import se.natusoft.lic.annotation.Apache_Software_License_2_0
@@ -15,6 +15,7 @@ import se.natusoft.seagull.exceptions.SGException
  * Internally it is stored as a String! There is also a toString() method defined
  * that returns the string.
  */
+
 @Apache_Software_License_2_0
 @CompileStatic
 class SGId {
@@ -45,6 +46,7 @@ class SGId {
     private SGId( String owner, String id) {
 
         if (REGISTRY == null) REGISTRY = [ : ]
+
 
         this.idKey = "${owner}:${id}"
 

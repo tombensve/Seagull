@@ -2,7 +2,7 @@ package se.natusoft.seagull.api.model
 
 import groovy.transform.CompileStatic
 import se.natusoft.lic.annotation.Apache_Software_License_2_0
-import se.natusoft.seagull.type.SGId
+import se.natusoft.seagull.SGId
 import se.natusoft.tools.modelish.Factory
 
 /**

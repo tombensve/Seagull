@@ -69,6 +69,9 @@
         I have been using the maven-mixin-plugin for this earlier, but that
         plugin has started to cause me problems, so I tried this, and it
         seems to work!
+
+        I believe the Groovy project itself provides something similar, but
+        this one I have control over :-).
     -->
     <parent>
         <groupId>se.natusoft</groupId>
@@ -92,6 +95,40 @@
     <version>1.0.0-BC11</version>
 
     <packaging>pom</packaging>
+
+    <!--
+        Structure
+    -->
+    <modules>
+        <!--
+            This defines APIs and tools. This one is always needed!
+        -->
+        <module>Seagull-Platform</module>
+
+        <!--
+            This is a root for different provided implementations.
+        -->
+        <module>Seagull-Providers</module>
+
+        <!--
+            Nothing more to say here ...
+        -->
+        <module>Seagull-test-and-sample-services</module>
+    </modules>
+
+    <!--
+        Configuration
+    -->
+    <properties>
+
+        <!--
+            Version of byte-code to produce.
+        -->
+        <bytecode.version>11</bytecode.version>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    </properties>
 
     <!--
         General project information.
@@ -140,26 +177,6 @@
         </license>
     </licenses>
 
-    <modules>
-        <module>Seagull-APIs</module>
-        <module>Seagull-test-and-sample-services</module>
-        <module>Seagull-Providers</module>
-    </modules>
-
-    <!--
-        Configuration
-    -->
-    <properties>
-
-        <!--
-            Version of byte-code to produce.
-        -->
-        <bytecode.version>11</bytecode.version>
-
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-    </properties>
-
     <dependencies>
 
         <!-- Tools -->
@@ -184,32 +201,6 @@
 
         <!--
             Thank you, Google, for this brilliant little thing!
-
-            When I first needed this I was about to make my own, but
-            discovered that it had already been done! It is a simple thing,
-            but makes things so much nicer.
-
-            This whole ServiceLoader functionality by Sun was made once upon a
-            time, when 1 + 1 still was 2 and not the square root of seventy-eleven
-            and a half, divided by 2 as today! A time when brains actually were used
-            and things actually made sense, like not breaking backwards compatibility!
-
-            And YES, this code is compiled with JDK 11! That said this is Groovy
-            code and Groovy can produce byte code for more recent JDK versions, but
-            when standard library stuff goes away or become un-compatible, that
-            will not help! But I will try to do things the Groovy way as much as
-            possible.
-
-            And while I'm ranting I'll also point out that as a Java Developer
-            and consultant in Sweden I have never ever been at a customer that
-            has gone higher than JDK 11! The cost of validating that all code
-            still works and fix that which doesn't in later versions, and doing
-            that over and over with each new non backwards compatible JDK is
-            quite expensive and time-consuming! Java is now managed by amateurs!
-
-            That is however not why I'm using Groovy now! I found the eminent
-            Groovy language a long time ago. Most of my Open Source  code is
-            in Groovy. It is a joy to use.
         -->
         <dependency>
             <groupId>com.google.auto.service</groupId>

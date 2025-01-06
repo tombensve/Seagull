@@ -4,7 +4,7 @@ import groovy.transform.CompileStatic
 import se.natusoft.docutations.Many
 import se.natusoft.lic.annotation.Apache_Software_License_2_0
 import se.natusoft.seagull.api.model.SGMessage
-import se.natusoft.seagull.type.SGId
+import se.natusoft.seagull.SGId
 
 /**
  * These implement a network protocol for calling services on the network.

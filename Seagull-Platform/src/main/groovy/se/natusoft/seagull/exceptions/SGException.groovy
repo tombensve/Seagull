@@ -6,7 +6,7 @@ import se.natusoft.lic.annotation.Apache_Software_License_2_0
 /**
  * The base of all Seagull exceptions. Actually Seagull only defines this!
  *
- *     throw new SGException(message: "Something bad happened!", cause: somethingBadException)
+ *     throw new SGException( message: "Something bad happened!", cause: somethingBadException )
  */
 
 @Apache_Software_License_2_0

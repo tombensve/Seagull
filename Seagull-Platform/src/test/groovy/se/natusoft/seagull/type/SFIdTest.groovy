@@ -1,6 +1,7 @@
 package se.natusoft.seagull.type
 
 import org.junit.jupiter.api.Test
+import se.natusoft.seagull.SGId
 import se.natusoft.seagull.exceptions.SGException
 
 class SFIdTest {
