@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+    This provides an implementation of REST protocol.
+-->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -13,5 +16,18 @@
         <version>1.0.0-BC11</version>
     </parent>
 
+    <dependencies>
+        <dependency>
+            <groupId>se.natusoft.seagull</groupId>
+            <artifactId>Seagull-Platform</artifactId>
+            <version>1.0.0-BC11</version>
+        </dependency>
+        <dependency>
+            <groupId>se.natusoft.seagull</groupId>
+            <artifactId>Seagull-Platform</artifactId>
+            <version>1.0.0-BC11</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 
 </project>
