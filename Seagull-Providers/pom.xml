@@ -51,16 +51,15 @@
     <packaging>pom</packaging>
 
     <parent>
-      <groupId>se.natusoft.seagull</groupId>
-      <artifactId>Seagull</artifactId>
-      <version>1.0.0-BC11</version>
+        <groupId>se.natusoft.seagull</groupId>
+        <artifactId>Seagull</artifactId>
+        <version>1.0.0-BC11</version>
     </parent>
 
-    <modules>
-
-        <module>Seagull-REST-Provider</module>
-
-    </modules>
+    <build>
+        <plugins>
+        </plugins>
+    </build>
 
     <dependencies>
         <dependency>
@@ -68,5 +67,13 @@
             <artifactId>docutations</artifactId>
             <version>6.0.0</version>
         </dependency>
+
     </dependencies>
+
+    <modules>
+
+        <module>Seagull-REST-Protocol-Provider</module>
+
+    </modules>
+
 </project>

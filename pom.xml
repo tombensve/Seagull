@@ -200,15 +200,8 @@
         </dependency>
 
         <!--
-            Thank you, Google, for this brilliant little thing!
+            Testing
         -->
-        <dependency>
-            <groupId>com.google.auto.service</groupId>
-            <artifactId>auto-service</artifactId>
-            <version>1.1.1</version>
-        </dependency>
-
-        <!-- Testing -->
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
