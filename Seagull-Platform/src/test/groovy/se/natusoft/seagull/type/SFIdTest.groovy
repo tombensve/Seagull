@@ -1,20 +1,22 @@
 package se.natusoft.seagull.type
 
+import groovy.transform.CompileStatic
 import org.junit.jupiter.api.Test
 import se.natusoft.seagull.SGId
 import se.natusoft.seagull.exceptions.SGException
 
+@CompileStatic
 class SFIdTest {
 
     @Test
     void testSFId() {
 
-        SGId test1 = SGId.register( "se.natusoft", "Seagull" )
+        SGId test1 = SGId.register( "test", "se.natusoft", "Seagull" )
 
-        assert test1.toString() == "se.natusoft:Seagull"
+        assert test1.toString() == "test:se.natusoft:Seagull"
 
         try {
-            SGId test2 = SGId.register( "se.natusoft", "Seagull" )
+            SGId test2 = SGId.register( "test", "se.natusoft", "Seagull" )
 
             throw new RuntimeException( "An exceptions should have been thrown, bat wasn't!" )
         }

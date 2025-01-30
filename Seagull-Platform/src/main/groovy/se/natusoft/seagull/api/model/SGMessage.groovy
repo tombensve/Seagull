@@ -12,7 +12,7 @@ import se.natusoft.tools.modelish.Factory
  */
 @Apache_Software_License_2_0
 @CompileStatic
-abstract interface SGMessage<T> extends Factory<T> {
+interface SGMessage<T> extends Factory<T> {
 
     /**
      * Provides target to send to! This is used to route message to
@@ -49,18 +49,28 @@ abstract interface SGMessage<T> extends Factory<T> {
      * Sets CRUD operation. This fits protocols like REST, but can be useful
      * even with other protocols also.
      *
+     * Note that this is a String! I'm not entirely sure Modelish supports
+     * enums (yet). But the SGCRUD enum can be used with .toString() in
+     * the end to get a correct string value.
+     *
      * @param crud Provides the CRUD operation requested. This is an enum!
      */
-    void setCrud( SGCRUD crud )
+    void setCrud( String crud )
 
     /**
      * @return The CRUD operation requested.
      */
-    SGCRUD getCRUD()
+    String getCRUD()
 
 
     /**
      * Specify what model should be used to read the content of this message.
+     *
+     * Do note that this value is just an ID/Name identifying the model. It provides
+     * no model structure! Such has to be documented for the service. However, since
+     * I'm forcing a Modelish model, this base model is a Modelish model that
+     * should be extended, services can provide Modelish submodels of this ready
+     * to use.
      *
      * @param modelType Identify the message data model.
      */
@@ -77,7 +87,6 @@ abstract interface SGMessage<T> extends Factory<T> {
 
     /*
      The above are common information required by all calls. Models of specific service
-     calls should extend this and add the information it needs. What that is is completely
-     dependent on the service.
+     calls should extend this and add the information it needs.
      */
 }

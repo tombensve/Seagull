@@ -1,11 +1,45 @@
 package se.natusoft.seagull
 
+import groovy.transform.CompileStatic
+import se.natusoft.lic.annotation.Apache_Software_License_2_0
+import se.natusoft.seagull.api.SGProtocol
+import se.natusoft.seagull.tools.SGAPIProvider
+
 /**
  * Contains the _Main_ method.
  */
+@CompileStatic
+@Apache_Software_License_2_0
 class SGBoot {
 
-    static void main(String[] args) {
+    /**
+     * Main startup and setup.
+     *
+     * @param args Parameters in "name=value" format. Can pass as many as you want.
+     *             Will be available in passed Properties object.
+     */
+    static void main( String[] args ) {
+
+        args.each { String props ->
+
+            String[] nameValue = props.split( "=" )
+            SGStatics.startupProps.setProperty( nameValue[ 0 ], nameValue[ 1 ] )
+        }
+
+        println "Starting Seagull instance version 1.0.0"
+        println "Provided properties:"
+        println SGStatics.startupProps.toString()
+
+        // Load Protocols //
+
+        SGAPIProvider.findAll( SGProtocol.class )
+                .each { SGProtocol protocol ->
+                    SGStatics.protocols.put( protocol.protocolName(), protocol )
+                    println "Loaded Protocol: ${protocol.protocolName(  )}"
+                }
+
+        // ...
 
     }
+
 }

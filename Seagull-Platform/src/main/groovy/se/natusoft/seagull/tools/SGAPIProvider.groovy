@@ -8,9 +8,8 @@ import se.natusoft.lic.annotation.Apache_Software_License_2_0
  * to the classpath that implements these interfaces. This class is used for getting
  * an implementation of a specified interface.
  *
- * The easiest solution is to use Googles @AutoService annotation on implementations.
- * Nothing is however stopping from providing the config resources needed to lookup
- * these manually! But using @AutoService is soo much easier!
+ * Since I have not succeeded in making Googles @AutoService work, the resources
+ * needed to make these available have to be provided manually as resources.
  */
 @Apache_Software_License_2_0
 @CompileStatic
