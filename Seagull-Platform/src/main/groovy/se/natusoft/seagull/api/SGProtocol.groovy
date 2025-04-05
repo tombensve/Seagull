@@ -17,17 +17,15 @@ interface SGProtocol {
     /**
      * The name of the protocol, to be able to identify it!
      *
-     * @return The name of the protocol.
+     * A protocol is unique specific thing! Do not add different implementation of a protocol in same jar!
+     * If you do, it will be relatively random which is used!
+     *
+     * @return The type of the protocol.
      */
-    String protocolName()
+    String protocolType()
 
     /**
-     * Specifies the provider of the protocol. The idea behind providing this
-     * is to be able to filter on this or not this if there are more protocols
-     * implementing REST as a protocol available.
-     *
-     * This might however go away again since to not complicate things more than
-     * needed it might not be a good idea to use this.
+     * Who is providing this provider.
      */
     String protocolProvider()
 

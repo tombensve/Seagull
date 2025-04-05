@@ -2,9 +2,6 @@ package se.natusoft.seagull
 
 import groovy.transform.CompileStatic
 import se.natusoft.lic.annotation.Apache_Software_License_2_0
-import se.natusoft.seagull.api.SGProtocol
-import se.natusoft.seagull.tools.SGAPIProvider
-
 /**
  * Contains the _Main_ method.
  */
@@ -32,6 +29,7 @@ class SGBoot {
 
         // Load Protocols //
 
+        /*
         SGAPIProvider.findAll( SGProtocol.class )
                 .each { SGProtocol protocol ->
                     SGStatics.protocols.put( protocol.protocolName(), protocol )
@@ -39,6 +37,8 @@ class SGBoot {
                 }
 
         // ...
+
+         */
 
     }
 

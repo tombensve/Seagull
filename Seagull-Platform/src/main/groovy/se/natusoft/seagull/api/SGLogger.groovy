@@ -8,7 +8,7 @@ import se.natusoft.seagull.tools.SGAPIProvider
  *
  * ALWAYS USE: SGLogger.instance when logging!!!!
  *
- * EVERY THING ELSE HERE IOS PRIVATE!
+ * EVERY THING ELSE HERE IS PRIVATE!
  */
 interface SGLogger {
 

@@ -5,32 +5,35 @@ import io.undertow.Undertow
 import io.undertow.server.HttpHandler
 import io.undertow.server.HttpServerExchange
 import io.undertow.util.Headers
+import se.natusoft.docutations.Todo
 import se.natusoft.lic.annotation.Apache_Software_License_2_0
+import se.natusoft.lic.annotation.BinariesAvailableAt
+import se.natusoft.lic.annotation.SourceAvailableAt
 import se.natusoft.seagull.SGLifecycle
 import se.natusoft.seagull.api.SGLogger
 import se.natusoft.seagull.api.SGProtocol
 import se.natusoft.seagull.api.model.SGMessage
-import se.natusoft.seagull.exceptions.SGNotFoundException
+import se.natusoft.tools.modelish.Model
+
+@Apache_Software_License_2_0
+@SourceAvailableAt( "https://github.com/tombensve/SeaGull" )
+@BinariesAvailableAt( "https://repo.repsy.io/mvn/tombensve/natusoft-os/" )
 
 @CompileStatic
-@Apache_Software_License_2_0
 class SGRESTProtocol implements SGProtocol {
 
+    // Convenience / cosmetics to log using logger.log(...) rather than SGLogger.instance.log(...).
     private SGLogger logger = SGLogger.instance
 
     SGRESTProtocol() {
         logger.log( "Starting SGRESTProtocol!" )
     }
 
+
     /**
      * The name of the protocol, to be able to identify it!
-     *
-     * @return The name of the protocol.
      */
-    @Override
-    String protocolName() {
-        return "REST"
-    }
+    String protocolType() { "REST" }
 
     /**
      * Specifies the provider of the protocol. The idea behind providing this
@@ -42,53 +45,18 @@ class SGRESTProtocol implements SGProtocol {
      *
      * @return "Seagull"
      */
-    String protocolProvider() {
-        "Seagull"
-    }
+    String protocolProvider() { "Seagull default REST provider" }
 
-    /**
-     * Sends a message to a service using a specific protocol..
-     *
-     * @param message The message to send.
-     */
-    @Override
-    void send( SGMessage<?> message ) {
-
-    }
-
-    //
-    // Listener Handling
-    //
+    // ------------------------------------------------------------------------------------------//
 
     private Map<UUID, Closure<SGMessage<?>>> listeners = [ : ] // One of many reasons why I love Groovy!
 
-    /**
-     * Registers a listener of received messages.
-     *
-     * @param from Listen to messages from this SGId.
-     * @param listener The listener to be called when a message is received.
-     *
-     * @return An UUID representing this listener instance.
-     */
-    UUID registerListener( Closure<SGMessage<?>> listener ) {
-
-        UUID listenerId = UUID.randomUUID()
-        listeners.put( listenerId, listener )
-
-        ensureServerIsRunning()
-
-        listenerId
-    }
-
-    /**
-     * Use the UUID gotten at registration to stop listening to more messages.
-     *
-     * @param listener The listener UUID to unregister.
-     */
-    @Override
-    void unregisterListener( UUID listener ) {
-        this.listeners.remove( listener )
-    }
+    // If the editor places this comment in the same "box" as the above method and comment
+    // then you are using IDEA!! This is a comment for the below method, and nothing else!
+    // Until JettBrains get their shit working again (if ever) I suggest not using that feature
+    // since it confuses things. I'm assuming that they have lost a lot of competent people
+    // since they are not living up to their name any more. That said it still beats most
+    // other alternatives ...
 
     /**
      * Indicates if the HTTP server should be running or not. This so that it will not
@@ -104,66 +72,149 @@ class SGRESTProtocol implements SGProtocol {
      */
     private Undertow httpServer = null
 
-    private ensureServerIsRunning() {
-        if ( this.httpServer == null && this.httpServerState != SGLifecycle.SHUT_DOWN  &&
-        this.httpServerState != SGLifecycle.STARTING) {
+    /**
+     * This is responsible for trying to bring upp server. As anything it can of course fail!
+     *
+     * Note also that we check that the service is not already in the process of starting!
+     * Shit can always happen!
+     */
+    private void ensureServerIsRunning() {
+
+        if ( this.httpServer == null && this.httpServerState != SGLifecycle.SHUT_DOWN &&
+                this.httpServerState != SGLifecycle.STARTING ) {
+
             this.httpServerState = SGLifecycle.STARTING
+
             startHTTPDServer()
-            this.httpServerState = SGLifecycle.RUNNING
+
+            if ( this.httpServerState == SGLifecycle.SHUT_DOWN ) {
+
+                logger.log( "ERROR: Failed to start server, probably due to no ports being available!" )
+            } else {
+                this.httpServerState = SGLifecycle.RUNNING
+            }
         }
     }
 
     /**
      * Starts the HTTP server used to handle HTTP requests. Currently Undertow is used.
      */
-    private startHTTPDServer() {
+    private void startHTTPDServer() {
+
 
         this.httpServerState = SGLifecycle.RUNNING
 
-        int port = 8801
+        // Hopeing this is odd enough to in general not be used :-). But if this is busy
+        // we will try all the way up tp 9999 before giving up! What port end up being used
+        // will be logged!
+        @Todo(description = "Make confifgurable")
+        int port = 9900
 
         InetAddress inetAddress = InetAddress.localHost
-
-        //HttpServerExchange serverExchange
 
         boolean retry = true
 
         while ( retry ) {
             try {
-                this.httpServer = Undertow.builder()
+                final def undertow = this.httpServer = Undertow.builder()
                         .addHttpListener( port, inetAddress.hostName )
                         .setHandler( new HttpHandler() {
-                            //@Override
+
+                            @Override
                             void handleRequest( final HttpServerExchange exchange ) throws Exception {
-                                exchange.getResponseHeaders().put( Headers.CONTENT_TYPE, "application/json" )
+                                exchange.getResponseHeaders().put( Headers.CONTENT_TYPE,
+                                        "application/json" )
+
+                                exchange.inputStream
+
+                                exchange.outputStream
                             }
+
                         } ).build()
+                //undertow
+
                 this.httpServer.start()
 
                 retry = false
+
+                logger.log( "SGRestProtocol running on port: ${port}" )
             }
             catch ( Exception e ) {
-                println "Assuming port already used by other, trying another ..."
+
+                // TODO: Replace this with getting port number from config!
+
+                logger.log( "Port ${port} already used, trying another ..." )
                 ++port
-                if ( port > 8999 ) {
+                if ( port > 9998 ) { // Reserving 9999 for a registry!
                     retry = false
+
+                    logger.log( "ERROR: Failed to start service due to lack of available ports!" )
                     this.httpServerState = SGLifecycle.SHUT_DOWN
-                    throw new SGNotFoundException( "ERROR: All ports (8801-8999) are already used!" )
                 }
             }
         }
+    }
 
-        System.out.println "SG:[ SGRestProtocol running on port: ${port} ]"
+    // ------------------------------------------------------------------------------------------//
+
+    /**
+     *
+     *
+     * @param requestStream
+     * @return
+     */
+    private Model readRequest( InputStream requestStream) {
 
     }
 
-    //
-    // Shutdown cleanup
-    //
+    private writeResponse(OutputStream responseStream, Model response) {
+
+    }
+
+    // ------------------------------------------------------------------------------------------//
+
+    /**
+     * Registers a listener of received messages.
+     *
+     * @param from Listen to messages from this SGId.
+     * @param listener The listener to be called when a message is received.
+     *
+     * @return An UUID representing this listener instance.
+     */
+    UUID registerListener( Closure<SGMessage<?>> listener ) {
+
+        UUID listenerId = UUID.randomUUID()
+        this.listeners.put( listenerId, listener )
+
+        ensureServerIsRunning()
+
+        listenerId
+    }
+
+    /**
+     * Use the UUID gotten at registration to stop listening to more messages.
+     *
+     * @param listener The listener UUID to unregister.
+     */
+    void unregisterListener( UUID listener ) {
+        this.listeners.remove( listener )
+    }
+
+    /**
+     * Sends a message to a service using a specific protocol..
+     *
+     * @param message The message to send.
+     */
+    void send( SGMessage<?> message ) {
+
+    }
+
+    // ------------------------------------------------------------------------------------------//
 
     /**
      * Shuts down this Protocol.
      */
+    @Override
     void shutdown() {
         this.httpServerState = SGLifecycle.SHUT_DOWN
         this.listeners.clear()

@@ -25,7 +25,23 @@ class SGId {
      *
      * To receive broadcasts you need to register as a listener on this ServiceId.
      */
-    static SGId Broadcast = register( "SGTarget" , "se.natusoft.seagull", "Broadcast" )
+    static SGId Broadcast = register( "SGTarget", "se.natusoft.seagull", "Broadcast" )
+
+    /**
+     * Public, static  method to register an SGId.
+     *
+     * @param type The type of information this represents.
+     * @param group This should be used the same way as java packages! It represents both
+     *              the organization and project within organization. This must be unique!
+     * @param id A unique id within the group representing a service or something
+     *           like the id of broadcast target as defined above.
+     *
+     * @return a new SGId instance.
+     */
+    static SGId register( String type, String group, String id ) {
+        new SGId( type, group, id )
+    }
+
 
     // --------------------------------------------------------------------------- //
 
@@ -44,14 +60,14 @@ class SGId {
      * @param owner Use like package in java to avoid collisions.
      * @param id A unique id within the group.
      */
-    private SGId( String type,  String owner, String id) {
+    private SGId( String type, String owner, String id ) {
 
-        if (REGISTRY == null) REGISTRY = [ : ]
+        if ( REGISTRY == null ) REGISTRY = [ : ]
 
 
         this.idKey = "${type}:${owner}:${id}"
 
-        if (REGISTRY.containsKey( idKey ) ) throw new SGException("This SGId already exists!")
+        if ( REGISTRY.containsKey( idKey ) ) throw new SGException( "This SGId already exists!" )
 
         REGISTRY.put( idKey, this )
     }
@@ -72,24 +88,16 @@ class SGId {
      *
      * @return true or false.
      */
-    boolean equals( SGId id ) {
-        this.idKey == id.toString()
-    }
-
+    boolean equals( SGId id ) { this.idKey == id.toString() }
 
     /**
-     * Public, static  method to register an SGId.
+     * Equals using String rather than SGId since ids received are in String format.
      *
-     * @param type The type of information this represents.
-     * @param group This should be used the same way as java packages! It represents both
-     *              the organization and project within organization. This must be unique!
-     * @param id A unique id within the group representing a service or something
-     *           like the id of broadcast target as defined above.
+     * @param id The id in string format to compare.
      *
-     * @return a new SGId instance.
+     * @return true or false.
      */
-   static SGId register( String type, String group, String id ) {
-        new SGId( type, group, id)
-    }
+    boolean equals( String id ) { this.idKey == id }
+
 
 }

@@ -2,9 +2,7 @@ package se.natusoft.seagull.api.model
 
 import groovy.transform.CompileStatic
 import se.natusoft.lic.annotation.Apache_Software_License_2_0
-import se.natusoft.seagull.SGId
 import se.natusoft.tools.modelish.Factory
-
 /**
  * This is a base model for all messages!
  *
@@ -13,37 +11,6 @@ import se.natusoft.tools.modelish.Factory
 @Apache_Software_License_2_0
 @CompileStatic
 interface SGMessage<T> extends Factory<T> {
-
-    /**
-     * Provides target to send to! This is used to route message to
-     * correct service.
-     *
-     * @param target target to send to.
-     *
-     * Note that if the specified target does not exist then there will be
-     * an error logged, but nothing more!
-     */
-    void setTarget( SGId target )
-
-    /**
-     * @return The target.
-     */
-    SGId getTarget()
-
-
-    /**
-     * Provides whi is sending the message. Non request-response protocols
-     * can use this to reply.
-     *
-     * @param sender The sender of the message. Can be used for replies and log entries.
-     */
-    void setSender( SGId sender )
-
-    /**
-     * @return The sender of message.
-     */
-    SGId getSender()
-
 
     /**
      * Sets CRUD operation. This fits protocols like REST, but can be useful
@@ -72,9 +39,11 @@ interface SGMessage<T> extends Factory<T> {
      * should be extended, services can provide Modelish submodels of this ready
      * to use.
      *
-     * @param modelType Identify the message data model.
+     * @param modelType Identify the message data model. This is a String that
+     *                  This is a String version of an SGId instance!! Always
+     *                  use SGId to create this!
      */
-    void setModelType( SGId modelType )
+    void setModelType( String modelType )
 
     /**
      * Theoretically a service caller can provide different sub-models of this model
@@ -83,7 +52,7 @@ interface SGMessage<T> extends Factory<T> {
      *
      * @return An SGId that represents the model type that will extend this message.
      */
-    SGId getModelType()
+    String getModelType()
 
     /*
      The above are common information required by all calls. Models of specific service

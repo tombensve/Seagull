@@ -24,6 +24,39 @@
             <scope>compile</scope>
         </dependency>
 
+        <dependency>
+            <groupId>se.natusoft.tools</groupId>
+            <artifactId>LicAnnotations</artifactId>
+            <version>1.2.0-BC11</version>
+        </dependency>
+
+
+        <!--
+            Project require something that can read JSON and produce a Map<String, Object>
+            back! This allows for wrapping this Map with Modelish models that only use
+            interfaces and store data in just such a Map structure. A Modelish model
+            can take this Map and wrap it with an appropriate model interface. Modelish
+            models can be made immutable and can also be cloned which will create a
+            complete copy having no references to original source.
+
+            I have never used gson before, but I have now tested it, and it produces exactly
+            what is needed here!
+
+            This is what is needed to parse JSON (If I forget what I googled on to find this):
+
+                Gson gson = new Gson();
+                Type type = new TypeToken<Map<String, Object>>(){}.getType();
+                Map<String, Object> map = gson.fromJson(jsonString, type);
+
+                NOTE TO SELF: Above reads from a String, I need to read from an InputStream!
+        -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.10.1</version>
+        </dependency>
+
+
         <!--
         <dependency>
             <groupId>org.nanohttpd</groupId>
@@ -31,7 +64,12 @@
             <version>2.2.0</version>
         </dependency>
         -->
+        <!--
+            https://www.mend.io/vulnerability-database/CVE-2021-28170
 
+            The vulnerability should not be relevant in this case. This is only used to
+            server simple REST calls.
+            -->
         <dependency>
             <groupId>io.thorntail</groupId>
             <artifactId>undertow</artifactId>
