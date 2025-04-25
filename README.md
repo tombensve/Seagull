@@ -10,7 +10,7 @@
                                    >=>                
 ----
 
-![](pics/SeaGull-small.png)
+![](pics/SeaGull 2.png)
 
 (Local individual)
 
@@ -29,6 +29,7 @@ It is about information flying around between different services, triggering thi
 This is intended to be a very simple to use service platform where services does not have to deal directly with protocols like REST, plain TCP/IP, data buses (like Rabbit MQ), carrier pigeon, ... 
 
 I have spent a lot of time thinking this through, and want to keep things as simple as possible from service development perspective, and in general! My point here is that this says nothing about how information goes from point A to point B. 
+
 
 ## Goals
 
