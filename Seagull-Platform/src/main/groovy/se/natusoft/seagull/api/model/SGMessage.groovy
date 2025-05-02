@@ -1,14 +1,20 @@
 package se.natusoft.seagull.api.model
 
 import groovy.transform.CompileStatic
-import se.natusoft.lic.annotation.Apache_Software_License_2_0
+import se.natusoft.lic.annotation.BinariesAvailableAt
+import se.natusoft.lic.annotation.Human_Software_License_1_0
+import se.natusoft.lic.annotation.SourceAvailableAt
 import se.natusoft.tools.modelish.Factory
+
+@Human_Software_License_1_0
+@SourceAvailableAt("https://github.com/tombensve/")
+@BinariesAvailableAt("https://repo.repsy.io/mvn/tombensve/natusoft-os/")
+
 /**
  * This is a base model for all messages!
  *
  * Any message model should extend this one! Do note that this message is abstract!!
  */
-@Apache_Software_License_2_0
 @CompileStatic
 interface SGMessage<T> extends Factory<T> {
 

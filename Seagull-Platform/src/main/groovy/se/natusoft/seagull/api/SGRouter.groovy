@@ -2,10 +2,16 @@ package se.natusoft.seagull.api
 
 import groovy.transform.CompileStatic
 import se.natusoft.docutations.Single
-import se.natusoft.lic.annotation.Apache_Software_License_2_0
+import se.natusoft.lic.annotation.BinariesAvailableAt
+import se.natusoft.lic.annotation.Human_Software_License_1_0
+import se.natusoft.lic.annotation.SourceAvailableAt
 import se.natusoft.seagull.SGId
 import se.natusoft.seagull.api.model.SGMessage
 import se.natusoft.seagull.tools.SGAPIProvider
+
+@Human_Software_License_1_0
+@SourceAvailableAt("https://github.com/tombensve/")
+@BinariesAvailableAt("https://repo.repsy.io/mvn/tombensve/natusoft-os/")
 
 /**
  * This keeps track of all services and where they are available. In same jar, or on the network,
@@ -17,7 +23,6 @@ import se.natusoft.seagull.tools.SGAPIProvider
  *
  * There should be only one router per runnable Jar file!
  */
-@Apache_Software_License_2_0
 @CompileStatic
 @Single
 interface SGRouter {

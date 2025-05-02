@@ -2,14 +2,21 @@ package se.natusoft.seagull.api
 
 import groovy.transform.CompileStatic
 import se.natusoft.docutations.Many
-import se.natusoft.lic.annotation.Apache_Software_License_2_0
+import se.natusoft.lic.annotation.BinariesAvailableAt
+import se.natusoft.lic.annotation.Human_Software_License_1_0
+import se.natusoft.lic.annotation.SourceAvailableAt
 import se.natusoft.seagull.api.model.SGMessage
+
+@Human_Software_License_1_0
+@SourceAvailableAt("https://github.com/tombensve/")
+@BinariesAvailableAt("https://repo.repsy.io/mvn/tombensve/natusoft-os/")
+
 /**
  * These implement a network protocol for calling services on the network.
  *
  * There can be many of these!
  */
-@Apache_Software_License_2_0
+
 @CompileStatic
 @Many( "Minimum one!" )
 interface SGProtocol {

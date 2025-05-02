@@ -1,8 +1,14 @@
 package se.natusoft.seagull
 
 import groovy.transform.CompileStatic
-import se.natusoft.lic.annotation.Apache_Software_License_2_0
+import se.natusoft.lic.annotation.BinariesAvailableAt
+import se.natusoft.lic.annotation.Human_Software_License_1_0
+import se.natusoft.lic.annotation.SourceAvailableAt
 import se.natusoft.seagull.exceptions.SGException
+
+@Human_Software_License_1_0
+@SourceAvailableAt("https://github.com/tombensve/")
+@BinariesAvailableAt("https://repo.repsy.io/mvn/tombensve/natusoft-os/")
 
 /**
  * This is a special ID that must be unique. It is created using the static method:
@@ -15,8 +21,6 @@ import se.natusoft.seagull.exceptions.SGException
  * Internally it is stored as a String! There is also a toString() method defined
  * that returns the string.
  */
-
-@Apache_Software_License_2_0
 @CompileStatic
 class SGId {
 

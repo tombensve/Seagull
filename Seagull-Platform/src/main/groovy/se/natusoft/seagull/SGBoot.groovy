@@ -1,16 +1,16 @@
 package se.natusoft.seagull
 
 import groovy.transform.CompileStatic
-import se.natusoft.lic.annotation.Apache_Software_License_2_0
 import se.natusoft.lic.annotation.BinariesAvailableAt
+import se.natusoft.lic.annotation.Human_Software_License_1_0
 import se.natusoft.lic.annotation.SourceAvailableAt
 
 /**
  * Contains the _Main_ method.
  */
-@Apache_Software_License_2_0
-@BinariesAvailableAt("https://repo.repsy.io/mvn/tombensve/natusoft-os/")
+@Human_Software_License_1_0
 @SourceAvailableAt("https://github.com/tombensve/")
+@BinariesAvailableAt("https://repo.repsy.io/mvn/tombensve/natusoft-os/")
 
 @CompileStatic
 class SGBoot {
@@ -30,7 +30,6 @@ class SGBoot {
         }
 
         println "Starting Seagull instance version 1.0.0"
-        println "Provided properties:"
         println SGStatics.startupProps.toString()
 
         // Load Protocols //

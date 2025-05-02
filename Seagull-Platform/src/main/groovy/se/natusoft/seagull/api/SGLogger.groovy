@@ -1,6 +1,13 @@
 package se.natusoft.seagull.api
 
+import se.natusoft.lic.annotation.BinariesAvailableAt
+import se.natusoft.lic.annotation.Human_Software_License_1_0
+import se.natusoft.lic.annotation.SourceAvailableAt
 import se.natusoft.seagull.tools.SGAPIProvider
+
+@Human_Software_License_1_0
+@SourceAvailableAt("https://github.com/tombensve/")
+@BinariesAvailableAt("https://repo.repsy.io/mvn/tombensve/natusoft-os/")
 
 /**
  * Seagull logger. Implementations can use any logging library wanted or handle it directly

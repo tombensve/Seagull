@@ -7,8 +7,8 @@ import io.undertow.server.HttpHandler
 import io.undertow.server.HttpServerExchange
 import io.undertow.util.Headers
 import se.natusoft.docutations.Todo
-import se.natusoft.lic.annotation.Apache_Software_License_2_0
 import se.natusoft.lic.annotation.BinariesAvailableAt
+import se.natusoft.lic.annotation.Human_Software_License_1_0
 import se.natusoft.lic.annotation.SourceAvailableAt
 import se.natusoft.seagull.SGLifecycle
 import se.natusoft.seagull.api.SGLogger
@@ -16,9 +16,9 @@ import se.natusoft.seagull.api.SGProtocol
 import se.natusoft.seagull.api.model.SGMessage
 import se.natusoft.tools.modelish.Model
 
-@Apache_Software_License_2_0
-@SourceAvailableAt( "https://github.com/tombensve/SeaGull" )
-@BinariesAvailableAt( "https://repo.repsy.io/mvn/tombensve/natusoft-os/" )
+@Human_Software_License_1_0
+@SourceAvailableAt("https://github.com/tombensve/")
+@BinariesAvailableAt("https://repo.repsy.io/mvn/tombensve/natusoft-os/")
 
 @CompileStatic
 @AutoService(SGProtocol.class)
