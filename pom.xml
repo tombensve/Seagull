@@ -79,39 +79,6 @@
         <version>2.0.1</version><!-- Provides Groovy 4.0.25 -->
     </parent>
 
-    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-
-    <groupId>se.natusoft.seagull</groupId>
-    <artifactId>Seagull</artifactId>
-
-    <!--
-        The parent POM referenced above uses my old 'major.minor.bytecode' format,
-        but I've realized that there is a point for the third digit, so my new
-        version format is now "major.minor.third-BCnn" where BC stands for Byte-Code!
-
-        Maven is flexible enough to allow that.
-    -->
-    <version>1.0.0-BC11</version>
-
-    <packaging>pom</packaging>
-
-    <!--
-        Structure
-    -->
-    <modules>
-        <!--
-            This defines APIs and tools. This one is always needed!
-        -->
-        <module>Seagull-Platform</module>
-
-        <!--
-            This is a root for different provided implementations.
-        -->
-        <module>Seagull-Providers</module>
-
-        <module>Seagull-test-and-sample-services</module>
-    </modules>
-
     <!--
         Configuration
     -->
@@ -137,6 +104,43 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     </properties>
+
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+    <groupId>se.natusoft.seagull</groupId>
+    <artifactId>Seagull</artifactId>
+
+    <!--
+        The parent POM referenced above uses my old 'major.minor.bytecode' format,
+        but I've realized that there is a point for the third digit, so my new
+        version format is now "major.minor.third-BCnn" where BC stands for Byte-Code!
+
+        Maven is flexible enough to allow that.
+
+        Note the 0.0.0-... version below! This will remain until I'm ready to release
+        a 1.0.0! This to indicate that this is still under first version development!
+    -->
+    <version>0.0.0-BC${bytecode.version}</version>
+
+    <packaging>pom</packaging>
+
+    <!--
+        Structure
+    -->
+    <modules>
+        <!--
+            This defines APIs and tools. This one is always needed!
+        -->
+        <module>Seagull-Platform</module>
+
+        <!--
+            This is a root for different provided implementations.
+        -->
+        <module>Seagull-Providers</module>
+
+        <module>Seagull-test-and-sample-services</module>
+    </modules>
+
 
     <!--
         General project information.
@@ -192,19 +196,19 @@
         <dependency>
             <groupId>se.natusoft.tools</groupId>
             <artifactId>LicAnnotations</artifactId>
-            <version>1.3.0-BC11</version>
+            <version>1.3.0-BC${bytecode.version}</version>
         </dependency>
 
         <dependency>
             <groupId>se.natusoft.tools</groupId>
             <artifactId>Modelish</artifactId>
-            <version>4.0.0-BC11</version>
+            <version>4.0.0-BC${bytecode.version}</version>
         </dependency>
 
         <dependency>
             <groupId>se.natusoft.annotation</groupId>
             <artifactId>docutations</artifactId>
-            <version>8.2.1-BC11</version>
+            <version>8.2.1-BC${bytecode.version}</version>
         </dependency>
 
         <!--
