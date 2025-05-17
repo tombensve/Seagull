@@ -4,6 +4,7 @@ import groovy.transform.CompileStatic
 import se.natusoft.lic.annotation.BinariesAvailableAt
 import se.natusoft.lic.annotation.Human_Software_License_1_0
 import se.natusoft.lic.annotation.SourceAvailableAt
+import se.natusoft.seagull.SG_ID
 
 @Human_Software_License_1_0
 @SourceAvailableAt("https://github.com/tombensve/")
@@ -39,6 +40,11 @@ import se.natusoft.lic.annotation.SourceAvailableAt
 @CompileStatic
 
 interface SGService {
+
+    /**
+     * @return The SG_ID of the service.
+     */
+    SG_ID serviceId()
 
     /**
      * Starts a service.

@@ -2,6 +2,13 @@ package se.natusoft.seagull.tools
 
 import groovy.transform.CompileStatic
 import se.natusoft.lic.annotation.Apache_Software_License_2_0
+import se.natusoft.lic.annotation.BinariesAvailableAt
+import se.natusoft.lic.annotation.Human_Software_License_1_0
+import se.natusoft.lic.annotation.SourceAvailableAt
+
+@Human_Software_License_1_0
+@SourceAvailableAt("https://github.com/tombensve/")
+@BinariesAvailableAt("https://repo.repsy.io/mvn/tombensve/natusoft-os/")
 
 /**
  * The Seagull-Platform jar mostly defines interfaces. Other jars has to be added
@@ -11,7 +18,6 @@ import se.natusoft.lic.annotation.Apache_Software_License_2_0
  * Since I have not succeeded in making Googles @AutoService work, the resources
  * needed to make these available have to be provided manually as resources.
  */
-@Apache_Software_License_2_0
 @CompileStatic
 class SGAPIProvider {
 

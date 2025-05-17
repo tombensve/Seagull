@@ -13,44 +13,50 @@ import se.natusoft.seagull.exceptions.SGException
 /**
  * This is a special ID that must be unique. It is created using the static method:
  *
- *     `register( Sting group, String id )`
+ *     `register( String type, Sting group, String id )`
  *
  * The 'group' part should be used in a similar way to java packages. The id should
  * be unique within the group.
  *
  * Internally it is stored as a String! There is also a toString() method defined
  * that returns the string.
+ *
+ * Services should define a unique SGId and use it to indicate who to call and
+ * who is calling.
+ *
+ * I had rather called it SGID, but IDEAs spell checker doesn't like that ...
+ * It did accept SGId for some reason, but I didn't like that!
  */
 @CompileStatic
-class SGId {
+class SG_ID {
 
     /**
      * Goes out to all services.
      *
      * To receive broadcasts you need to register as a listener on this ServiceId.
      */
-    static SGId Broadcast = register( "SGTarget", "se.natusoft.seagull", "Broadcast" )
+    static SG_ID Broadcast = register( "SGTarget", "se.natusoft.seagull", "Broadcast" )
 
     /**
      * Public, static  method to register an SGId.
      *
      * @param type The type of information this represents.
-     * @param group This should be used the same way as java packages! It represents both
+     * @param owner This should be used the same way as java packages! It represents both
      *              the organization and project within organization. This must be unique!
      * @param id A unique id within the group representing a service or something
      *           like the id of broadcast target as defined above.
      *
      * @return a new SGId instance.
      */
-    static SGId register( String type, String group, String id ) {
-        new SGId( type, group, id )
+    static SG_ID register( String type, String owner, String id ) {
+        new SG_ID( type, owner, id )
     }
 
 
     // --------------------------------------------------------------------------- //
 
     /** Holds all registered entries */
-    private static Map<String, SGId> REGISTRY
+    private static Map<String, SG_ID> REGISTRY
 
     /**
      * Holds the key in the map for this specific instance.
@@ -64,7 +70,7 @@ class SGId {
      * @param owner Use like package in java to avoid collisions.
      * @param id A unique id within the group.
      */
-    private SGId( String type, String owner, String id ) {
+    private SG_ID( String type, String owner, String id ) {
 
         if ( REGISTRY == null ) REGISTRY = [ : ]
 
@@ -92,7 +98,7 @@ class SGId {
      *
      * @return true or false.
      */
-    boolean equals( SGId id ) { this.idKey == id.toString() }
+    boolean equals( SG_ID id ) { this.idKey == id.toString() }
 
     /**
      * Equals using String rather than SGId since ids received are in String format.

@@ -5,6 +5,7 @@ import se.natusoft.docutations.Many
 import se.natusoft.lic.annotation.BinariesAvailableAt
 import se.natusoft.lic.annotation.Human_Software_License_1_0
 import se.natusoft.lic.annotation.SourceAvailableAt
+import se.natusoft.seagull.SG_ID
 import se.natusoft.seagull.api.model.SGMessage
 
 @Human_Software_License_1_0
@@ -18,30 +19,30 @@ import se.natusoft.seagull.api.model.SGMessage
  */
 
 @CompileStatic
-@Many( "Minimum one!" )
+@Many( "Minimum one protocol must be implemented and available in a jar!" )
 interface SGProtocol {
+
+    /**
+     * All protocols should add themselves to this map.
+     */
+    static Map<String, SGProtocol> protocols = [ : ]
 
     /**
      * The name of the protocol, to be able to identify it!
      *
-     * A protocol is unique specific thing! Do not add different implementation of a protocol in same jar!
-     * If you do, it will be relatively random which is used!
+     * A protocol is unique specific thing! Do not add different implementations of same
+     * protocol in same jar! If you do, it will be relatively random which is used!
      *
-     * @return The type of the protocol.
+     * @return The name of the protocol.
      */
-    String protocolType()
-
-    /**
-     * Who is providing this provider.
-     */
-    String protocolProvider()
+    String name()
 
     /**
      * Sends a message to a service using a specific protocol..
      *
      * @param The message to send.
      */
-    void send( SGMessage<?> data )
+    void send( SG_ID target, SGMessage<?> data )
 
     /**
      * Registers a listener of received messages.
@@ -50,14 +51,14 @@ interface SGProtocol {
      *
      * @return An UUID representing this listener instance.
      */
-    UUID registerListener( Closure<SGMessage<?>> listener )
+    void registerListener( SG_ID service, Closure<SGMessage<?>> listener )
 
     /**
      * Use the UUID gotten at registration to stop listening to more messages.
      *
      * @param listener The listener UUID to unregister.
      */
-    void unregisterListener( UUID listener )
+    void unregisterListener( SG_ID listener )
 
     /**
      * Do a total cleanup.

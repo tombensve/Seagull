@@ -31,15 +31,16 @@
             <optional>false</optional>
         </dependency>
 
+        <!--
         <dependency>
             <groupId>se.natusoft.tools</groupId>
             <artifactId>LicAnnotations</artifactId>
-            <version>1.2.0-BC11</version>
+            <version>1.3.0-BC11</version>
         </dependency>
-
+        -->
 
         <!--
-            Project require something that can read JSON and produce a Map<String, Object>
+            Project requires something that can read JSON and produce a Map<String, Object>
             back! This allows for wrapping this Map with Modelish models that only use
             interfaces and store data in just such a Map structure. A Modelish model
             can take this Map and wrap it with an appropriate model interface. Modelish

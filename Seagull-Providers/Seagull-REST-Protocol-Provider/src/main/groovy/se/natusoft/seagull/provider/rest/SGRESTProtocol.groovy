@@ -11,6 +11,7 @@ import se.natusoft.lic.annotation.BinariesAvailableAt
 import se.natusoft.lic.annotation.Human_Software_License_1_0
 import se.natusoft.lic.annotation.SourceAvailableAt
 import se.natusoft.seagull.SGLifecycle
+import se.natusoft.seagull.SG_ID
 import se.natusoft.seagull.api.SGLogger
 import se.natusoft.seagull.api.SGProtocol
 import se.natusoft.seagull.api.model.SGMessage
@@ -31,6 +32,44 @@ class SGRESTProtocol implements SGProtocol {
         logger.log( "Starting SGRESTProtocol!" )
     }
 
+    /**
+     * Nameof protocol.
+     */
+    String name() {
+        "SGRestProtocol"
+    }
+
+    /**
+     * Sends a message to a service using a specific protocol..
+     *
+     * @param The message to send.
+     */
+    @Override
+    void send( SG_ID target, SGMessage<?> data ) {
+
+    }
+
+    /**
+     * Registers a listener of received messages.
+     *
+     * @param listener The listener to be called when a message is received.
+     *
+     * @return An UUID representing this listener instance.
+     */
+    @Override
+    void registerListener( SG_ID service, Closure<SGMessage<?>> listener ) {
+
+    }
+
+    /**
+     * Use the UUID gotten at registration to stop listening to more messages.
+     *
+     * @param listener The listener UUID to unregister.
+     */
+    @Override
+    void unregisterListener( SG_ID listener ) {
+
+    }
 
     /**
      * The name of the protocol, to be able to identify it!
