@@ -5,7 +5,7 @@ import se.natusoft.docutations.Single
 import se.natusoft.lic.annotation.BinariesAvailableAt
 import se.natusoft.lic.annotation.Human_Software_License_1_0
 import se.natusoft.lic.annotation.SourceAvailableAt
-import se.natusoft.seagull.SG_ID
+import se.natusoft.seagull.SGID
 import se.natusoft.seagull.api.model.SGMessage
 import se.natusoft.seagull.tools.SGAPIProvider
 
@@ -20,6 +20,7 @@ import se.natusoft.seagull.tools.SGAPIProvider
  * communicate with outside world, and the inside world too!
  *
  * It is the routers job to:
+ * - Lookup all available protocols bundled in jar file using SGAPIProvider.findAll( SGProtocol.class )
  * - Use SGProtocol to send messages.
  * - Use SGProtocol to receive messages.
  *
@@ -45,7 +46,7 @@ interface SGRouter {
      * @param serviceId The id of the service.
      * @param sgService service to register,
      */
-    registerLocalService( SG_ID serviceID, SGService sgService )
+    registerLocalService( SGID serviceID, SGService sgService )
 
     /**
      * Sync with available remote services on the network.
@@ -58,7 +59,7 @@ interface SGRouter {
      * @param target
      * @param message
      */
-    void sendMessage( SG_ID service, SGMessage message )
+    void sendMessage( SGID service, SGMessage message )
 
     /**
      * This will send message to all message receivers.
@@ -66,7 +67,7 @@ interface SGRouter {
      * @param from Who is sending.
      * @param message The message to broadcast.
      */
-    void broadcast( SG_ID from, SGMessage message )
+    void broadcast( SGID from, SGMessage message )
 
     /**
      * Cleanup and shut down.

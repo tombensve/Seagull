@@ -11,7 +11,7 @@ import se.natusoft.lic.annotation.BinariesAvailableAt
 import se.natusoft.lic.annotation.Human_Software_License_1_0
 import se.natusoft.lic.annotation.SourceAvailableAt
 import se.natusoft.seagull.SGLifecycle
-import se.natusoft.seagull.SG_ID
+import se.natusoft.seagull.SGID
 import se.natusoft.seagull.api.SGLogger
 import se.natusoft.seagull.api.SGProtocol
 import se.natusoft.seagull.api.model.SGMessage
@@ -33,11 +33,9 @@ class SGRESTProtocol implements SGProtocol {
     }
 
     /**
-     * Nameof protocol.
+     * Name of protocol.
      */
-    String name() {
-        "SGRestProtocol"
-    }
+    String name() { "SGRestProtocol" }
 
     /**
      * Sends a message to a service using a specific protocol..
@@ -45,7 +43,7 @@ class SGRESTProtocol implements SGProtocol {
      * @param The message to send.
      */
     @Override
-    void send( SG_ID target, SGMessage<?> data ) {
+    void send( SGID target, SGMessage<?> data ) {
 
     }
 
@@ -57,7 +55,7 @@ class SGRESTProtocol implements SGProtocol {
      * @return An UUID representing this listener instance.
      */
     @Override
-    void registerListener( SG_ID service, Closure<SGMessage<?>> listener ) {
+    void registerListener( SGID service, Closure<SGMessage<?>> listener ) {
 
     }
 
@@ -67,7 +65,7 @@ class SGRESTProtocol implements SGProtocol {
      * @param listener The listener UUID to unregister.
      */
     @Override
-    void unregisterListener( SG_ID listener ) {
+    void unregisterListener( SGID listener ) {
 
     }
 
@@ -86,7 +84,7 @@ class SGRESTProtocol implements SGProtocol {
      *
      * @return "Seagull"
      */
-    String protocolProvider() { "Seagull default REST provider" }
+    static String protocolProvider() { "Seagull default REST provider" }
 
     // ------------------------------------------------------------------------------------------//
 

@@ -5,8 +5,9 @@ import se.natusoft.docutations.Many
 import se.natusoft.lic.annotation.BinariesAvailableAt
 import se.natusoft.lic.annotation.Human_Software_License_1_0
 import se.natusoft.lic.annotation.SourceAvailableAt
-import se.natusoft.seagull.SG_ID
+import se.natusoft.seagull.SGID
 import se.natusoft.seagull.api.model.SGMessage
+import se.natusoft.seagull.tools.SGAPIProvider
 
 @Human_Software_License_1_0
 @SourceAvailableAt("https://github.com/tombensve/")
@@ -23,15 +24,12 @@ import se.natusoft.seagull.api.model.SGMessage
 interface SGProtocol {
 
     /**
-     * All protocols should add themselves to this map.
+     * This contains a list of all protocol implementations found on classpath (JAR).
      */
-    static Map<String, SGProtocol> protocols = [ : ]
+    static List<SGProtocol> protocols = SGAPIProvider.findAll( SGProtocol.class )
 
     /**
      * The name of the protocol, to be able to identify it!
-     *
-     * A protocol is unique specific thing! Do not add different implementations of same
-     * protocol in same jar! If you do, it will be relatively random which is used!
      *
      * @return The name of the protocol.
      */
@@ -42,7 +40,7 @@ interface SGProtocol {
      *
      * @param The message to send.
      */
-    void send( SG_ID target, SGMessage<?> data )
+    void send( SGID target, SGMessage<?> data )
 
     /**
      * Registers a listener of received messages.
@@ -51,14 +49,14 @@ interface SGProtocol {
      *
      * @return An UUID representing this listener instance.
      */
-    void registerListener( SG_ID service, Closure<SGMessage<?>> listener )
+    void registerListener( SGID service, Closure<SGMessage<?>> listener )
 
     /**
      * Use the UUID gotten at registration to stop listening to more messages.
      *
      * @param listener The listener UUID to unregister.
      */
-    void unregisterListener( SG_ID listener )
+    void unregisterListener( SGID listener )
 
     /**
      * Do a total cleanup.

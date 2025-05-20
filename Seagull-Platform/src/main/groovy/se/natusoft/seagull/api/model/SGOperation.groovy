@@ -12,7 +12,7 @@ import se.natusoft.lic.annotation.SourceAvailableAt
 /**
  * Standard CRUD operations.
  */
-enum SG_CRUD {
+enum SGOperation {
 
     CREATE,
 

@@ -1,10 +1,10 @@
 package se.natusoft.seagull.api.model
 
 import groovy.transform.CompileStatic
-import se.natusoft.docutations.Nullable
 import se.natusoft.lic.annotation.BinariesAvailableAt
 import se.natusoft.lic.annotation.Human_Software_License_1_0
 import se.natusoft.lic.annotation.SourceAvailableAt
+import se.natusoft.seagull.SGID
 import se.natusoft.tools.modelish.Factory
 
 @Human_Software_License_1_0
@@ -18,23 +18,12 @@ import se.natusoft.tools.modelish.Factory
 interface SGMessage<T> extends Factory<T> {
 
     /**
-     * Sets CRUD operation. This fits protocols like REST, but can be useful
-     * even with other protocols also.
+     * Sets the operation to perform.
      *
-     * Note 1:  that this is a String! I'm not entirely sure Modelish supports
-     * enums (yet). But the SG_CRUD enum can be used with .toString() in
-     * the end to get a correct string value.
-     *
-     * @param crud Provides the CRUD operation requested.
+     * @param operation Any SGOperation value with a toString() call.
      */
-    @Nullable
-    void setCrud( String crud )
-
-    /**
-     * @return The CRUD operation requested.
-     */
-    @Nullable
-    String getCRUD()
+    void setOperation(String operation)
+    String getOperation()
 
     /**
      * Specify what model should be used to read the content of this message.
@@ -46,16 +35,13 @@ interface SGMessage<T> extends Factory<T> {
      * In other words, the model type should tell which subclass of this to cast
      * this to. It is an indicator of what the full message is. Using a string
      * name like this was the only way I could come up with to be protocol
-     * independent.
+     * independent. Do consider using SGID and pass a toString() of that
      *
      * @param modelType The model type specifier.
      */
     void setModelType( String modelType )
 
     /**
-     * Theoretically a service caller can provide different sub-models of this model
-     * calling same service! This id can then be used to pick correct sub model of this
-     * to read sent data.
      *
      * @return An SGId that represents the model type that will extend this message.
      */

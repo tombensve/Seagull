@@ -28,14 +28,14 @@ import se.natusoft.seagull.exceptions.SGException
  * It did accept SGId for some reason, but I didn't like that!
  */
 @CompileStatic
-class SG_ID {
+class SGID {
 
     /**
      * Goes out to all services.
      *
      * To receive broadcasts you need to register as a listener on this ServiceId.
      */
-    static SG_ID Broadcast = register( "SGTarget", "se.natusoft.seagull", "Broadcast" )
+    static SGID Broadcast = register( "SGTarget", "se.natusoft.seagull", "Broadcast" )
 
     /**
      * Public, static  method to register an SGId.
@@ -48,15 +48,15 @@ class SG_ID {
      *
      * @return a new SGId instance.
      */
-    static SG_ID register( String type, String owner, String id ) {
-        new SG_ID( type, owner, id )
+    static SGID register( String type, String owner, String id ) {
+        new SGID( type, owner, id )
     }
 
 
     // --------------------------------------------------------------------------- //
 
     /** Holds all registered entries */
-    private static Map<String, SG_ID> REGISTRY
+    private static Map<String, SGID> REGISTRY
 
     /**
      * Holds the key in the map for this specific instance.
@@ -70,7 +70,7 @@ class SG_ID {
      * @param owner Use like package in java to avoid collisions.
      * @param id A unique id within the group.
      */
-    private SG_ID( String type, String owner, String id ) {
+    private SGID( String type, String owner, String id ) {
 
         if ( REGISTRY == null ) REGISTRY = [ : ]
 
@@ -90,6 +90,9 @@ class SG_ID {
         this.idKey
     }
 
+    void fromString(String idKey) {
+        this.idKey = idKey
+    }
 
     /**
      * Provides equals method.
@@ -98,7 +101,7 @@ class SG_ID {
      *
      * @return true or false.
      */
-    boolean equals( SG_ID id ) { this.idKey == id.toString() }
+    boolean equals( SGID id ) { this.idKey == id.toString() }
 
     /**
      * Equals using String rather than SGId since ids received are in String format.
