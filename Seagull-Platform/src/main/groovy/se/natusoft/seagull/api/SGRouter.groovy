@@ -23,6 +23,7 @@ import se.natusoft.seagull.tools.SGAPIProvider
  * - Lookup all available protocols bundled in jar file using SGAPIProvider.findAll( SGProtocol.class )
  * - Use SGProtocol to send messages.
  * - Use SGProtocol to receive messages.
+ * - Automatically find available services bundled in jar file by using SGAPIProvider.find(SGService.class).
  *
  * SGRouter:s should also multicast themselves on the network!
  *
@@ -41,38 +42,26 @@ interface SGRouter {
     // ------------------------------------------------------------------------ //
 
     /**
-     * Registers a service with the router.
+     * Routes a message to valid service
      *
-     * @param serviceId The id of the service.
-     * @param sgService service to register,
-     */
-    registerLocalService( SGID serviceID, SGService sgService )
-
-    /**
-     * Sync with available remote services on the network.
-     */
-    syncWithAvailableRemoteServices()
-
-    /**
-     * Sends a message to a service, either locally or on the network.
-     *
-     * @param target
+     * @param sender of message.
+     * @param receiver of message. Can also be SGID.Broadcast!
      * @param message
      */
-    void sendMessage( SGID service, SGMessage message )
+    void sendMessage( SGID sender, SGID receiver, SGMessage message )
 
     /**
-     * This will send message to all message receivers.
+     * Registers a receiver of messages that needs to be routed to correct service
+     * being called.
      *
-     * @param from Who is sending.
-     * @param message The message to broadcast.
+     * @param service
+     * @param listener
      */
-    void broadcast( SGID from, SGMessage message )
+    void registerReceiver( SGID service, Closure<SGMessage<?>> listener )
 
     /**
      * Cleanup and shut down.
      */
     void shutdown()
-
 
 }

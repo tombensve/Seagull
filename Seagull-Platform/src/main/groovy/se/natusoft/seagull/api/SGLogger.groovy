@@ -1,5 +1,6 @@
 package se.natusoft.seagull.api
 
+import groovy.transform.CompileStatic
 import se.natusoft.lic.annotation.BinariesAvailableAt
 import se.natusoft.lic.annotation.Human_Software_License_1_0
 import se.natusoft.lic.annotation.SourceAvailableAt
@@ -17,6 +18,7 @@ import se.natusoft.seagull.tools.SGAPIProvider
  *
  * EVERY THING ELSE HERE IS PRIVATE!
  */
+@CompileStatic
 interface SGLogger {
 
     /**
@@ -45,6 +47,7 @@ interface SGLogger {
  * This will find a logger implementation provided via ServiceLoader, and if not
  * it will return the default logger.
  */
+@CompileStatic
 class LoggerFinder {
 
     static SGLogger lookup() {
@@ -63,6 +66,7 @@ class LoggerFinder {
  * This logs to stdout in simplest way possible! It is used only if no other SGLogger
  * implementation is provided.
  */
+@CompileStatic
 class SGDefaultLogger implements SGLogger {
 
     void log( String message ) {

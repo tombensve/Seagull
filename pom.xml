@@ -16,9 +16,16 @@
             nothing about how services communicate with each other.
             This defines APIs and not to many of those, that can be
             implemented with whatever protocol. What protocol is used
-            depends on what implementation you make available on
+            depends on what implementation(s) you make available on
             the classpath. Implementations are fetched using
             SGProviderLookup (currently ServiceLoader is used).
+
+     BUILD RECOMMENDATION
+
+         This builds JDK 11 bytecode! I have, however, realized that
+         later JDK:s like JDK 17 builds way faster! So I'm using JDK 17
+         to build in IDEA, but make it produce JDK 11 bytecode. There
+         is a real big build speed diff between 11 and 17!
 
     COPYRIGHTS
         Copyright (C) 2023 by Tommy Bengt Svensson All rights reserved.
@@ -46,8 +53,8 @@
     |                                                              |
     =============================\/================================
 
-    NOTE TO SELF: DO NOT TRY TO UPGRADE TO MAVEN 4!! IT DOES NOT SEEM TO BE BACKWARDS
-    COMPATIBLE!!! Or possibly just work in progress.
+    NOTE TO SELF: DO NOT TRY TO UPGRADE TO MAVEN 4!! IT DOES NOT SEEM BACKWARDS
+    COMPATIBLE!!! Or possibly work in progress.
 
 -->
 
@@ -62,7 +69,7 @@
 
         DO NOTE THAT THIS PARENT DOES NOT POINT OUT THIS PROJECT AS A CHILD!
 
-        The dependency is one way, I pull in this, to build groovy
+        The dependency is one way that I pull in this, to build groovy
         code using a common setup for this, which is intended to be reused
         by all my Groovy projects!
 
@@ -76,7 +83,7 @@
     <parent>
         <groupId>se.natusoft</groupId>
         <artifactId>groovy-build</artifactId>
-        <version>2.0.1</version><!-- Provides Groovy 4.0.25 -->
+        <version>2.0.2</version><!-- Provides Groovy 4.0.27 -->
     </parent>
 
     <!--
@@ -91,10 +98,10 @@
 
         <!--
             I get complaints that build is not platform independent!
-            Is there really such at thing ? A character code that will
-            work on every single language on the planet ?
+            Is there really such a thing? A character code that will
+            work on every single language on the planet?
 
-            As I understand it UTF-8 covers quite a lot, and the ultimate
+            As I understand it, UTF-8 covers quite a lot, and the ultimate
             character encoding valid on the whole planet, Mars and Jupiter too,
             does not exist!
 
@@ -186,6 +193,10 @@
         <license>
             <name>Apache 2.0</name>
             <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+        <license>
+            <name>Human Software License 1.0</name>
+            <url>https://github.com/tombensve/HSL</url>
         </license>
     </licenses>
 

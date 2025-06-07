@@ -38,7 +38,6 @@ import se.natusoft.seagull.SGID
  */
 
 @CompileStatic
-
 interface SGService {
 
     /**

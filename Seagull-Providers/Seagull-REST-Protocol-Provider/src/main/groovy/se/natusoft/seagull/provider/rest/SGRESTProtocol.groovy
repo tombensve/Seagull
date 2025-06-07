@@ -187,11 +187,12 @@ class SGRESTProtocol implements SGProtocol {
                 if ( port > 9998 ) { // Reserving 9999 for a registry!
                     retry = false
 
+                    // TO DO: Make port configurable!
                     logger.log( "ERROR: Failed to start service due to lack of available ports!" )
                     this.httpServerState = SGLifecycle.SHUT_DOWN
                 }
             }
-        }
+        } // retry
     }
 
     // ------------------------------------------------------------------------------------------//

@@ -1,7 +1,12 @@
 package se.natusoft.seagull.api.model
 
+import groovy.transform.CompileStatic
 import se.natusoft.docutations.Optional
+import se.natusoft.tools.modelish.ModelishModel
 
+@CompileStatic
+
+@ModelishModel
 interface SGCRUDMessage extends SGMessage {
 
     /**

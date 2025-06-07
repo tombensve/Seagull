@@ -59,7 +59,7 @@ interface SGProtocol {
     void unregisterListener( SGID listener )
 
     /**
-     * Do a total cleanup.
+     * Announce unavailability and then shut down.
      */
     void shutdown()
 
