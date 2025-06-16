@@ -30,11 +30,11 @@ import se.natusoft.seagull.SGID
  * If this fails then the jar file for this service is not correctly packaged!
  *
  * Googles AutoService jar should be in classpath to annotate implementations
- * with @AutoService . Otherwise you have to doing manually. Javas ServiceLoader is
- * used under the surface to get implementations.
+ * with @AutoService . Javas ServiceLoader is used under the surface to get
+ * implementations.
  *
  * You need to register listeners in startup(), and unregister them in shutdown!
- * Sending messages can be done at any time using the Router.
+ * Sending messages can be done at any time using the SGMessageRouter.
  */
 
 @CompileStatic

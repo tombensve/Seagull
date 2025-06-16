@@ -31,13 +31,13 @@ import se.natusoft.seagull.tools.SGAPIProvider
  */
 @CompileStatic
 @Single( "Uses one or more protocols to communicate." )
-interface SGRouter {
+interface SGMessageRouter {
 
     /**
      * The router instance.
      */
     @Single( "Should only be one of these in a jar!" )
-    static final SGRouter router = SGAPIProvider.find( SGRouter.class )
+    static final SGMessageRouter messageRouter = SGAPIProvider.find( SGMessageRouter.class )
 
     // ------------------------------------------------------------------------ //
 
@@ -54,8 +54,8 @@ interface SGRouter {
      * Registers a receiver of messages that needs to be routed to correct service
      * being called.
      *
-     * @param service
-     * @param listener
+     * @param service SGID of the service. Each service should have a unique SGID.
+     * @param listener A Closure that takes an SGMessage.
      */
     void registerReceiver( SGID service, Closure<SGMessage<?>> listener )
 

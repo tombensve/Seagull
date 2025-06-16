@@ -86,16 +86,16 @@ class SGRESTProtocol implements SGProtocol {
      */
     static String protocolProvider() { "Seagull default REST provider" }
 
-    // ------------------------------------------------------------------------------------------//
+    // ---------------------------------------------------------------------------//
 
-    private Map<UUID, Closure<SGMessage<?>>> listeners = [ : ] // One of many reasons why I love Groovy!
+    private Map<UUID, Closure<SGMessage<?>>> listeners = [ : ]
 
-    // If the editor places this comment in the same "box" as the above method and comment
-    // then you are using IDEA!! This is a comment for the below method, and nothing else!
-    // Until JettBrains get their shit working again (if ever) I suggest not using that feature
-    // since it confuses things. I'm assuming that they have lost a lot of competent people
-    // since they are not living up to their name any more. That said it still beats most
-    // other alternatives ...
+    // If the editor places this comment in the same "box" as the above method and
+    // comment then you are using IDEA!! This is a comment for the below method,
+    // and nothing else! Until JettBrains get their shit working again (if ever)
+    // I suggest not using that feature since it confuses things. I'm assuming
+    // that they have lost a lot of competent people since they are not living
+    // up to their name any more. That said it still beats most other alternatives ...
 
     /**
      * Indicates if the HTTP server should be running or not. This so that it will not
@@ -143,10 +143,10 @@ class SGRESTProtocol implements SGProtocol {
 
         this.httpServerState = SGLifecycle.RUNNING
 
-        // Hopeing this is odd enough to in general not be used :-). But if this is busy
+        // Hope this is odd enough to in general not be used :-). But if this is busy
         // we will try all the way up tp 9999 before giving up! What port end up being used
         // will be logged!
-        @Todo(description = "Make confifgurable")
+        @Todo(description = "Chose a set of 10 ports spread out")
         int port = 9900
 
         InetAddress inetAddress = InetAddress.localHost

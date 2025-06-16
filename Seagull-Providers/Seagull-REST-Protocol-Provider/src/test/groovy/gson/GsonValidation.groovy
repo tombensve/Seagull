@@ -19,7 +19,7 @@ class GsonValidation {
     @Test
     void simpleTest() {
 
-        String jsonString = "{\"name\":\"test\",\"decimal\":9.711,\"bool\":true}"
+        String jsonString = '{"name":"test","decimal":9.711,"bool":true}'
 
         println jsonString
 
@@ -31,13 +31,17 @@ class GsonValidation {
 
         println(map)
 
+        // Note that this is a map!
+        assert map.name == "test"
+
         // TestModel is just an interface with property setters and getters.
         TestModel testModel = Modelish.createFromMap( TestModel.class as Class<TestModel>, map) as TestModel
 
-        assert testModel.getName(  ) == "test"
+        // Note that TestModel is an interface!
+        assert testModel.name == "test"
 
-        assert testModel.getDecimal(  ) == 9.711d // Using the 'd' suffix for double works best!
+        assert testModel.decimal == 9.711d // Using the 'd' suffix for double works best!
 
-        assert testModel.getBool()
+        assert testModel.bool
     }
 }

@@ -19,8 +19,8 @@ This is intended to be a very simple to use service platform.
 
 ### SGProviderLookup
 
-Internal class with static methods to lookup instances of interfaces. This uses ServiceLoader to lookup 
-implementations available on _CLASSPATH_.
+Internal class with static methods to lookup instances of interfaces. This uses
+ServiceLoader to lookup implementations available on _CLASSPATH_.
 
 ### SGFactory
 

@@ -13,11 +13,15 @@ import se.natusoft.tools.modelish.ModelishModel
 @BinariesAvailableAt( "https://repo.repsy.io/mvn/tombensve/natusoft-os/" )
 
 /**
- * This represents the senders information.
+ * This represents the senders information. Note that the full message sent contains
+ * Seagull internal information header for internal Seagull use, and the
+ * SGMessageContent the actual message for the receiver!
  */
 @CompileStatic
 @ModelishModel
 interface SGMessageContent<T> extends Factory<T> {}
+
+// -------------------------------------------------------------------------------- //
 
 /**
  * This is a base model for all messages! This must be subclassed for specific messages!
@@ -47,18 +51,17 @@ interface SGMessage<T> extends Factory<T> {
      *        a valid value! My goal is to be able to provide any type
      *        of protocol, even binary such!
      */
-    void setOperation( String operation )
+    void setOperation( SGOperation operation )
 
     /**
      * Gets the operation to perform.
      *
      * @return The operation.
      */
-    String getOperation()
+    SGOperation getOperation()
 
 
     setMessageContent(SGMessageContent<?> messageContent)
 
     SGMessageContent<?> getMessageContent()
-
 }

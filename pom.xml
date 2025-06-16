@@ -110,6 +110,11 @@
         -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
+        <maven.compiler.source>${bytecode.version}</maven.compiler.source>
+        <maven.compiler.target>${bytecode.version}</maven.compiler.target>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
     </properties>
 
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -127,7 +132,7 @@
         Note the 0.0.0-... version below! This will remain until I'm ready to release
         a 1.0.0! This to indicate that this is still under first version development!
     -->
-    <version>0.0.0-BC${bytecode.version}</version>
+    <version>1.0.0-BC${bytecode.version}</version>
 
     <packaging>pom</packaging>
 
@@ -146,6 +151,7 @@
         <module>Seagull-Providers</module>
 
         <module>Seagull-test-and-sample-services</module>
+
     </modules>
 
 
@@ -207,19 +213,19 @@
         <dependency>
             <groupId>se.natusoft.tools</groupId>
             <artifactId>LicAnnotations</artifactId>
-            <version>1.3.0-BC${bytecode.version}</version>
+            <version>1.3.0-BC11</version>
         </dependency>
 
         <dependency>
             <groupId>se.natusoft.tools</groupId>
             <artifactId>Modelish</artifactId>
-            <version>4.0.0-BC${bytecode.version}</version>
+            <version>4.0.0-BC11</version>
         </dependency>
 
         <dependency>
             <groupId>se.natusoft.annotation</groupId>
             <artifactId>docutations</artifactId>
-            <version>8.2.1-BC${bytecode.version}</version>
+            <version>8.2.1-BC11</version>
         </dependency>
 
         <!--

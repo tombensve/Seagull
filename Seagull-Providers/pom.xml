@@ -74,6 +74,7 @@
     <modules>
 
         <module>Seagull-REST-Protocol-Provider</module>
+        <module>SGJsonMapServiceProvider</module>
 
     </modules>
 
