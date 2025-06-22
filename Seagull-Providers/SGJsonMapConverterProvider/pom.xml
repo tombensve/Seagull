@@ -9,7 +9,7 @@
         <version>1.0.0-BC11</version>
     </parent>
 
-    <artifactId>SGJsonMapServiceProvider</artifactId>
+    <artifactId>SGJsonMapConverterProvider</artifactId>
 
     <properties>
         <!-- These should be inherited!
@@ -28,26 +28,11 @@
         </dependency>
 
         <dependency>
-            <groupId>com.google.auto.service</groupId>
-            <artifactId>auto-service</artifactId>
-            <version>1.1.1</version>
-            <optional>false</optional>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.10.1</version>
         </dependency>
 
-
-        <dependency>
-        <groupId>se.natusoft.seagull</groupId>
-        <artifactId>Seagull-Platform</artifactId>
-        <version>1.0.0-BC11</version>
-        <scope>compile</scope>
-    </dependency>
-
-    <dependency>
-        <groupId>com.google.auto.service</groupId>
-        <artifactId>auto-service</artifactId>
-        <version>1.1.1</version>
-        <optional>false</optional>
-    </dependency>
     </dependencies>
 
 </project>

@@ -6,7 +6,7 @@ import se.natusoft.seagull.SGID
 import se.natusoft.seagull.exceptions.SGException
 
 @CompileStatic
-class SFIdTest {
+class SGIdTest {
 
     @Test
     void testSFId() {

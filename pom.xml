@@ -196,14 +196,23 @@
     </issueManagement>
 
     <licenses>
-        <license>
-            <name>Apache 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
-        </license>
+        <!--
+            These are the licenses I'm aware of using! As far as I know, all third party
+            dependencies are under the Apache Software License. If anyone finds this
+            to be wrong, then please inform me!
+        -->
         <license>
             <name>Human Software License 1.0</name>
             <url>https://github.com/tombensve/HSL</url>
         </license>
+        <!--
+            extends
+        -->
+        <license>
+            <name>Apache 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+
     </licenses>
 
     <dependencies>
@@ -226,20 +235,6 @@
             <groupId>se.natusoft.annotation</groupId>
             <artifactId>docutations</artifactId>
             <version>8.2.1-BC11</version>
-        </dependency>
-
-        <!--
-            Yes, there is a warning on this! But not something that affects this code
-            from what I understand.
-
-            I do have had serious problems making this work as expected, however.
-            I might end up doing my own.
-        -->
-        <dependency>
-            <groupId>com.google.auto.service</groupId>
-            <artifactId>auto-service</artifactId>
-            <version>1.1.1</version>
-            <optional>true</optional>
         </dependency>
 
         <!--

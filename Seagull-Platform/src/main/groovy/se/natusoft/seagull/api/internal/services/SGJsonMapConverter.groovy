@@ -15,7 +15,7 @@ import se.natusoft.lic.annotation.SourceAvailableAt
  * cloning. Internally data is stored in Map<String, Object> structures
  * just like JSON structures.
 */
-interface SGJsonMapService extends SGInternalService {
+interface SGJsonMapConverter extends SGExternalWrapper {
 
     /**
      * This takes a Map structure and converts to JSON.

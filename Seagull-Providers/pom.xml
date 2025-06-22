@@ -47,7 +47,6 @@
 
     <artifactId>Seagull-Providers</artifactId>
     <version>1.0.0-BC11</version>
-
     <packaging>pom</packaging>
 
     <parent>
@@ -74,7 +73,7 @@
     <modules>
 
         <module>Seagull-REST-Protocol-Provider</module>
-        <module>SGJsonMapServiceProvider</module>
+        <module>SGJsonMapConverterProvider</module>
 
     </modules>
 
