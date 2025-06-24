@@ -1,6 +1,27 @@
 package se.natusoft.seagull.provider.internal
 
-import com.google.common.reflect.TypeToken
+// ---------------------------------------------------------------------------------------
+// When using Gson:
+// WRONG: import com.google.common.reflect.TypeToken
+// RIGHT: import com.google.gson.reflect.TypeToken
+//
+// Classes that are used by more code than one codebase, should be broken out into
+// a library so that all uses the same implementation.
+//
+// Here we have an object with the same name and probably same functionality, but in
+// different packages in different jars! When both are on the CLASSPATH then it is
+// probably random which are picked by the IDE.
+//
+// IDEA out of the blue replaces the correct with the incorrect when both happen
+// to be on the CLASSPATH!!!
+//
+// But it is really Google that is to blame for this!!
+// See: https://stackoverflow.com/questions/39138241/gson-typetoken-classnotfoundexception
+//
+// I was really impressed with Gson and said to my self, these guys really know
+// what they are doing! Apparently not!
+// ---------------------------------------------------------------------------------------
+import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
 import se.natusoft.seagull.api.internal.services.SGJsonMapConverter
 import java.lang.reflect.Type
@@ -29,7 +50,7 @@ class SGJsonMapConverterProvider implements SGJsonMapConverter {
     @Override
     String toJSON( Map<String, Object> modelMap ) {
 
-        gson.toJson( modelMap, MapType)
+        gson.toJson( modelMap, mapType)
     }
 
     /**
@@ -43,6 +64,6 @@ class SGJsonMapConverterProvider implements SGJsonMapConverter {
     @Override
     Map<String, Object> toMap( String json ) {
 
-        gson.fromJson(json, MapType)
+        gson.fromJson(json, mapType)
     }
 }

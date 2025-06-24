@@ -1,6 +1,5 @@
 package se.natusoft.seagull.provider.rest
 
-import com.google.auto.service.AutoService
 import groovy.transform.CompileStatic
 import io.undertow.Undertow
 import io.undertow.server.HttpHandler
@@ -22,7 +21,6 @@ import se.natusoft.tools.modelish.Model
 @BinariesAvailableAt("https://repo.repsy.io/mvn/tombensve/natusoft-os/")
 
 @CompileStatic
-@AutoService(SGProtocol.class)
 class SGRESTProtocol implements SGProtocol {
 
     // Convenience / cosmetics to log using logger.log(...) rather than SGLogger.instance.log(...).

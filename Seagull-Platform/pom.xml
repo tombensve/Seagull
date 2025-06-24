@@ -62,11 +62,13 @@
     <version>1.0.0-BC11</version>
 
     <dependencies>
+        <!--
         <dependency>
             <groupId>com.google.auto.service</groupId>
             <artifactId>auto-service</artifactId>
             <version>1.1.1</version>
         </dependency>
+        -->
 
     </dependencies>
 
