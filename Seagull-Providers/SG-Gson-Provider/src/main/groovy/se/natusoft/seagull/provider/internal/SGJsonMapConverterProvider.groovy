@@ -29,8 +29,17 @@ import se.natusoft.seagull.api.internal.services.SGJsonMapConverter
 import java.lang.reflect.Type
 
 /**
- * This converts between JSON in strings and Map<String, Object> structures.
- * The latter can be used as data provider for a Modelish model.
+ * This converts between JSON in strings and Map<String, Object>
+ * structures. The latter can be used as data provider for a
+ * Modelish model.
+ *
+ * Do note that Modelish supports both JavaBean models and models
+ * that does not have a get/set start but determines what is what
+ * depending on argument or no argument. I have however decided to
+ * use the JavaBean variant due to that this is written in Groovy
+ * which support '.property' access. This makes it more Java Bean
+ * compliant. (hmm I can't figure out why I'm constantly thinking
+ * of coffee!)
  */
 class SGJsonMapConverterProvider implements SGJsonMapConverter {
 
