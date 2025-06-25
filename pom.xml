@@ -20,6 +20,10 @@
             the classpath. Implementations are fetched using
             SGProviderLookup (currently ServiceLoader is used).
 
+    STATUS
+
+            Under development!
+
      BUILD RECOMMENDATION
 
          This builds JDK 11 bytecode! I have, however, realized that
@@ -31,13 +35,14 @@
         Copyright (C) 2023 by Tommy Bengt Svensson All rights reserved.
 
     LICENSE
-        Apache 2.0 (Open Source)
 
-        Licensed under the Apache License, Version 2.0 (the "License");
-        you may not use this file except in compliance with the License.
-        You may obtain a copy of the License at
+        Licensed under the Human Software License 1.0
 
-          http://www.apache.org/licenses/LICENSE-2.0
+        You may not use this file except in compliance with the License.
+        You may get a copy of the License at
+
+          https://github.com/tombensve/HSL
+          https://tombensvebloggish.craft.me/hsl
 
         Unless required by applicable law or agreed to in writing, software
         distributed under the License is distributed on an "AS IS" BASIS,
@@ -45,16 +50,10 @@
         See the License for the specific language governing permissions and
         limitations under the License.
 
+    =============================================================================
 
-    =============================/\================================
-    |                                                              |
-    \    This code is currently a playground / work in progress!  /
-    /    Not ready for any form of usage!                         \
-    |                                                              |
-    =============================\/================================
-
-    NOTE TO SELF: DO NOT TRY TO UPGRADE TO MAVEN 4!! IT DOES NOT SEEM BACKWARDS
-    COMPATIBLE!!! Or possibly work in progress.
+    NOTE TO SELF: DO NOT TRY TO UPGRADE TO MAVEN 4 YET, IT DOES NOT SEEM BACKWARDS
+    COMPATIBLE! Or possibly work in progress.
 
 -->
 
@@ -94,7 +93,7 @@
         <!--
             Version of byte-code to produce.
         -->
-        <bytecode.version>11</bytecode.version>
+
 
         <!--
             I get complaints that build is not platform independent!
@@ -129,10 +128,8 @@
 
         Maven is flexible enough to allow that.
 
-        Note the 0.0.0-... version below! This will remain until I'm ready to release
-        a 1.0.0! This to indicate that this is still under first version development!
     -->
-    <version>1.0.0-BC${bytecode.version}</version>
+    <version>1.0.0-BC11</version>
 
     <packaging>pom</packaging>
 

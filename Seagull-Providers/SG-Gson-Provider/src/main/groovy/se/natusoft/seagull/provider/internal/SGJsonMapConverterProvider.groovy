@@ -1,5 +1,3 @@
-package se.natusoft.seagull.provider.internal
-
 // ---------------------------------------------------------------------------------------
 // When using Gson:
 // WRONG: import com.google.common.reflect.TypeToken
@@ -21,8 +19,12 @@ package se.natusoft.seagull.provider.internal
 // I was really impressed with Gson and said to my self, these guys really know
 // what they are doing! Apparently not!
 // ---------------------------------------------------------------------------------------
+
+package se.natusoft.seagull.provider.internal
+
 import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
+import se.natusoft.docutations.Implements
 import se.natusoft.seagull.api.internal.services.SGJsonMapConverter
 import java.lang.reflect.Type
 
@@ -36,7 +38,7 @@ class SGJsonMapConverterProvider implements SGJsonMapConverter {
     private static  Gson gson = new Gson()
 
     /** static declaration of Map<String, Object) type. */
-    private static Type MapType = new TypeToken<Map<String, Object>>(){}.getType()
+    private static Type mapType = new TypeToken<Map<String, Object>>(){}.getType()
 
     /**
      * This takes a Map structure and converts to JSON.
@@ -47,10 +49,11 @@ class SGJsonMapConverterProvider implements SGJsonMapConverter {
      *         potential sub JSON objects that exactly
      *         reflects the input Map.
      */
+    @Implements(SGJsonMapConverter.class)
     @Override
     String toJSON( Map<String, Object> modelMap ) {
 
-        gson.toJson( modelMap, mapType)
+        gson.toJson( modelMap, mapType) as String
     }
 
     /**
@@ -61,9 +64,10 @@ class SGJsonMapConverterProvider implements SGJsonMapConverter {
      *
      * @return A Map with eventual sub Maps reflecting original JSON structure.
      */
+    @Implements(SGJsonMapConverter.class)
     @Override
     Map<String, Object> toMap( String json ) {
 
-        gson.fromJson(json, mapType)
+        gson.fromJson(json, mapType) as Map<String, Object>
     }
 }
