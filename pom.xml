@@ -31,6 +31,11 @@
          to build in IDEA, but make it produce JDK 11 bytecode. There
          is a real big build speed diff between 11 and 17!
 
+         When completely done with this project, I will try to bump up
+         the byte code version as far as it will still build. Since this
+         is Groovy and not Java, it might be able to go quite high.
+         I am not using any JDK library features over 11!
+
     COPYRIGHTS
         Copyright (C) 2023 by Tommy Bengt Svensson All rights reserved.
 
@@ -173,6 +178,9 @@
 
     <organization>
         <name>Tommy Svensson</name>
+        <!--
+            This is where I'm having some fun, playing with ideas.
+        -->
         <url>https://github.com/tombensve/</url>
     </organization>
 
