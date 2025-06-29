@@ -353,10 +353,4 @@
 
     </build>
 
-    <!--
-        Profiles
-    -->
-    <profiles>
-    </profiles>
-
 </project>

@@ -1,10 +1,6 @@
 package se.natusoft.seagull.provider.rest
 
 import groovy.transform.CompileStatic
-import io.undertow.Undertow
-import io.undertow.server.HttpHandler
-import io.undertow.server.HttpServerExchange
-import io.undertow.util.Headers
 import se.natusoft.docutations.Todo
 import se.natusoft.lic.annotation.BinariesAvailableAt
 import se.natusoft.lic.annotation.Human_Software_License_1_0
@@ -107,7 +103,7 @@ class SGRESTProtocol implements SGProtocol {
     /**
      * HTTP server instance.
      */
-    private Undertow httpServer = null
+    private Object httpServer = null
 
     /**
      * This is responsible for trying to bring upp server. As anything it can of course fail!
@@ -152,6 +148,7 @@ class SGRESTProtocol implements SGProtocol {
         boolean retry = true
 
         while ( retry ) {
+            /*
             try {
                 final def undertow = this.httpServer = Undertow.builder()
                         .addHttpListener( port, inetAddress.hostName )
@@ -189,7 +186,7 @@ class SGRESTProtocol implements SGProtocol {
                     logger.log( "ERROR: Failed to start service due to lack of available ports!" )
                     this.httpServerState = SGLifecycle.SHUT_DOWN
                 }
-            }
+            }*/
         } // retry
     }
 
@@ -256,7 +253,7 @@ class SGRESTProtocol implements SGProtocol {
     void shutdown() {
         this.httpServerState = SGLifecycle.SHUT_DOWN
         this.listeners.clear()
-        if ( this.httpServer != null ) this.httpServer.stop()
+        //if ( this.httpServer != null ) this.httpServer.stop()
         this.httpServer = null
     }
 
