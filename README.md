@@ -20,6 +20,10 @@ _Seagulls are also apparently quite smart, and have equality between male and fe
 
 -----
 
+## STATUS: _WORK IN PROGRESS!_ 
+
+----
+
 # So, what is this about?
 
 It is about information flying around between different services, triggering things to be done, in simple terms.

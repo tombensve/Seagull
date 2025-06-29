@@ -123,18 +123,18 @@
 
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
-    <groupId>se.natusoft.seagull</groupId>
-    <artifactId>Seagull</artifactId>
-
     <!--
         The parent POM referenced above uses my old 'major.minor.bytecode' format,
         but I've realized that there is a point for the third digit, so my new
         version format is now "major.minor.third-BCnn" where BC stands for Byte-Code!
 
         Maven is flexible enough to allow that.
-
     -->
-    <version>1.0.0-BC11</version>
+
+    <groupId>se.natusoft.seagull</groupId>
+    <artifactId>Seagull</artifactId>
+
+    <version>0.0.0-BC11</version>
 
     <packaging>pom</packaging>
 
