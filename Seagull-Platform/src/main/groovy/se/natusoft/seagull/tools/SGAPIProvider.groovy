@@ -15,8 +15,13 @@ import se.natusoft.lic.annotation.SourceAvailableAt
  * to the classpath that implements these interfaces. This class is used for getting
  * an implementation of a specified interface.
  *
+ * I'm not using ServiceLoader generally in code, but wrapping it here to have
+ * more flexibility in how this is handled. My goal is actually to encapsulate
+ * all external code which I have no control over!
+ *
  * Since I have not succeeded in making Googles @AutoService work, the resources
  * needed to make these available have to be provided manually as resources.
+ * And YES, this annoys the hell out of me!
  */
 @CompileStatic
 class SGAPIProvider {

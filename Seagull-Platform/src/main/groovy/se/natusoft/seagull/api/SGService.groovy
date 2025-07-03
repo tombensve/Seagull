@@ -62,4 +62,9 @@ interface SGService {
      *      SGRouter.Router.unregisterListener( listenerUUID )
      */
     void shutdown()
+    
+    /**
+     * @return current running state.
+     */
+    boolean isRunning()
 }

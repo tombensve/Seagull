@@ -55,6 +55,10 @@
         See the License for the specific language governing permissions and
         limitations under the License.
 
+    EXTENDS
+
+        Apache Software Licence 2.0 (Just adds to it)
+
     =============================================================================
 
     NOTE TO SELF: DO NOT TRY TO UPGRADE TO MAVEN 4 YET, IT DOES NOT SEEM BACKWARDS

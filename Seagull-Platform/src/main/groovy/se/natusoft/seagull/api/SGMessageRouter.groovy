@@ -34,11 +34,12 @@ import se.natusoft.seagull.tools.SGAPIProvider
 interface SGMessageRouter {
 
     /**
-     * The router instance.
+     * The router providers.
      */
     @Single( "Should only be one of these in a jar!" )
-    static final SGMessageRouter messageRouter = SGAPIProvider.find( SGMessageRouter.class )
-
+    static final List<SGMessageRouter> messageRouters =
+            SGAPIProvider.findAll( SGMessageRouter.class )
+    
     // ------------------------------------------------------------------------ //
 
     /**

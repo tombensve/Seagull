@@ -18,11 +18,18 @@ _I suck at coming upp with names, and a seagull just flew by my balcony ..._
 
 _Seagulls are also apparently quite smart, and have equality between male and female. They are also amazing flyers that can navigate air streams without visibly moving their wings._
 
------
+----
 
 ## STATUS: _WORK IN PROGRESS!_ 
 
 ----
+# License
+
+This software is released under the [Human Software Licence](https://github.com/tombensve/HSL) also available at 
+[My Craft site](https://tombensvebloggish.craft.me/hsl)
+
+
+-----
 
 # So, what is this about?
 
@@ -101,8 +108,6 @@ The same goes for types! Each service must know the data structure of the messag
 
 ----
 
-If you read the code and wonder about the empty lines and // ~~~~... // dividers, I need it for my brain to be able to interpret what it looks at! Even with glasses I have visual problems!
 
-----
 
 (Above text art from <https://textkool.com/en/test-ascii-art-generator?text=Seagull>)

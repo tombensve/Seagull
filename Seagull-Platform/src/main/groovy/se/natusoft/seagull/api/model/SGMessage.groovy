@@ -49,7 +49,7 @@ interface SGMessage<T> extends Factory<T> {
      *        Enum defines the valid values. So pick such a valid enum
      *        value and then do toStrin() on it to ensure you are passing
      *        a valid value! My goal is to be able to provide any type
-     *        of protocol, even binary such!
+     *        of protocol.
      */
     void setOperation( SGOperation operation )
 

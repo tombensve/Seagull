@@ -4,7 +4,7 @@
 // RIGHT: import com.google.gson.reflect.TypeToken
 //
 // Classes that are used by more code than one codebase, should be broken out into
-// a library so that all uses the same implementation.
+// a library so that all uses the same implementation in same package!
 //
 // Here we have an object with the same name and probably same functionality, but in
 // different packages in different jars! When both are on the CLASSPATH then it is
@@ -22,9 +22,11 @@
 
 package se.natusoft.seagull.provider.internal
 
-import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
-import se.natusoft.docutations.Implements
+import com.google.gson.reflect.TypeToken
+import se.natusoft.lic.annotation.BinariesAvailableAt
+import se.natusoft.lic.annotation.Human_Software_License_1_0
+import se.natusoft.lic.annotation.SourceAvailableAt
 import se.natusoft.seagull.api.internal.services.SGJsonMapConverter
 import java.lang.reflect.Type
 
@@ -41,6 +43,10 @@ import java.lang.reflect.Type
  * compliant. (hmm I can't figure out why I'm constantly thinking
  * of coffee!)
  */
+@Human_Software_License_1_0
+@SourceAvailableAt("https://github.com/tombensve/")
+@BinariesAvailableAt("https://repo.repsy.io/mvn/tombensve/natusoft-os/")
+
 class SGJsonMapConverterProvider implements SGJsonMapConverter {
 
     /** Static GSon instance. */
@@ -58,7 +64,6 @@ class SGJsonMapConverterProvider implements SGJsonMapConverter {
      *         potential sub JSON objects that exactly
      *         reflects the input Map.
      */
-    @Implements(SGJsonMapConverter.class)
     @Override
     String toJSON( Map<String, Object> modelMap ) {
 
@@ -73,7 +78,6 @@ class SGJsonMapConverterProvider implements SGJsonMapConverter {
      *
      * @return A Map with eventual sub Maps reflecting original JSON structure.
      */
-    @Implements(SGJsonMapConverter.class)
     @Override
     Map<String, Object> toMap( String json ) {
 
