@@ -1,6 +1,7 @@
 package se.natusoft.seagull.api.model
 
 import groovy.transform.CompileStatic
+import se.natusoft.docutations.Note
 import se.natusoft.lic.annotation.BinariesAvailableAt
 import se.natusoft.lic.annotation.Human_Software_License_1_0
 import se.natusoft.lic.annotation.SourceAvailableAt
@@ -13,27 +14,27 @@ import se.natusoft.tools.modelish.ModelishModel
 @BinariesAvailableAt( "https://repo.repsy.io/mvn/tombensve/natusoft-os/" )
 
 /**
- * This represents the senders information. Note that the full message sent contains
- * Seagull internal information header for internal Seagull use, and the
- * SGMessageContent the actual message for the receiver!
+ * This is a base model for all messages! This must be subclassed for specific messages!
+ * This interface defines the common part of all Seagull messages!
+ *
+ * Actual messages should extend this!
  */
 @CompileStatic
 @ModelishModel
-interface SGMessageContent<T> extends Factory<T> {}
-
-// -------------------------------------------------------------------------------- //
-
-/**
- * This is a base model for all messages! This must be subclassed for specific messages!
- * This interface defines the common part of all Seagull messages!
- */
-@CompileStatic // Not entirely sure this is needed for an interface, but does not hurt ...
-@ModelishModel
-interface SGMessage<T> extends Factory<T> {
-
+@Note("This interface must be extended by actual messages!")
+abstract interface SGMessage<T> extends Factory<T> {
+    
+    /**
+     * @param source Who is sending message.
+     *
+     * @return
+     */
+    setSource( SGID source)
+    SGID getSource()
+    
     /**
      * Provide the target of the message. Do note that SGID defines a Broadcast constant
-     * that can be used as a target!
+     * that can be used as a target: SGID.Broadcast
      *
      * @param target The target to send message to.
      */
@@ -59,9 +60,4 @@ interface SGMessage<T> extends Factory<T> {
      * @return The operation.
      */
     SGOperation getOperation()
-
-
-    setMessageContent(SGMessageContent<?> messageContent)
-
-    SGMessageContent<?> getMessageContent()
 }

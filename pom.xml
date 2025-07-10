@@ -87,6 +87,9 @@
 
         I believe the Groovy project itself provides something similar, but
         this one I have control over :-).
+
+        Also note that this parent provides a bytecode.version property
+        this is used in this and lower poms.
     -->
     <parent>
         <groupId>se.natusoft</groupId>
@@ -98,11 +101,6 @@
         Configuration
     -->
     <properties>
-
-        <!--
-            Version of byte-code to produce.
-        -->
-
 
         <!--
             I get complaints that build is not platform independent!
@@ -201,7 +199,7 @@
 
     <issueManagement>
         <system>github</system>
-        <url>https://github.com/tombensve/Seagull</url>
+        <url>https://github.com/tombensve/Seagull/issues</url>
     </issueManagement>
 
     <licenses>
@@ -213,13 +211,17 @@
         <license>
             <name>Human Software License 1.0</name>
             <url>https://github.com/tombensve/HSL</url>
+            <comments>
+                This license extends the "Apache Software Licence 2.0. It does
+                not change anything in ASL, just adds to it.
+            </comments>
         </license>
-        <!--
-            extends
-        -->
         <license>
             <name>Apache 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+            <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+            <comments>
+                Seagull uses third party libraries under this license.
+            </comments>
         </license>
 
     </licenses>
