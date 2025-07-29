@@ -2,6 +2,7 @@ package se.natusoft.seagull.api.model
 
 import groovy.transform.CompileStatic
 import se.natusoft.docutations.Note
+import se.natusoft.docutations.Optional
 import se.natusoft.lic.annotation.BinariesAvailableAt
 import se.natusoft.lic.annotation.Human_Software_License_1_0
 import se.natusoft.lic.annotation.SourceAvailableAt
@@ -21,7 +22,7 @@ import se.natusoft.tools.modelish.ModelishModel
  */
 @CompileStatic
 @ModelishModel
-@Note("This interface must be extended by actual messages!")
+@Note( "This interface must be extended by actual messages!" )
 abstract interface SGMessage<T> extends Factory<T> {
     
     /**
@@ -29,7 +30,8 @@ abstract interface SGMessage<T> extends Factory<T> {
      *
      * @return
      */
-    setSource( SGID source)
+    setSource( SGID source )
+    
     SGID getSource()
     
     /**
@@ -39,8 +41,9 @@ abstract interface SGMessage<T> extends Factory<T> {
      * @param target The target to send message to.
      */
     void setTarget( SGID target )
+    
     SGID getTarget()
-
+    
     /**
      * Sets the operation to perform.
      *
@@ -52,12 +55,15 @@ abstract interface SGMessage<T> extends Factory<T> {
      *        a valid value! My goal is to be able to provide any type
      *        of protocol.
      */
+    @Optional( "Not all protocols are required to support this!" )
+    @Optional( "This is here to make it easier to support REST!" )
     void setOperation( SGOperation operation )
-
+    
     /**
      * Gets the operation to perform.
      *
      * @return The operation.
      */
+    @Optional
     SGOperation getOperation()
 }

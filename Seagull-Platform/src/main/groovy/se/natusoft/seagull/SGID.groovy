@@ -22,13 +22,10 @@ import se.natusoft.seagull.exceptions.SGException
  * that returns the string.
  *
  * Services should define a unique SGId and use it to indicate who to call and
- * who is calling.
- *
- * I had rather called it SGID, but IDEAs spell checker doesn't like that ...
- * It did accept SGId for some reason, but I didn't like that!
+ * who is calling. Once created it cannot be deleted!!! This is intentional.
  */
 @CompileStatic
-class SGID {
+class SGID { // IDEA does not like the spelling here, but only here!
 
     /**
      * Goes out to all services.
@@ -55,7 +52,12 @@ class SGID {
 
     // --------------------------------------------------------------------------- //
 
-    /** Holds all registered entries */
+    /**
+     * Holds all registered entries!
+     *
+     * Do note that this cannot be initialized with a Map here! This
+     * has to be done in constructor.
+     */
     private static Map<String, SGID> REGISTRY
 
     /**
@@ -71,10 +73,9 @@ class SGID {
      * @param id A unique id within the group.
      */
     private SGID( String type, String owner, String id ) {
-
-        if ( REGISTRY == null ) REGISTRY = [ : ]
-
-
+        
+        if ( REGISTRY == null ) REGISTRY = [:] // This cannot be done until now!
+        
         this.idKey = "${type}:${owner}:${id}"
 
         if ( REGISTRY.containsKey( idKey ) ) throw new SGException( "This SGId already exists!" )
@@ -82,18 +83,13 @@ class SGID {
         REGISTRY.put( idKey, this )
     }
 
-
     /**
      * @return a String representation of the key string.
      */
     String toString() {
         this.idKey
     }
-
-    void fromString(String idKey) {
-        this.idKey = idKey
-    }
-
+    
     /**
      * Provides equals method.
      *
@@ -102,15 +98,4 @@ class SGID {
      * @return true or false.
      */
     boolean equals( SGID id ) { this.idKey == id.toString() }
-
-    /**
-     * Equals using String rather than SGId since ids received are in String format.
-     *
-     * @param id The id in string format to compare.
-     *
-     * @return true or false.
-     */
-    boolean equals( String id ) { this.idKey == id }
-
-
 }

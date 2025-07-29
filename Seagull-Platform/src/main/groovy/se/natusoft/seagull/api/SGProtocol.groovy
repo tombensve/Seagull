@@ -39,26 +39,27 @@ interface SGProtocol {
     /**
      * Sends a message to a service using a specific protocol..
      *
-     * @param The message to send.
+     * @target The target to send to.
+     * @param message The message to send.
      */
-    void send( SGID target, SGMessage<?> data ) throws SGNotFoundException
+    void send( SGID target, SGMessage<?> message ) throws SGNotFoundException
 
     /**
      * Registers a receiver of messages.
      *
-     * @param service The service to receive messages from.
-     * @param receiver The receiver to be called when a message is received.
+     * @param service The SGID of the service to receive messages from.
+     * @param receiver The receiver to be called when a message is recived.
      *
-     * @return An UUID representing this receiver instance.
+     * @return An SGID representing this receiver instance.
      */
-    void startReceiving( SGID service, Closure<SGMessage<?>> receiver )
+    void registerReceiver( SGID service, Closure<SGMessage<?>> receiver )
 
     /**
-     * Use the UUID gotten at registration to stop listening to more messages.
+     * Use the SGID gotten at registration to stop listening to more messages.
      *
-     * @param listener The listener UUID to unregister.
+     * @param service The listener UUID to unregister.
      */
-    void stopReceiving( SGID listener )
+    void unregisterReceiver( SGID service )
 
     /**
      * Announce unavailability and then shut down.

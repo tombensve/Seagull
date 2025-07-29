@@ -10,6 +10,7 @@ import se.natusoft.seagull.SGID
 import se.natusoft.seagull.api.SGLogger
 import se.natusoft.seagull.api.SGProtocol
 import se.natusoft.seagull.api.model.SGMessage
+import se.natusoft.seagull.exceptions.SGNotFoundException
 import se.natusoft.tools.modelish.Model
 
 @Human_Software_License_1_0
@@ -18,7 +19,50 @@ import se.natusoft.tools.modelish.Model
 
 @CompileStatic
 class SGRESTProtocol implements SGProtocol {
-
+    
+    String getName() {
+        "SGRestProtocol"
+    }
+    
+    /**
+     * Sends a message to a service using a specific protocol..
+     *
+     * @target The target to send to.
+     * @param message The message to send.
+     */
+    void send( SGID target, SGMessage<?> message ) throws SGNotFoundException {
+    
+    }
+    
+    /**
+     * Registers a receiver of messages.
+     *
+     * @param service The SGID of the service to receive messages from.
+     * @param receiver The receiver to be called when a message is recived.
+     *
+     * @return An SGID representing this receiver instance.
+     */
+    void registerReceiver( SGID service, Closure<SGMessage<?>> receiver ) {
+    
+    }
+    
+    /**
+     * Use the SGID gotten at registration to stop listening to more messages.
+     *
+     * @param service The listener UUID to unregister.
+     */
+    void unregisterReceiver( SGID service ) {
+    
+    }
+    
+    /**
+     * Announce unavailability and then shut down.
+     */
+    void shutdown() {
+    
+    }
+    
+    
     // Convenience / cosmetics to log using logger.log(...) rather than SGLogger.instance.log(...).
     private SGLogger logger = SGLogger.instance
 
@@ -31,15 +75,6 @@ class SGRESTProtocol implements SGProtocol {
      */
     String name() { "SGRestProtocol" }
 
-    /**
-     * Sends a message to a service using a specific protocol..
-     *
-     * @param The message to send.
-     */
-    @Override
-    void send( SGID target, SGMessage<?> data ) {
-
-    }
 
     /**
      * Registers a listener of received messages.
@@ -48,7 +83,7 @@ class SGRESTProtocol implements SGProtocol {
      *
      * @return An UUID representing this listener instance.
      */
-    @Override
+    //@Override
     void registerListener( SGID service, Closure<SGMessage<?>> listener ) {
 
     }
@@ -58,7 +93,7 @@ class SGRESTProtocol implements SGProtocol {
      *
      * @param listener The listener UUID to unregister.
      */
-    @Override
+    //@Override
     void unregisterListener( SGID listener ) {
 
     }
@@ -249,12 +284,12 @@ class SGRESTProtocol implements SGProtocol {
     /**
      * Shuts down this Protocol.
      */
-    @Override
-    void shutdown() {
-        this.httpServerState = SGLifecycle.SHUT_DOWN
-        this.listeners.clear()
-        //if ( this.httpServer != null ) this.httpServer.stop()
-        this.httpServer = null
-    }
+  //  @Override
+  //  void shutdown() {
+  //      this.httpServerState = SGLifecycle.SHUT_DOWN
+  //      this.listeners.clear()
+ //       //if ( this.httpServer != null ) this.httpServer.stop()
+  //      this.httpServer = null
+ //   }
 
 }

@@ -45,35 +45,15 @@
     <parent>
         <groupId>se.natusoft.seagull</groupId>
         <artifactId>Seagull-Providers</artifactId>
-        <version>1.0.0-BC11</version>
+        <version>0.0.0-BC11</version>
     </parent>
 
     <dependencies>
         <dependency>
             <groupId>se.natusoft.seagull</groupId>
             <artifactId>Seagull-Platform</artifactId>
-            <version>1.0.0-BC11</version>
+            <version>0.0.0-BC11</version>
         </dependency>
-
-        <!-- This one alo have a vulnerability in higher versions!
-        <dependency>
-            <groupId>org.nanohttpd</groupId>
-            <artifactId>nanohttpd</artifactId>
-            <version>2.2.0</version>
-        </dependency>
-        -->
-
-        <!--
-            https://www.mend.io/vulnerability-database/CVE-2021-28170
-
-            The vulnerability should not be relevant in this case. This is only used to
-            serve simple REST calls.
-        <dependency>
-            <groupId>io.thorntail</groupId>
-            <artifactId>undertow</artifactId>
-            <version>2.7.0.Final</version>
-        </dependency>
-        -->
 
     </dependencies>
 

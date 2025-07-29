@@ -14,31 +14,30 @@ import se.natusoft.seagull.tools.SGAPIProvider
 @BinariesAvailableAt( "https://repo.repsy.io/mvn/tombensve/natusoft-os/" )
 
 /**
+ * Flow:
+ *    Service call -> Protocol -> SGRouter -> Service provider
+ *    Service Provider -> SGRouter -> Protocol -> Service reply
+ * *
  * This keeps track of all services and where they are available. In same jar, or on the network,
  * and if so where on the network. Jar package can contain multiple services, but should only
  * contain one SGRouter! The SGRouter in turn should make use of one or more SGProtocol to
  * communicate with outside world, and the inside world too!
  *
- * It is the routers job to:
- * - Lookup all available protocols bundled in jar file using SGAPIProvider.findAll( SGProtocol.class )
- * - Use SGProtocol to send messages.
- * - Use SGProtocol to receive messages.
- * - Automatically find available services bundled in jar file by using SGAPIProvider.find(SGService.class).
- *
- * SGRouter:s should also multicast themselves on the network!
- *
  * There should be only one router per runnable Jar file!
+ * Routers need some way to find each other, either through configuration or some multicast.
+ * Maybe MDNS can be used ?
+ *
+ * As an alternative to a solution as MDNS I'm considering a plain router jar with
+ * a configuration pointing out port it is running at. All jars with services
+ * registers with this router and will receive updates of all services it knows about.
+ *
+ * This way only the "main" router will need a known port and hostname.
  */
 @CompileStatic
 @Single( "Uses one or more protocols to communicate." )
-interface SGMessageRouter {
-
-    /**
-     * The router providers.
-     */
-    @Single( "Should only be one of these in a jar!" )
-    static final List<SGMessageRouter> messageRouters =
-            SGAPIProvider.findAll( SGMessageRouter.class )
+interface SGRouter {
+    
+    static final SGRouter Router = SGAPIProvider.find( SGRouter.class )
     
     // ------------------------------------------------------------------------ //
 
@@ -49,7 +48,7 @@ interface SGMessageRouter {
      * @param receiver of message. Can also be SGID.Broadcast!
      * @param message
      */
-    void sendMessage( SGID sender, SGID receiver, SGMessage message )
+    void routeMessage( SGMessage message )
 
     /**
      * Registers a receiver of messages that needs to be routed to correct service
@@ -58,7 +57,14 @@ interface SGMessageRouter {
      * @param service SGID of the service. Each service should have a unique SGID.
      * @param listener A Closure that takes an SGMessage.
      */
-    void registerReceiver( SGID service, Closure<SGMessage<?>> listener )
+    void registerMessageReceiver( SGID service, Closure<SGMessage<?>> receiver )
+    
+    /**
+     * Removes a receiver from receiving messages.
+     *
+     * @param SGID The ID of the service to unregister!
+     */
+    void unregisterMessageReceiver( SGID )
 
     /**
      * Cleanup and shut down.

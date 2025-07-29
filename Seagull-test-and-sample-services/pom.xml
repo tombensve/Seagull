@@ -51,11 +51,11 @@
     <parent>
         <groupId>se.natusoft.seagull</groupId>
         <artifactId>Seagull</artifactId>
-        <version>1.0.0-BC11</version>
+        <version>0.0.0-BC11</version>
     </parent>
 
     <artifactId>Seagull-test-and-sample-services</artifactId>
-    <version>1.0.0-BC11</version>
+    <version>0.0.0-BC11</version>
 
     <packaging>pom</packaging>
 
