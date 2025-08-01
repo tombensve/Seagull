@@ -14,6 +14,11 @@ import se.natusoft.lic.annotation.SourceAvailableAt
  * implementation of the interfaces, and supports immutability and
  * cloning. Internally data is stored in Map<String, Object> structures
  * just like JSON structures.
+ *
+ * This is a tool to convert between JSON (in string format) and Map<String, Object>.
+ * It is completely optional.If used an implementation need to be provided.
+ * SG-GSon-JSONMapConverter is available as an implementation, but not required!
+ * Provide any implementation of the interface you want. This is just a utility!
 */
 interface SGJsonMapConverter extends SGExternalWrapper {
 

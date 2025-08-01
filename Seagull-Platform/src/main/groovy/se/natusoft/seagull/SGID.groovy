@@ -23,6 +23,10 @@ import se.natusoft.seagull.exceptions.SGException
  *
  * Services should define a unique SGId and use it to indicate who to call and
  * who is calling. Once created it cannot be deleted!!! This is intentional.
+ *
+ * Yes, these could be UUID:s, but providing strings like this makes it much
+ * easier to read and comprehend exactly what it is. Doing a toString on an
+ * SGID makes it very clear.
  */
 @CompileStatic
 class SGID { // IDEA does not like the spelling here, but only here!
