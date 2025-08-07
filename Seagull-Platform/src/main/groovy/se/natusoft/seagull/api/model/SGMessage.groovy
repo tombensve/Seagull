@@ -26,38 +26,58 @@ import se.natusoft.tools.modelish.ModelishModel
 abstract interface SGMessage<T> extends Factory<T> {
     
     /**
-     * @param source Who is sending message.
+     * Sets the unique ID of the message.
      *
-     * @return
+     * @param messageId The ID to set.
+     */
+    void setMessageId(UUID messageId)
+    
+    /**
+     * @return unique ID for message.
+     */
+    UUID getMessageId()
+    
+    // ----------------------------------------------- //
+    
+    /**
+     * @param source Who is sending message.
      */
     setSource( SGID source )
     
+    /**
+     * @return Who sent message.
+     */
     SGID getSource()
+    
+    // ----------------------------------------------- //
     
     /**
      * Provide the target of the message. Do note that SGID defines a Broadcast constant
      * that can be used as a target: SGID.Broadcast
      *
-     * @param target The target to send message to.
+     * @param target The SGID of the target to send message to.
      */
     void setTarget( SGID target )
     
+    /**
+     * @return The id of the target.
+     */
     SGID getTarget()
+
+    // ----------------------------------------------- //
     
     /**
      * Sets the operation to perform.
      *
-     * @param operation Any SGOperation value with a toString() call.
-     *        This because it is easier to handle this as a String
-     *        rather than a JVM specific Enum! That said the SGOperation
-     *        Enum defines the valid values. So pick such a valid enum
-     *        value and then do toStrin() on it to ensure you are passing
-     *        a valid value! My goal is to be able to provide any type
-     *        of protocol.
+     * @param operation The operation to perform.
+     *
+     * Note that this is a String and thus very loose!  Both sender and receiver
+     * have to be in agreement what this means, how to interpret this! This
+     * can be null!
      */
     @Optional( "Not all protocols are required to support this!" )
     @Optional( "This is here to make it easier to support REST!" )
-    void setOperation( SGOperation operation )
+    void setOperation( String operation )
     
     /**
      * Gets the operation to perform.
@@ -65,5 +85,5 @@ abstract interface SGMessage<T> extends Factory<T> {
      * @return The operation.
      */
     @Optional
-    SGOperation getOperation()
+    String getOperation()
 }

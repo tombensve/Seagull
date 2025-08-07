@@ -1,7 +1,6 @@
 package se.natusoft.seagull.tools
 
 import groovy.transform.CompileStatic
-import se.natusoft.lic.annotation.Apache_Software_License_2_0
 import se.natusoft.lic.annotation.BinariesAvailableAt
 import se.natusoft.lic.annotation.Human_Software_License_1_0
 import se.natusoft.lic.annotation.SourceAvailableAt
@@ -24,7 +23,7 @@ import se.natusoft.lic.annotation.SourceAvailableAt
  * And YES, this annoys the hell out of me!
  */
 @CompileStatic
-class SGAPIProvider {
+class SGAPILookup {
 
     /**
      * Provides static method for loading a service specified by its interface class.

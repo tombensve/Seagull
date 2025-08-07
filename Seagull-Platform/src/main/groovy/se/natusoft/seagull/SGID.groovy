@@ -29,7 +29,7 @@ import se.natusoft.seagull.exceptions.SGException
  * SGID makes it very clear.
  */
 @CompileStatic
-class SGID { // IDEA does not like the spelling here, but only here!
+class SGID {
 
     /**
      * Goes out to all services.

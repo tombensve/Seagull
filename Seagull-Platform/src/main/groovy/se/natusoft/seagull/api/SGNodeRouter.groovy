@@ -7,7 +7,7 @@ import se.natusoft.lic.annotation.Human_Software_License_1_0
 import se.natusoft.lic.annotation.SourceAvailableAt
 import se.natusoft.seagull.SGID
 import se.natusoft.seagull.api.model.SGMessage
-import se.natusoft.seagull.tools.SGAPIProvider
+import se.natusoft.seagull.tools.SGAPILookup
 
 @Human_Software_License_1_0
 @SourceAvailableAt( "https://github.com/tombensve/" )
@@ -15,8 +15,8 @@ import se.natusoft.seagull.tools.SGAPIProvider
 
 /**
  * Flow:
- *    Service call -> Protocol -> SGRouter -> Service provider
- *    Service Provider -> SGRouter -> Protocol -> Service reply
+ *    Service call -> Protocol -> SGNodeRouter -> Service provider
+ *    Service Provider -> SGNodeRouter -> Protocol -> Service reply
  * *
  * This keeps track of all services and where they are available. In same jar, or on the network,
  * and if so where on the network. Jar package can contain multiple services, but should only
@@ -34,10 +34,23 @@ import se.natusoft.seagull.tools.SGAPIProvider
  * This way only the "main" router will need a known port and hostname.
  */
 @CompileStatic
-@Single( "Uses one or more protocols to communicate." )
-interface SGRouter {
+@Single( "There is only one per Jar of of this class!" )
+interface SGNodeRouter {
     
-    static final SGRouter Router = SGAPIProvider.find( SGRouter.class )
+    static final SGNodeRouter Router = SGAPILookup.find( SGNodeRouter.class )
+    
+    /**
+     * This should be unique! That said:
+     *
+     * - This field is not final!
+     * - This field is a string and can be changed by implementations!
+     * - By default a random UUID in String format is generated.
+     * - The Java UUID is not guaranteed to generate a unique id,
+     *   but highly likely will! But just in case you can replace the
+     *   defaults with own values. This is static and public ...
+     */
+     public static String ID = UUID.randomUUID(  ).toString(  )
+    // I know "public" is default in Groovy! Just want to be very clear!
     
     // ------------------------------------------------------------------------ //
 

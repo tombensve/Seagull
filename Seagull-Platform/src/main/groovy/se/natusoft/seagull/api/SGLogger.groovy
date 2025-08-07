@@ -4,7 +4,7 @@ import groovy.transform.CompileStatic
 import se.natusoft.lic.annotation.BinariesAvailableAt
 import se.natusoft.lic.annotation.Human_Software_License_1_0
 import se.natusoft.lic.annotation.SourceAvailableAt
-import se.natusoft.seagull.tools.SGAPIProvider
+import se.natusoft.seagull.tools.SGAPILookup
 
 @Human_Software_License_1_0
 @SourceAvailableAt("https://github.com/tombensve/")
@@ -51,7 +51,7 @@ interface SGLogger {
 class LoggerFinder {
 
     static SGLogger lookup() {
-        SGLogger instance = SGAPIProvider.find( SGLogger.class )
+        SGLogger instance = SGAPILookup.find( SGLogger.class )
         if ( instance == null ) {
             System.err.println "NO LOGGER PROVIDED! Primitive default will be used!"
             System.err.println "Yes, this message is here to annoy you!"
