@@ -2,12 +2,21 @@ package se.natusoft.seagull.api
 
 import se.natusoft.seagull.SGID
 import se.natusoft.lic.annotation.*
+import se.natusoft.seagull.tools.SGProviderLookup
 
 @Human_Software_License_1_0
 @SourceAvailableAt( "https://github.com/tombensve/" )
 @BinariesAvailableAt( "https://repo.repsy.io/mvn/tombensve/natusoft-os/" )
 interface SGServiceDirectory {
     
+    /**
+     * Service directory instance.
+     *
+     * Do note that if no implementation of SGServiceDirectory is made
+     * available in jar file, then this will result in null
+     */
+    public static final SGServiceDirectory instance
+            = SGProviderLookup.find( SGServiceDirectory.class )
     /**
      * Registers a service.
      *

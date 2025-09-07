@@ -5,6 +5,7 @@ import se.natusoft.lic.annotation.BinariesAvailableAt
 import se.natusoft.lic.annotation.Human_Software_License_1_0
 import se.natusoft.lic.annotation.SourceAvailableAt
 import se.natusoft.seagull.SGID
+import se.natusoft.seagull.api.model.SGMessage
 
 @Human_Software_License_1_0
 @SourceAvailableAt("https://github.com/tombensve/")
@@ -19,8 +20,9 @@ import se.natusoft.seagull.SGID
  * possible situations when basically the same service can deal with slightly different
  * inputs. So I'm not making any restrictions!
  *
- * And YES, it is possible to register a ton of services in same class! I can however not
- * recommend that!!! The goal here is to keep things very simple from all perspectives!
+ * And YES, it is possible to register a ton of services in same class! I can however
+ * not recommend that!!! The goal here is to keep things very simple from all
+ * perspectives!
  *
  * IMPORTANT!!! -> All services needs access to the one and only SGRouter implementation
  * that should be included in the jar file. This is is always available as:
@@ -67,4 +69,12 @@ interface SGService {
      * @return current running state.
      */
     boolean isRunning()
+    
+    /**
+     * This provides an implementation of a service.
+     *
+     * @param message The incoming message to handle.
+     * @return A potential result or null.
+     */
+    SGMessage handleCall( SGMessage message )
 }

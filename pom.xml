@@ -27,14 +27,14 @@
      BUILD RECOMMENDATION
 
          This builds JDK 11 bytecode! I have, however, realized that
-         later JDK:s like JDK 17 builds way faster! So I'm using JDK 17
+         later JDK:s like JDK 22 builds way faster! So I'm using JDK 22
          to build in IDEA, but make it produce JDK 11 bytecode. There
-         is a real big build speed diff between 11 and 17!
+         is a real big build speed diff between 11 and 22!
 
          When completely done with this project, I will try to bump up
          the byte code version as far as it will still build. Since this
          is Groovy and not Java, it might be able to go quite high.
-         I am not using any JDK library features over 11!
+         I am not using any JDK library features over 11! (as far as I know ...)
 
     COPYRIGHTS
         Copyright (C) 2023 by Tommy Bengt Svensson All rights reserved.
@@ -94,7 +94,7 @@
     <parent>
         <groupId>se.natusoft</groupId>
         <artifactId>groovy-build</artifactId>
-        <version>2.0.2</version><!-- Provides Groovy 4.0.27 -->
+        <version>3.0.0</version><!-- Provides Groovy 4.0.27 -->
     </parent>
 
     <!-- == ====================================================================-->
@@ -238,7 +238,7 @@
         <dependency>
             <groupId>se.natusoft.tools</groupId>
             <artifactId>LicAnnotations</artifactId>
-            <version>1.3.0-BC11</version>
+            <version>1.4.0-BC11</version>
         </dependency>
 
         <dependency>

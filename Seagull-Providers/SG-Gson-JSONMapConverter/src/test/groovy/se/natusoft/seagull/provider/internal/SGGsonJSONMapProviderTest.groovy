@@ -2,7 +2,7 @@ package se.natusoft.seagull.provider.internal
 
 import org.junit.jupiter.api.Test
 import se.natusoft.seagull.api.internal.services.SGJsonMapConverter
-import se.natusoft.seagull.tools.SGAPILookup
+import se.natusoft.seagull.tools.SGProviderLookup
 
 /**
  * This test takes a JSON string, converts it to a Map structure,
@@ -24,7 +24,7 @@ import se.natusoft.seagull.tools.SGAPILookup
 class SGJsonMapConverterTest {
 
     static final SGJsonMapConverter sgJsonMapConverter =
-            SGAPILookup.find( SGJsonMapConverter.class )
+            SGProviderLookup.find( SGJsonMapConverter.class )
 
     @Test
     void testJSONMapConverterLookup() {

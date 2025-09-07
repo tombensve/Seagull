@@ -73,7 +73,7 @@ class SGRESTProtocol implements SGProtocol {
     /**
      * Name of protocol.
      */
-    String name() { "SGRestProtocol" }
+    static String name() { "SGRestProtocol" }
 
 
     /**
@@ -101,7 +101,7 @@ class SGRESTProtocol implements SGProtocol {
     /**
      * The name of the protocol, to be able to identify it!
      */
-    String protocolType() { "REST" }
+    static String protocolType() { "REST" }
 
     /**
      * Specifies the provider of the protocol. The idea behind providing this
@@ -175,7 +175,7 @@ class SGRESTProtocol implements SGProtocol {
         // Hope this is odd enough to in general not be used :-). But if this is busy
         // we will try all the way up tp 9999 before giving up! What port end up being used
         // will be logged!
-        @Todo(description = "Chose a set of 10 ports spread out")
+        //Todo: Chose a set of 10 ports spread out.
         int port = 9900
 
         InetAddress inetAddress = InetAddress.localHost

@@ -39,7 +39,7 @@ It is about information flying around between different services, triggering thi
 
 This is intended to be a very simple to use service platform, where services does not have to deal directly with protocols like REST, plain TCP/IP, data buses (like Rabbit MQ), carrier pigeon, ... 
 
-I have spent a lot of time thinking this through, and want to keep things as simple as possible from service development perspective, and in general! My point here is that this says nothing about how information goes from point A to point B. 
+I have spent a lot of time thinking this through, and want to keep things as simple as possible from service development perspective, and in general! My point here is that this says nothing about how information goes from point A to point B. This mainly consists of interfaces and at least one implementation of these interfaces, but the point is to allow you to make own implementations, especially for protocols. You communicate with services via messages, and service implementations, and callers and receivers don't give a (beep) about how this is accomplished!
 
 
 ## Goals
@@ -48,11 +48,11 @@ I have spent a lot of time thinking this through, and want to keep things as sim
 - Trivial to use.
 - Supporting multiple protocols of communication.
 - A service deployable should be runnable with "java -jar MyService.jar"
-- (Auto discovery.)
+- Auto-ish discovery of running jars. (trying to figure out how to solve that without using something like mDns!)
 
 ----
 
-I leave it up to developers to abuse things in any way they want! I will not make things extremely strict and limited, just to steer people who do not know what they are doing. Put on a blindfold, swing sharp objects, and run fast! I'm not going to stop you!
+I leave it up to developers to abuse things in any way they want! I will not make things extremely strict and limited, just to steer people who do not know what they are doing. Put on a blindfold, swing shaDp objects, and run fast! I'm not going to stop you!
 
 That said, there is a certain architecture here! 
 

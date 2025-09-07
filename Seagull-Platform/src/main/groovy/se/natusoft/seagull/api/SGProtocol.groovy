@@ -8,7 +8,7 @@ import se.natusoft.lic.annotation.SourceAvailableAt
 import se.natusoft.seagull.SGID
 import se.natusoft.seagull.api.model.SGMessage
 import se.natusoft.seagull.exceptions.SGNotFoundException
-import se.natusoft.seagull.tools.SGAPILookup
+import se.natusoft.seagull.tools.SGProviderLookup
 
 @Human_Software_License_1_0
 @SourceAvailableAt("https://github.com/tombensve/")
@@ -27,7 +27,8 @@ interface SGProtocol {
     /**
      * This contains a list of all protocol implementations found on classpath (JAR).
      */
-    static List<SGProtocol> AvailableProtocols = SGAPILookup.findAll( SGProtocol.class )
+    static List<SGProtocol> AvailableProtocols =
+            SGProviderLookup.findAll( SGProtocol.class )
 
     /**
      * The name of the protocol, to be able to identify it!

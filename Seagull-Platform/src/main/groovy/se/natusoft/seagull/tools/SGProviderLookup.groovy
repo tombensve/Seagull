@@ -23,7 +23,7 @@ import se.natusoft.lic.annotation.SourceAvailableAt
  * And YES, this annoys the hell out of me!
  */
 @CompileStatic
-class SGAPILookup {
+class SGProviderLookup {
 
     /**
      * Provides static method for loading a service specified by its interface class.
