@@ -32,23 +32,31 @@ import se.natusoft.tools.modelish.ModelishModel
  * clone the content of a model, also easily.
  *
  * This model must be extended by actual messages! This information
- * is only about who is sending and who is receiving.
- */
+ * is only about who is sending and who is receiving.*/
 @CompileStatic
-@ModelishModel(desc="Defines a message.")
-
+@ModelishModel( desc = "Defines a base message." )
 interface SGMessage<T> extends Factory<T> {
-
-/**
- * Sets the unique ID of the message.
- *
- * @param messageId The ID to set.
- */
+    
+    /**
+     * Sets the message direction, of this. Can be "MES" or "RES"
+     *
+     * @param messageDirection The direction to set. Use MessageDirection enum for values.
+     *                          Do .toString() on the enum values.
+     */
+    void setMessageDirection(String messageDirection)
+    
+    String getMessageDirection()
+    
+    /**
+     * Sets the unique ID of the message.
+     *
+     * @param messageId The ID to set.
+     */
     void setMessageId( UUID messageId )
-
-/**
- * @return unique ID for message.
- */
+    
+    /**
+     * @return unique ID for message.
+     */
     UUID getMessageId()
 
 /**
@@ -73,7 +81,7 @@ interface SGMessage<T> extends Factory<T> {
  * @return The id of the target.
  */
     SGID getTarget()
-  
+    
     /**
      * Provides meta data.
      *

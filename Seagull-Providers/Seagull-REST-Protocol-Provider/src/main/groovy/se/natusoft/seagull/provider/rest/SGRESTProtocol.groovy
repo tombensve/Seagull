@@ -1,12 +1,11 @@
 package se.natusoft.seagull.provider.rest
 
 import groovy.transform.CompileStatic
-import se.natusoft.docutations.Todo
 import se.natusoft.lic.annotation.BinariesAvailableAt
 import se.natusoft.lic.annotation.Human_Software_License_1_0
 import se.natusoft.lic.annotation.SourceAvailableAt
-import se.natusoft.seagull.SGLifecycle
 import se.natusoft.seagull.SGID
+import se.natusoft.seagull.SGLifecycle
 import se.natusoft.seagull.api.SGLogger
 import se.natusoft.seagull.api.SGProtocol
 import se.natusoft.seagull.api.model.SGMessage
@@ -31,6 +30,7 @@ class SGRESTProtocol implements SGProtocol {
      * @param message The message to send.
      */
     void send( SGID target, SGMessage<?> message ) throws SGNotFoundException {
+    
     
     }
     

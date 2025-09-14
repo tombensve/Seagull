@@ -101,5 +101,7 @@ class SGID {
      *
      * @return true or false.
      */
-    boolean equals( SGID id ) { this.idKey == id.toString() }
+    boolean equals( SGID id ) {
+        this.idKey == id.toString( )
+    }
 }

@@ -16,11 +16,10 @@ import se.natusoft.lic.annotation.SourceAvailableAt
  *
  * I'm not using ServiceLoader generally in code, but wrapping it here to have
  * more flexibility in how this is handled. My goal is actually to encapsulate
- * all external code which I have no control over!
+ * all external code.
  *
  * Since I have not succeeded in making Googles @AutoService work, the resources
  * needed to make these available have to be provided manually as resources.
- * And YES, this annoys the hell out of me!
  */
 @CompileStatic
 class SGProviderLookup {
