@@ -44,7 +44,7 @@ import java.lang.reflect.Type
  * of coffee!)
  */
 @Human_Software_License_1_0
-@SourceAvailableAt("https://github.com/tombensve/")
+@SourceAvailableAt("https://github.com/tombensve/Seagull")
 @BinariesAvailableAt("https://repo.repsy.io/mvn/tombensve/natusoft-os/")
 
 class SGJsonMapConverterProvider implements SGJsonMapConverter {
