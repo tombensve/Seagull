@@ -8,4 +8,4 @@ communication, this might not be needed. For example UnderTow provides both
 HTTP* communication and translating between JSON<->Map<String, Object>, in
 which case this will not be needed.
 
-In the end SeaGull Jars will be executable with "java -jar MyService.jar"
+In the end SeaGull service Jars will be executable with "java -jar MyService.jar"

@@ -5,6 +5,7 @@ import se.natusoft.lic.annotation.BinariesAvailableAt
 import se.natusoft.lic.annotation.Human_Software_License_1_0
 import se.natusoft.lic.annotation.SourceAvailableAt
 import se.natusoft.seagull.exceptions.SGException
+import se.natusoft.seagull.exceptions.SGNotFoundException
 
 @Human_Software_License_1_0
 @SourceAvailableAt("https://github.com/tombensve/Seagull")
@@ -50,10 +51,10 @@ class SGID {
      * @return a new SGId instance.
      */
     static SGID register( String type, String owner, String id ) {
+        
         new SGID( type, owner, id )
     }
-
-
+    
     // --------------------------------------------------------------------------- //
 
     /**
@@ -63,6 +64,20 @@ class SGID {
      * has to be done in constructor.
      */
     private static Map<String, SGID> REGISTRY
+    
+    /**
+     * Looks up an SGID.
+     *
+     * @param idString
+     * @return SGID object.
+     */
+    static SGID fromIdKey(String idString) {
+        
+        SGID sgid = REGISTRY.get( idString )
+        
+        if (sgid == null) throw new SGNotFoundException("No valid SGID: '${sgid}'")
+        return sgid
+    }
 
     /**
      * Holds the key in the map for this specific instance.
@@ -82,7 +97,7 @@ class SGID {
         
         this.idKey = "${type}:${owner}:${id}"
 
-        if ( REGISTRY.containsKey( idKey ) ) throw new SGException( "This SGId already exists!" )
+        if ( REGISTRY.containsKey( idKey ) ) throw new SGException( "SGId:${idKey} already exists!" )
 
         REGISTRY.put( idKey, this )
     }

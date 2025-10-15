@@ -14,8 +14,7 @@ import se.natusoft.lic.annotation.SourceAvailableAt
  * This should be extended to provide an internal API for wrapping
  * functionality in external libraries.
  *
- * ALL external code should be wrapped like this! Googles @AutoService is
- * used to find implementation providers.
+ * ALL external code should be wrapped like this!
  *
  * The reasons for this are:
  *   Internal code should have no knowledge of specific external library

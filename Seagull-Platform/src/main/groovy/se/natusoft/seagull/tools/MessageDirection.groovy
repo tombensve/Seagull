@@ -9,11 +9,15 @@ import se.natusoft.lic.annotation.SourceAvailableAt
 @BinariesAvailableAt("https://repo.repsy.io/mvn/tombensve/natusoft-os/")
 
 /**
- * Use these as follows: MessageDirection.REQ.toString()
+ * Use these as follows:
  *
- * This is just a convenience, "REQ" and "RES" also works.
+ *     MessageDirection.REQUEST
+ *     MessageDirection.RESPONSE
+ *
  */
-enum MessageDirection {
-    REQ, // Request
-    RES  // Response.
+interface MessageDirection {
+    
+    public static final String REQUEST = "->"
+    public static final String RESPONSE = "<-"
+    
 }

@@ -1,7 +1,6 @@
 package se.natusoft.seagull.api.model
 
 import groovy.transform.CompileStatic
-import se.natusoft.docutations.Optional
 import se.natusoft.lic.annotation.BinariesAvailableAt
 import se.natusoft.lic.annotation.Human_Software_License_1_0
 import se.natusoft.lic.annotation.SourceAvailableAt
@@ -14,8 +13,9 @@ import se.natusoft.tools.modelish.ModelishModel
 @BinariesAvailableAt( "https://repo.repsy.io/mvn/tombensve/natusoft-os/" )
 
 /**
- * This is a base model for all messages! This must be subclassed for specific messages!
- * This interface defines the common part of all Seagull messages!
+ * This is a base model for all messages! This must be subclassed
+ * for specific messages! This interface defines the common part of
+ * all Seagull messages!
  *
  * I have been thinking back and forth here! My first thinking was to
  * make a message with common protocol stuff, and have one field with
@@ -32,64 +32,67 @@ import se.natusoft.tools.modelish.ModelishModel
  * clone the content of a model, also easily.
  *
  * This model must be extended by actual messages! This information
- * is only about who is sending and who is receiving.*/
+ * is only about who is sending and who is receiving.
+ *
+ * This model is a "Modelish" model. Modelish is another project from
+ * me. Modelish only uses interfaces and provides dynamic implementations
+ * when created. In addition to JavaBean standard it also supports
+ * another model standard whose name I cannot remember, but that
+ * skips the get and set and let first character always be lowercase.
+ * This shortens the method name by 3 characters. The reason I don't
+ * use this feature here is that this is Groovy code and Groovy lets
+ * me skip get get & set parts when using property access, even if
+ * the "set" and "get" is there. But in Java it makes sense to use
+ * the shorter variants.
+ *
+ * Anyhow, Modelish will provide an implementation for setting and
+ * getting values. Internally it stores values in HashMap's.
+ *
+ * This makes it easy to convert to and from JSON. Modelish models
+ * can also be be made immutable by locking them. A locked model
+ * cannot be unlocked, only cloned!
+ *
+ * NOTE that this interface is abstract!! It MUST be extended with
+ * a specific message!
+ */
 @CompileStatic
 @ModelishModel( desc = "Defines a base message." )
-interface SGMessage<T> extends Factory<T> {
+abstract interface SGMessage<T> extends Factory<T> {
     
     /**
-     * Sets the message direction, of this. Can be "MES" or "RES"
+     * The messageId should be an UUID.toString()!
      *
-     * @param messageDirection The direction to set. Use MessageDirection enum for values.
-     *                          Do .toString() on the enum values.
+     * Even if I wrapped this in a MessageId model it would need a toString() call!
      */
-    void setMessageDirection(String messageDirection)
+    void setMessageId( SGMessageId messageId )
     
-    String getMessageDirection()
+    SGMessageId getMessageId()
+    
+    // --------------------------------------------------------- //
+    
+    // Use UUID.toString()
+    void setInResponseTo( String messageId )
+    
+    String getInResponseTo()
+    
+    // --------------------------------------------------------- //
     
     /**
-     * Sets the unique ID of the message.
-     *
-     * @param messageId The ID to set.
+     * Provides the sender of the message.
      */
-    void setMessageId( UUID messageId )
-    
-    /**
-     * @return unique ID for message.
-     */
-    UUID getMessageId()
-
-/**
- * @param source Who is sending message.
- */
     setSource( SGID source )
-
-/**
- * @return Who sent message.
- */
     SGID getSource()
-
-/**
- * Provide the target of the message. Do note that SGID defines a Broadcast constant
- * that can be used as a target: SGID.Broadcast
- *
- * @param target The SGID of the target to send message to.
- */
+    
+    // --------------------------------------------------------- //
+    
+    /**
+     * Provide the target of the message. Do note that SGID defines a Broadcast constant
+     * that can be used as a target: SGID.Broadcast
+     *
+     * @param target The SGID of the target to send message to.
+     */
     void setTarget( SGID target )
-
-/**
- * @return The id of the target.
- */
     SGID getTarget()
     
-    /**
-     * Provides meta data.
-     *
-     * @param metaData Optional meta data to proved. Can be used to support
-     *                 REST action for example.
-     */
-    @Optional
-    void setMetaData( String metaData )
-    
-    String getMetaData()
+    // Specific messages MUST extend this!
 }

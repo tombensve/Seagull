@@ -22,29 +22,15 @@ class SGBoot {
      *             Will be available in passed Properties object.
      */
     static void main( String[] args ) {
-
-        args.each { String props ->
-
-            String[] nameValue = props.split( "=" )
+        
+        for (String property : args) {
+            String[] nameValue = property.split( "=" )
             SGStatics.startupProps.setProperty( nameValue[ 0 ], nameValue[ 1 ] )
         }
-
+        
         println "Starting Seagull instance version 1.0.0"
         println SGStatics.startupProps.toString()
-
-        // Load Protocols //
-
-        /*
-        SGAPIProvider.findAll( SGProtocol.class )
-                .each { SGProtocol protocol ->
-                    SGStatics.protocols.put( protocol.protocolName(), protocol )
-                    println "Loaded Protocol: ${protocol.protocolName(  )}"
-                }
-
-        // ...
-
-         */
-
+        
     }
 
 }

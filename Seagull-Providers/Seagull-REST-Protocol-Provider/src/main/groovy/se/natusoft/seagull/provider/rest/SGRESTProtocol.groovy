@@ -1,6 +1,9 @@
 package se.natusoft.seagull.provider.rest
 
 import groovy.transform.CompileStatic
+
+//import com.fasterxml.jackson.databind.ObjectMapperimport
+import io.undertow.server.protocol.http2.Http2ServerConnection
 import se.natusoft.lic.annotation.BinariesAvailableAt
 import se.natusoft.lic.annotation.Human_Software_License_1_0
 import se.natusoft.lic.annotation.SourceAvailableAt
@@ -12,6 +15,13 @@ import se.natusoft.seagull.api.model.SGMessage
 import se.natusoft.seagull.exceptions.SGNotFoundException
 import se.natusoft.tools.modelish.Model
 
+// For undertow
+
+import io.undertow.Undertow
+import io.undertow.server.RoutingHandler
+
+//import com.fasterxml.jackson.databind.ObjectMapper
+
 @Human_Software_License_1_0
 @SourceAvailableAt("https://github.com/tombensve/Seagull")
 @BinariesAvailableAt("https://repo.repsy.io/mvn/tombensve/natusoft-os/")
@@ -19,9 +29,18 @@ import se.natusoft.tools.modelish.Model
 @CompileStatic
 class SGRESTProtocol implements SGProtocol {
     
-    String getName() {
-        "SGRestProtocol"
+    // Convenience / cosmetics to log using logger.log(...) rather than SGLogger.instance.log(...).
+    private SGLogger logger = SGLogger.instance
+    
+    SGRESTProtocol() {
+        logger.log( "Starting SGRESTProtocol!" )
     }
+    
+    def underTowRouter = new RoutingHandler( )
+    
+    String getType() { "REST" }
+    
+    String getProvider() { "Seagull" }
     
     /**
      * Sends a message to a service using a specific protocol..
@@ -63,17 +82,6 @@ class SGRESTProtocol implements SGProtocol {
     }
     
     
-    // Convenience / cosmetics to log using logger.log(...) rather than SGLogger.instance.log(...).
-    private SGLogger logger = SGLogger.instance
-
-    SGRESTProtocol() {
-        logger.log( "Starting SGRESTProtocol!" )
-    }
-
-    /**
-     * Name of protocol.
-     */
-    static String name() { "SGRestProtocol" }
 
 
     /**
@@ -138,7 +146,7 @@ class SGRESTProtocol implements SGProtocol {
     /**
      * HTTP server instance.
      */
-    private Object httpServer = null
+    private Http2ServerConnection httpServer = null
 
     /**
      * This is responsible for trying to bring upp server. As anything it can of course fail!
@@ -181,28 +189,13 @@ class SGRESTProtocol implements SGProtocol {
         InetAddress inetAddress = InetAddress.localHost
 
         boolean retry = true
-
+        final Undertow undertow
         while ( retry ) {
-            /*
+            
             try {
-                final def undertow = this.httpServer = Undertow.builder()
-                        .addHttpListener( port, inetAddress.hostName )
-                        .setHandler( new HttpHandler() {
-
-                            @Override
-                            void handleRequest( final HttpServerExchange exchange ) throws Exception {
-                                exchange.getResponseHeaders().put( Headers.CONTENT_TYPE,
-                                        "application/json" )
-
-                                exchange.inputStream
-
-                                exchange.outputStream
-                            }
-
-                        } ).build()
-                //undertow
-
-                this.httpServer.start()
+                //final def undertow
+                
+                // ...
 
                 retry = false
 
@@ -221,7 +214,7 @@ class SGRESTProtocol implements SGProtocol {
                     logger.log( "ERROR: Failed to start service due to lack of available ports!" )
                     this.httpServerState = SGLifecycle.SHUT_DOWN
                 }
-            }*/
+            }
         } // retry
     }
 

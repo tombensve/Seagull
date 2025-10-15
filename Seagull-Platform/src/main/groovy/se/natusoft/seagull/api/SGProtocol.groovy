@@ -31,11 +31,15 @@ interface SGProtocol {
             SGProviderLookup.findAll( SGProtocol.class )
 
     /**
-     * The name of the protocol, to be able to identify it!
-     *
-     * @return The name of the protocol.
+     * @return The type of the protocol. Example "REST".
      */
-    String getName()
+    String getType()
+    
+    /**
+     *  @return the name of the provider. Example: "Seagull", which indicates a default
+     *  implementation provided by Seagull.
+     */
+    String getProvider()
 
     /**
      * Sends a message to a service using a specific protocol..

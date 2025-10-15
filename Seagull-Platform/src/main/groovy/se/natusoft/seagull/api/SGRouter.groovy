@@ -17,7 +17,8 @@ import se.natusoft.seagull.tools.SGProviderLookup
  * - Target of the message is available in local node:
  *   - Pass message to target.
  * else
- *   - forward message to node having target using internal TCP protocol.
+ *   - forward message to node having target using simple TCP protocol with
+ *     JSON payload.
  *
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *
@@ -32,6 +33,12 @@ import se.natusoft.seagull.tools.SGProviderLookup
 @Single( "There is only one per Jar of of this!" )
 interface SGRouter {
     
+    /*
+     * Note that there should be only one of these! Thereby the single
+     * constant for this. Routers should make use of Protocol implementations
+     * to talk with external services. Local services can be forwarded to
+     * directly.
+     */
     static final SGRouter Router = SGProviderLookup.find( SGRouter.class )
     
     /**
@@ -69,7 +76,7 @@ interface SGRouter {
     void routeOutgoing( SGMessage message )
     
     /**
-     * Killer!
+     * In case you need to do something on shutdown!
      */
     void shutdown()
     

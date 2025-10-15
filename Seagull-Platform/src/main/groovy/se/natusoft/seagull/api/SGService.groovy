@@ -31,9 +31,10 @@ import se.natusoft.seagull.api.model.SGMessage
  *
  * If this fails then the jar file for this service is not correctly packaged!
  *
- * Googles AutoService jar should be in classpath to annotate implementations
- * with @AutoService . Javas ServiceLoader is used under the surface to get
- * implementations.
+ * I would like to have something like Googles @AutoService annotation, but
+ * after continuous attempts to use it and have it completely fail, I've
+ * given up on that. And adding the resource file to the jar for this is not
+ * exactly hard work ...
  *
  * You need to register listeners in startup(), and unregister them in shutdown!
  * Sending messages can be done at any time using the SGMessageRouter.
@@ -74,7 +75,18 @@ interface SGService {
      * This provides an implementation of a service.
      *
      * @param message The incoming message to handle.
-     * @return A potential result or null.
      */
-    SGMessage handleCall( SGMessage message )
+    receiveMessage( SGMessage message )
+    
+    /**
+     * Sends a message.
+
+     * Note that this message can be a call to another service or
+     * a response to a call. If a response then set the inResponseTo
+     * value of the message. This will help SGRouter route the message
+     * correctly.
+     *
+     * @param message The message to send.
+     */
+    void sendMessage( SGMessage message )
 }
