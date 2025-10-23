@@ -1,5 +1,13 @@
 package se.natusoft.seagull.api.model
 
+import se.natusoft.lic.annotation.BinariesAvailableAt
+import se.natusoft.lic.annotation.Human_Software_License_1_0
+import se.natusoft.lic.annotation.SourceAvailableAt
+
+@Human_Software_License_1_0
+@SourceAvailableAt("https://github.com/tombensve/Seagull")
+@BinariesAvailableAt( "https://repo.repsy.io/mvn/tombensve/natusoft-os/" )
+
 /**
  * This represents a  message id
  *
@@ -31,20 +39,15 @@ class SGMessageId {
         this.msgId = UUID.randomUUID(  ).toString(  )
     }
     
-    //
-    // Methods
-    //
-    
-    // The following 2 are getters of same value, which ever is preferred!
-    
     /**
      * @return A String representation of this SGMessageId.
      */
     String toString() { getId() }
     
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+    
     /**
      * @return Returns same String as toString().
      */
-    String getId() { this.id } // Example MyMessageId.id
-    
+    String getId() { this.msgId }
 }

@@ -17,6 +17,9 @@ interface SGServiceDirectory {
      */
     public static final SGServiceDirectory instance
             = SGProviderLookup.find( SGServiceDirectory.class )
+    
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+    
     /**
      * Registers a service.
      *
@@ -27,6 +30,8 @@ interface SGServiceDirectory {
      */
     SGServiceDirectory registerService( SGID serviceId, UUID node )
     
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+    
     /**
      * Unregisters a service.
      *
@@ -36,6 +41,7 @@ interface SGServiceDirectory {
      */
     SGServiceDirectory unregisterService( SGID serviceId, UUID node )
     
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
     
     /**
      * Returns true if service is available, locally or elsewhere.
@@ -46,6 +52,7 @@ interface SGServiceDirectory {
      */
     boolean isServiceAvailable( SGID serviceId )
     
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
     
     /**
      * This validates that the service with the specified ID is available

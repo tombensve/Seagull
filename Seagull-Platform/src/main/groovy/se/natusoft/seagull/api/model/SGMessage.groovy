@@ -28,8 +28,6 @@ import se.natusoft.tools.modelish.ModelishModel
  * Also note that I make this base part of model a Modelish "factory".
  * This means that the whole object can be locked for change, and
  * then be cloned if modification of content is wanted in a safe way.
- * Modelish do support immutable models very easily, and can
- * clone the content of a model, also easily.
  *
  * This model must be extended by actual messages! This information
  * is only about who is sending and who is receiving.
@@ -60,22 +58,23 @@ import se.natusoft.tools.modelish.ModelishModel
 abstract interface SGMessage<T> extends Factory<T> {
     
     /**
-     * The messageId should be an UUID.toString()!
-     *
-     * Even if I wrapped this in a MessageId model it would need a toString() call!
+     * Provides a unique ID for the message!
      */
     void setMessageId( SGMessageId messageId )
-    
     SGMessageId getMessageId()
     
-    // --------------------------------------------------------- //
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
     
-    // Use UUID.toString()
-    void setInResponseTo( String messageId )
+    /**
+     * The ID of the received message being responded to.
+     * This should of course be
+     *
+     * @param messageId
+     */
+    void setInResponseTo( SGMessageId messageId )
+    SGMessageId getInResponseTo()
     
-    String getInResponseTo()
-    
-    // --------------------------------------------------------- //
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
     
     /**
      * Provides the sender of the message.
@@ -83,10 +82,10 @@ abstract interface SGMessage<T> extends Factory<T> {
     setSource( SGID source )
     SGID getSource()
     
-    // --------------------------------------------------------- //
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
     
     /**
-     * Provide the target of the message. Do note that SGID defines a Broadcast constant
+     * Provides the target of the message. Do note that SGID defines a Broadcast constant
      * that can be used as a target: SGID.Broadcast
      *
      * @param target The SGID of the target to send message to.

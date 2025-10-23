@@ -57,7 +57,8 @@ interface SGService {
      *
      */
     void startup()
-
+    
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
     /**
      *  Called on shutdown to unregister all registered listeners.
@@ -66,11 +67,15 @@ interface SGService {
      */
     void shutdown()
     
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+
     /**
      * @return current running state.
      */
     boolean isRunning()
     
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+
     /**
      * This provides an implementation of a service.
      *
@@ -78,6 +83,8 @@ interface SGService {
      */
     receiveMessage( SGMessage message )
     
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+
     /**
      * Sends a message.
 

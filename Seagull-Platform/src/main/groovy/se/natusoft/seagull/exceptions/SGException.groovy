@@ -75,7 +75,7 @@ class SGException extends RuntimeException {
         this
     }
 
-
+    
     /**
      * Allows to use the left-shift operator (<<) to add text.
      *

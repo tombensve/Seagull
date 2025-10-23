@@ -33,25 +33,13 @@ import se.natusoft.seagull.tools.SGProviderLookup
 @Single( "There is only one per Jar of of this!" )
 interface SGRouter {
     
-    /*
+    /**
      * Note that there should be only one of these! Thereby the single
      * constant for this. Routers should make use of Protocol implementations
      * to talk with external services. Local services can be forwarded to
      * directly.
      */
     static final SGRouter Router = SGProviderLookup.find( SGRouter.class )
-    
-    /**
-     * This should be unique! That said:
-     *
-     * - This field is not final!
-     * - This field is a string and can be changed by implementations!
-     * - By default a random UUID in String format is generated.
-     * - The Java UUID is not guaranteed to generate a unique id,
-     *   but highly likely will! But just in case you can replace the
-     *   defaults with own values. This is static and public ...
-     */
-    static String ID = UUID.randomUUID( ).toString( )
     
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
     
@@ -74,6 +62,8 @@ interface SGRouter {
      * @param message The message to route.
      */
     void routeOutgoing( SGMessage message )
+    
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
     
     /**
      * In case you need to do something on shutdown!

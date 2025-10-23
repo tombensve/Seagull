@@ -19,7 +19,6 @@ import se.natusoft.seagull.tools.SGProviderLookup
  *
  * There can be many of these!
  */
-
 @CompileStatic
 @Many( "Minimum one protocol must be implemented and available in a jar!" )
 interface SGProtocol {
@@ -27,50 +26,63 @@ interface SGProtocol {
     /**
      * This contains a list of all protocol implementations found on classpath (JAR).
      */
-    static List<SGProtocol> AvailableProtocols =
-            SGProviderLookup.findAll( SGProtocol.class )
-
+    static List<SGProtocol> AvailableProtocols = SGProviderLookup.findAll( SGProtocol.class )
+    
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+    
     /**
-     * @return The type of the protocol. Example "REST".
+     * @return The type of the protocol. Example "REST", "Plain TCP", "Carrier Pigeon", "Flask post".
      */
     String getType()
     
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+    
     /**
      *  @return the name of the provider. Example: "Seagull", which indicates a default
-     *  implementation provided by Seagull.
+     *  implementation provided by Seagull. This is meta data that can be useful when
+     *  trouble shooting.
      */
     String getProvider()
 
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+    
     /**
-     * Sends a message to a service using a specific protocol..
+     * Sends a message to a service using a specific protocol.
      *
-     * @target The target to send to.
+     * Do note:
+     *   - that the target of the message are provided within the message!
+     *   - that received messages should be passed to the SGRouter which will
+     *     - convert received data to a SGMessage instance.
+     *     - route them to a matching service or services.
+     *     - Possibly forward to another router on another node.
+     *   - The target can also be a broadcast target!
+     *
      * @param message The message to send.
      */
-    void send( SGID target, SGMessage<?> message ) throws SGNotFoundException
-
+    void send( SGMessage<?> message ) throws SGNotFoundException
+    
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+    
     /**
-     * Registers a receiver of messages.
+     * Registers a receiver that will provide a Closure to receive and handle messages.
      *
-     * @param service The SGID of the service to receive messages from.
-     * @param receiver The receiver to be called when a message is recived.
-     *
-     * @return An SGID representing this receiver instance.
+     * @param receiverId A Unique SGID representing the receiver.
+     * @param receiver The actual Closure to call with received messages.
      */
-    void registerReceiver( SGID service, Closure<SGMessage<?>> receiver )
-
+    void registerReceiver( SGID receiverId, Closure< SGMessage> receiver)
+    
     /**
-     * Use the SGID gotten at registration to stop listening to more messages.
+     * Removes a previously registered Closure from being called again.
      *
-     * @param service The listener UUID to unregister.
+     * @param receiverId The SGID of the receiver.
      */
-    void unregisterReceiver( SGID service )
-
+    void unregisterReceiver(SGID receiverId)
+    
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+    
     /**
      * Announce unavailability and then shut down.
      */
     void shutdown()
     
-    
-
 }
