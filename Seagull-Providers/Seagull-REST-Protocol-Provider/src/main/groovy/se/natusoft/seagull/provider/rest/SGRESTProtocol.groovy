@@ -2,7 +2,6 @@ package se.natusoft.seagull.provider.rest
 
 import groovy.transform.CompileStatic
 
-//import com.fasterxml.jackson.databind.ObjectMapperimport
 import io.undertow.server.protocol.http2.Http2ServerConnection
 import se.natusoft.lic.annotation.BinariesAvailableAt
 import se.natusoft.lic.annotation.Human_Software_License_1_0
@@ -15,13 +14,18 @@ import se.natusoft.seagull.api.model.SGMessage
 import se.natusoft.seagull.exceptions.SGNotFoundException
 import se.natusoft.tools.modelish.Model
 
-// For undertow
-
 import io.undertow.Undertow
 import io.undertow.server.RoutingHandler
 
-//import com.fasterxml.jackson.databind.ObjectMapper
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+// IDEA keeps saying: Method 'registerReceiver' is not implemented!
+// BUT IT IS!!! This compiles perfectly!!!
+// Just BLOODY ANNOYING to have all these red markings!
+// There are times i'm considering going back to Netbrans...
+//
+// No, I don't use any SHIT from IBM! The whole company is made up of animated
+// shit, and I have seen a horrific pile of it.
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 @Human_Software_License_1_0
 @SourceAvailableAt("https://github.com/tombensve/Seagull")
 @BinariesAvailableAt("https://repo.repsy.io/mvn/tombensve/natusoft-os/")
@@ -32,16 +36,26 @@ class SGRESTProtocol implements SGProtocol {
     // Convenience / cosmetics to log using logger.log(...) rather than SGLogger.instance.log(...).
     private SGLogger logger = SGLogger.instance
     
+    private SGLifecycle httpServerState = SGLifecycle.NOT_STARTED
+    
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+    
     SGRESTProtocol() {
         logger.log( "Starting SGRESTProtocol!" )
     }
+    
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
     
     def underTowRouter = new RoutingHandler( )
     
     String getType() { "REST" }
     
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+
     String getProvider() { "Seagull" }
     
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+
     /**
      * Sends a message to a service using a specific protocol..
      *
@@ -50,14 +64,23 @@ class SGRESTProtocol implements SGProtocol {
      */
     void send( SGID target, SGMessage<?> message ) throws SGNotFoundException {
     
-    
     }
     
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+    
+    /**
+     * Holds the registered receivers.
+     */
+    private Map<SGID, Closure<SGMessage>> receivers = [:]
+    
+    // If this is marked as non existing at the top, but required due to being in
+    // interface being implemented, THEN YOU ARE USING IDEA!!!
+    // Code compiles perfectly due to knowing what IDEA fails to figure out.
     /**
      * Registers a receiver of messages.
      *
      * @param service The SGID of the service to receive messages from.
-     * @param receiver The receiver to be called when a message is recived.
+     * @param receiver The receiver to be called when a message is received.
      *
      * @return An SGID representing this receiver instance.
      */
@@ -74,79 +97,14 @@ class SGRESTProtocol implements SGProtocol {
     
     }
     
-    /**
-     * Announce unavailability and then shut down.
-     */
-    void shutdown() {
-    
-    }
-    
-    
-
-
-    /**
-     * Registers a listener of received messages.
-     *
-     * @param listener The listener to be called when a message is received.
-     *
-     * @return An UUID representing this listener instance.
-     */
-    //@Override
-    void registerListener( SGID service, Closure<SGMessage<?>> listener ) {
-
-    }
-
-    /**
-     * Use the UUID gotten at registration to stop listening to more messages.
-     *
-     * @param listener The listener UUID to unregister.
-     */
-    //@Override
-    void unregisterListener( SGID listener ) {
-
-    }
-
-    /**
-     * The name of the protocol, to be able to identify it!
-     */
-    static String protocolType() { "REST" }
-
-    /**
-     * Specifies the provider of the protocol. The idea behind providing this
-     * is to be able to filter on this or not this if there are more protocols
-     * implementing REST as a protocol available.
-     *
-     * This might however go away again since to not complicate things more than
-     * needed it might not be a good idea to use this.
-     *
-     * @return "Seagull"
-     */
-    static String protocolProvider() { "Seagull default REST provider" }
-
-    // ---------------------------------------------------------------------------//
-
-    private Map<UUID, Closure<SGMessage<?>>> listeners = [ : ]
-
-    // If the editor places this comment in the same "box" as the above method and
-    // comment then you are using IDEA!! This is a comment for the below method,
-    // and nothing else! Until JettBrains get their shit working again (if ever)
-    // I suggest not using that feature since it confuses things. I'm assuming
-    // that they have lost a lot of competent people since they are not living
-    // up to their name any more. That said it still beats most other alternatives ...
-
-    /**
-     * Indicates if the HTTP server should be running or not. This so that it will not
-     * automatically be started again via a call to ensureServerIsRunning() if it has
-     * been shut down. Otherwise any call to registerListener will bring it up again.
-     *
-     * A call to shutdown() will make this false.
-     */
-    private SGLifecycle httpServerState = SGLifecycle.NOT_STARTED
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
     /**
      * HTTP server instance.
      */
     private Http2ServerConnection httpServer = null
+    
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
     /**
      * This is responsible for trying to bring upp server. As anything it can of course fail!
@@ -171,7 +129,9 @@ class SGRESTProtocol implements SGProtocol {
             }
         }
     }
-
+    
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+    
     /**
      * Starts the HTTP server used to handle HTTP requests. Currently Undertow is used.
      */
@@ -183,7 +143,10 @@ class SGRESTProtocol implements SGProtocol {
         // Hope this is odd enough to in general not be used :-). But if this is busy
         // we will try all the way up tp 9999 before giving up! What port end up being used
         // will be logged!
-        //Todo: Chose a set of 10 ports spread out.
+
+        // This will start at 9900 and try up to 9999 for a free port. The actual port will
+        // be registered in the service directory. Goal: each sender should provide its own
+        // port. That requires an extension to SGMessage!
         int port = 9900
 
         InetAddress inetAddress = InetAddress.localHost
@@ -217,8 +180,8 @@ class SGRESTProtocol implements SGProtocol {
             }
         } // retry
     }
-
-    // ------------------------------------------------------------------------------------------//
+    
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
     /**
      *
@@ -229,13 +192,17 @@ class SGRESTProtocol implements SGProtocol {
     private Model readRequest( InputStream requestStream) {
 
     }
+    
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
     private writeResponse(OutputStream responseStream, Model response) {
 
     }
+    
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
-    // ------------------------------------------------------------------------------------------//
-
+    private Map<UUID, Closure<SGMessage>> listeners = [:] // Groovy's way of saying Map!
+    
     /**
      * Registers a listener of received messages.
      *
@@ -247,12 +214,14 @@ class SGRESTProtocol implements SGProtocol {
     UUID registerListener( Closure<SGMessage<?>> listener ) {
 
         UUID listenerId = UUID.randomUUID()
-        this.listeners.put( listenerId, listener )
+        this.listeners[ listenerId ] = listener
 
         ensureServerIsRunning()
 
         listenerId
     }
+    
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
     /**
      * Use the UUID gotten at registration to stop listening to more messages.
@@ -271,18 +240,19 @@ class SGRESTProtocol implements SGProtocol {
     void send( SGMessage<?> message ) {
 
     }
-
-    // ------------------------------------------------------------------------------------------//
+    
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
     /**
      * Shuts down this Protocol.
      */
-  //  @Override
-  //  void shutdown() {
-  //      this.httpServerState = SGLifecycle.SHUT_DOWN
-  //      this.listeners.clear()
- //       //if ( this.httpServer != null ) this.httpServer.stop()
-  //      this.httpServer = null
- //   }
+  @Override
+  void shutdown() {
+     
+     this.httpServerState = SGLifecycle.SHUT_DOWN
+     this.listeners.clear()
+     if ( this.httpServer != null ) this.httpServer.close(  )
+      this.httpServer = null
+   }
 
 }

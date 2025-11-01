@@ -50,6 +50,9 @@ interface SGRouter {
      * to be forwarded to another node. In that case the message
      * needs to be forwarded to routeOutgoing(...)!
      *
+     * Use SGServiceDirectory to determine if a service is locally
+     * available.
+     *
      * @param message The incoming message to route.
      */
     void routeIncoming( SGMessage message )
