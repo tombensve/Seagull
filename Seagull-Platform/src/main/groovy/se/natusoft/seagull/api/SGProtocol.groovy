@@ -69,7 +69,7 @@ interface SGProtocol {
      * @param receiverId A Unique SGID representing the receiver.
      * @param receiver The actual Closure to call with received messages.
      */
-    void registerReceiver( SGID receiverId, Closure< SGMessage> receiver)
+    void registerReceiver( SGID receiverId, Closure<SGMessage> receiver)
     
     /**
      * Removes a previously registered Closure from being called again.
