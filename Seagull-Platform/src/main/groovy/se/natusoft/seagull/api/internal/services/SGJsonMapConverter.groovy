@@ -3,6 +3,7 @@ package se.natusoft.seagull.api.internal.services
 import se.natusoft.lic.annotation.BinariesAvailableAt
 import se.natusoft.lic.annotation.Human_Software_License_1_0
 import se.natusoft.lic.annotation.SourceAvailableAt
+import se.natusoft.seagull.api.internal.services.external.SGExternalWrapper
 
 @Human_Software_License_1_0
 @SourceAvailableAt("https://github.com/tombensve/Seagull")
