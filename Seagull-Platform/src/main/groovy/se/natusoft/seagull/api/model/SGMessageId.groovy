@@ -13,26 +13,28 @@ import se.natusoft.lic.annotation.SourceAvailableAt
  */
 class SGMessageId {
     
-    private String msgId
+    /**
+     * Uses an UUID internally.
+     */
+    private UUID msgId
     
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+
     /**
      * Creates a new SGMessageId.
      */
     SGMessageId() {
-        this.msgId = UUID.randomUUID(  ).toString(  )
+        this.msgId = UUID.randomUUID(  )
     }
-    
-    /**
-     * @return A String representation of this SGMessageId.
-     */
-    String toString() { getId() }
     
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
     
     /**
-     * @return Returns same String as toString().
+     * @return A String representation of this SGMessageId.
      */
-    String getId() { this.msgId }
+    String toString() { this.msgId.toString(  ) }
+    
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
     
     /**
      * Compares for equality.
@@ -42,6 +44,6 @@ class SGMessageId {
      * @return true or false.
      */
     boolean equals(SGMessageId messageId) {
-        messageId == this.msgId.toString(  )
+        messageId.msgId == this.msgId
     }
 }

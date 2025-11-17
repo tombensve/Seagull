@@ -4,6 +4,7 @@ import se.natusoft.lic.annotation.BinariesAvailableAt
 import se.natusoft.lic.annotation.Human_Software_License_1_0
 import se.natusoft.lic.annotation.SourceAvailableAt
 import se.natusoft.seagull.api.internal.services.external.SGExternalWrapper
+import se.natusoft.seagull.tools.SGProviderLookup
 
 @Human_Software_License_1_0
 @SourceAvailableAt("https://github.com/tombensve/Seagull")
@@ -23,6 +24,9 @@ import se.natusoft.seagull.api.internal.services.external.SGExternalWrapper
 */
 interface SGJsonMapConverter extends SGExternalWrapper {
 
+    static SGJsonMapConverter provider =
+            SGProviderLookup.find( SGJsonMapConverter.class )
+    
     /**
      * This takes a Map structure and converts to JSON.
      * It will recursively convert any Map values found

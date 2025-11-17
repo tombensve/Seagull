@@ -67,7 +67,6 @@
         I don't agree that groupId is irrelevant here! Always providing all 3 values
         improves clarity IMHO!
     -->
-    <groupId>se.natusoft.seagull</groupId>
     <artifactId>Seagull-Platform</artifactId>
     <version>0.0.0-BC11</version>
 

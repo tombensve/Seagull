@@ -3,8 +3,8 @@ package se.natusoft.seagull.api.internal.services.external
 import se.natusoft.lic.annotation.BinariesAvailableAt
 import se.natusoft.lic.annotation.Human_Software_License_1_0
 import se.natusoft.lic.annotation.SourceAvailableAt
-
 import se.natusoft.seagull.api.model.SGMessage
+import se.natusoft.seagull.tools.SGProviderLookup
 
 @Human_Software_License_1_0
 @SourceAvailableAt( "https://github.com/tombensve/Seagull" )
@@ -25,11 +25,16 @@ import se.natusoft.seagull.api.model.SGMessage
  * - Implementations must be fetchable via ServiceLoader!
  * - There can only be one implementation available runtime.
  */
-interface SGHTTPP extends SGExternalWrapper{
+interface SGHTTP extends SGExternalWrapper{
+    
+    /**
+     * Provides an instance of the interface.
+     */
+    SGHTTP instance = SGProviderLookup.find( SGHTTP.class )
     
     /**
      * This does an HTTP request to an URL with a message.
-     * *
+     *
      * @param target
      * @param message
      */

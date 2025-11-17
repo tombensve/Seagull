@@ -50,15 +50,20 @@ interface SGLogger {
 @CompileStatic
 class LoggerFinder {
 
+    private static SGLogger logger = null
+    
     static SGLogger lookup() {
-        SGLogger instance = SGProviderLookup.find( SGLogger.class )
-        if ( instance == null ) {
-            System.err.println "NO LOGGER PROVIDED! Primitive default will be used!"
-            System.err.println "Yes, this message is here to annoy you!"
-            instance = new SGDefaultLogger()
+        
+        if (logger == null) {
+            logger = SGProviderLookup.find( SGLogger.class )
+            if ( logger == null ) {
+                System.err.println "NO LOGGER PROVIDED! Primitive default will be used!"
+                System.err.println "Yes, this message is here to annoy you!"
+                logger = new SGDefaultLogger( )
+            }
         }
-
-        instance
+        
+        logger
     }
 }
 

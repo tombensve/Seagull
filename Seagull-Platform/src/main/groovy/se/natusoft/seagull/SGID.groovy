@@ -38,7 +38,9 @@ class SGID {
      * To receive broadcasts you need to register as a listener on this ServiceId.
      */
     static SGID Broadcast = register( "SGTarget", "se.natusoft.seagull", "Broadcast" )
-
+    
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+    
     /**
      * Public, static  method to register an SGId.
      *
@@ -55,8 +57,8 @@ class SGID {
         new SGID( type, owner, id )
     }
     
-    // --------------------------------------------------------------------------- //
-
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+    
     /**
      * Holds all registered entries!
      *
@@ -64,6 +66,8 @@ class SGID {
      * has to be done in constructor.
      */
     private static Map<String, SGID> REGISTRY
+    
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
     
     /**
      * Looks up an SGID.
@@ -78,12 +82,16 @@ class SGID {
         if (sgid == null) throw new SGNotFoundException("No valid SGID: '${sgid}'")
         return sgid
     }
+    
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
     /**
      * Holds the key in the map for this specific instance.
      */
     private String idKey
-
+    
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+    
     /**
      * Internal constructor.
      *
@@ -101,6 +109,8 @@ class SGID {
 
         REGISTRY.put( idKey, this )
     }
+    
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
     /**
      * @return a String representation of the key string.
@@ -108,6 +118,8 @@ class SGID {
     String toString() {
         this.idKey
     }
+    
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
     
     /**
      * Provides equals method.
