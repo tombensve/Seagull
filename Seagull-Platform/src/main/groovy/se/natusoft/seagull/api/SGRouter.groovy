@@ -9,7 +9,7 @@ import se.natusoft.seagull.api.model.SGMessage
 import se.natusoft.seagull.tools.SGProviderLookup
 
 @Human_Software_License_1_0
-@SourceAvailableAt("https://github.com/tombensve/Seagull")
+@SourceAvailableAt( "https://github.com/tombensve/Seagull" )
 @BinariesAvailableAt( "https://repo.repsy.io/mvn/tombensve/natusoft-os/" )
 
 /**
@@ -41,7 +41,6 @@ interface SGRouter {
      */
     static final SGRouter Router = SGProviderLookup.find( SGRouter.class )
     
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
     
     /**
      * Routes an incoming message. This means that the message
@@ -57,6 +56,7 @@ interface SGRouter {
      */
     void routeIncoming( SGMessage message )
     
+    
     /**
      * Routes a message to valid service or a reply!
      * Do note that all messages have a common header that are
@@ -66,7 +66,6 @@ interface SGRouter {
      */
     void routeOutgoing( SGMessage message )
     
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
     
     /**
      * In case you need to do something on shutdown!

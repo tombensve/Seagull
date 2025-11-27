@@ -11,8 +11,8 @@ import se.natusoft.seagull.exceptions.SGNotFoundException
 import se.natusoft.seagull.tools.SGProviderLookup
 
 @Human_Software_License_1_0
-@SourceAvailableAt("https://github.com/tombensve/Seagull")
-@BinariesAvailableAt("https://repo.repsy.io/mvn/tombensve/natusoft-os/")
+@SourceAvailableAt( "https://github.com/tombensve/Seagull" )
+@BinariesAvailableAt( "https://repo.repsy.io/mvn/tombensve/natusoft-os/" )
 
 /**
  * These implement a network protocol for calling services on the network.
@@ -22,29 +22,28 @@ import se.natusoft.seagull.tools.SGProviderLookup
 @CompileStatic
 @Many( "Minimum one protocol must be implemented and available in a jar!" )
 interface SGProtocol {
-
+    
     /**
      * This contains a list of all protocol implementations found on classpath (JAR).
      */
-    static List<SGProtocol> AvailableProtocols = SGProviderLookup.findAll( SGProtocol.class )
+    static List<SGProtocol> AvailableProtocols =
+            SGProviderLookup.findAll( SGProtocol.class )
     
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
     
     /**
-     * @return The type of the protocol. Example "REST", "Plain TCP", "Carrier Pigeon", "Flask post".
+     * @return The type of the protocol. Example "REST", "Plain TCP", "Morse code",
+     * "Carrier Pigeon".
      */
     String getType()
     
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
     
     /**
-     *  @return the name of the provider. Example: "Seagull", which indicates a default
+     * @return the name of the provider. Example: "Seagull", which indicates a default
      *  implementation provided by Seagull. This is meta data that can be useful when
      *  trouble shooting.
      */
-    String getProvider()
-
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+    String getProviderName()
+    
     
     /**
      * Sends a message to a service using a specific protocol.
@@ -59,9 +58,8 @@ interface SGProtocol {
      *
      * @param message The message to send.
      */
-    void send( SGMessage<?> message ) throws SGNotFoundException
+    void send( SGMessage message ) throws SGNotFoundException
     
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
     
     /**
      * Registers a receiver that will provide a Closure to receive and handle messages.
@@ -69,16 +67,15 @@ interface SGProtocol {
      * @param receiverId A Unique SGID representing the receiver.
      * @param receiver The actual Closure to call with received messages.
      */
-    void registerReceiver( SGID receiverId, Closure<SGMessage> receiver)
+    void registerReceiver( SGID receiverId, Closure<SGMessage> receiver )
     
     /**
      * Removes a previously registered Closure from being called again.
      *
      * @param receiverId The SGID of the receiver.
      */
-    void unregisterReceiver(SGID receiverId)
+    void unregisterReceiver( SGID receiverId )
     
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
     
     /**
      * Announce unavailability and then shut down.

@@ -9,7 +9,7 @@ import se.natusoft.tools.modelish.Factory
 import se.natusoft.tools.modelish.ModelishModel
 
 @Human_Software_License_1_0
-@SourceAvailableAt("https://github.com/tombensve/Seagull")
+@SourceAvailableAt( "https://github.com/tombensve/Seagull" )
 @BinariesAvailableAt( "https://repo.repsy.io/mvn/tombensve/natusoft-os/" )
 
 /**
@@ -61,9 +61,9 @@ abstract interface SGMessage<T> extends Factory<T> {
      * Provides a unique ID for the message!
      */
     void setMessageId( SGMessageId messageId )
+    
     SGMessageId getMessageId()
     
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
     
     /**
      * The ID of the received message being responded to.
@@ -72,17 +72,17 @@ abstract interface SGMessage<T> extends Factory<T> {
      * @param messageId
      */
     void setInResponseTo( SGMessageId messageId )
+    
     SGMessageId getInResponseTo()
     
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
     
     /**
      * Provides the sender of the message.
      */
     setSource( SGID source )
+    
     SGID getSource()
     
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
     
     /**
      * Provides the target of the message. Do note that SGID defines a Broadcast constant
@@ -91,6 +91,7 @@ abstract interface SGMessage<T> extends Factory<T> {
      * @param target The SGID of the target to send message to.
      */
     void setTarget( SGID target )
+    
     SGID getTarget()
     
     // Specific messages MUST extend this!

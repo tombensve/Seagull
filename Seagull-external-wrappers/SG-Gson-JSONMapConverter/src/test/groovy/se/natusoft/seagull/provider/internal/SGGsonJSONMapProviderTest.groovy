@@ -1,7 +1,7 @@
 package se.natusoft.seagull.provider.internal
 
 import org.junit.jupiter.api.Test
-import se.natusoft.seagull.api.internal.services.SGJsonMapConverter
+import se.natusoft.seagull.api.internal.services.external.SGJsonMapConverter
 import se.natusoft.seagull.tools.SGProviderLookup
 
 /**
@@ -22,19 +22,19 @@ import se.natusoft.seagull.tools.SGProviderLookup
  */
 
 class SGJsonMapConverterTest {
-
+    
     static final SGJsonMapConverter sgJsonMapConverter =
             SGProviderLookup.find( SGJsonMapConverter.class )
-
+    
     @Test
     void testJSONMapConverterLookup() {
-
+        
         assert sgJsonMapConverter != null
     }
-
+    
     @Test
     void testJSON2Map() {
-
+        
         String json = """  
            { 
               "firstName": "Tommy", 
@@ -43,18 +43,18 @@ class SGJsonMapConverterTest {
               "demented": true
            } 
         """
-
+        
         Map<String, Object> map = sgJsonMapConverter.toMap( json )
-
+        
         assert map.firstName == "Tommy"
         assert map.lastName == "Svensson"
         assert map.age as int == 57 // GSon makes this a decimal!
         assert map.demented == true
-
+        
         // Now we take this Map and turn it to JSON again!
-
+        
         String jsonString = sgJsonMapConverter.toJSON( map )
-
+        
         assert jsonString == "{\"firstName\":\"Tommy\",\"lastName\":\"Svensson\",\"age\":57.0,\"demented\":true}"
         //println jsonString
     }

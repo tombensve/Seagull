@@ -25,7 +25,7 @@ import se.natusoft.seagull.tools.SGProviderLookup
  * - Implementations must be fetchable via ServiceLoader!
  * - There can only be one implementation available runtime.
  */
-interface SGHTTP extends SGExternalWrapper{
+interface SGHTTP extends SGExternalWrapper {
     
     /**
      * Provides an instance of the interface.
@@ -34,18 +34,20 @@ interface SGHTTP extends SGExternalWrapper{
     
     /**
      * This does an HTTP request to an URL with a message.
+     * A reply message is returned.
      *
-     * @param target
-     * @param message
+     * @param target The URL to call.
+     * @param message The message to send .
+     * @return Response message.
      */
-    SGMessage doHTTPRequest( URL target, SGMessage message )
+    SGMessage sendRequest( URL target, SGMessage message )
     
     /**
      * This handles a received HTTP request and provides a reply.
      *
      * @param request
-     * @return reply
+     * @return response
      */
-    SGMessage handleHTTPRequest( Closure<SGMessage> request )
+    SGMessage handleRequest( Closure<SGMessage> request )
     
 }

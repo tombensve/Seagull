@@ -145,6 +145,12 @@
         Structure
     -->
     <modules>
+
+        <!--
+            Provides implementations of external wrappers.
+        -->
+        <module>Seagull-external-wrappers</module>
+
         <!--
             This defines APIs and tools. This one is always needed!
         -->

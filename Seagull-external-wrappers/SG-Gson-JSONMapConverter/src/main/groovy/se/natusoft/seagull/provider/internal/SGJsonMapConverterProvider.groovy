@@ -27,7 +27,8 @@ import com.google.gson.reflect.TypeToken
 import se.natusoft.lic.annotation.BinariesAvailableAt
 import se.natusoft.lic.annotation.Human_Software_License_1_0
 import se.natusoft.lic.annotation.SourceAvailableAt
-import se.natusoft.seagull.api.internal.services.SGJsonMapConverter
+import se.natusoft.seagull.api.internal.services.external.SGJsonMapConverter
+
 import java.lang.reflect.Type
 
 /**
@@ -44,17 +45,17 @@ import java.lang.reflect.Type
  * of coffee!)
  */
 @Human_Software_License_1_0
-@SourceAvailableAt("https://github.com/tombensve/Seagull")
-@BinariesAvailableAt("https://repo.repsy.io/mvn/tombensve/natusoft-os/")
+@SourceAvailableAt( "https://github.com/tombensve/Seagull" )
+@BinariesAvailableAt( "https://repo.repsy.io/mvn/tombensve/natusoft-os/" )
 
 class SGJsonMapConverterProvider implements SGJsonMapConverter {
-
+    
     /** Static GSon instance. */
-    private static  Gson gson = new Gson()
-
+    private static Gson gson = new Gson( )
+    
     /** static declaration of Map<String, Object) type. */
-    private static Type mapType = new TypeToken<Map<String, Object>>(){}.getType()
-
+    private static Type mapType = new TypeToken<Map<String, Object>>( ) {}.getType( )
+    
     /**
      * This takes a Map structure and converts to JSON.
      *
@@ -66,10 +67,10 @@ class SGJsonMapConverterProvider implements SGJsonMapConverter {
      */
     @Override
     String toJSON( Map<String, Object> modelMap ) {
-
-        gson.toJson( modelMap, mapType) as String
+        
+        gson.toJson( modelMap, mapType ) as String
     }
-
+    
     /**
      * This takes a JSON String and converts it to a Map
      * structure.
@@ -80,7 +81,7 @@ class SGJsonMapConverterProvider implements SGJsonMapConverter {
      */
     @Override
     Map<String, Object> toMap( String json ) {
-
-        gson.fromJson(json, mapType) as Map<String, Object>
+        
+        gson.fromJson( json, mapType ) as Map<String, Object>
     }
 }

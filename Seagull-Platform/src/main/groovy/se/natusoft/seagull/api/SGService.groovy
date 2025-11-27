@@ -1,6 +1,7 @@
 package se.natusoft.seagull.api
 
 import groovy.transform.CompileStatic
+import se.natusoft.docutations.Nullable
 import se.natusoft.lic.annotation.BinariesAvailableAt
 import se.natusoft.lic.annotation.Human_Software_License_1_0
 import se.natusoft.lic.annotation.SourceAvailableAt
@@ -8,8 +9,8 @@ import se.natusoft.seagull.SGID
 import se.natusoft.seagull.api.model.SGMessage
 
 @Human_Software_License_1_0
-@SourceAvailableAt("https://github.com/tombensve/Seagull")
-@BinariesAvailableAt("https://repo.repsy.io/mvn/tombensve/natusoft-os/")
+@SourceAvailableAt( "https://github.com/tombensve/Seagull" )
+@BinariesAvailableAt( "https://repo.repsy.io/mvn/tombensve/natusoft-os/" )
 
 
 /**
@@ -42,24 +43,25 @@ import se.natusoft.seagull.api.model.SGMessage
 
 @CompileStatic
 interface SGService {
-
+    
     /**
      * @return The SG_ID of the service.
      */
     SGID serviceId()
-
+    
+    
     /**
      * Starts a service.
      *
      * Should start by doing:
      *
-     *     UUID listenerUUID SGRouter.Router.registerListener( SGServiceId, { SGModel message ->...  } )
+     *     UUID listenerUUID SGRouter.Router
+     *        .registerListener( SGServiceId, { SGModel message ->...  } )
      *
      */
     void startup()
     
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
-
+    
     /**
      *  Called on shutdown to unregister all registered listeners.
      *
@@ -67,33 +69,27 @@ interface SGService {
      */
     void shutdown()
     
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
-
-    /**
-     * @return current running state.
-     */
-    boolean isRunning()
     
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
-
     /**
      * This provides an implementation of a service.
      *
      * @param message The incoming message to handle.
+     * @return response message.
      */
-    receiveMessage( SGMessage message )
+    @Nullable
+    SGMessage receiveMessage( SGMessage message )
     
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
-
+    
     /**
      * Sends a message.
-
+     
      * Note that this message can be a call to another service or
      * a response to a call. If a response then set the inResponseTo
      * value of the message. This will help SGRouter route the message
      * correctly.
      *
      * @param message The message to send.
+     * @return reply if such is available or null otherwise.
      */
-    void sendMessage( SGMessage message )
+    SGMessage sendMessage( SGMessage message )
 }

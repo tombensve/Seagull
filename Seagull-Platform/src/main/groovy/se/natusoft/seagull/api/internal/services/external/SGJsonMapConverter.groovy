@@ -1,14 +1,13 @@
-package se.natusoft.seagull.api.internal.services
+package se.natusoft.seagull.api.internal.services.external
 
 import se.natusoft.lic.annotation.BinariesAvailableAt
 import se.natusoft.lic.annotation.Human_Software_License_1_0
 import se.natusoft.lic.annotation.SourceAvailableAt
-import se.natusoft.seagull.api.internal.services.external.SGExternalWrapper
 import se.natusoft.seagull.tools.SGProviderLookup
 
 @Human_Software_License_1_0
-@SourceAvailableAt("https://github.com/tombensve/Seagull")
-@BinariesAvailableAt("https://repo.repsy.io/mvn/tombensve/natusoft-os/")
+@SourceAvailableAt( "https://github.com/tombensve/Seagull" )
+@BinariesAvailableAt( "https://repo.repsy.io/mvn/tombensve/natusoft-os/" )
 
 /**
  * Seagull uses another of my tools, Modelish, which uses interfaces
@@ -21,9 +20,9 @@ import se.natusoft.seagull.tools.SGProviderLookup
  * It is completely optional.If used an implementation need to be provided.
  * SG-GSon-JSONMapConverter is available as an implementation, but not required!
  * Provide any implementation of the interface you want. This is just a utility!
-*/
+ */
 interface SGJsonMapConverter extends SGExternalWrapper {
-
+    
     static SGJsonMapConverter provider =
             SGProviderLookup.find( SGJsonMapConverter.class )
     
@@ -38,8 +37,8 @@ interface SGJsonMapConverter extends SGExternalWrapper {
      *         potential sub JSON objects that exactly
      *         reflects the input Map.
      */
-    String toJSON(Map<String, Object> modelMap)
-
+    String toJSON( Map<String, Object> modelMap )
+    
     /**
      * This takes a JSON String and converts it to a Map
      * structure.
@@ -48,5 +47,5 @@ interface SGJsonMapConverter extends SGExternalWrapper {
      *
      * @return A converted Map.
      */
-    Map<String, Object> toMap(String json)
+    Map<String, Object> toMap( String json )
 }
