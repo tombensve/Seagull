@@ -5,7 +5,6 @@ import se.natusoft.lic.annotation.BinariesAvailableAt
 import se.natusoft.lic.annotation.Human_Software_License_1_0
 import se.natusoft.lic.annotation.SourceAvailableAt
 import se.natusoft.seagull.SGID
-import se.natusoft.seagull.SGLifecycle
 import se.natusoft.seagull.api.SGLogger
 import se.natusoft.seagull.api.SGProtocol
 import se.natusoft.seagull.api.model.SGMessage
@@ -20,11 +19,9 @@ class SGRESTProtocol implements SGProtocol {
     
     private SGLogger logger = SGLogger.instance
     
-    private SGLifecycle httpServerState = SGLifecycle.NOT_STARTED
-    
     
     SGRESTProtocol() {
-        logger.log( "Starting SGRESTProtocol!" )
+        logger.log( "Starting SGRESTProtocol." )
     }
     
     @Override
@@ -34,7 +31,7 @@ class SGRESTProtocol implements SGProtocol {
     
     @Override
     String getProviderName() {
-        return null
+        return "SG-Default-REST"
     }
     
     @Override
@@ -54,6 +51,7 @@ class SGRESTProtocol implements SGProtocol {
     
     @Override
     void shutdown() {
-    
+        
+        logger.log( "Shutting down SGRestProtocol." )
     }
 }

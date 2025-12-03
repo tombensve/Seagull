@@ -14,6 +14,8 @@ import se.natusoft.seagull.tools.SGProviderLookup
 @SourceAvailableAt( "https://github.com/tombensve/Seagull" )
 @BinariesAvailableAt( "https://repo.repsy.io/mvn/tombensve/natusoft-os/" )
 
+//.....................................................................................//
+
 /**
  * These implement a network protocol for calling services on the network.
  *
@@ -29,6 +31,7 @@ interface SGProtocol {
     static List<SGProtocol> AvailableProtocols =
             SGProviderLookup.findAll( SGProtocol.class )
     
+    //.................................................................................//
     
     /**
      * @return The type of the protocol. Example "REST", "Plain TCP", "Morse code",
@@ -36,6 +39,7 @@ interface SGProtocol {
      */
     String getType()
     
+    //.................................................................................//
     
     /**
      * @return the name of the provider. Example: "Seagull", which indicates a default
@@ -44,7 +48,9 @@ interface SGProtocol {
      */
     String getProviderName()
     
+    //.................................................................................//
     
+    //Lite fel nedan!
     /**
      * Sends a message to a service using a specific protocol.
      *
@@ -52,7 +58,7 @@ interface SGProtocol {
      *   - that the target of the message are provided within the message!
      *   - that received messages should be passed to the SGRouter which will
      *     - convert received data to a SGMessage instance.
-     *     - route them to a matching service or services.
+     *     - route them to a matching service or services. <-- INTE HELT RÄTT!!!
      *     - Possibly forward to another router on another node.
      *   - The target can also be a broadcast target!
      *
@@ -60,6 +66,7 @@ interface SGProtocol {
      */
     void send( SGMessage message ) throws SGNotFoundException
     
+    //.................................................................................//
     
     /**
      * Registers a receiver that will provide a Closure to receive and handle messages.
@@ -69,6 +76,8 @@ interface SGProtocol {
      */
     void registerReceiver( SGID receiverId, Closure<SGMessage> receiver )
     
+    //.................................................................................//
+    
     /**
      * Removes a previously registered Closure from being called again.
      *
@@ -76,6 +85,7 @@ interface SGProtocol {
      */
     void unregisterReceiver( SGID receiverId )
     
+    //.................................................................................//
     
     /**
      * Announce unavailability and then shut down.

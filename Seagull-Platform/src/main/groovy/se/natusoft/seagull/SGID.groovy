@@ -8,8 +8,13 @@ import se.natusoft.seagull.exceptions.SGException
 import se.natusoft.seagull.exceptions.SGNotFoundException
 
 @Human_Software_License_1_0
-@SourceAvailableAt("https://github.com/tombensve/Seagull")
-@BinariesAvailableAt("https://repo.repsy.io/mvn/tombensve/natusoft-os/")
+@SourceAvailableAt( "https://github.com/tombensve/Seagull" )
+@BinariesAvailableAt( "https://repo.repsy.io/mvn/tombensve/natusoft-os/" )
+
+/////////////////////////////////////////////////////////////////////////
+// If anyone wonders about the "//...."  it is because IDEA fucks this //
+// up royally!!!                                                       //
+////////////////////////////////////////////////////////////////////////
 
 /**
  * This is a special ID that must be unique. It is created using the static method:
@@ -31,15 +36,16 @@ import se.natusoft.seagull.exceptions.SGNotFoundException
  */
 @CompileStatic
 class SGID {
-
+    
     /**
      * Goes out to all services.
      *
      * To receive broadcasts you need to register as a listener on this ServiceId.
      */
-    static SGID Broadcast = register( "SGTarget", "se.natusoft.seagull", "Broadcast" )
-    
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+    static SGID Broadcast = register( "SGTarget", "se.natusoft.seagull",
+            "Broadcast" )
+
+//.....................................................................................
     
     /**
      * Public, static  method to register an SGId.
@@ -56,8 +62,8 @@ class SGID {
         
         new SGID( type, owner, id )
     }
-    
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+
+//.....................................................................................
     
     /**
      * Holds all registered entries!
@@ -66,8 +72,8 @@ class SGID {
      * has to be done in constructor.
      */
     private static Map<String, SGID> REGISTRY
-    
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+
+//.....................................................................................
     
     /**
      * Looks up an SGID.
@@ -75,22 +81,23 @@ class SGID {
      * @param idString
      * @return SGID object.
      */
-    static SGID fromIdKey(String idString) {
+    static SGID fromIdKey( String idString ) {
         
         SGID sgid = REGISTRY.get( idString )
         
-        if (sgid == null) throw new SGNotFoundException("No valid SGID: '${sgid}'")
+        if ( sgid == null )
+            throw new SGNotFoundException( "No valid SGID: null" )
         return sgid
     }
-    
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
+//.....................................................................................
+    
     /**
      * Holds the key in the map for this specific instance.
      */
     private String idKey
-    
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+
+//.....................................................................................
     
     /**
      * Internal constructor.
@@ -101,25 +108,27 @@ class SGID {
      */
     private SGID( String type, String owner, String id ) {
         
-        if ( REGISTRY == null ) REGISTRY = [:] // This cannot be done until now!
+        if ( REGISTRY == null )
+            REGISTRY = [ : ]
         
-        this.idKey = "${type}:${owner}:${id}"
-
-        if ( REGISTRY.containsKey( idKey ) ) throw new SGException( "SGId:${idKey} already exists!" )
-
+        this.idKey = "${ type }:${ owner }:${ id }"
+        
+        if ( REGISTRY.containsKey( idKey ) )
+            throw new SGException( "SGId:${ idKey } already exists!" )
+        
         REGISTRY.put( idKey, this )
     }
-    
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
+//.....................................................................................
+    
     /**
      * @return a String representation of the key string.
      */
     String toString() {
         this.idKey
     }
-    
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+
+//.....................................................................................
     
     /**
      * Provides equals method.
