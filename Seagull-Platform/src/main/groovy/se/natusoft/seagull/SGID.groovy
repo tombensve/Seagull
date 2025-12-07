@@ -10,10 +10,26 @@ import se.natusoft.seagull.exceptions.SGNotFoundException
 @Human_Software_License_1_0
 @SourceAvailableAt( "https://github.com/tombensve/Seagull" )
 @BinariesAvailableAt( "https://repo.repsy.io/mvn/tombensve/natusoft-os/" )
+/*
+# About
+About me and my repos.
 
+I have had a lot of fun over the years doing hobby projects here. I have clearly not been stimulated enough at work, so that I have been doing projects for fun here!
+
+I'd like to say that I will keep coding here until they put me in a coffin, and that I'd like to take my computer with me for future archaeologist to scratch their heads at, and I will for as long as I can, and maybe some weird incomprehensible stuff after I no longer can.
+
+I have early onset dementia and are walking on the road to Alzheimer's! I'm thereby no longer working. So why am I telling this here ? Because dementia is a serious thing, that affects too many people! Todays high stress world are partly responsible for this. Definately in my case. I have delivered even if it was impossible! High stress is a really dangerous thing! Is it really worth it ? I'd say NO.
+
+I will continue coding here on Github for as long as I can, these days at my pace
+without a deadline, just something I do because I enjoy it, and it keeps stimulating my
+brains which is good for me. The brain is a muscle that needs exercise!
+
+In Sweden unfortunately, and definitely in America, which is now a dick-tator-ship, too many people are just carrying their brain around, not usining it! As as a person with dementia I'm offended!
+
+ */
 /////////////////////////////////////////////////////////////////////////
 // If anyone wonders about the "//...."  it is because IDEA fucks this //
-// up royally!!!                                                       //
+// up royally!!! I thereby have to do this myself.                    //
 ////////////////////////////////////////////////////////////////////////
 
 /**
