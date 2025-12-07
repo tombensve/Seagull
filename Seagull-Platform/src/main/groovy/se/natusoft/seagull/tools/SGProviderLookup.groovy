@@ -7,8 +7,8 @@ import se.natusoft.lic.annotation.Human_Software_License_1_0
 import se.natusoft.lic.annotation.SourceAvailableAt
 
 @Human_Software_License_1_0
-@SourceAvailableAt("https://github.com/tombensve/")
-@BinariesAvailableAt("https://repo.repsy.io/mvn/tombensve/natusoft-os/")
+@SourceAvailableAt( "https://github.com/tombensve/" )
+@BinariesAvailableAt( "https://repo.repsy.io/mvn/tombensve/natusoft-os/" )
 
 /**
  * The Seagull-Platform jar mostly defines interfaces. Other jars has to be added
@@ -22,10 +22,10 @@ import se.natusoft.lic.annotation.SourceAvailableAt
  * Since I have not succeeded in making Googles @AutoService work, the resources
  * needed to make these available have to be provided manually as resources.
  */
-@Todo(description = "Seagull-99")
+@Todo( description = "Seagull-99" )
 @CompileStatic
 class SGProviderLookup {
-
+    
     /**
      * Provides static method for loading a service specified by its interface class.
      * This returns an instance provided by the Java ServiceLoader.
@@ -35,10 +35,12 @@ class SGProviderLookup {
      * @return An implementation of the API.
      */
     static <T> T find( Class<T> api ) {
-
-        (T) ServiceLoader.load( api ).findFirst().get()
+        
+        ( T ) ServiceLoader.load( api ).findFirst( ).get( )
     }
 
+//.....................................................................................
+    
     /**
      * Provides a static method fore finding all instances of providing implementations of the api.
      *
@@ -47,7 +49,7 @@ class SGProviderLookup {
      * @return All implementations of the API.
      */
     static <T> List<T> findAll( Class<T> api ) {
-
-        (List<T>) ServiceLoader.load( api ).asList()
+        
+        ( List<T> ) ServiceLoader.load( api ).asList( )
     }
 }

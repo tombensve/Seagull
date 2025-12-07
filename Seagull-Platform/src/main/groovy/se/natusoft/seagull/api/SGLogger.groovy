@@ -7,8 +7,8 @@ import se.natusoft.lic.annotation.SourceAvailableAt
 import se.natusoft.seagull.tools.SGProviderLookup
 
 @Human_Software_License_1_0
-@SourceAvailableAt("https://github.com/tombensve/Seagull")
-@BinariesAvailableAt("https://repo.repsy.io/mvn/tombensve/natusoft-os/")
+@SourceAvailableAt( "https://github.com/tombensve/Seagull" )
+@BinariesAvailableAt( "https://repo.repsy.io/mvn/tombensve/natusoft-os/" )
 
 /**
  * Seagull logger. Implementations can use any logging library wanted or handle it directly
@@ -20,7 +20,7 @@ import se.natusoft.seagull.tools.SGProviderLookup
  */
 @CompileStatic
 interface SGLogger {
-
+    
     /**
      * Provides a static instance of SGLogger by looking up a provided implementation.
      * This will always be available one way or another!
@@ -29,19 +29,18 @@ interface SGLogger {
      * If 0 a very simple STDOUT logger will be provided! It is strongly recommended to
      * provide an SGLogger implementation!!
      */
-    static final SGLogger instance = LoggerFinder.lookup()
-
+    static final SGLogger instance = LoggerFinder.lookup( )
+    
     void log( String message )
-
+    
     void log( Throwable throwable )
-
+    
     void log( String message, Throwable throwable )
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////
+//.....................................................................................
 // Below are code to make sure that there will always be a logger provided, a very simple //
 // default one if no other is provided.                                                   //
-///////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * This will find a logger implementation provided via ServiceLoader, and if not
@@ -49,12 +48,12 @@ interface SGLogger {
  */
 @CompileStatic
 class LoggerFinder {
-
+    
     private static SGLogger logger = null
     
     static SGLogger lookup() {
         
-        if (logger == null) {
+        if ( logger == null ) {
             logger = SGProviderLookup.find( SGLogger.class )
             if ( logger == null ) {
                 System.err.println "NO LOGGER PROVIDED! Primitive default will be used!"
@@ -67,23 +66,25 @@ class LoggerFinder {
     }
 }
 
+//.....................................................................................
+
 /**
  * This logs to stdout in simplest way possible! It is used only if no other SGLogger
  * implementation is provided.
  */
 @CompileStatic
 class SGDefaultLogger implements SGLogger {
-
+    
     void log( String message ) {
         println message
     }
-
+    
     void log( Throwable throwable ) {
-        println throwable.toString()
+        println throwable.toString( )
     }
-
+    
     void log( String message, Throwable throwable ) {
         println message
-        println throwable.toString()
+        println throwable.toString( )
     }
 }

@@ -31,6 +31,8 @@ interface SGHTTP extends SGExternalWrapper {
      * Provides an instance of the interface.
      */
     SGHTTP instance = SGProviderLookup.find( SGHTTP.class )
+
+//.....................................................................................
     
     /**
      * This does an HTTP request to an URL with a message.
@@ -41,6 +43,8 @@ interface SGHTTP extends SGExternalWrapper {
      * @return Response message.
      */
     SGMessage sendRequest( URL target, SGMessage message )
+
+//.....................................................................................
     
     /**
      * This handles a received HTTP request and provides a reply.

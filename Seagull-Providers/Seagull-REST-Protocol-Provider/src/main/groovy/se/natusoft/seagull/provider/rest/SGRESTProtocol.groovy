@@ -18,36 +18,49 @@ import se.natusoft.seagull.exceptions.SGNotFoundException
 class SGRESTProtocol implements SGProtocol {
     
     private SGLogger logger = SGLogger.instance
-    
+
+//.....................................................................................
     
     SGRESTProtocol() {
         logger.log( "Starting SGRESTProtocol." )
     }
+
+//.....................................................................................
     
     @Override
     String getType() {
         return null
     }
+
+//.....................................................................................
     
     @Override
     String getProviderName() {
         return "SG-Default-REST"
     }
+
+//.....................................................................................
     
     @Override
     void send( SGMessage message ) throws SGNotFoundException {
     
     }
+
+//.....................................................................................
     
     @Override
     void registerReceiver( SGID receiverId, Closure<SGMessage> receiver ) {
     
     }
+
+//.....................................................................................
     
     @Override
     void unregisterReceiver( SGID receiverId ) {
     
     }
+
+//.....................................................................................
     
     @Override
     void shutdown() {

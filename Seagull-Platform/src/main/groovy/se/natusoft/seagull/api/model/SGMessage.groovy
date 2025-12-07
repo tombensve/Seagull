@@ -63,7 +63,8 @@ abstract interface SGMessage<T> extends Factory<T> {
     void setMessageId( SGMessageId messageId )
     
     SGMessageId getMessageId()
-    
+
+//.....................................................................................
     
     /**
      * The ID of the received message being responded to.
@@ -74,7 +75,9 @@ abstract interface SGMessage<T> extends Factory<T> {
     void setInResponseTo( SGMessageId messageId )
     
     SGMessageId getInResponseTo()
-    
+
+
+//.....................................................................................
     
     /**
      * Provides the sender of the message.
@@ -82,7 +85,9 @@ abstract interface SGMessage<T> extends Factory<T> {
     setSource( SGID source )
     
     SGID getSource()
-    
+
+
+//.....................................................................................
     
     /**
      * Provides the target of the message. Do note that SGID defines a Broadcast constant

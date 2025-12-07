@@ -25,6 +25,8 @@ interface SGJsonMapConverter extends SGExternalWrapper {
     
     static SGJsonMapConverter provider =
             SGProviderLookup.find( SGJsonMapConverter.class )
+
+//.....................................................................................
     
     /**
      * This takes a Map structure and converts to JSON.
@@ -38,6 +40,8 @@ interface SGJsonMapConverter extends SGExternalWrapper {
      *         reflects the input Map.
      */
     String toJSON( Map<String, Object> modelMap )
+
+//.....................................................................................
     
     /**
      * This takes a JSON String and converts it to a Map

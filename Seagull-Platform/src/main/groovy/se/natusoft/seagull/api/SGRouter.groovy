@@ -20,7 +20,8 @@ import se.natusoft.seagull.tools.SGProviderLookup
  *   - forward message to node having target using simple TCP protocol with
  *     JSON payload.
  *
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * .................................................................................
+ 
  *
  * SGRouter are called from Protocols to route messages to
  * correct service, and replies back to caller for 2 way protocols.
@@ -40,7 +41,8 @@ interface SGRouter {
      * directly.
      */
     static final SGRouter Router = SGProviderLookup.find( SGRouter.class )
-    
+
+//.....................................................................................
     
     /**
      * Routes an incoming message. This means that the message
@@ -55,7 +57,8 @@ interface SGRouter {
      * @param message The incoming message to route.
      */
     void routeIncoming( SGMessage message )
-    
+
+//.....................................................................................
     
     /**
      * Routes a message to valid service or a reply!
@@ -65,7 +68,8 @@ interface SGRouter {
      * @param message The message to route.
      */
     void routeOutgoing( SGMessage message )
-    
+
+//.....................................................................................
     
     /**
      * In case you need to do something on shutdown!

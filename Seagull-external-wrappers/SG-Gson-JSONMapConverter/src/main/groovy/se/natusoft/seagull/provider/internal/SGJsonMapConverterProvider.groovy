@@ -55,6 +55,8 @@ class SGJsonMapConverterProvider implements SGJsonMapConverter {
     
     /** static declaration of Map<String, Object) type. */
     private static Type mapType = new TypeToken<Map<String, Object>>( ) {}.getType( )
+
+//.....................................................................................
     
     /**
      * This takes a Map structure and converts to JSON.
@@ -70,6 +72,8 @@ class SGJsonMapConverterProvider implements SGJsonMapConverter {
         
         gson.toJson( modelMap, mapType ) as String
     }
+
+//.....................................................................................
     
     /**
      * This takes a JSON String and converts it to a Map

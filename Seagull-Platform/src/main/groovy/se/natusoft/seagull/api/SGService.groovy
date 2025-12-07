@@ -48,7 +48,8 @@ interface SGService {
      * @return The SG_ID of the service.
      */
     SGID serviceId()
-    
+
+//.....................................................................................
     
     /**
      * Starts a service.
@@ -60,7 +61,8 @@ interface SGService {
      *
      */
     void startup()
-    
+
+//.....................................................................................
     
     /**
      *  Called on shutdown to unregister all registered listeners.
@@ -68,7 +70,8 @@ interface SGService {
      *      SGRouter.Router.unregisterListener( listenerUUID )
      */
     void shutdown()
-    
+
+//.....................................................................................
     
     /**
      * This provides an implementation of a service.
@@ -78,7 +81,8 @@ interface SGService {
      */
     @Nullable
     SGMessage receiveMessage( SGMessage message )
-    
+
+//.....................................................................................
     
     /**
      * Sends a message.

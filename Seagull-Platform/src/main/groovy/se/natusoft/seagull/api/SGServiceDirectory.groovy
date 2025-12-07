@@ -1,11 +1,13 @@
 package se.natusoft.seagull.api
 
+import se.natusoft.lic.annotation.BinariesAvailableAt
+import se.natusoft.lic.annotation.Human_Software_License_1_0
+import se.natusoft.lic.annotation.SourceAvailableAt
 import se.natusoft.seagull.SGID
-import se.natusoft.lic.annotation.*
 import se.natusoft.seagull.tools.SGProviderLookup
 
 @Human_Software_License_1_0
-@SourceAvailableAt("https://github.com/tombensve/Seagull")
+@SourceAvailableAt( "https://github.com/tombensve/Seagull" )
 @BinariesAvailableAt( "https://repo.repsy.io/mvn/tombensve/natusoft-os/" )
 interface SGServiceDirectory {
     
@@ -17,8 +19,8 @@ interface SGServiceDirectory {
      */
     public static final SGServiceDirectory instance
             = SGProviderLookup.find( SGServiceDirectory.class )
-    
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+
+//.....................................................................................
     
     /**
      * Registers a service.
@@ -29,8 +31,8 @@ interface SGServiceDirectory {
      * @return self for chaining calls.
      */
     SGServiceDirectory registerService( SGID serviceId, UUID node )
-    
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+
+//.....................................................................................
     
     /**
      * Unregisters a service.
@@ -40,8 +42,8 @@ interface SGServiceDirectory {
      * @return self for chaining calls.
      */
     SGServiceDirectory unregisterService( SGID serviceId, UUID node )
-    
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+
+//.....................................................................................
     
     /**
      * Returns true if service is available, locally or elsewhere.
@@ -51,8 +53,8 @@ interface SGServiceDirectory {
      * @return true or false.
      */
     boolean isServiceAvailable( SGID serviceId )
-    
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+
+//.....................................................................................
     
     /**
      * This validates that the service with the specified ID is available
