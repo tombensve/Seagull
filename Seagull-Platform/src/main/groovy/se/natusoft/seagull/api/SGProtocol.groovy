@@ -50,7 +50,6 @@ interface SGProtocol {
     
     //.................................................................................//
     
-    //Lite fel nedan!
     /**
      * Sends a message to a service using a specific protocol.
      *
@@ -58,7 +57,7 @@ interface SGProtocol {
      *   - that the target of the message are provided within the message!
      *   - that received messages should be passed to the SGRouter which will
      *     - convert received data to a SGMessage instance.
-     *     - route them to a matching service or services. <-- INTE HELT RÄTT!!!
+     *     - route them to a matching service or services.
      *     - Possibly forward to another router on another node.
      *   - The target can also be a broadcast target!
      *

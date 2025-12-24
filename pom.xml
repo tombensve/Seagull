@@ -94,7 +94,7 @@
     <parent>
         <groupId>se.natusoft</groupId>
         <artifactId>groovy-build</artifactId>
-        <version>3.0.0</version><!-- Provides Groovy 4.0.27 -->
+        <version>3.0.0</version><!-- Provides Groovy 5.0.0 -->
     </parent>
 
     <!-- == ====================================================================-->

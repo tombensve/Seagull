@@ -6,6 +6,16 @@ import se.natusoft.lic.annotation.Human_Software_License_1_0
 import se.natusoft.lic.annotation.SourceAvailableAt
 import se.natusoft.seagull.tools.SGProviderLookup
 
+// If the above import is red marked, then you are using IDEA!!!
+// There is nothing that can be done about this, other than complain to
+// JetBrains, but they do not seem to care.
+// This is not a fault in the code, it is a fault in IDEA!!!
+// I've gotten tired reporting such things to them. They have proven
+// such actions pointless, so I stopped trying many years ago.
+//
+// Sometimes removing all IDEA related files from project root and
+// down, and restart idea helps.
+
 @Human_Software_License_1_0
 @SourceAvailableAt( "https://github.com/tombensve/Seagull" )
 @BinariesAvailableAt( "https://repo.repsy.io/mvn/tombensve/natusoft-os/" )
@@ -15,7 +25,6 @@ import se.natusoft.seagull.tools.SGProviderLookup
  * without any library. This is just the API used to log by Seagull code in general.
  *
  * ALWAYS USE: SGLogger.instance when logging!!!!
- *
  * EVERY THING ELSE HERE IS PRIVATE!
  */
 @CompileStatic
@@ -39,6 +48,7 @@ interface SGLogger {
 }
 
 //.....................................................................................
+
 // Below are code to make sure that there will always be a logger provided, a very simple //
 // default one if no other is provided.                                                   //
 
@@ -51,13 +61,12 @@ class LoggerFinder {
     
     private static SGLogger logger = null
     
-    static SGLogger lookup() {
+    protected static SGLogger lookup() {
         
         if ( logger == null ) {
             logger = SGProviderLookup.find( SGLogger.class )
             if ( logger == null ) {
                 System.err.println "NO LOGGER PROVIDED! Primitive default will be used!"
-                System.err.println "Yes, this message is here to annoy you!"
                 logger = new SGDefaultLogger( )
             }
         }
@@ -77,14 +86,17 @@ class SGDefaultLogger implements SGLogger {
     
     void log( String message ) {
         println message
+        println( )
     }
     
     void log( Throwable throwable ) {
         println throwable.toString( )
+        println( )
     }
     
     void log( String message, Throwable throwable ) {
         println message
         println throwable.toString( )
+        println( )
     }
 }

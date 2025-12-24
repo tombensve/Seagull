@@ -44,14 +44,19 @@ import se.natusoft.tools.modelish.ModelishModel
  * the shorter variants.
  *
  * Anyhow, Modelish will provide an implementation for setting and
- * getting values. Internally it stores values in HashMap's.
+ * getting values. Internally it stores values in a HashMap.
  *
  * This makes it easy to convert to and from JSON. Modelish models
  * can also be be made immutable by locking them. A locked model
  * cannot be unlocked, only cloned!
  *
- * NOTE that this interface is abstract!! It MUST be extended with
- * a specific message!
+ * NOTE 1: that this interface is abstract!! It MUST be extended with
+ *         a specific message!
+ * NOTE 2: All properties in this base class start with "sg" that
+ *         indicates that they comme from this base class, which is
+ *         a form of header. This rather than a frame model and
+ *          a header submodel and a "content" submodel for actual
+ *          message. This just seamed simpler and less structural messy.
  */
 @CompileStatic
 @ModelishModel( desc = "Defines a base message." )
@@ -60,21 +65,20 @@ abstract interface SGMessage<T> extends Factory<T> {
     /**
      * Provides a unique ID for the message!
      */
-    void setMessageId( SGMessageId messageId )
+    void setSgMessageId( SGMessageId messageId )
     
-    SGMessageId getMessageId()
+    SGMessageId getSgMessageId()
 
 //.....................................................................................
     
     /**
      * The ID of the received message being responded to.
-     * This should of course be
      *
      * @param messageId
      */
-    void setInResponseTo( SGMessageId messageId )
+    void setSgInResponseTo( SGMessageId messageId )
     
-    SGMessageId getInResponseTo()
+    SGMessageId getSgInResponseTo()
 
 
 //.....................................................................................
@@ -82,9 +86,9 @@ abstract interface SGMessage<T> extends Factory<T> {
     /**
      * Provides the sender of the message.
      */
-    setSource( SGID source )
+    setSgSource( SGID source )
     
-    SGID getSource()
+    SGID getSgSource()
 
 
 //.....................................................................................
@@ -95,9 +99,9 @@ abstract interface SGMessage<T> extends Factory<T> {
      *
      * @param target The SGID of the target to send message to.
      */
-    void setTarget( SGID target )
+    void setSgTarget( SGID target )
     
-    SGID getTarget()
+    SGID getSgTarget()
     
     // Specific messages MUST extend this!
 }

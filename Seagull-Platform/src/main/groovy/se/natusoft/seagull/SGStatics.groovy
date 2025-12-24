@@ -25,5 +25,6 @@ interface SGStatics {
      * Instances of SGProtocol implementations should be instantiated and stored here!
      * This should be done at boot! What you get is what is available on the CLASSPATH!
      */
-    static final HashMap<String /* protocol name */, SGProtocol> protocols = new HashMap<>( )
+    static final HashMap<String /* protocol name */, SGProtocol> protocols =
+            new HashMap<>( )
 }
