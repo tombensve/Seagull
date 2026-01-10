@@ -60,24 +60,34 @@
 
         <!--....External............................................-->
 
-        <!-- Undertow Core -->
+        <!--
+            Undertow
+
+             So why does this not follow the "external wrapper" pattern ?
+             Because this is different! This is an implementation  that
+             is internal for this module, using external library to do
+             what needs to be done by this protocol provider.
+
+             This functionality is very limited to this module. The
+             SG-Gson-JsonMapConverter however is a more general functionality
+             that can be reused by more services wanting to use the JSON
+             format even if not talking REST. JSON is a very nice portable
+             format even outside of REST. In Seagull JSON will be used
+             by all protocols that can handle it.
+        -->
         <dependency>
             <groupId>io.undertow</groupId>
             <artifactId>undertow-core</artifactId>
             <version>2.3.20.Final</version>
         </dependency>
-        <!--
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.17.1</version>
-        </dependency>
-        -->
 
         <!--
+        TODO Move to router!!
             I'm a bit sceptical about jmdns, but I'm going to try it!
             I have seen many people having lot of problems with this.
             But if it works for my simple needs it will be nice.
+            This however needs to be moved to the SGRouter who is
+            responsible for keeping such information.
         <dependency>
             <groupId>org.jmdns</groupId>
             <artifactId>jmdns</artifactId>

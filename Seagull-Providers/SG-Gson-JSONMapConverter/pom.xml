@@ -40,7 +40,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <!--
-        Provides an implementation of SGJsonMapConverterProvider
+        Provides an implementation of SG-Gson-JSONMapConverter.
+
+        This implements SGJsonMapConverter interface.
+        This implementation is not required to use, to use Seagull, but some
+        implementation must be used!
+
+       One and only one implementation should be available runtime!
     -->
     <groupId>se.natusoft.seagull</groupId>
     <artifactId>SG-Gson-JSONMapConverter</artifactId>
@@ -49,7 +55,7 @@
 
     <parent>
         <groupId>se.natusoft.seagull</groupId>
-        <artifactId>Seagull-external-wrappers</artifactId>
+        <artifactId>Seagull-Providers</artifactId>
         <version>0.0.0-BC11</version>
     </parent>
 
