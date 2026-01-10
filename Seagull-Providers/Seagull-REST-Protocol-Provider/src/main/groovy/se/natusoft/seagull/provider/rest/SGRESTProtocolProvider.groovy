@@ -26,9 +26,11 @@ import se.natusoft.seagull.tools.SGProviderLookup
 @CompileStatic
 class SGRESTProtocolProvider implements SGProtocol {
     
-    private SGLogger logger = SGLogger.instance
-    
-    private router = new RoutingHandler( )
+    /**
+     * This is UnderTows routing handler. This has nothing to do with
+     * SGRouter!
+     * */
+    private httpRouter = new RoutingHandler( )
 
 //.....................................................................................
     
@@ -46,9 +48,6 @@ class SGRESTProtocolProvider implements SGProtocol {
      ServiceLoader is used to find implementation. So any implementation
      needs to provie a META-INF/services text file containing the fully
      qualified name of provided implementation.
-     
-     I am not using Googles @AutoService due to repeated failures to make that work.
-     Providing the META-INF file is rather easy.
      */
     private SGJsonMapConverter jsonMapConverter =
             SGProviderLookup.find( SGJsonMapConverter.class )
@@ -56,51 +55,39 @@ class SGRESTProtocolProvider implements SGProtocol {
 //.....................................................................................
     
     SGRESTProtocolProvider() {
-        logger.log( "Starting Seagull provided SGRESTProtocol." )
+        SGLogger.instance.log( "Starting Seagull provided SGRESTProtocol." )
     }
 
 //.....................................................................................
     
-    // Be very clear in protocol names names!
-    
-    @Override
-    String getType() {
-        "REST"
-    }
+    String getType() { "REST" }
 
 //.....................................................................................
     
-    @Override
-    String getProviderName() {
-        "SG-Default-REST"
-    }
+    String getProviderName() { "SG-Default-REST" }
 
 //.....................................................................................
     
-    @Override
     void send( SGMessage message ) throws SGNotFoundException {
     
     }
 
 //.....................................................................................
     
-    @Override
     void registerReceiver( SGID receiverId, Closure<SGMessage> receiver ) {
     
     }
 
 //.....................................................................................
     
-    @Override
     void unregisterReceiver( SGID receiverId ) {
     
     }
 
 //.....................................................................................
     
-    @Override
     void shutdown() {
         
-        logger.log( "Shutting down SGRestProtocol." )
+        SGLogger.instance.log( "Shutting down SGRestProtocol." )
     }
 }

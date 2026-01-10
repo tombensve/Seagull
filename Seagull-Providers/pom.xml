@@ -70,7 +70,7 @@
     </dependencies>
 
     <modules>
-
+        <module>SG-Gson-JSONMapConverter</module>
         <module>Seagull-REST-Protocol-Provider</module>
 
     </modules>

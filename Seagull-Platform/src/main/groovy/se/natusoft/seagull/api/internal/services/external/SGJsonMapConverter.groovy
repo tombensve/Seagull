@@ -21,7 +21,7 @@ import se.natusoft.seagull.tools.SGProviderLookup
  * SG-GSon-JSONMapConverter is available as an implementation, but not required!
  * Provide any implementation of the interface you want. This is just a utility!
  */
-interface SGJsonMapConverter extends SGExternalWrapper {
+interface SGJsonMapConverter {
     
     static SGJsonMapConverter provider =
             SGProviderLookup.find( SGJsonMapConverter.class )

@@ -49,7 +49,7 @@
 
     <parent>
         <groupId>se.natusoft.seagull</groupId>
-        <artifactId>Seagull-external-wrappers</artifactId>
+        <artifactId>Seagull-Providers</artifactId>
         <version>0.0.0-BC11</version>
     </parent>
 
