@@ -1,4 +1,4 @@
-package se.natusoft.seagull.api.internal.services.external
+package se.natusoft.seagull.api
 
 import se.natusoft.lic.annotation.BinariesAvailableAt
 import se.natusoft.lic.annotation.Human_Software_License_1_0
@@ -23,7 +23,7 @@ import se.natusoft.seagull.tools.SGProviderLookup
  */
 interface SGJsonMapConverter {
     
-    static SGJsonMapConverter provider =
+    public static SGJsonMapConverter provider =
             SGProviderLookup.find( SGJsonMapConverter.class )
 
 //.....................................................................................

@@ -48,9 +48,7 @@
 
        One and only one implementation should be available runtime!
     -->
-    <groupId>se.natusoft.seagull</groupId>
     <artifactId>SG-Gson-JSONMapConverter</artifactId>
-    <version>0.0.0-BC11</version>
     <packaging>jar</packaging>
 
     <parent>

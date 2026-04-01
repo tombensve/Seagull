@@ -13,22 +13,14 @@ import se.natusoft.lic.annotation.SourceAvailableAt
 /**
  * Standard CRUD operations.
  *
- * Yes, this is to be able to support REST protocol!
- *
- * My goal is to not need these ...
+ * Yes, this is to be able to support REST protocol! .
  */
 @CompileStatic
 enum SGOperation {
-    
     CREATE,
-    
     READ,
-    
     UPDATE,
-    
     DELETE,
-    
     AUTO_RESOLVED,
-    
     IRRELEVANT
 }

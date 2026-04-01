@@ -36,7 +36,9 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>Seagull-REST-Protocol-Provider</artifactId>
@@ -60,25 +62,10 @@
 
         <!--....External............................................-->
 
-        <!--
-            Undertow
-
-             So why does this not follow the "external wrapper" pattern ?
-             Because this is different! This is an implementation  that
-             is internal for this module, using external library to do
-             what needs to be done by this protocol provider.
-
-             This functionality is very limited to this module. The
-             SG-Gson-JsonMapConverter however is a more general functionality
-             that can be reused by more services wanting to use the JSON
-             format even if not talking REST. JSON is a very nice portable
-             format even outside of REST. In Seagull JSON will be used
-             by all protocols that can handle it.
-        -->
         <dependency>
-            <groupId>io.undertow</groupId>
-            <artifactId>undertow-core</artifactId>
-            <version>2.3.20.Final</version>
+            <groupId>org.apache.httpcomponents.client5</groupId>
+            <artifactId>httpclient5</artifactId>
+            <version>5.3</version>
         </dependency>
 
         <!--

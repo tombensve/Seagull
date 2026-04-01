@@ -1,7 +1,7 @@
 package se.natusoft.seagull.provider.internal
 
 import org.junit.jupiter.api.Test
-import se.natusoft.seagull.api.internal.services.external.SGJsonMapConverter
+import se.natusoft.seagull.api.SGJsonMapConverter
 import se.natusoft.seagull.tools.SGProviderLookup
 
 /**

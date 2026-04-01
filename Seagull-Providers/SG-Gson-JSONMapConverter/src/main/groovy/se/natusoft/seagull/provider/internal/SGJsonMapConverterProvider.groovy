@@ -27,7 +27,7 @@ import com.google.gson.reflect.TypeToken
 import se.natusoft.lic.annotation.BinariesAvailableAt
 import se.natusoft.lic.annotation.Human_Software_License_1_0
 import se.natusoft.lic.annotation.SourceAvailableAt
-import se.natusoft.seagull.api.internal.services.external.SGJsonMapConverter
+import se.natusoft.seagull.api.SGJsonMapConverter
 
 import java.lang.reflect.Type
 

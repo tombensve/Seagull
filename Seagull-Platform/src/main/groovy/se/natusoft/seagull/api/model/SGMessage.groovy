@@ -103,5 +103,23 @@ abstract interface SGMessage<T> extends Factory<T> {
     
     SGID getSgTarget()
     
+//.....................................................................................
+    
+    /**
+     * This should be an SGOperation value converted to a String since this
+     * is an enum.
+     *
+     * This is here to support REST, but this will be part of the model
+     * even if the protocol is not REST. This  can always be set, and other
+     * protocols have the option to listen to it, but doesn't have to!
+     *
+     * @param operation The operation requested by the service call.
+     */
+    void setOperation( String operation)
+    
+    String getOperation()
+    
+//.....................................................................................
+    
     // Specific messages MUST extend this!
 }

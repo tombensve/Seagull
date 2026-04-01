@@ -10,18 +10,19 @@ class SGIdTest {
 
     @Test
     void testSFId() {
-
+        
         SGID test1 = SGID.register( "test", "se.natusoft", "Seagull" )
-
-        assert test1.toString() == "test:se.natusoft:Seagull"
-
+        
+        assert test1.toString( ) == "test:se.natusoft:Seagull"
+        
         try {
-            SGID test2 = SGID.register( "test", "se.natusoft", "Seagull" )
-
-            throw new RuntimeException( "An exceptions should have been thrown, bat wasn't!" )
+            SGID.register( "test", "se.natusoft", "Seagull" )
+            
+            throw new RuntimeException(
+                    "An exceptions should have been thrown, bat wasn't!" )
         }
         catch ( SGException sge ) {
-            println "Expected: Registration failed! -> ${sge.toString()}"
+            println "Expected: Registration failed! -> ${ sge.toString( ) }"
             println "This is expected!"
         }
     }
