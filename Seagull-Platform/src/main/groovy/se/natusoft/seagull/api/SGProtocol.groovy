@@ -31,7 +31,7 @@ interface SGProtocol {
     static List<SGProtocol> AvailableProtocols =
             SGProviderLookup.findAll( SGProtocol.class )
     
-    //.................................................................................//
+    //........................................... ......................................//
     
     /**
      * @return The type of the protocol. Example "REST", "Plain TCP", "Morse code",

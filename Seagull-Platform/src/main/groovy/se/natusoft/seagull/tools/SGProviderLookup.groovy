@@ -1,7 +1,6 @@
 package se.natusoft.seagull.tools
 
 import groovy.transform.CompileStatic
-import se.natusoft.docutations.Todo
 import se.natusoft.lic.annotation.BinariesAvailableAt
 import se.natusoft.lic.annotation.Human_Software_License_1_0
 import se.natusoft.lic.annotation.SourceAvailableAt
@@ -22,7 +21,6 @@ import se.natusoft.lic.annotation.SourceAvailableAt
  * Since I have not succeeded in making Googles @AutoService work, the resources
  * needed to make these available have to be provided manually as resources.
  */
-@Todo( description = "Seagull-99" )
 @CompileStatic
 class SGProviderLookup {
     

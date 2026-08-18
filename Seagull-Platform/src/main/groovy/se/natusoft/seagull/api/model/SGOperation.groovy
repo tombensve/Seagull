@@ -9,7 +9,6 @@ import se.natusoft.lic.annotation.SourceAvailableAt
 @SourceAvailableAt( "https://github.com/tombensve/Seagull" )
 @BinariesAvailableAt( "https://repo.repsy.io/mvn/tombensve/natusoft-os/" )
 
-
 /**
  * Standard CRUD operations.
  *
@@ -21,6 +20,5 @@ enum SGOperation {
     READ,
     UPDATE,
     DELETE,
-    AUTO_RESOLVED,
     IRRELEVANT
 }

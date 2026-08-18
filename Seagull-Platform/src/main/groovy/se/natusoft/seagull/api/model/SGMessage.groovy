@@ -62,11 +62,6 @@ import se.natusoft.tools.modelish.ModelishModel
 @ModelishModel( desc = "Defines a base message." )
 abstract interface SGMessage<T> extends Factory<T> {
     
-    /**
-     * Provides a unique ID for the message!
-     */
-    void setSgMessageId( SGMessageId messageId )
-    
     SGMessageId getSgMessageId()
 
 //.....................................................................................

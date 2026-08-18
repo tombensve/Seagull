@@ -1,4 +1,4 @@
-// ---------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------
 // When using Gson:
 // WRONG: import com.google.common.reflect.TypeToken
 // RIGHT: import com.google.gson.reflect.TypeToken
@@ -18,7 +18,7 @@
 //
 // I was really impressed with Gson and said to my self, these guys really know
 // what they are doing! Apparently not!
-// ---------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------
 
 package se.natusoft.seagull.provider.internal
 
@@ -33,7 +33,7 @@ import java.lang.reflect.Type
 
 /**
  * This converts between JSON in strings and Map<String, Object>
- * structures. The latter can be used as data provider for a
+ * structures. The latter can be used as data provider for an
  * Modelish model.
  *
  * Do note that Modelish supports both JavaBean models and models
@@ -42,7 +42,7 @@ import java.lang.reflect.Type
  * use the JavaBean variant due to that this is written in Groovy
  * which support '.property' access. This makes it more Java Bean
  * compliant. (hmm I can't figure out why I'm constantly thinking
- * of coffee!)
+ * of coffee ...)
  */
 @Human_Software_License_1_0
 @SourceAvailableAt( "https://github.com/tombensve/Seagull" )
@@ -50,13 +50,14 @@ import java.lang.reflect.Type
 
 class SGJsonMapConverterProvider implements SGJsonMapConverter {
     
-    /** Static GSon instance. */
-    private static Gson gson = new Gson( )
+    /** Static GSon instance. I've been told that Gson is not
+     * perfect and can fail, but I stick with this now. */
+    private static Gson GSON = new Gson( )
     
     /** static declaration of Map<String, Object) type. */
     private static Type mapType = new TypeToken<Map<String, Object>>( ) {}.getType( )
 
-//.....................................................................................
+// --------------------------------------------------------------------------------------
     
     /**
      * This takes a Map structure and converts to JSON.
@@ -70,10 +71,10 @@ class SGJsonMapConverterProvider implements SGJsonMapConverter {
     @Override
     String toJSON( Map<String, Object> modelMap ) {
         
-        gson.toJson( modelMap, mapType ) as String
+        GSON.toJson( modelMap, mapType ) as String
     }
 
-//.....................................................................................
+// --------------------------------------------------------------------------------------
     
     /**
      * This takes a JSON String and converts it to a Map
@@ -86,6 +87,6 @@ class SGJsonMapConverterProvider implements SGJsonMapConverter {
     @Override
     Map<String, Object> toMap( String json ) {
         
-        gson.fromJson( json, mapType ) as Map<String, Object>
+        GSON.fromJson( json, mapType ) as Map<String, Object>
     }
 }

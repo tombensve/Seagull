@@ -12,12 +12,9 @@ import se.natusoft.seagull.api.SGJsonMapConverter
 import se.natusoft.seagull.api.model.SGMessage
 import se.natusoft.seagull.exceptions.SGNotFoundException
 
-/** hej
+/**
  * This provides an implementation of REST protocol.
  *
- * I have decided to use Undertow to handle the communication. Do note
- * that Undertow here is completely internal to this provider, thus not
- * available on any classpath outside of this provider.
  */
 @CompileStatic
 class SGRESTProtocolProvider implements SGProtocol {

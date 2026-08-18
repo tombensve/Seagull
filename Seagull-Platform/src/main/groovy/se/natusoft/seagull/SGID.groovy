@@ -102,7 +102,7 @@ class SGID {
         SGID sgid = REGISTRY.get( idString )
         
         if ( sgid == null )
-            throw new SGNotFoundException( "No valid SGID: null" )
+            throw new SGNotFoundException( "$idString is not valid!" )
         return sgid
     }
 

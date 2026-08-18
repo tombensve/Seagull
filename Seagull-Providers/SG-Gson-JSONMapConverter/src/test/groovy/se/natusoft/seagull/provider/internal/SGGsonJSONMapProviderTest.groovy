@@ -20,7 +20,7 @@ import se.natusoft.seagull.tools.SGProviderLookup
  * support immutability and cloning. Seagull uses Modelish
  * models.
  */
-
+// PROBLEM ==> GSON converts integers to decimals!!!
 class SGJsonMapConverterTest {
     
     static final SGJsonMapConverter sgJsonMapConverter =
@@ -39,7 +39,7 @@ class SGJsonMapConverterTest {
            { 
               "firstName": "Tommy", 
               "lastName": "Svensson",
-              "age": 57,
+              "age": 58,
               "demented": true
            } 
         """
@@ -48,14 +48,15 @@ class SGJsonMapConverterTest {
         
         assert map.firstName == "Tommy"
         assert map.lastName == "Svensson"
-        assert map.age as int == 57 // GSon makes this a decimal!
+        assert map.age as int == 58 // GSon makes this a decimal!
         assert map.demented == true
         
         // Now we take this Map and turn it to JSON again!
         
         String jsonString = sgJsonMapConverter.toJSON( map )
         
-        assert jsonString == "{\"firstName\":\"Tommy\",\"lastName\":\"Svensson\",\"age\":57.0,\"demented\":true}"
+        assert jsonString == "{\"firstName\":\"Tommy\",\"lastName\":\"Svensson\"," +
+                "\"age\":58.0,\"demented\":true}"
         //println jsonString
     }
 }

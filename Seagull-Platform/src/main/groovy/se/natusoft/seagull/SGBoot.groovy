@@ -31,6 +31,8 @@ class SGBoot {
         println "Starting Seagull instance version 1.0.0"
         println SGStatics.startupProps.toString()
         
+        // TODO
+        
     }
 
 }
