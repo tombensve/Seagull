@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>se.natusoft.seagull</groupId>
+        <artifactId>Seagull</artifactId>
+        <version>0.0.0-BC11</version>
+    </parent>
+
+    <artifactId>Seagull-Services</artifactId>
+    <version>0.0.0-BC11</version>
+
+    <!-- IDEA FAIL
+
+    **************************************************************
+    IDEA created this, and no parent when I added a new module!!!!
+
+    And NO, I have not reported this! I have stopped doing that
+    since it leads nowhere. Even when I ran my own company (now retired)
+    and purchased the full commercial version, there were no
+    response on reported bugs, so why waste my time with that ?
+
+    NetBeans isn't bad, I used it a lot back in time, but the lack
+    of nice themes is irritating. Eclipse is a sluggish, memory
+    consuming monster! I have been forced to use it a lot when
+    working, and really hated it.
+
+    So even if I get irritated at JetBrains sometimes
+    IDEA still beats the heck out of the others!
+    JetBrains needs more serious competition IMHO!
+    **************************************************************
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.groovy</groupId>
+            <artifactId>groovy-all</artifactId>
+            <version>4.0.14</version>
+            <type>pom</type>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.gmavenplus</groupId>
+                <artifactId>gmavenplus-plugin</artifactId>
+                <version>1.13.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>execute</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.groovy</groupId>
+                        <artifactId>groovy</artifactId>
+                        <version>4.0.14</version>
+                        <scope>runtime</scope>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <scripts>
+                        <script>src/main/groovy/Main.groovy</script>
+                    </scripts>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
+    <properties>
+        <maven.compiler.source>22</maven.compiler.source>
+        <maven.compiler.target>22</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    -->
+
+</project>

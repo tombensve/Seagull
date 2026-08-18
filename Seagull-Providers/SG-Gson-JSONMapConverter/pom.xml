@@ -8,26 +8,12 @@
         >=>    >=> >>         >=>   >=>   >=>  >=> >=>  >=>  >=>  >=>
           >=>>=>    >====>     >==>>>==>      >=>    >==>=> >==> >==>
 
-    PROJECT
-        Name
-            Seagull-Implementations
-        
-        Description
-            Seagull - Intended to be a very simplistic service platform.
-            
-            The idea here is to define a service platform that says
-            nothing about how services communicate with each other.
-            This defines APIs and not to many of those, that can be
-            implemented with whatever protocol. What protocol is used
-            depends on what implementation you make available on
-            the classpath. Implementations are fetched using
-            SGProviderLookup (currently ServiceLoader is used).
-        
     COPYRIGHTS
         Copyright (C) 2023 by Tommy Bengt Svensson All rights reserved.
 
     LICENSE
-            Licensed under the Human Software License 1.0
+
+        Licensed under the Human Software License 1.0
 
         You may not use this file except in compliance with the License.
         You may get a copy of the License at
@@ -45,34 +31,47 @@
 
         Apache Software Licence 2.0 (Just adds to it)
 
+    Provides:
+      - JSON <-> Map<String, Object> conversion using Gson.
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>Seagull-Providers</artifactId>
-    <version>0.0.0-BC11</version>
-    <packaging>pom</packaging>
+    <!--
+        Provides an implementation of SG-Gson-JSONMapConverter.
+
+        This implements SGJsonMapConverter interface.
+        This implementation is not required to use, to use Seagull, but some
+        implementation must be used!
+
+       One and only one implementation should be available runtime!
+    -->
+    <artifactId>SG-Gson-JSONMapConverter</artifactId>
+    <packaging>jar</packaging>
 
     <parent>
         <groupId>se.natusoft.seagull</groupId>
-        <artifactId>Seagull</artifactId>
+        <artifactId>Seagull-Providers</artifactId>
         <version>0.0.0-BC11</version>
     </parent>
 
     <dependencies>
+
         <dependency>
-            <groupId>se.natusoft.annotation</groupId>
-            <artifactId>docutations</artifactId>
-            <version>8.2.1-BC11</version>
+            <groupId>se.natusoft.seagull</groupId>
+            <artifactId>Seagull-Platform</artifactId>
+            <version>0.0.0-BC11</version>
         </dependency>
+
+
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.10.1</version>
+        </dependency>
+
     </dependencies>
-
-    <modules>
-        <module>SG-Gson-JSONMapConverter</module>
-        <module>Seagull-REST-Protocol-Provider</module>
-
-    </modules>
 
 </project>

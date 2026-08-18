@@ -8,26 +8,14 @@
         >=>    >=> >>         >=>   >=>   >=>  >=> >=>  >=>  >=>  >=>
           >=>>=>    >====>     >==>>>==>      >=>    >==>=> >==> >==>
 
-    PROJECT
-        Name
-            Seagull-Implementations
-        
-        Description
-            Seagull - Intended to be a very simplistic service platform.
-            
-            The idea here is to define a service platform that says
-            nothing about how services communicate with each other.
-            This defines APIs and not to many of those, that can be
-            implemented with whatever protocol. What protocol is used
-            depends on what implementation you make available on
-            the classpath. Implementations are fetched using
-            SGProviderLookup (currently ServiceLoader is used).
-        
+    This provides an implementation of REST protocol.
+
     COPYRIGHTS
         Copyright (C) 2023 by Tommy Bengt Svensson All rights reserved.
 
     LICENSE
-            Licensed under the Human Software License 1.0
+
+        Licensed under the Human Software License 1.0
 
         You may not use this file except in compliance with the License.
         You may get a copy of the License at
@@ -48,31 +36,53 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>Seagull-Providers</artifactId>
+    <artifactId>Seagull-REST-Protocol-Provider</artifactId>
     <version>0.0.0-BC11</version>
-    <packaging>pom</packaging>
 
     <parent>
         <groupId>se.natusoft.seagull</groupId>
-        <artifactId>Seagull</artifactId>
+        <artifactId>Seagull-Providers</artifactId>
         <version>0.0.0-BC11</version>
     </parent>
 
     <dependencies>
+
+        <!--....Internal.............................................-->
+
         <dependency>
-            <groupId>se.natusoft.annotation</groupId>
-            <artifactId>docutations</artifactId>
-            <version>8.2.1-BC11</version>
+            <groupId>se.natusoft.seagull</groupId>
+            <artifactId>Seagull-Platform</artifactId>
+            <version>0.0.0-BC11</version>
         </dependency>
+
+        <!--....External............................................-->
+
+        <dependency>
+            <groupId>org.apache.httpcomponents.client5</groupId>
+            <artifactId>httpclient5</artifactId>
+            <version>5.3</version>
+        </dependency>
+
+        <!--
+        TODO Move to router!!
+            I'm a bit sceptical about jmdns, but I'm going to try it!
+            I have seen many people having lot of problems with this.
+            But if it works for my simple needs it will be nice.
+            This however needs to be moved to the SGRouter who is
+            responsible for keeping such information.
+        <dependency>
+            <groupId>org.jmdns</groupId>
+            <artifactId>jmdns</artifactId>
+            <version>3.5.7</version>
+        </dependency>
+        -->
+
     </dependencies>
-
-    <modules>
-        <module>SG-Gson-JSONMapConverter</module>
-        <module>Seagull-REST-Protocol-Provider</module>
-
-    </modules>
 
 </project>

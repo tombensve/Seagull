@@ -10,7 +10,7 @@
 
     PROJECT
         Name
-            Seagull-Implementations
+            Seagull-Platform APIs
         
         Description
             Seagull - Intended to be a very simplistic service platform.
@@ -27,7 +27,8 @@
         Copyright (C) 2023 by Tommy Bengt Svensson All rights reserved.
 
     LICENSE
-            Licensed under the Human Software License 1.0
+
+        Licensed under the Human Software License 1.0
 
         You may not use this file except in compliance with the License.
         You may get a copy of the License at
@@ -45,15 +46,16 @@
 
         Apache Software Licence 2.0 (Just adds to it)
 
+    AUTHORS
+        tommy ()
+            Changes:
+            2023-11-04: Created!
+
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <artifactId>Seagull-Providers</artifactId>
-    <version>0.0.0-BC11</version>
-    <packaging>pom</packaging>
 
     <parent>
         <groupId>se.natusoft.seagull</groupId>
@@ -61,18 +63,26 @@
         <version>0.0.0-BC11</version>
     </parent>
 
+    <!--
+        I don't agree that groupId is irrelevant here! Always providing all 3 values
+        improves clarity IMHO!
+    -->
+    <artifactId>Seagull-Platform</artifactId>
+    <version>0.0.0-BC11</version>
+
     <dependencies>
+        <!--
+            100% failure in making this work!! No manifest entry gets generated!
+
         <dependency>
-            <groupId>se.natusoft.annotation</groupId>
-            <artifactId>docutations</artifactId>
-            <version>8.2.1-BC11</version>
+            <groupId>com.google.auto.service</groupId>
+            <artifactId>auto-service</artifactId>
+            <version>1.1.1</version>
         </dependency>
+
+        I decided to do my MANIFEST.MF entries manually! Not that difficult
+        -->
+
     </dependencies>
-
-    <modules>
-        <module>SG-Gson-JSONMapConverter</module>
-        <module>Seagull-REST-Protocol-Provider</module>
-
-    </modules>
 
 </project>

@@ -16,21 +16,38 @@
             nothing about how services communicate with each other.
             This defines APIs and not to many of those, that can be
             implemented with whatever protocol. What protocol is used
-            depends on what implementation you make available on
+            depends on what implementation(s) you make available on
             the classpath. Implementations are fetched using
             SGProviderLookup (currently ServiceLoader is used).
+
+    STATUS
+
+            Under development!
+
+     BUILD RECOMMENDATION
+
+         This builds JDK 11 bytecode! I have, however, realized that
+         later JDK:s like JDK 22 builds way faster! So I'm using JDK 22
+         to build in IDEA, but make it produce JDK 11 bytecode. There
+         is a real big build speed diff between 11 and 22!
+
+         When completely done with this project, I will try to bump up
+         the byte code version as far as it will still build. Since this
+         is Groovy and not Java, it might be able to go quite high.
+         I am not using any JDK library features over 11! (as far as I know ...)
 
     COPYRIGHTS
         Copyright (C) 2023 by Tommy Bengt Svensson All rights reserved.
 
     LICENSE
-        Apache 2.0 (Open Source)
 
-        Licensed under the Apache License, Version 2.0 (the "License");
-        you may not use this file except in compliance with the License.
-        You may obtain a copy of the License at
+        Licensed under the Human Software License 1.0
 
-          http://www.apache.org/licenses/LICENSE-2.0
+        You may not use this file except in compliance with the License.
+        You may get a copy of the License at
+
+          https://github.com/tombensve/HSL
+          https://tombensvebloggish.craft.me/hsl
 
         Unless required by applicable law or agreed to in writing, software
         distributed under the License is distributed on an "AS IS" BASIS,
@@ -38,16 +55,14 @@
         See the License for the specific language governing permissions and
         limitations under the License.
 
+    EXTENDS
 
-    =============================/\================================
-    |                                                              |
-    \    This code is currently a playground / work in progress!  /
-    /    Not ready for any form of usage!                         \
-    |                                                              |
-    =============================\/================================
+        Apache Software Licence 2.0 (Just adds to it)
 
-    NOTE TO SELF: DO NOT TRY TO UPGRADE TO MAVEN 4!! IT DOES NOT SEEM TO BE BACKWARDS
-    COMPATIBLE!!!
+    =============================================================================
+
+    NOTE TO SELF: DO NOT TRY TO UPGRADE TO MAVEN 4 YET, IT DOES NOT SEEM BACKWARDS
+    COMPATIBLE! Or possibly work in progress.
 
 -->
 
@@ -62,25 +77,61 @@
 
         DO NOTE THAT THIS PARENT DOES NOT POINT OUT THIS PROJECT AS A CHILD!
 
-        The dependency is one way, I pull in this, to build groovy
+        The dependency is one way that I pull in this, to build groovy
         code using a common setup for this, which is intended to be reused
         by all my Groovy projects!
 
         I have been using the maven-mixin-plugin for this earlier, but that
         plugin has started to cause me problems, so I tried this, and it
         seems to work!
+
+        I believe the Groovy project itself provides something similar, but
+        this one I have control over :-).
+
+        Also note that this parent provides a bytecode.version property
+        this is used in this and lower poms.
     -->
     <parent>
         <groupId>se.natusoft</groupId>
         <artifactId>groovy-build</artifactId>
-        <!-- Provides Groovy 4.0.23 -->
-        <version>1.1.0-G23</version>
+        <version>3.0.0</version><!-- Provides Groovy 5.0.0 -->
     </parent>
 
-    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!-- == ====================================================================-->
 
     <groupId>se.natusoft.seagull</groupId>
     <artifactId>Seagull</artifactId>
+    <version>0.0.0-BC11</version>
+
+    <packaging>pom</packaging>
+
+    <!--
+        Configuration
+    -->
+    <properties>
+
+        <!--
+            I get complaints that build is not platform independent!
+            Is there really such a thing? A character code that will
+            work on every single language on the planet?
+
+            As I understand it, UTF-8 covers quite a lot, and the ultimate
+            character encoding valid on the whole planet, Mars and Jupiter too,
+            does not exist!
+
+            I think this is informative:
+            https://www.orca-ls.com/resources/from-ascii-to-unicode-character-encoding-and-the-future-of-global-communication-28
+        -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <maven.compiler.source>${bytecode.version}</maven.compiler.source>
+        <maven.compiler.target>${bytecode.version}</maven.compiler.target>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    </properties>
+
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
     <!--
         The parent POM referenced above uses my old 'major.minor.bytecode' format,
@@ -89,9 +140,30 @@
 
         Maven is flexible enough to allow that.
     -->
-    <version>1.0.0-BC11</version>
 
-    <packaging>pom</packaging>
+    <!--
+        Structure
+    -->
+    <modules>
+        
+        <!--
+            This defines APIs and tools. This one is always needed!
+        -->
+        <module>Seagull-Platform</module>
+
+        <!--
+            This is a root for different provided implementations.
+        -->
+        <module>Seagull-Providers</module>
+
+
+        <!--
+            For testing
+        -->
+        <module>Seagull-test-and-sample-services</module>
+
+    </modules>
+
 
     <!--
         General project information.
@@ -114,6 +186,9 @@
 
     <organization>
         <name>Tommy Svensson</name>
+        <!--
+            This is where I'm having some fun, playing with ideas.
+        -->
         <url>https://github.com/tombensve/</url>
     </organization>
 
@@ -130,35 +205,32 @@
 
     <issueManagement>
         <system>github</system>
-        <url>https://github.com/tombensve/Seagull</url>
+        <url>https://github.com/tombensve/Seagull/issues</url>
     </issueManagement>
 
     <licenses>
+        <!--
+            These are the licenses I'm aware of using! As far as I know, all third party
+            dependencies are under the Apache Software License. If anyone finds this
+            to be wrong, then please inform me!
+        -->
+        <license>
+            <name>Human Software License 1.0</name>
+            <url>https://github.com/tombensve/HSL</url>
+            <comments>
+                This license extends the "Apache Software Licence 2.0. It does
+                not change anything in ASL, just adds to it.
+            </comments>
+        </license>
         <license>
             <name>Apache 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+            <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+            <comments>
+                Seagull uses third party libraries under this license.
+            </comments>
         </license>
+
     </licenses>
-
-    <modules>
-        <module>Seagull-APIs</module>
-        <module>Seagull-test-and-sample-services</module>
-        <module>Seagull-Providers</module>
-    </modules>
-
-    <!--
-        Configuration
-    -->
-    <properties>
-
-        <!--
-            Version of byte-code to produce.
-        -->
-        <bytecode.version>11</bytecode.version>
-
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-    </properties>
 
     <dependencies>
 
@@ -167,7 +239,7 @@
         <dependency>
             <groupId>se.natusoft.tools</groupId>
             <artifactId>LicAnnotations</artifactId>
-            <version>1.1.0-BC11</version>
+            <version>1.4.0-BC11</version>
         </dependency>
 
         <dependency>
@@ -183,41 +255,8 @@
         </dependency>
 
         <!--
-            Thank you, Google, for this brilliant little thing!
-
-            When I first needed this I was about to make my own, but
-            discovered that it had already been done! It is a simple thing,
-            but makes things so much nicer.
-
-            This whole ServiceLoader functionality by Sun was made once upon a
-            time, when 1 + 1 still was 2 and not the square root of seventy-eleven
-            and a half, divided by 2 as today! A time when brains actually were used
-            and things actually made sense, like not breaking backwards compatibility!
-
-            And YES, this code is compiled with JDK 11! That said this is Groovy
-            code and Groovy can produce byte code for more recent JDK versions, but
-            when standard library stuff goes away or become un-compatible, that
-            will not help! But I will try to do things the Groovy way as much as
-            possible.
-
-            And while I'm ranting I'll also point out that as a Java Developer
-            and consultant in Sweden I have never ever been at a customer that
-            has gone higher than JDK 11! The cost of validating that all code
-            still works and fix that which doesn't in later versions, and doing
-            that over and over with each new non backwards compatible JDK is
-            quite expensive and time-consuming! Java is now managed by amateurs!
-
-            That is however not why I'm using Groovy now! I found the eminent
-            Groovy language a long time ago. Most of my Open Source  code is
-            in Groovy. It is a joy to use.
+            Testing
         -->
-        <dependency>
-            <groupId>com.google.auto.service</groupId>
-            <artifactId>auto-service</artifactId>
-            <version>1.1.1</version>
-        </dependency>
-
-        <!-- Testing -->
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -325,11 +364,5 @@
         </plugins>
 
     </build>
-
-    <!--
-        Profiles
-    -->
-    <profiles>
-    </profiles>
 
 </project>
